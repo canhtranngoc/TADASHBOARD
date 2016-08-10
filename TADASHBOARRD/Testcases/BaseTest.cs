@@ -1,14 +1,21 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TADASHBOARRD.Common;
 
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
     public class BaseTest
     {
-        [TestMethod]
-        public void TestMethod1()
+        [AssemblyInitialize]
+        public static void AssemblyInitializeMeThod(TestContext testContext)
         {
+            BrowserManager.OpenBrowser("firefox");
+        }
+        [AssemblyCleanup]
+        public static void AssemblyCleapUpMethod()
+        {
+            BrowserManager.CloseBrowser();
         }
     }
 }
