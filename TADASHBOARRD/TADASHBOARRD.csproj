@@ -66,6 +66,10 @@
     <Compile Include="Common\BrowserManager.cs" />
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\Driver.cs" />
+    <Compile Include="Interfaces\DataProfilesPage\1.cs" />
+    <Compile Include="Interfaces\GeneralPage\1.cs" />
+    <Compile Include="Interfaces\LoginPage\1.cs" />
+    <Compile Include="Interfaces\PanelsPage\1.cs" />
     <Compile Include="PageActions\DataProfilesPage\DataProfilesPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\DisplayFieldsPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\FilterFieldsPage.cs" />
