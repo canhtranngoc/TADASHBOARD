@@ -66,10 +66,6 @@
     <Compile Include="Common\BrowserManager.cs" />
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\Driver.cs" />
-    <Compile Include="Interfaces\DataProfilesPage\1.cs" />
-    <Compile Include="Interfaces\GeneralPage\1.cs" />
-    <Compile Include="Interfaces\LoginPage\1.cs" />
-    <Compile Include="Interfaces\PanelsPage\1.cs" />
     <Compile Include="PageActions\DataProfilesPage\DataProfilesPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\DisplayFieldsPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\FilterFieldsPage.cs" />
@@ -132,7 +128,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\DataProfilesPage\" />
+    <Folder Include="Interfaces\GeneralPage\" />
+    <Folder Include="Interfaces\LoginPage\" />
+    <Folder Include="Interfaces\PanelsPage\" />
+  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
