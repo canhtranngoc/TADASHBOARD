@@ -20,7 +20,7 @@ namespace TADASHBOARRD.Testcases
         [TestCleanup]
         public void CleanUp()
         {
-            Driver.driver.Manage().Cookies.DeleteAllCookies();
+            WebDriver.driver.Manage().Cookies.DeleteAllCookies();
         }
 
     }
