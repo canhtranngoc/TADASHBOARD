@@ -100,5 +100,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).Clear();
             FindWebElement(locator).SendKeys(value);
         }
+
+        public void SelectItemByValue(string locator, string value)
+        {
+            SelectElement selectcontrol = new SelectElement(FindWebElement(locator));
+            selectcontrol.SelectByText(value);
+        }
     }
 }
