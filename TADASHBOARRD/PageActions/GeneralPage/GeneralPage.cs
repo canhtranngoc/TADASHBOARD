@@ -19,7 +19,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
    public class GeneralPage:CommonActions
     {
 
-        public void WaitForElementLoad(string locator, int timeoutInSeconds)
+        public void WaitForElementLoad(By locator, int timeoutInSeconds)
         {
             if (timeoutInSeconds > 0)
             {
