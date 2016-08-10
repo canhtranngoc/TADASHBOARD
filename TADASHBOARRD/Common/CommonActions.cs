@@ -19,5 +19,9 @@ namespace TADASHBOARRD.Common
             Assert.AreEqual(expectedText, actualText);
         }
 
+        public void test()
+        {
+            
+        }
     }
 }
