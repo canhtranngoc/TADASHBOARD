@@ -17,5 +17,11 @@ namespace TADASHBOARRD.Testcases
         {
             BrowserManager.CloseBrowser();
         }
+        [TestCleanup]
+        public void CleanUp()
+        {
+            Driver.driver.Manage().Cookies.DeleteAllCookies();
+        }
+
     }
 }
