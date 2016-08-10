@@ -133,7 +133,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         }
 
-        public void SelectItemByValue(string locator, string value)
+        public void SelectItemByText(string locator, string value)
         {
             SelectElement selectcontrol = new SelectElement(FindWebElement(locator));
             selectcontrol.SelectByText(value);
