@@ -100,6 +100,38 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).Clear();
             FindWebElement(locator).SendKeys(value);
         }
+        public void Logout()
+        {
+
+        }
+        public void OpenDataProfilesPage()
+        {
+
+        }
+        public void OpenPanelsPage()
+        {
+
+        }
+        public void OpenCreateProfilePageFromGeneralPage()
+        {
+
+        }
+        public void OpenExecutionDashboardPage()
+        {
+
+        }
+        public void OpenOverviewPage()
+        {
+
+        }
+        public void OpenNewPageDialog()
+        {
+
+        }
+        public void OpenNewPanelDialogFromGeneralPage()
+        {
+
+        }
 
         public void SelectItemByValue(string locator, string value)
         {
