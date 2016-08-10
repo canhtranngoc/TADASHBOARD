@@ -87,6 +87,7 @@
     <None Include="Interfaces\DataProfilesPage.json" />
     <None Include="Interfaces\GeneralPage.json" />
     <None Include="Interfaces\LoginPage.json" />
+    <None Include="Interfaces\NewPageDialog.json" />
     <None Include="Interfaces\PanelsPage.json" />
     <None Include="Interfaces\Json_Schema.json" />
     <None Include="packages.config" />
