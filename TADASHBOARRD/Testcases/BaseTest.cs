@@ -5,12 +5,12 @@ using TADASHBOARRD.Common;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class BaseTest
+    public class BaseTest : CommonActions
     {
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
-            BrowserManager.OpenBrowser("firefox");
+            BrowserManager.OpenBrowser("chrome");
         }
         [AssemblyCleanup]
         public static void AssemblyCleapUpMethod()

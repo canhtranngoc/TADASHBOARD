@@ -18,33 +18,33 @@ namespace TADASHBOARRD.Common
             switch (browsername.ToUpper())
             {
                 case "FIREFOX":
-                    Driver.driver = new FirefoxDriver();
-                    Driver.driver.Manage().Window.Maximize();
+                    WebDriver.driver = new FirefoxDriver();
+                    WebDriver.driver.Manage().Window.Maximize();
                     break;
                 case "CHROME":
                     ChromeOptions options = new ChromeOptions();
                     options.AddArguments("--disable-extensions");
-                    Driver.driver = new ChromeDriver(options);
-                    Driver.driver.Manage().Window.Maximize();
+                    WebDriver.driver = new ChromeDriver(options);
+                    WebDriver.driver.Manage().Window.Maximize();
                     break;
                 case "IE":
-                    Driver.driver = new InternetExplorerDriver();
-                    Driver.driver.Manage().Window.Maximize();
+                    WebDriver.driver = new InternetExplorerDriver();
+                    WebDriver.driver.Manage().Window.Maximize();
                     break;
                 case "EDGE":
-                    Driver.driver = new EdgeDriver();
-                    Driver.driver.Manage().Window.Maximize();
+                    WebDriver.driver = new EdgeDriver();
+                    WebDriver.driver.Manage().Window.Maximize();
                     break;
                 default:
-                    Driver.driver = new FirefoxDriver();
-                    Driver.driver.Manage().Window.Maximize();
+                    WebDriver.driver = new FirefoxDriver();
+                    WebDriver.driver.Manage().Window.Maximize();
                     break;
             }
         }
         public static void CloseBrowser()
         {
-            Driver.driver.Manage().Cookies.DeleteAllCookies();
-            Driver.driver.Quit();
+            WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+            WebDriver.driver.Quit();
             foreach (Process process in Process.GetProcessesByName("iexplore"))
             {
                 process.Kill();
