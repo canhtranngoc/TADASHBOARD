@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TADASHBOARRD.TestData
+namespace TADASHBOARRD.Common
 {
-    class TestData
+    public class TestData
     {
         public static string validUsername = "administrator";
         public static string validPassword = "";

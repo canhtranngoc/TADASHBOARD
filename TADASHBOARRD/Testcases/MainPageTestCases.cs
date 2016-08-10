@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class MainPage:BaseTest
+    public class MainPageTestCases:BaseTest
     {
         [TestMethod]
         public void TC01()
