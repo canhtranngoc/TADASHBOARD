@@ -8,5 +8,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 {
     class NewPageDialog
     {
+
     }
 }
