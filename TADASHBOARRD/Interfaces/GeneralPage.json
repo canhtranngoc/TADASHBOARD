@@ -1,13 +1,72 @@
-{
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "target": "es5"
+[
+  {
+    "controlName": "user tab",
+    "type": "xpath",
+    "value": "//a[@href='#Welcome']"
   },
-  "exclude": [
-    "node_modules",
-    "wwwroot"
-  ]
-}
+  {
+    "controlName": "global setting tab",
+    "type": "xpath",
+    "value": "//li[@class='mn-setting']/a"
+  },
+  {
+    "controlName": "add page tab",
+    "type": "xpath",
+    "value": "//a[.='Add Page']"
+  },
+  {
+    "controlName": "create profile tab",
+    "type": "xpath",
+    "value": "//a[.='Create Profile']"
+  },
+  {
+    "controlName": "create panel tab",
+    "type": "xpath",
+    "value": "//a[.='Create Panel']"
+  },
+  {
+    "controlName": "edit tab",
+    "type": "xpath",
+    "value": "//a[.='Edit']"
+  },
+  {
+    "controlName": "delete tab",
+    "type": "xpath",
+    "value": "//a[@class='delete' and .='Delete']"
+  },
+  {
+    "controlName": "overview tab",
+    "type": "xpath",
+    "value": "//a[.='Overview']"
+  },
+  {
+    "controlName": "execution dashboard tab",
+    "type": "xpath",
+    "value": "//a[.='Execution Dashboard']"
+  },
+  {
+    "controlName": "logout tab",
+    "type": "xpath",
+    "value": "//a[.='Logout']"
+  },
+  {
+    "controlName": "repository tab",
+    "type": "xpath",
+    "value": "//a[@href='#Repository']"
+  },
+  {
+    "controlName": "repository label",
+    "type": "xpath",
+    "value": "//a[@href='#Repository']/span"
+  },
+  {
+    "controlName": "login repository popup",
+    "type": "xpath",
+    "value": "//h2[text()='Login Repository']"
+  },
+  {
+    "controlName": "choose panels button",
+    "type": "id",
+    "value": "btnChoosepanel"
+  }
+]

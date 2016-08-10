@@ -11,7 +11,7 @@ namespace TADASHBOARRD.Common
     {
         public static void NavigateTADashboard()
         {
-            Constant.driver.Navigate().GoToUrl(TestData.TestData.dashBoardURL);
+            Driver.driver.Navigate().GoToUrl(TestData.TestData.dashBoardURL);
         }
 
         public static void CheckTextDisplays(string expectedText, string actualText)
