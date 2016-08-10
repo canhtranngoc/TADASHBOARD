@@ -15,7 +15,7 @@ namespace TADASHBOARRD.Common
     {
         public static void NavigateTADashboard()
         {
-            Driver.driver.Navigate().GoToUrl(TestData.TestData.dashBoardURL);
+            WebDriver.driver.Navigate().GoToUrl(TestData.TestData.dashBoardURL);
         }
 
         public static void CheckTextDisplays(string expectedText, string actualText)
@@ -23,26 +23,6 @@ namespace TADASHBOARRD.Common
             Assert.AreEqual(expectedText, actualText);
         }
 
-        public void WaitForElementLoad(By locator, int timeoutInSeconds)
-        {
-            if (timeoutInSeconds > 0)
-            {
-                WebDriverWait wait = new WebDriverWait(Driver.driver, TimeSpan.FromSeconds(timeoutInSeconds));
-                wait.Until(ExpectedConditions.ElementIsVisible(locator));
-            }
-        }
-
-        public void ConfirmPopup()
-        {
-            Thread.Sleep(1000);
-            Driver.driver.SwitchTo().Alert().Accept();
-        }
-
-        public string GetTextPopup()
-        {
-            Thread.Sleep(1000);
-            return Driver.driver.SwitchTo().Alert().Text;
-        }
         public void test()
         {
             

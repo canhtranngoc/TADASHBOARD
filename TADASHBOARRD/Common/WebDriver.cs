@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 
 namespace TADASHBOARRD.Common
 {
-    class Driver
+    class WebDriver
     {
         public static IWebDriver driver;
     }
