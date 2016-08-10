@@ -4,11 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class MainPage
+    public class MainPage:BaseTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TC01()
         {
+            NavigateTADashboard();
         }
     }
 }

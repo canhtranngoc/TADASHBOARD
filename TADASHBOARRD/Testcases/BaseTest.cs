@@ -5,7 +5,7 @@ using TADASHBOARRD.Common;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class BaseTest
+    public class BaseTest : CommonActions
     {
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)

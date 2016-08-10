@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TADASHBOARRD.Common
 {
-    class CommonActions
+    public class CommonActions
     {
         public static void NavigateTADashboard()
         {
