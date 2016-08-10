@@ -80,9 +80,9 @@
     <Compile Include="PageActions\PanelsPage\PanelsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testcases\BaseTest.cs" />
-    <Compile Include="Testcases\LoginPage.cs" />
-    <Compile Include="Testcases\MainPage.cs" />
-    <Compile Include="TestData\TestData.cs" />
+    <Compile Include="Testcases\MainPageTestCases.cs" />
+    <Compile Include="Common\TestData.cs" />
+    <Compile Include="Testcases\UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Interfaces\DataProfilesPage.json" />
@@ -135,6 +135,7 @@
     <Folder Include="Interfaces\GeneralPage\" />
     <Folder Include="Interfaces\LoginPage\" />
     <Folder Include="Interfaces\PanelsPage\" />
+    <Folder Include="TestData\" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,6 +10,8 @@ using TADASHBOARRD.Common;
 using System.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
+using System.Reflection;
+
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
@@ -40,7 +42,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
             string className = m.DeclaringType.Name;
-           // string methodName = m.Name;
+            //string methodName = m.Name;
             return className;
         }
 
@@ -87,6 +89,15 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        public void Click(string locator)
+        {
+            FindWebElement(locator).Click();
+        }
 
+        public void EnterValue(string locator, string value)
+        {
+            FindWebElement(locator).Clear();
+            FindWebElement(locator).SendKeys(value);
+        }
     }
 }
