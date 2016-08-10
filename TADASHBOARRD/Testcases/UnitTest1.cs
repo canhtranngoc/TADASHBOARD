@@ -1,9 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TADASHBOARRD.Common;
-using TADASHBOARRD.PageActions;
 using TADASHBOARRD.PageActions.LoginPage;
-using TADASHBOARRD.PageActions.GeneralPage;
 
 namespace TADASHBOARRD.Testcases
 {
