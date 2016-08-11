@@ -7,8 +7,8 @@ using TADASHBOARRD.Common;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
-    class NewPageDialog : CommonActions
+    public class NewPageDialog : GeneralPage
     {
-
+       
     }
 }

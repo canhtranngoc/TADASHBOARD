@@ -22,7 +22,10 @@ namespace TADASHBOARRD.Common
         {
             Assert.AreEqual(expectedText, actualText);
         }
-
+        public static string GetDateTime()
+        {
+            return DateTime.Now.ToString("mmddyyhhmmss");
+        }
         public void test()
         {
             

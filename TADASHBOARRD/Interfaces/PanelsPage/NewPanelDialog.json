@@ -7,6 +7,11 @@
   {
     "controlName": "series dropdown list",
     "type": "xpath",
-    "value":  "//select[@id = 'cbbSeriesField']"
+    "value": "//select[@id = 'cbbSeriesField']"
+  },
+  {
+    "controlName": "ok button",
+    "type": "xpath",
+    "value":  "//input[@id = 'OK']"
   }
 ]

@@ -11,7 +11,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
-   public class GeneralPage:CommonActions
+    public class GeneralPage : CommonActions
     {
 
         public void WaitForElementLoad(By locator, int timeoutInSeconds)
@@ -68,8 +68,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 case "GeneralPage":
                     content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
                     break;
-                case "PanelPage":
-                    content = File.ReadAllText(path + @"\Interfaces\PanelPage\" + page + ".json");
+                case "PanelsPage":
+                case "NewPanelDialog":
+                    content = File.ReadAllText(path + @"\Interfaces\PanelsPage\" + page + ".json");
                     break;
                 case "DataProfilesPage":
                     content = File.ReadAllText(path + @"\Interfaces\DataProfilesPage\" + page + ".json");
@@ -77,7 +78,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     break;
             }
-            
+
             var result = new JavaScriptSerializer().Deserialize<List<control>>(content);
             string[] control = new string[2];
             foreach (var item in result)
@@ -131,7 +132,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 MouseHover("user tab");
                 Click("logout tab");
             }
-            
+
         }
 
         public void MouseHover(string locator)
@@ -195,11 +196,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("user tab");
         }
 
-       public string GetRepository()
-       {
-           Thread.Sleep(1000);
-           return GetText("repository label");
-       }
+        public string GetRepository()
+        {
+            Thread.Sleep(1000);
+            return GetText("repository label");
+        }
 
     }
 }
