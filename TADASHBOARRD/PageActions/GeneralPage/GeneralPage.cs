@@ -2,16 +2,11 @@
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
 using TADASHBOARRD.Common;
 using System.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
-using System.Reflection;
 
 
 namespace TADASHBOARRD.PageActions.GeneralPage
@@ -43,7 +38,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
             string className = m.DeclaringType.Name;
-            //string methodName = m.Name;
             return className;
         }
 
