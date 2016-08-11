@@ -131,7 +131,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 MouseHover("user tab");
                 Click("logout tab");
             }
-            
+            // For edge
+            Thread.Sleep(1000);
         }
 
         public void MouseHover(string locator)

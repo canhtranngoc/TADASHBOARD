@@ -23,6 +23,7 @@ namespace TADASHBOARRD.Testcases
             CheckTextDisplays(actual, TestData.validUsername);
             generalPage.Logout();
         }
+
         [TestMethod]
         public void DA_LOGIN_TC002_Verify_that_user_fails_to_login_specific_repository_successfully_via_Dashboard_login_page_with_incorrect_credentials()
         {
@@ -40,17 +41,12 @@ namespace TADASHBOARRD.Testcases
             NavigateTADashboard();
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
-
             GeneralPage generalPage = new GeneralPage();
             generalPage.Logout();
-
             loginPage.Login(TestData.testRepository, TestData.validUsername, TestData.validPassword);
-
             string actual = generalPage.GetUserName();
             CheckTextDisplays(actual, TestData.validUsername);
-
             generalPage.Logout();
-
         }
 
         [TestMethod]
@@ -69,6 +65,18 @@ namespace TADASHBOARRD.Testcases
             generalPage.ConfirmPopup();
         }
 
-        
+        public void DA_LOGIN_TC008_Verify_that_password_with_special_characters_is_working_correctly()
+        {
+            NavigateTADashboard();
+            LoginPage loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.specialUsername, TestData.specialCharactersPassword);
+            GeneralPage generalPage = new GeneralPage();
+            string actual = generalPage.GetUserName();
+            CheckTextDisplays(actual, TestData.specialUsername);
+            generalPage.Logout();
+        }
+
+
+
     }
 }
