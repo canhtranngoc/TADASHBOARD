@@ -7,7 +7,7 @@ using TADASHBOARRD.Common;
 using System.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
-
+using OpenQA.Selenium.Interactions;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
@@ -59,6 +59,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 case "LoginPage":
                     content = File.ReadAllText(path + @"\Interfaces\LoginPage\" + page + ".json");
                     break;
+                case "GeneralPage":
+                    content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
+                    break;
+                default:
+                    break;
             }
             
             var result = new JavaScriptSerializer().Deserialize<List<control>>(content);
@@ -108,6 +113,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 ClickItemByJS("");
             }
 
+        }
+
+        public void MouseHover(string locator)
+        {
+            Actions action = new Actions(WebDriver.driver);
+            action.MoveToElement(FindWebElement(locator)).Perform();
         }
         public void OpenDataProfilesPage()
         {
