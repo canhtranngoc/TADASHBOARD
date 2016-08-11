@@ -10,5 +10,9 @@ namespace TADASHBOARRD.PageActions.PanelsPage
 {
     class PanelsPage:GeneralPage.GeneralPage
     {
+        public void ClickAddNewPanel()
+        {
+            Click("addnew link");
+        }
     }
 }

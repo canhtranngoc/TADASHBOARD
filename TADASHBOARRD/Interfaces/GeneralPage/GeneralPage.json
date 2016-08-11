@@ -10,6 +10,11 @@
     "value": "//li[@class='mn-setting']/a"
   },
   {
+    "controlName": "administer tab",
+    "type": "xpath",
+    "value":  "//a[.='Administer']"
+  },
+  {
     "controlName": "add page tab",
     "type": "xpath",
     "value": "//a[.='Add Page']"
@@ -22,7 +27,7 @@
   {
     "controlName": "create panel tab",
     "type": "xpath",
-    "value": "//a[.='Create Panel']"
+    "value": "//a[.='Panels']"
   },
   {
     "controlName": "edit tab",

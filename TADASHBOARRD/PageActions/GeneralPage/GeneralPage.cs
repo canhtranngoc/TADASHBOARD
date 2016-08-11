@@ -145,7 +145,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenPanelsPage()
         {
-
+            MouseHover("administer tab");
+            Click("create panel tab");
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
@@ -194,7 +195,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("user tab");
         }
 
-       
+       public string GetRepository()
+       {
+           Thread.Sleep(1000);
+           return GetText("repository label");
+       }
 
     }
 }
