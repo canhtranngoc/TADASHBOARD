@@ -62,7 +62,7 @@
   {
     "controlName": "login repository popup",
     "type": "xpath",
-    "value": "//h2[text()='Login Repository']"
+    "value": "//h2[.='Login Repository']"
   },
   {
     "controlName": "choose panels button",

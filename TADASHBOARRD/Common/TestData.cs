@@ -5,7 +5,7 @@ namespace TADASHBOARRD.Common
     public class TestData
     {
         public static string browser = ConfigurationManager.AppSettings["browser"];
-        public static string dashBoardURL = ConfigurationManager.AppSettings["URL"];
+        public static string dashBoardURL = ConfigurationManager.AppSettings["url"];
         public static string validUsername = "administrator";
         public static string validPassword = "";
         public static string defaulRepository = "SampleRepository";

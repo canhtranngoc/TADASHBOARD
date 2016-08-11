@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TADASHBOARRD.Common;
 using TADASHBOARRD.PageActions.LoginPage;
+using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.PageActions;
 
 namespace TADASHBOARRD.Testcases
@@ -15,7 +16,9 @@ namespace TADASHBOARRD.Testcases
             NavigateTADashboard();
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
-
+            GeneralPage generalPage = new GeneralPage();
+            string actual= generalPage.GetUserName();
+            CheckTextDisplays(actual, TestData.validUsername);
         }
     }
 }
