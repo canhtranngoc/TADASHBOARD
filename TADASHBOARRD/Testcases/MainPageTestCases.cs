@@ -21,7 +21,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenNewPanelDialogFromGeneralPage();
             
             NewPageDialog newPageDialog= new NewPageDialog();
-            newPageDialog.CreateNewPage("canh12312132","defaut", "defaut", "defaut");
+            newPageDialog.CreateNewPage("canh12312132","", "", "","public");
 
 
         }

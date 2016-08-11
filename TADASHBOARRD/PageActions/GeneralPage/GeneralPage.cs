@@ -11,7 +11,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
-   public class GeneralPage:CommonActions
+    public class GeneralPage : CommonActions
     {
 
         public void WaitForElementLoad(By locator, int timeoutInSeconds)
@@ -78,7 +78,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     break;
             }
-            
+
             var result = new JavaScriptSerializer().Deserialize<List<control>>(content);
             string[] control = new string[2];
             foreach (var item in result)
@@ -119,6 +119,18 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).Clear();
             FindWebElement(locator).SendKeys(value);
         }
+
+        public void CheckingACheckbox(string locator)
+        {
+            
+        }
+
+        public void UnCheckingCheckbox(string locator)
+        {
+            
+        }
+
+
         public void Logout()
         {
             Thread.Sleep(1000);
@@ -200,11 +212,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("user tab");
         }
 
-       public string GetRepository()
-       {
-           Thread.Sleep(1000);
-           return GetText("repository label");
-       }
+        public string GetRepository()
+        {
+            Thread.Sleep(1000);
+            return GetText("repository label");
+        }
 
     }
 }
