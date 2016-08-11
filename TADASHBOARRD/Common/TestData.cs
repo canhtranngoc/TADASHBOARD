@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace TADASHBOARRD.Common
 {
     public class TestData
     {
+        public static string browser = ConfigurationManager.AppSettings["browser"];
+        public static string dashBoardURL = ConfigurationManager.AppSettings["URL"];
         public static string validUsername = "administrator";
         public static string validPassword = "";
-        public static string dashBoardURL = "http://192.168.189.231:54001/TADashboard/";
         public static string defaulRepository = "SampleRepository";
         public static string testRepository = "TestRepository";
         public static string invalidUsername = "abc";

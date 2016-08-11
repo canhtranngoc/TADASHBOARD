@@ -10,7 +10,7 @@ namespace TADASHBOARRD.Testcases
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
-            BrowserManager.OpenBrowser("firefox");
+            BrowserManager.OpenBrowser(TestData.browser);
         }
         [AssemblyCleanup]
         public static void AssemblyCleapUpMethod()

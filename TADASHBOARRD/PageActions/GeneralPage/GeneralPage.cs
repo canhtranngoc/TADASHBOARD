@@ -150,5 +150,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             executor.ExecuteScript("arguments[0].click();", webElement);
         }
 
+        //public void Logout()
+        //{
+        //    if()
+        //}
+
     }
 }
