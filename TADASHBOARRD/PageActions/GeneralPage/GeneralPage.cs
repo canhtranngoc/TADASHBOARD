@@ -53,8 +53,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string page = GetClassCaller();
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             path = path.Replace("\\bin\\Debug", "");
-            string content = File.ReadAllText(path + "\\Interfaces\\" + page + ".json");
+            string content = string.Empty;
+            if (page.Equals("LoginPage"))
+            {
+                content = File.ReadAllText(path + @"\Interfaces\LoginPage\" + page + ".json");
+            }
             var result = new JavaScriptSerializer().Deserialize<List<control>>(content);
+
             string[] control = new string[2];
             foreach (var item in result)
             {

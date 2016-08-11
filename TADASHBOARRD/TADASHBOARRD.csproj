@@ -88,7 +88,7 @@
   <ItemGroup>
     <None Include="Interfaces\DataProfilesPage.json" />
     <None Include="Interfaces\GeneralPage.json" />
-    <None Include="Interfaces\LoginPage.json" />
+    <None Include="Interfaces\LoginPage\LoginPage.json" />
     <None Include="Interfaces\NewPageDialog.json" />
     <None Include="Interfaces\PanelsPage.json" />
     <None Include="Interfaces\Json_Schema.json" />
@@ -134,7 +134,6 @@
   <ItemGroup>
     <Folder Include="Interfaces\DataProfilesPage\" />
     <Folder Include="Interfaces\GeneralPage\" />
-    <Folder Include="Interfaces\LoginPage\" />
     <Folder Include="Interfaces\PanelsPage\" />
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
