@@ -51,6 +51,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public string[] GetControlValue(string nameControl)
         {
             string page = GetClassCaller();
+            Console.WriteLine(page);
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             path = path.Replace("\\bin\\Debug", "");
             string content = string.Empty;
@@ -114,11 +115,18 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void Logout()
         {
-            if (TestData.browser == "chrome")
+            Thread.Sleep(1000);
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
             {
-                ClickItemByJS("");
+                ClickItemByJS("user tab");
+                ClickItemByJS("logout tab");
             }
-
+            else
+            {
+                MouseHover("user tab");
+                Click("logout tab");
+            }
+            
         }
 
         public void MouseHover(string locator)
@@ -170,8 +178,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
             executor.ExecuteScript("arguments[0].click();", webElement);
         }
+        public void ClickItem(string locator)
+        {
+            FindWebElement(locator).Click();
+        }
 
-       
 
     }
 }

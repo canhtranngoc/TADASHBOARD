@@ -32,7 +32,7 @@
   {
     "controlName": "delete tab",
     "type": "xpath",
-    "value": "//a[@class='delete' and .='Delete']"
+    "value": "//a[.='Delete']"
   },
   {
     "controlName": "overview tab",
