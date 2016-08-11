@@ -93,6 +93,7 @@
     <None Include="Interfaces\GeneralPage\GeneralPage.json" />
     <None Include="Interfaces\LoginPage\LoginPage.json" />
     <None Include="Interfaces\GeneralPage\NewPageDialog.json" />
+    <None Include="Interfaces\PanelsPage\NewPanelDialog.json" />
     <None Include="Interfaces\PanelsPage\PanelsPage.json" />
     <None Include="Interfaces\Json_Schema.json" />
     <None Include="packages.config" />
