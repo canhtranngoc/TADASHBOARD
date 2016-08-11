@@ -103,6 +103,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void Logout()
         {
+            if (TestData.browser == "chrome")
+            {
+                ClickItemByJS("");
+            }
 
         }
         public void OpenDataProfilesPage()
@@ -150,10 +154,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             executor.ExecuteScript("arguments[0].click();", webElement);
         }
 
-        //public void Logout()
-        //{
-        //    if()
-        //}
+       
 
     }
 }
