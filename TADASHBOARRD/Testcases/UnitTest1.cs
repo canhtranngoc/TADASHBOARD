@@ -25,7 +25,7 @@ namespace TADASHBOARRD.Testcases
             Thread.Sleep(1000);
 
             string xpath = string.Empty;
-            string next = string.Empty;
+            string xpathNext = string.Empty;
             string locatorClass = string.Empty;
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
             int pageIndex = numTab - 3;
@@ -46,12 +46,11 @@ namespace TADASHBOARRD.Testcases
                         {
                             Actions builder = new Actions(WebDriver.driver);
                             builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                            next = "/following-sibling::ul/li/a";
-                            xpath = xpath + next;
+                            xpathNext = "/following-sibling::ul/li/a";
+                            xpath = xpath + xpathNext;
                             Console.WriteLine(xpath);
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                             Console.WriteLine(locatorClass);
-                            Thread.Sleep(1000);
                         }
                         Console.WriteLine(xpath);
                         WebDriver.driver.FindElement(By.XPath(xpath)).Click();
