@@ -23,11 +23,7 @@ namespace TADASHBOARRD.Testcases
             string actual= generalPage.GetUserName();
             CheckTextDisplays(actual, TestData.validUsername);
         }
-    }
-}
-            GeneralPage generalPage = new GeneralPage();
-            generalPage.Logout();
-        }
+
         [TestMethod]
         public void DA_LOGIN_TC006_Verify_that_Password_input_is_case_sensitive()
         {
