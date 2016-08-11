@@ -96,10 +96,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public IWebElement FindWebElement(string name)
         {
             string[] control = GetControlValue(name);
+            Console.WriteLine(control[1]);
             switch (control[0].ToUpper())
             {
                 case "ID":
                     return WebDriver.driver.FindElement(By.Id(control[1]));
+                    
                 case "NAME":
                     return WebDriver.driver.FindElement(By.Name(control[1]));
                 case "CLASSNAME":
@@ -107,8 +109,16 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     return WebDriver.driver.FindElement(By.XPath(control[1]));
             }
+            
         }
 
+        public IWebElement FindDynamicWebElement(string name, string value)
+        {
+            string[] control = GetControlValue(name);
+            string dynamicControl = string.Format(control[1].ToString(), value);
+            return WebDriver.driver.FindElement(By.XPath(dynamicControl));
+        }
+       
         public void Click(string locator)
         {
             FindWebElement(locator).Click();
@@ -205,6 +215,74 @@ namespace TADASHBOARRD.PageActions.GeneralPage
            Thread.Sleep(1000);
            return GetText("repository label");
        }
+
+        public void Delete1()
+        {
+            Delete();
+        }
+
+        public void ClickOnDynamicElement(string control, string value)
+        {
+            FindDynamicWebElement(control, value).Click();
+        }
+
+        public string A(IWebElement b)
+        {
+            return b.ToString();
+        }
+
+        public void Delete()
+        {
+            string xpath = string.Empty;
+            string next = string.Empty;
+            string locatorClass = string.Empty;
+          //  int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
+            int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
+            int pageIndex = numTab - 3;
+            Console.WriteLine(pageIndex);
+            while (pageIndex != 1)
+            {
+                for (int i = numTab - 4; i >= 1; i--)
+                {
+                    int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a/..//ul/li/a")).Count;
+                    Console.WriteLine(numChildren);
+                    for (int j = 0; j <= numChildren; j++)
+                    {
+                        //xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
+                        //xpath = FindDynamicWebElement("path child page",pageIndex.ToString()).ToString();
+                        xpath = FindWebElement("path child page").ToString();
+                        Console.WriteLine(xpath);
+                        //locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+
+                        Console.WriteLine(locatorClass);
+                        while (locatorClass.Equals("haschild"))
+                        {
+                            Actions builder = new Actions(WebDriver.driver);
+                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                            next = "/following-sibling::ul/li/a";
+                            xpath = xpath + next;
+                            Console.WriteLine(xpath);
+                            locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                            Console.WriteLine(locatorClass);
+                        }
+                        WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                       // FindDynamicWebElement("path child page", pageIndex.ToString()).Click();
+
+                        // ClickOnDynamicElement("path child page", pageIndex.ToString());
+
+                        WebDriver.driver.FindElement(By.XPath("//li[@class='mn-setting']/a")).Click();
+                        WebDriver.driver.FindElement(By.XPath("//a[.='Delete']")).Click();
+                        WebDriver.driver.SwitchTo().Alert().Accept();
+                        Thread.Sleep(1000);
+                    }
+                    pageIndex = pageIndex - 1;
+                    //Console.WriteLine(pageIndex);
+                }
+
+            }
+        }
+    
 
     }
 }

@@ -73,5 +73,11 @@
     "controlName": "choose panels button",
     "type": "id",
     "value": "btnChoosepanel"
+  },
+  {
+    "controlName": "path child page",
+    "type": "xpath",
+    "value": "//div[@id='main-menu']/div/ul/li[2]/a"
   }
+
 ]
