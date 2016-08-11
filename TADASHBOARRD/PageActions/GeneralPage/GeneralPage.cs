@@ -34,6 +34,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Thread.Sleep(1000);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
+
+        public string GetText(string locator)
+        {
+            return FindWebElement(locator).Text;
+        }
         private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
@@ -152,6 +157,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             IWebElement webElement = FindWebElement(control);
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
             executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
+        public string GetUserName()
+        {
+            return GetText("user tab");
         }
 
        
