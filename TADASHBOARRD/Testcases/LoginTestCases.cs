@@ -35,11 +35,7 @@ namespace TADASHBOARRD.Testcases
             loginPage.ConfirmPopup();
         }
 
-        [TestMethod]
-        public void DA_LOGIN_TC006_Verify_that_Password_input_is_case_sensitive()
-        {
-            //NavigateTADashboard();
-        }
+      
 
         [TestMethod]
         public void DA_LOGIN_TC004()
