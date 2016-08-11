@@ -62,6 +62,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 case "GeneralPage":
                     content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
                     break;
+                case "PanelPage":
+                    content = File.ReadAllText(path + @"\Interfaces\PanelPage\" + page + ".json");
+                    break;
+                case "DataProfilesPage":
+                    content = File.ReadAllText(path + @"\Interfaces\DataProfilesPage\" + page + ".json");
+                    break;
                 default:
                     break;
             }
