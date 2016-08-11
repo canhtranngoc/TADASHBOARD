@@ -5,7 +5,6 @@ using TADASHBOARRD.Common;
 using TADASHBOARRD.PageActions.LoginPage;
 using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.PageActions;
-using TADASHBOARRD.PageActions.GeneralPage;
 
 
 namespace TADASHBOARRD.Testcases
@@ -54,7 +53,7 @@ namespace TADASHBOARRD.Testcases
         }
 
         [TestMethod]
-        public void DA_LOGIN_TC008_Verify_that_password_with_special_characters_is_working_correctly()
+        public void DA_LOGIN_TC004_Verify_that_user_is_able_to_login_different_repositories_successfully_after_logging_out_current_repository()
         {
 
             NavigateTADashboard();
