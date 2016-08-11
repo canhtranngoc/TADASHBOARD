@@ -30,6 +30,7 @@ namespace TADASHBOARRD.Testcases
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
             int pageIndex = numTab - 3;
             Console.WriteLine(pageIndex);
+
             while (pageIndex != 1)
             {
                 for (int i = numTab - 4; i >= 1; i--)

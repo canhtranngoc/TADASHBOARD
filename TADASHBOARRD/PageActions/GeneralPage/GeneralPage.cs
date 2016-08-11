@@ -25,13 +25,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void ConfirmPopup()
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             WebDriver.driver.SwitchTo().Alert().Accept();
         }
 
         public string GetTextPopup()
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
 
@@ -133,7 +133,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void Logout()
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             if (TestData.browser == "chrome" || TestData.browser == "ie")
             {
                 ClickItemByJS("user tab");
@@ -145,7 +145,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 Click("logout tab");
             }
             // For edge
-            Thread.Sleep(1000);
+            Sleep(1);
         }
 
         public void MouseHover(string locator)
@@ -155,7 +155,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenDataProfilesPage()
         {
-
+            MouseHover("administer tab");
+            Click("create profile tab");
         }
         public void OpenPanelsPage()
         {
@@ -164,7 +165,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
-
+            Sleep(1);
+            MouseHover("global setting tab");
+            Click("create profile tab");
         }
         public void OpenExecutionDashboardPage()
         {
@@ -174,16 +177,26 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
 
         }
-        public void OpenNewPageDialog()
+        public void OpenNewPanelDialogFromGeneralPage()
+        {
+            Sleep(1);
+            MouseHover("global setting tab");
+            Click("add page tab");
+        }
+        public void DeletePage()
+        {
+            Sleep(1);
+            MouseHover("global setting tab");
+            Click("delete tab");
+            ConfirmPopup();
+        }
+        public void DeletePages()
         {
 
         }
-        public void OpenNewPanelDialogFromGeneralPage()
+        public void Sleep(int second)
         {
-            Thread.Sleep(1000);
-            MouseHover("global setting tab");
-            Click("add page tab");
-
+            Thread.Sleep(second*1000);
         }
 
         public void SelectItemByText(string locator, string value)
@@ -208,15 +221,15 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public string GetUserName()
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             return GetText("user tab");
         }
 
-        public string GetRepository()
-        {
-            Thread.Sleep(1000);
+       public string GetRepository()
+       {
+            Sleep(1);
             return GetText("repository label");
-        }
+       }
 
     }
 }
