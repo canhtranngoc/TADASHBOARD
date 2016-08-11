@@ -30,12 +30,12 @@ namespace TADASHBOARRD.Testcases
             string next = string.Empty;
             string locatorClass = string.Empty;
 
+            int items = WebDriver.driver.(By.XPath("//div[@id='main-menu']/div/ul/li/a"));
+
             xpath = "//div[@id='main-menu']/div/ul/li[2]/a";
             Console.WriteLine(xpath);
-
             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
             Console.WriteLine(locatorClass);
-
             while (locatorClass.Equals("haschild"))
             {
                 Actions builder = new Actions(WebDriver.driver);
@@ -43,7 +43,6 @@ namespace TADASHBOARRD.Testcases
                 next = "/following-sibling::ul/li/a";
                 xpath = xpath + next;
                 Console.WriteLine(xpath);
-                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                 locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                 Console.WriteLine(locatorClass);
                 //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
@@ -51,12 +50,12 @@ namespace TADASHBOARRD.Testcases
                 //WebDriver.driver.FindElement(By.XPath("//a[.='Delete']")).Click();
                 //WebDriver.driver.SwitchTo().Alert().Accept();
             }
-            //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-            //WebDriver.driver.FindElement(By.XPath("//li[@class='mn-setting']/a")).Click();
-            //WebDriver.driver.FindElement(By.XPath("//a[.='Delete']")).Click();
+            WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+            WebDriver.driver.FindElement(By.XPath("//li[@class='mn-setting']/a")).Click();
+            WebDriver.driver.FindElement(By.XPath("//a[.='Delete']")).Click();
             //generalPage.Click("//li[@class='mn-setting']/a");
             //generalPage.Click("//a[.='Delete']");
-            //WebDriver.driver.SwitchTo().Alert().Accept();
+            WebDriver.driver.SwitchTo().Alert().Accept();
         }
     }
 }
