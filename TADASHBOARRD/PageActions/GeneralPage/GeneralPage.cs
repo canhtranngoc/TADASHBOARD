@@ -172,6 +172,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public string GetUserName()
         {
+            Thread.Sleep(1000);
             return GetText("user tab");
         }
 
