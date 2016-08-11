@@ -41,5 +41,11 @@ namespace TADASHBOARRD.Testcases
             generalPage.ConfirmPopup();
         }
 
+        [TestMethod]
+        public void DA_LOGIN_TC008_Verify_that_password_with_special_characters_is_working_correctly()
+        {
+
+        }
+
     }
 }
