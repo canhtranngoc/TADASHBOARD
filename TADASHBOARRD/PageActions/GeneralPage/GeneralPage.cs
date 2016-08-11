@@ -66,6 +66,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     content = File.ReadAllText(path + @"\Interfaces\LoginPage\" + page + ".json");
                     break;
                 case "GeneralPage":
+                case "NewPageDialog":
                     content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
                     break;
                 case "PanelPage":
@@ -167,6 +168,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenNewPanelDialogFromGeneralPage()
         {
+            Thread.Sleep(1000);
+            MouseHover("global setting tab");
+            Click("add page tab");
 
         }
 
