@@ -31,5 +31,21 @@ namespace TADASHBOARRD.Testcases
             //NavigateTADashboard();
         }
 
+        [TestMethod]
+        public void DA_LOGIN_TC004()
+        {
+            NavigateTADashboard();
+            LoginPage loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+
+            GeneralPage generalPage = new GeneralPage();
+            generalPage.Logout();
+
+            loginPage.Login(TestData.testRepository, TestData.validUsername, TestData.validPassword);
+
+            Thread.Sleep(5000);
+            generalPage.Logout();
+
+        }
     }
 }
