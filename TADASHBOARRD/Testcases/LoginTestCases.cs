@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TADASHBOARRD.Common;
 using TADASHBOARRD.PageActions.LoginPage;
@@ -21,6 +22,10 @@ namespace TADASHBOARRD.Testcases
             GeneralPage generalPage = new GeneralPage();
             string actual= generalPage.GetUserName();
             CheckTextDisplays(actual, TestData.validUsername);
+        }
+    }
+}
+            GeneralPage generalPage = new GeneralPage();
             generalPage.Logout();
         }
         [TestMethod]
