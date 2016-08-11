@@ -54,12 +54,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             path = path.Replace("\\bin\\Debug", "");
             string content = string.Empty;
-            if (page.Equals("LoginPage"))
+            switch (page)
             {
-                content = File.ReadAllText(path + @"\Interfaces\LoginPage\" + page + ".json");
+                case "LoginPage":
+                    content = File.ReadAllText(path + @"\Interfaces\LoginPage\" + page + ".json");
+                    break;
             }
+            
             var result = new JavaScriptSerializer().Deserialize<List<control>>(content);
-
             string[] control = new string[2];
             foreach (var item in result)
             {
@@ -138,6 +140,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             selectcontrol.SelectByText(value);
         }
 
+        /// <summary>
+        /// Using Javascript for IE,Chrome
+        /// </summary>
         public void ClickItem(string control)
         {
             IWebElement webElement = FindWebElement(control);

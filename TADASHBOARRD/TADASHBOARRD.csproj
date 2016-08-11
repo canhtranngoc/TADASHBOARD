@@ -86,11 +86,11 @@
     <Compile Include="Testcases\LoginTestCases.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Interfaces\DataProfilesPage.json" />
-    <None Include="Interfaces\GeneralPage.json" />
+    <None Include="Interfaces\DataProfilesPage\DataProfilesPage.json" />
+    <None Include="Interfaces\GeneralPage\GeneralPage.json" />
     <None Include="Interfaces\LoginPage\LoginPage.json" />
-    <None Include="Interfaces\NewPageDialog.json" />
-    <None Include="Interfaces\PanelsPage.json" />
+    <None Include="Interfaces\GeneralPage\NewPageDialog.json" />
+    <None Include="Interfaces\PanelsPage\PanelsPage.json" />
     <None Include="Interfaces\Json_Schema.json" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -131,11 +131,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\DataProfilesPage\" />
-    <Folder Include="Interfaces\GeneralPage\" />
-    <Folder Include="Interfaces\PanelsPage\" />
-  </ItemGroup>
+  <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
