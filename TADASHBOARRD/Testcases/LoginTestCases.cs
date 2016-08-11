@@ -66,7 +66,9 @@ namespace TADASHBOARRD.Testcases
 
             loginPage.Login(TestData.testRepository, TestData.validUsername, TestData.validPassword);
 
-            Thread.Sleep(5000);
+            string actual = generalPage.GetUserName();
+            CheckTextDisplays(actual, TestData.validUsername);
+
             generalPage.Logout();
 
         }
