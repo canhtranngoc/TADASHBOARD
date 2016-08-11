@@ -53,15 +53,16 @@ namespace TADASHBOARRD.Testcases
                             Console.WriteLine(locatorClass);
                             Thread.Sleep(1000);
                         }
+                        Console.WriteLine(xpath);
                         WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                         WebDriver.driver.FindElement(By.XPath("//li[@class='mn-setting']/a")).Click();
                         WebDriver.driver.FindElement(By.XPath("//a[.='Delete']")).Click();
                         WebDriver.driver.SwitchTo().Alert().Accept();
                         Thread.Sleep(1000);
                     }
+                    pageIndex = pageIndex - 1;
+                    Console.WriteLine(pageIndex);
                 }
-                pageIndex = pageIndex - 1;
-                Console.WriteLine(pageIndex);
             }
         }
     }
