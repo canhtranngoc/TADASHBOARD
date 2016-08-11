@@ -7,7 +7,7 @@ using TADASHBOARRD.Common;
 using System.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
-
+using OpenQA.Selenium.Interactions;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
@@ -34,6 +34,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Thread.Sleep(1000);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
+
+        public string GetText(string locator)
+        {
+            return FindWebElement(locator).Text;
+        }
         private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
@@ -51,6 +56,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public string[] GetControlValue(string nameControl)
         {
             string page = GetClassCaller();
+            Console.WriteLine(page);
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             path = path.Replace("\\bin\\Debug", "");
             string content = string.Empty;
@@ -58,6 +64,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 case "LoginPage":
                     content = File.ReadAllText(path + @"\Interfaces\LoginPage\" + page + ".json");
+                    break;
+                case "GeneralPage":
+                    content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
+                    break;
+                case "PanelPage":
+                    content = File.ReadAllText(path + @"\Interfaces\PanelPage\" + page + ".json");
+                    break;
+                case "DataProfilesPage":
+                    content = File.ReadAllText(path + @"\Interfaces\DataProfilesPage\" + page + ".json");
+                    break;
+                default:
                     break;
             }
             
@@ -103,11 +120,24 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void Logout()
         {
-            if (TestData.browser == "chrome")
+            Thread.Sleep(1000);
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
             {
-                ClickItemByJS("");
+                ClickItemByJS("user tab");
+                ClickItemByJS("logout tab");
             }
+            else
+            {
+                MouseHover("user tab");
+                Click("logout tab");
+            }
+            
+        }
 
+        public void MouseHover(string locator)
+        {
+            Actions action = new Actions(WebDriver.driver);
+            action.MoveToElement(FindWebElement(locator)).Perform();
         }
         public void OpenDataProfilesPage()
         {
@@ -152,6 +182,16 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             IWebElement webElement = FindWebElement(control);
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
             executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+        public void ClickItem(string locator)
+        {
+            FindWebElement(locator).Click();
+        }
+
+        public string GetUserName()
+        {
+            Thread.Sleep(1000);
+            return GetText("user tab");
         }
 
        

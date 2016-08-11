@@ -1,13 +1,22 @@
-{
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "target": "es5"
+[
+  {
+    "controlName":  "delete link",
+    "type": "xpath",
+    "value": "//div[@class='panel_tag2']/a[.='Delete']"
   },
-  "exclude": [
-    "node_modules",
-    "wwwroot"
-  ]
-}
+  {
+    "controlName": "add new link",
+    "type": "xpath",
+    "value": "//div[@class='panel_tag2']/a[.='Add New']"
+  },
+  {
+    "controlName": "check all link",
+    "type": "xpath",
+    "value": "//a[.='Check All']"
+  },
+  {
+    "controlName": "uncheck all link",
+    "type": "xpath",
+    "value": "//a[.='UnCheck All']"
+  }
+]

@@ -32,7 +32,7 @@
   {
     "controlName": "delete tab",
     "type": "xpath",
-    "value": "//a[@class='delete' and .='Delete']"
+    "value": "//a[.='Delete']"
   },
   {
     "controlName": "overview tab",
@@ -62,7 +62,7 @@
   {
     "controlName": "login repository popup",
     "type": "xpath",
-    "value": "//h2[text()='Login Repository']"
+    "value": "//h2[.='Login Repository']"
   },
   {
     "controlName": "choose panels button",
