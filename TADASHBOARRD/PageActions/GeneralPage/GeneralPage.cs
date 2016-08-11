@@ -194,7 +194,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("user tab");
         }
 
-       
+       public string GetRepository()
+       {
+           Thread.Sleep(1000);
+           return GetText("repository label");
+       }
 
     }
 }
