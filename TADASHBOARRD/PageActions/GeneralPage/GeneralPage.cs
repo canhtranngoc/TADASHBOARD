@@ -143,7 +143,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// <summary>
         /// Using Javascript for IE,Chrome
         /// </summary>
-        public void ClickItem(string control)
+        public void ClickItemByJS(string control)
         {
             IWebElement webElement = FindWebElement(control);
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
