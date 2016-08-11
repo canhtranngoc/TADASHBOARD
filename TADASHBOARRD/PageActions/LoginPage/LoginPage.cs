@@ -13,8 +13,6 @@ namespace TADASHBOARRD.PageActions.LoginPage
         public void Login(string reponsitory, string username, string password)
         {
             //WaitForElementLoad(_cboRepository, 3);
-
-            //FindWebElement("repository combobox").SendKeys(reponsitory);
             SelectItemByText("repository combobox",reponsitory);
             EnterValue("username textbox", username);
             EnterValue("password textbox", password);

@@ -7,7 +7,7 @@ using TADASHBOARRD.PageActions;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class UnitTest1:BaseTest
+    public class LoginTestCases:BaseTest
     {
         [TestMethod]
         public void TestMethod1()

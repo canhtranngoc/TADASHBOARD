@@ -39,11 +39,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Thread.Sleep(1000);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
-        private static string GetClassCaller(int level = 3)
+        private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
             string className = m.DeclaringType.Name;
-            //string methodName = m.Name;
             return className;
         }
 

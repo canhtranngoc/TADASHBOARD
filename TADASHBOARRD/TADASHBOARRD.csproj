@@ -83,7 +83,7 @@
     <Compile Include="Testcases\BaseTest.cs" />
     <Compile Include="Testcases\MainPageTestCases.cs" />
     <Compile Include="Common\TestData.cs" />
-    <Compile Include="Testcases\UnitTest1.cs" />
+    <Compile Include="Testcases\LoginTestCases.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Interfaces\DataProfilesPage.json" />
