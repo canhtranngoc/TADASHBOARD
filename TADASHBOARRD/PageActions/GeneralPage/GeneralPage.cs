@@ -137,5 +137,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             SelectElement selectcontrol = new SelectElement(FindWebElement(locator));
             selectcontrol.SelectByText(value);
         }
+
+        public void ClickItem(string control)
+        {
+            IWebElement webElement = FindWebElement(control);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
     }
 }
