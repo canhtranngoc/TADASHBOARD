@@ -85,6 +85,7 @@
     <Compile Include="Testcases\MainPageTestCases.cs" />
     <Compile Include="Common\TestData.cs" />
     <Compile Include="Testcases\LoginTestCases.cs" />
+    <Compile Include="Testcases\UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
