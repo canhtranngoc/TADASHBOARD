@@ -27,11 +27,12 @@ namespace TADASHBOARRD.Testcases
             string xpath = string.Empty;
             string next = string.Empty;
             string locatorClass = string.Empty;
-            int pageIndex = 3;
+            int pageIndex = 5;
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
+            Console.WriteLine(numTab);
             for (int i = numTab - 4; i >= 1; i--)
             {
-                int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
+                int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a/..//ul/li/a")).Count;
                 Console.WriteLine(numChildren);
                 for (int j = 0; j <= numChildren; j++)
                 {
@@ -39,7 +40,7 @@ namespace TADASHBOARRD.Testcases
                     Console.WriteLine(xpath);
                     locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                     Console.WriteLine(locatorClass);
-                    while (locatorClass.Equals("haschild"))
+                    while (locatorClass.Contains("haschild"))
                     {
                         Actions builder = new Actions(WebDriver.driver);
                         builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
