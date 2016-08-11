@@ -34,28 +34,9 @@ namespace TADASHBOARRD.Testcases
             loginPage.ConfirmPopup();
         }
 
-      
-
-        [TestMethod]
-        public void DA_LOGIN_TC004()
-        {
-            NavigateTADashboard();
-            LoginPage loginPage = new LoginPage();
-            loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testUppercasePassword);
-            GeneralPage generalPage = new GeneralPage();
-            string actual = generalPage.GetUserName();
-            CheckTextDisplays(actual, TestData.testUsername);
-            generalPage.Logout();
-            loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testLowercasePassword);
-            string actualMessage = generalPage.GetTextPopup();
-            CheckTextDisplays(actualMessage, TestData.errorLoginMessage);
-            generalPage.ConfirmPopup();
-        }
-
         [TestMethod]
         public void DA_LOGIN_TC004_Verify_that_user_is_able_to_login_different_repositories_successfully_after_logging_out_current_repository()
         {
-
             NavigateTADashboard();
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
@@ -71,5 +52,23 @@ namespace TADASHBOARRD.Testcases
             generalPage.Logout();
 
         }
+
+        [TestMethod]
+        public void DA_LOGIN_TC006_Verify_that_Password_input_is_case_sensitive()
+        {
+            NavigateTADashboard();
+            LoginPage loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testUppercasePassword);
+            GeneralPage generalPage = new GeneralPage();
+            string actual = generalPage.GetUserName();
+            CheckTextDisplays(actual, TestData.testUsername);
+            generalPage.Logout();
+            loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testLowercasePassword);
+            string actualMessage = generalPage.GetTextPopup();
+            CheckTextDisplays(actualMessage, TestData.errorLoginMessage);
+            generalPage.ConfirmPopup();
+        }
+
+        
     }
 }
