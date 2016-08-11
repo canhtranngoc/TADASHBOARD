@@ -42,6 +42,23 @@ namespace TADASHBOARRD.Testcases
         {
             NavigateTADashboard();
             LoginPage loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testUppercasePassword);
+            GeneralPage generalPage = new GeneralPage();
+            string actual = generalPage.GetUserName();
+            CheckTextDisplays(actual, TestData.testUsername);
+            generalPage.Logout();
+            loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testLowercasePassword);
+            string actualMessage = generalPage.GetTextPopup();
+            CheckTextDisplays(actualMessage, TestData.errorLoginMessage);
+            generalPage.ConfirmPopup();
+        }
+
+        [TestMethod]
+        public void DA_LOGIN_TC008_Verify_that_password_with_special_characters_is_working_correctly()
+        {
+
+            NavigateTADashboard();
+            LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
 
             GeneralPage generalPage = new GeneralPage();

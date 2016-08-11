@@ -9,7 +9,7 @@ namespace TADASHBOARRD.Testcases
         [TestMethod]
         public void TC01()
         {
-            NavigateTADashboard();
+            //NavigateTADashboard();
         }
     }
 }
