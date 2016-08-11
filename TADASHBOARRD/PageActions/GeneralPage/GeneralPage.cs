@@ -94,8 +94,40 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).Clear();
             FindWebElement(locator).SendKeys(value);
         }
+        public void Logout()
+        {
 
-        public void SelectItemByValue(string locator, string value)
+        }
+        public void OpenDataProfilesPage()
+        {
+
+        }
+        public void OpenPanelsPage()
+        {
+
+        }
+        public void OpenCreateProfilePageFromGeneralPage()
+        {
+
+        }
+        public void OpenExecutionDashboardPage()
+        {
+
+        }
+        public void OpenOverviewPage()
+        {
+
+        }
+        public void OpenNewPageDialog()
+        {
+
+        }
+        public void OpenNewPanelDialogFromGeneralPage()
+        {
+
+        }
+
+        public void SelectItemByText(string locator, string value)
         {
             SelectElement selectcontrol = new SelectElement(FindWebElement(locator));
             selectcontrol.SelectByText(value);
