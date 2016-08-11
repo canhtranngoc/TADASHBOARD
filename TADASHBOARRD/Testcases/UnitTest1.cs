@@ -51,7 +51,6 @@ namespace TADASHBOARRD.Testcases
                             Console.WriteLine(xpath);
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                             Console.WriteLine(locatorClass);
-                            Thread.Sleep(1000);
                         }
                         WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                         WebDriver.driver.FindElement(By.XPath("//li[@class='mn-setting']/a")).Click();
@@ -59,9 +58,10 @@ namespace TADASHBOARRD.Testcases
                         WebDriver.driver.SwitchTo().Alert().Accept();
                         Thread.Sleep(1000);
                     }
+                    pageIndex = pageIndex - 1;
+                    Console.WriteLine(pageIndex);
                 }
-                pageIndex = pageIndex - 1;
-                Console.WriteLine(pageIndex);
+                
             }
         }
     }
