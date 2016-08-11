@@ -120,7 +120,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).SendKeys(value);
         }
 
-        public void CheckingACheckbox(string locator)
+        public void CheckingCheckbox(string locator)
         {
             
         }
