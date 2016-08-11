@@ -22,6 +22,7 @@ namespace TADASHBOARRD.Testcases
             GeneralPage generalPage = new GeneralPage();
             string actual= generalPage.GetUserName();
             CheckTextDisplays(actual, TestData.validUsername);
+            generalPage.Logout();
         }
 
         [TestMethod]
