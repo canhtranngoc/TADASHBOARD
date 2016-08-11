@@ -5,7 +5,6 @@ using TADASHBOARRD.Common;
 using TADASHBOARRD.PageActions.LoginPage;
 using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.PageActions;
-using TADASHBOARRD.PageActions.GeneralPage;
 
 
 namespace TADASHBOARRD.Testcases

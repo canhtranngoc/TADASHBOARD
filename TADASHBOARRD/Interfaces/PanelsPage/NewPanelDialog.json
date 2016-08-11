@@ -1,0 +1,12 @@
+[
+  {
+    "controlName": "display name textbox",
+    "type": "xpath",
+    "value": "//input[@id = 'txtDisplayName']"
+  },
+  {
+    "controlName": "series dropdown list",
+    "type": "xpath",
+    "value":  "//select[@id = 'cbbSeriesField']"
+  }
+]

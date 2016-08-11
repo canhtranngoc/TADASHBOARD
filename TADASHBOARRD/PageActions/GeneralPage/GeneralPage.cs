@@ -145,7 +145,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenPanelsPage()
         {
-
+            MouseHover("administer tab");
+            Click("create panel tab");
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {

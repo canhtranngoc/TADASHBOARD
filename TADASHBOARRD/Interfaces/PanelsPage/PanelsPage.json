@@ -1,13 +1,12 @@
-{
-  "compilerOptions": {
-    "noImplicitAny": false,
-    "noEmitOnError": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "target": "es5"
+[
+  {
+    "controlName": "addnew link",
+    "type": "xpath",
+    "value": "//a[.='Add New']"
   },
-  "exclude": [
-    "node_modules",
-    "wwwroot"
-  ]
-}
+  {
+    "controlName": "delete link",
+    "type": "xpath",
+    "value": "//a[@href = 'javascript:Dashboard.deletePanels();']"
+  }
+]
