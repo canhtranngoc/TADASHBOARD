@@ -11,11 +11,27 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 {
     public class NewPageDialog : GeneralPage
     {
-        public void CreateNewPage(string pageName)
+        public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter)
         {
-            Thread.Sleep(2000);
-            //string parentPage, string numberOfColumns, string displayAfter
+            Thread.Sleep(1000);
             EnterValue("pagename textbox", pageName);
+           
+            if (parentPage != "defaut")
+            {
+                SelectItemByText("parentpage combobox", parentPage);
+            }
+
+            if (numberOfColumns != "defaut")
+            {
+                SelectItemByText("numberofcolumns combobox", numberOfColumns);
+            }
+            if (displayAfter != "defaut")
+            {
+                SelectItemByText("displayafter combobox", displayAfter);
+            }
+
+
+            Click("ok button");
 
 
         }
