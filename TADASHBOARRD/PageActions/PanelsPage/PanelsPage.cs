@@ -21,7 +21,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
             WebDriver.driver.FindElement(By.XPath(xpathLinkDelete)).Click();
-            ClosePopup();
+            AcceptAlert();
         }
 
         public void DeleteAllPanels()
@@ -30,7 +30,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
             {
                 Click("checkall link");
                 Click("delete link");
-                ClosePopup();
+                AcceptAlert();
             }
             catch (WebDriverException)
             {
