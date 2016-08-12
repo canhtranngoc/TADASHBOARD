@@ -18,18 +18,16 @@ namespace TADASHBOARRD.Testcases.Draft
             loginPage.Login(TestData.defaulRepository, "dieu.nguyen", "123");
             GeneralPage generalPage = new GeneralPage();
 
-            generalPage.OpenAddPageDialog();
-            NewPageDialog newPageDialog = new NewPageDialog();
-            newPageDialog.CreateNewPage("Dieu1", "", "", "", "");
+            //generalPage.OpenAddPageDialog();
+            //NewPageDialog newPageDialog = new NewPageDialog();
+            //newPageDialog.CreateNewPage("Dieu1", "", "", "", "");
 
-            generalPage.OpenAddPageDialog();
-            newPageDialog.CreateNewPage("Dieu11", "Dieu1", "", "", "");
+            //generalPage.OpenAddPageDialog();
+            //newPageDialog.CreateNewPage("Dieu11", "Dieu1", "", "", "");
 
-            generalPage.OpenAddPageDialog();
-            newPageDialog.CreateNewPage("Dieu22", "Dieu1", "", "", "");
-
-            //Thread.Sleep(1000);
-            //generalPage.OpenOverviewPage();     
+            //generalPage.OpenAddPageDialog();
+            //newPageDialog.CreateNewPage("Dieu22", "Dieu1", "", "", ""); 
+               
             generalPage.DeletePages();
         }
     }
