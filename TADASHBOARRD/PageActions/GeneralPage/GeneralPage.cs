@@ -223,10 +223,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                         }
                         WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                        //DeletePage();
-                        MouseHover("global setting tab");
-                        Click("delete tab");
-                        ClosePopup();
+                        DeletePage();
                     }
                     pageIndex = pageIndex - 1;
                 }
