@@ -216,7 +216,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("add page tab");
         }
 
-        public void DeletePage()
+        public void PerformDelete()
         {
             Sleep(1);
             if (TestData.browser == "chrome" || TestData.browser == "ie")
@@ -267,7 +267,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         else
                         {
                             WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                            DeletePage();
+                            PerformDelete();
                         }
                         
                     }
