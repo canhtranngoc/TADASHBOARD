@@ -23,7 +23,11 @@ namespace TADASHBOARRD.Testcases.Draft
             Thread.Sleep(1000);
             panelsPage.OpenNewPanelDialogFromPanelsPage();
             NewPanelDialog newPanelDialog = new NewPanelDialog();
-            newPanelDialog.AddNewPanel(TestData.panelName, "Name");
+            newPanelDialog.AddNewPanel("ngan", "Name");
+            Thread.Sleep(1000);
+            panelsPage.DeletePanel("ngan");
+            panelsPage.DeleteAllPanels();
+
         }
     }
 }

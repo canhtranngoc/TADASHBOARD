@@ -255,10 +255,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
             executor.ExecuteScript("arguments[0].click();", webElement);
         }
-        public void ClickItem(string locator)
-        {
-            FindWebElement(locator).Click();
-        }
 
         public string GetUserName()
         {

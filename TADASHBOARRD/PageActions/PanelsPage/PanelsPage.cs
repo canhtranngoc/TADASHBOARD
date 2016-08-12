@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TADASHBOARRD.Common;
 using TADASHBOARRD.PageActions.GeneralPage;
+using OpenQA.Selenium;
 
 namespace TADASHBOARRD.PageActions.PanelsPage
 {
@@ -18,7 +19,24 @@ namespace TADASHBOARRD.PageActions.PanelsPage
 
         public void DeletePanel(string name)
         {
-
+            string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
+            WebDriver.driver.FindElement(By.XPath(xpathLinkDelete)).Click();
+            ClosePopup();
         }
+
+        public void DeleteAllPanels()
+        {
+            try
+            {
+                Click("checkall link");
+                Click("delete link");
+                ClosePopup();
+            }
+            catch (WebDriverException)
+            {
+                Console.WriteLine("no panels display");
+            }
+        }
+
     }
 }
