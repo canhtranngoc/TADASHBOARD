@@ -15,7 +15,7 @@ namespace TADASHBOARRD.Testcases
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             GeneralPage generalPage = new GeneralPage();
             string actual= generalPage.GetUserName();
-            CheckTextDisplays(actual, TestData.validUsername);
+            CheckTextDisplays(TestData.validUsername, actual);
             generalPage.Logout();
         }
 
