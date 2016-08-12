@@ -115,22 +115,26 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             
         }
 
-        public By FinFindWebElement(string name)
-        {
-            string[] control = GetControlValue(name);
-            Console.WriteLine(control[1]);
-            switch (control[0].ToUpper())
-            {
-                case "ID":
-                    return By.Id(control[1]);
+        //public By FindWebElement(string name)
+        //{
+        //    string[] control = GetControlValue(name);
+        //    Console.WriteLine(control[1]);
+        //    switch (control[0].ToUpper())
+        //    {
+        //        case "ID":
+        //            return By.Id(control[1]);
 
-                case "NAME":
-                    return By.Name(control[1]);
-                case "CLASSNAME":
-                    return By.ClassName(control[1]);
-                default:
-                    return By.XPath(control[1]);
-            }
+        //        case "NAME":
+        //            return By.Name(control[1]);
+        //        case "CLASSNAME":
+        //            return By.ClassName(control[1]);
+        //        default:
+        //            return By.XPath(control[1]);
+        //    }
+        //}
+        public IWebElement FindWebElements(string name)
+        {
+           return FindWebElement(name);
         }
 
         public IWebElement FindDynamicWebElement(string name, string value)
