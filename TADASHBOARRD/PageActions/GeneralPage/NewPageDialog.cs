@@ -34,7 +34,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 Click("public checkbox");
             }
-
+            Sleep(1);
             Click("ok button");
 
 

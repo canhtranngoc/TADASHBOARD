@@ -178,11 +178,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenExecutionDashboardPage()
         {
-
+            Click("execution dashboard tab");
         }
         public void OpenOverviewPage()
         {
-
+            Click("overview tab");
         }
         public void OpenNewPanelDialogFromGeneralPage()
         {
@@ -204,31 +204,42 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void DeletePages()
         {
+            Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
+
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
-            int pageIndex = numTab - 3;
-            while (pageIndex != 1)
+            int pageIndex = numTab - 2;
+            while (pageIndex != 0)
             {
-                for (int i = numTab - 4; i >= 1; i--)
+                for (int i = numTab - 2; i >= 1; i--)
                 {
                     int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
-                    Console.WriteLine(numChildren);
                     for (int j = 0; j <= numChildren; j++)
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
-                        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                        while (locatorClass.Equals("haschild"))
-                        {
-                            Actions builder = new Actions(WebDriver.driver);
-                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                            xpathNext = "/following-sibling::ul/li/a";
-                            xpath = xpath + xpathNext;
+
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                            while (locatorClass.Contains("haschild"))
+                            {
+                                Actions builder = new Actions(WebDriver.driver);
+                                builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                                xpathNext = "/following-sibling::ul/li/a";
+                                xpath = xpath + xpathNext;
+                                locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                            }
+                        string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
+                        if (text.Equals("Overview") || text.Equals("Execution Dashboard"))
+                        {
+                            break;
                         }
-                        WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                        DeletePage();
+                        else
+                        {
+                            WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                            DeletePage();
+                        }
+                        
                     }
                     pageIndex = pageIndex - 1;
                 }
