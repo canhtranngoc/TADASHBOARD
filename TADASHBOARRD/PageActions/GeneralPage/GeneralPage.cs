@@ -45,7 +45,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             var m = new StackTrace().GetFrame(level).GetMethod();
             string className = m.DeclaringType.Name;
             return className;
-            Console.WriteLine(className);
         }
 
         public class control
@@ -243,22 +242,22 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void DeletePages()
         {
+            Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
-            int pageIndex = numTab - 3;
-            while (pageIndex != 1)
+            int pageIndex = numTab - 2;
+            while (pageIndex != 0)
             {
-                for (int i = numTab - 4; i >= 1; i--)
+                for (int i = numTab - 2; i >= 1; i--)
                 {
                     int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
-                    Console.WriteLine(numChildren);
                     for (int j = 0; j <= numChildren; j++)
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
                         locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                        while (locatorClass.Equals("haschild"))
+                        while (locatorClass.Contains("haschild"))
                         {
                             Actions builder = new Actions(WebDriver.driver);
                             builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
@@ -266,8 +265,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             xpath = xpath + xpathNext;
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                         }
-                        WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                        DeletePage();
+                        string name = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
+                        if (name.Equals("Overview") || name.Equals("Execution Dashboard"))
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                            DeletePage();
+                        }
+                        
                     }
                     pageIndex = pageIndex - 1;
                 }
