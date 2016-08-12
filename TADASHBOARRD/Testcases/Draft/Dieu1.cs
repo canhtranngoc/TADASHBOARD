@@ -12,7 +12,7 @@ using System.Threading;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class UnitTest1: BaseTest
+    public class Dieu1: BaseTest
     {
         [TestMethod]
         public void TestMethod1()

@@ -180,10 +180,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenNewPanelDialogFromGeneralPage()
         {
+        }
+        public void OpenAddPageDialog()
+        {
             Sleep(1);
             MouseHover("global setting tab");
             Click("add page tab");
         }
+
         public void DeletePage()
         {
             Sleep(1);
@@ -191,10 +195,40 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("delete tab");
             ClosePopup();
         }
+
         public void DeletePages()
         {
-
+            string xpath = string.Empty;
+            string xpathNext = string.Empty;
+            string locatorClass = string.Empty;
+            int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
+            int pageIndex = numTab - 3;
+            while (pageIndex != 1)
+            {
+                for (int i = numTab - 4; i >= 1; i--)
+                {
+                    int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
+                    Console.WriteLine(numChildren);
+                    for (int j = 0; j <= numChildren; j++)
+                    {
+                        xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
+                        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        while (locatorClass.Equals("haschild"))
+                        {
+                            Actions builder = new Actions(WebDriver.driver);
+                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                            xpathNext = "/following-sibling::ul/li/a";
+                            xpath = xpath + xpathNext;
+                            locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        }
+                        WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                        DeletePage();
+                    }
+                    pageIndex = pageIndex - 1;
+                }
+            }
         }
+
         public void Sleep(int second)
         {
             Thread.Sleep(second*1000);
