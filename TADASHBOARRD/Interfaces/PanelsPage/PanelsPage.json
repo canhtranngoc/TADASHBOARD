@@ -8,5 +8,10 @@
     "controlName": "delete link",
     "type": "xpath",
     "value": "//a[@href = 'javascript:Dashboard.deletePanels();']"
+  },
+  {
+    "controlName": "",
+    "type": "",
+    "value":  ""
   }
 ]
