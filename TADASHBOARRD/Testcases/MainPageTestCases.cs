@@ -1,8 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TADASHBOARRD.Common;
-using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.PageActions.LoginPage;
+using TADASHBOARRD.PageActions.GeneralPage;
+using TADASHBOARRD.Common;
+using TADASHBOARRD.PageActions.PanelsPage;
+using System.Threading;
 
 namespace TADASHBOARRD.Testcases
 {
@@ -21,7 +23,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenNewPanelDialogFromGeneralPage();
             
             NewPageDialog newPageDialog= new NewPageDialog();
-            newPageDialog.CreateNewPage("canh12312132","defaut", "defaut", "defaut");
+            newPageDialog.CreateNewPage("canh12312132","", "", "","public");
 
 
         }
