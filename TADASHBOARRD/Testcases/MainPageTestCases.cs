@@ -17,13 +17,16 @@ namespace TADASHBOARRD.Testcases
             NavigateTADashboard();
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
-
             GeneralPage generalPage = new GeneralPage();
-            
-            generalPage.OpenNewPanelDialogFromGeneralPage();
-            
+            generalPage.OpenAddPageDialog();
             NewPageDialog newPageDialog= new NewPageDialog();
-            newPageDialog.CreateNewPage("canh12312132","", "", "","public");
+            newPageDialog.CreateNewPage("canh9","", "", "","public");
+
+            generalPage.OpenAddPageDialog();
+            newPageDialog.CreateNewPage("canh6", "canh9", "", "", "public");
+
+            generalPage.OpenAddPageDialog();
+            newPageDialog.CreateNewPage("canh5", "canh9", "", "", "public");
 
 
         }
