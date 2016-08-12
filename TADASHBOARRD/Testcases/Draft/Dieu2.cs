@@ -27,7 +27,7 @@ namespace TADASHBOARRD.Testcases.Draft
 
             //generalPage.OpenAddPageDialog();
             //newPageDialog.CreateNewPage("Dieu2", "Dieu1", "", "", "");
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
             generalPage.DeletePages();
         }
     }

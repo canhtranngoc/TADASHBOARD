@@ -27,6 +27,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Sleep(1);
             WebDriver.driver.SwitchTo().Alert().Accept();
+            Sleep(1);
         }
 
         public string GetTextPopup()
