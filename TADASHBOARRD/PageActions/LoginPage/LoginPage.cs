@@ -17,6 +17,8 @@ namespace TADASHBOARRD.PageActions.LoginPage
             EnterValue("username textbox", username);
             EnterValue("password textbox", password);
             Click("login button");
+            // FindWebElement("login button").Click();
+
         }
 
 

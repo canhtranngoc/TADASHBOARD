@@ -44,6 +44,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             var m = new StackTrace().GetFrame(level).GetMethod();
             string className = m.DeclaringType.Name;
             return className;
+            Console.WriteLine(className);
         }
 
         public class control
@@ -56,6 +57,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public string[] GetControlValue(string nameControl)
         {
             string page = GetClassCaller();
+            //string page = "GeneralPage";
+
             Console.WriteLine(page);
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             path = path.Replace("\\bin\\Debug", "");
@@ -101,7 +104,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 case "ID":
                     return WebDriver.driver.FindElement(By.Id(control[1]));
-                    
+
                 case "NAME":
                     return WebDriver.driver.FindElement(By.Name(control[1]));
                 case "CLASSNAME":
@@ -109,7 +112,26 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     return WebDriver.driver.FindElement(By.XPath(control[1]));
             }
+            //return WebDriver.driver.FindElement(FinFindWebElement(name));
             
+        }
+
+        public By FinFindWebElement(string name)
+        {
+            string[] control = GetControlValue(name);
+            Console.WriteLine(control[1]);
+            switch (control[0].ToUpper())
+            {
+                case "ID":
+                    return By.Id(control[1]);
+
+                case "NAME":
+                    return By.Name(control[1]);
+                case "CLASSNAME":
+                    return By.ClassName(control[1]);
+                default:
+                    return By.XPath(control[1]);
+            }
         }
 
         public IWebElement FindDynamicWebElement(string name, string value)
@@ -216,21 +238,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
            return GetText("repository label");
        }
 
-        public void Delete1()
-        {
-            Delete();
-        }
-
         public void ClickOnDynamicElement(string control, string value)
         {
             FindDynamicWebElement(control, value).Click();
         }
-
-        public string A(IWebElement b)
-        {
-            return b.ToString();
-        }
-
+     
         public void Delete()
         {
             string xpath = string.Empty;
@@ -248,9 +260,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     Console.WriteLine(numChildren);
                     for (int j = 0; j <= numChildren; j++)
                     {
-                        //xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
+                        xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
                         //xpath = FindDynamicWebElement("path child page",pageIndex.ToString()).ToString();
-                        xpath = FindWebElement("path child page").ToString();
+                       // xpath = FindWebElement("path child page").ToString();
                         Console.WriteLine(xpath);
                         //locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                         locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
@@ -277,7 +289,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         Thread.Sleep(1000);
                     }
                     pageIndex = pageIndex - 1;
-                    //Console.WriteLine(pageIndex);
+                    Console.WriteLine(pageIndex);
                 }
 
             }
