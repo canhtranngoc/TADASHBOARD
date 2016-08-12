@@ -104,7 +104,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 case "ID":
                     return WebDriver.driver.FindElement(By.Id(control[1]));
-
                 case "NAME":
                     return WebDriver.driver.FindElement(By.Name(control[1]));
                 case "CLASSNAME":
