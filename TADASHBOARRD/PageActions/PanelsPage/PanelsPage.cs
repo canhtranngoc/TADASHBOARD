@@ -15,5 +15,10 @@ namespace TADASHBOARRD.PageActions.PanelsPage
             System.Threading.Thread.Sleep(1000);
             Click("addnew link");
         }
+
+        public void DeletePanel(string name)
+        {
+
+        }
     }
 }
