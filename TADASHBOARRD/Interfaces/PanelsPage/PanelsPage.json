@@ -7,6 +7,11 @@
   {
     "controlName": "delete link",
     "type": "xpath",
-    "value": "//a[@href = 'javascript:Dashboard.deletePanels();']"
+    "value": "//div[@class='panel_tag2']//a[.='Delete']"
+  },
+  {
+    "controlName": "checkall link",
+    "type": "xpath",
+    "value": "//a[.='Check All']"
   }
 ]

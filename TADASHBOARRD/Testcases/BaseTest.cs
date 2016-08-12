@@ -17,6 +17,12 @@ namespace TADASHBOARRD.Testcases
         {
            BrowserManager.CloseBrowser();
         }
+
+        [TestInitialize]
+        public void TestInit()
+        {
+            NavigateTADashboard();
+        }
         [TestCleanup]
         public void CleanUp()
         {
