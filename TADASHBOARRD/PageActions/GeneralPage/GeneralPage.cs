@@ -48,7 +48,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             //Sleep(1);
             //waitForAlert(WebDriver.driver);
             WebDriver.driver.SwitchTo().Alert().Accept();
-            //Sleep(1);
+            Sleep(1);
         }
 
         public string GetTextPopup()
@@ -219,8 +219,16 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void DeletePage()
         {
             Sleep(1);
-            MouseHover("global setting tab");
-            Click("delete tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("global setting tab");
+                ClickItemByJS("delete tab");
+            }
+            else
+            {
+                MouseHover("global setting tab");
+                Click("delete tab");
+            }
             AcceptAlert();
         }
 
