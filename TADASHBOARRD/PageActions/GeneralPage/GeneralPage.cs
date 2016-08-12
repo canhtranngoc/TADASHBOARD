@@ -173,11 +173,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenExecutionDashboardPage()
         {
-
+            Click("execution dashboard tab");
         }
         public void OpenOverviewPage()
         {
-
+            Click("overview tab");
         }
         public void OpenNewPanelDialogFromGeneralPage()
         {
@@ -199,6 +199,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void DeletePages()
         {
+            Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
@@ -214,7 +215,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
                         locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                        while (locatorClass.Equals("haschild"))
+                        while (locatorClass.Contains("haschild"))
                         {
                             Actions builder = new Actions(WebDriver.driver);
                             builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();

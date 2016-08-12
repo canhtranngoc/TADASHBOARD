@@ -15,19 +15,21 @@ namespace TADASHBOARRD.Testcases.Draft
         {
             NavigateTADashboard();
             LoginPage loginPage = new LoginPage();
-            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            loginPage.Login(TestData.defaulRepository, "dieu.nguyen", "123");
             GeneralPage generalPage = new GeneralPage();
 
-            //generalPage.OpenAddPageDialog();
-            //NewPageDialog newPageDialog = new NewPageDialog();
-            //newPageDialog.CreateNewPage("Dieu", "", "", "", "");
+            generalPage.OpenAddPageDialog();
+            NewPageDialog newPageDialog = new NewPageDialog();
+            newPageDialog.CreateNewPage("Dieu1", "", "", "", "");
 
-            //generalPage.OpenAddPageDialog();
-            //newPageDialog.CreateNewPage("Dieu1", "Dieu", "", "", "");
+            generalPage.OpenAddPageDialog();
+            newPageDialog.CreateNewPage("Dieu11", "Dieu1", "", "", "");
 
-            //generalPage.OpenAddPageDialog();
-            //newPageDialog.CreateNewPage("Dieu2", "Dieu1", "", "", "");
-            //Thread.Sleep(2000);
+            generalPage.OpenAddPageDialog();
+            newPageDialog.CreateNewPage("Dieu22", "Dieu1", "", "", "");
+
+            //Thread.Sleep(1000);
+            //generalPage.OpenOverviewPage();     
             generalPage.DeletePages();
         }
     }
