@@ -23,7 +23,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void ConfirmPopup()
+        public void ClosePopup()
         {
             Sleep(1);
             WebDriver.driver.SwitchTo().Alert().Accept();
@@ -120,12 +120,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).SendKeys(value);
         }
 
-        public void CheckingACheckbox(string locator)
+        public void CheckACheckbox(string locator)
         {
             
         }
 
-        public void UnCheckingCheckbox(string locator)
+        public void UnCheckACheckbox(string locator)
         {
             
         }
@@ -188,7 +188,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             MouseHover("global setting tab");
             Click("delete tab");
-            ConfirmPopup();
+            ClosePopup();
         }
         public void DeletePages()
         {
