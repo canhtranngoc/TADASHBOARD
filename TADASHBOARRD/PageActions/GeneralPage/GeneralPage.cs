@@ -23,16 +23,38 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void ClosePopup()
+       public void waitForAlert(IWebDriver driver)
         {
-            Sleep(1);
+            int i = 0;
+            while (i++ < 5)
+            {
+                try
+                {
+                    IAlert alert = driver.SwitchTo().Alert();
+                    break;
+                }
+                catch (NoAlertPresentException e)
+                {
+                    Console.WriteLine(e);
+                    Sleep(1);
+                    continue;
+                    
+                }
+            }
+        }
+
+        public void AcceptAlert()
+        {
+            //Sleep(1);
+            //waitForAlert(WebDriver.driver);
             WebDriver.driver.SwitchTo().Alert().Accept();
             Sleep(1);
         }
 
         public string GetTextPopup()
         {
-            Sleep(1);
+            //Sleep(1);
+            //waitForAlert(WebDriver.driver);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
 
@@ -207,8 +229,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 MouseHover("global setting tab");
                 Click("delete tab");
             }
-            ClosePopup();
-
+            AcceptAlert();
         }
 
         public void DeletePages()
