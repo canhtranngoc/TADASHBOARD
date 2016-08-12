@@ -192,9 +192,18 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void DeletePage()
         {
             Sleep(1);
-            MouseHover("global setting tab");
-            Click("delete tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("global setting tab");
+                ClickItemByJS("delete tab");
+            }
+            else
+            {
+                MouseHover("global setting tab");
+                Click("delete tab");
+            }
             ClosePopup();
+
         }
 
         public void DeletePages()
@@ -223,10 +232,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                         }
                         WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                        //DeletePage();
-                        MouseHover("global setting tab");
-                        Click("delete tab");
-                        ClosePopup();
+                        DeletePage();
                     }
                     pageIndex = pageIndex - 1;
                 }
