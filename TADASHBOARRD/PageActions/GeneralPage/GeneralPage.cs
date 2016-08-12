@@ -280,6 +280,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             Console.WriteLine(xpath);
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                             Console.WriteLine(locatorClass);
+                            Thread.Sleep(1000);
                         }
                         WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                        // FindDynamicWebElement("path child page", pageIndex.ToString()).Click();
@@ -289,7 +290,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         WebDriver.driver.FindElement(By.XPath("//li[@class='mn-setting']/a")).Click();
                         WebDriver.driver.FindElement(By.XPath("//a[.='Delete']")).Click();
                         WebDriver.driver.SwitchTo().Alert().Accept();
-                        Thread.Sleep(1000);
+                        Thread.Sleep(2000);
                     }
                     pageIndex = pageIndex - 1;
                     Console.WriteLine(pageIndex);
