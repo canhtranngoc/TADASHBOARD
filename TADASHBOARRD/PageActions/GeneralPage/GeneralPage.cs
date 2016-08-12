@@ -121,6 +121,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).SendKeys(value);
         }
 
+        public void EnterValueDropdownList(string locator, string value)
+        {
+            FindWebElement(locator).SendKeys(value);
+        }
+
         public void CheckACheckbox(string locator)
         {
             
