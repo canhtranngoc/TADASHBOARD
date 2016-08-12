@@ -27,6 +27,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Sleep(1);
             WebDriver.driver.SwitchTo().Alert().Accept();
+            Sleep(1);
         }
 
         public string GetTextPopup()
@@ -222,7 +223,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                         }
                         WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                        DeletePage();
+                        //DeletePage();
+                        MouseHover("global setting tab");
+                        Click("delete tab");
+                        ClosePopup();
                     }
                     pageIndex = pageIndex - 1;
                 }

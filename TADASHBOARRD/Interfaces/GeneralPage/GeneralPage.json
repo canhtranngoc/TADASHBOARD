@@ -2,7 +2,7 @@
   {
     "controlName": "user tab",
     "type": "xpath",
-    "value": "//a[@href='#Welcome']"
+    "value": "//a[@href='#Welcome']/.."
   },
   {
     "controlName": "global setting tab",
