@@ -16,12 +16,8 @@ namespace TADASHBOARRD.PageActions.LoginPage
             SelectItemByText("repository combobox", repository);
             EnterValue("username textbox", username);
             EnterValue("password textbox", password);
-          //  Click("login button");
-            FindWebElements("login button").Click();
-
+            Click("login button");
+            Sleep(1);
         }
-
-
-
     }
 }

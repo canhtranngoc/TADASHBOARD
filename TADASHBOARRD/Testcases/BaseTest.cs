@@ -15,7 +15,7 @@ namespace TADASHBOARRD.Testcases
         [AssemblyCleanup]
         public static void AssemblyCleapUpMethod()
         {
-            BrowserManager.CloseBrowser();
+           BrowserManager.CloseBrowser();
         }
         [TestCleanup]
         public void CleanUp()

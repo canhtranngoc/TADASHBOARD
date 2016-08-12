@@ -11,7 +11,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
-   public class GeneralPage:CommonActions
+    public class GeneralPage : CommonActions
     {
 
         public void WaitForElementLoad(By locator, int timeoutInSeconds)
@@ -23,15 +23,16 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void ConfirmPopup()
+        public void ClosePopup()
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             WebDriver.driver.SwitchTo().Alert().Accept();
+            Sleep(1);
         }
 
         public string GetTextPopup()
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
 
@@ -72,8 +73,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 case "NewPageDialog":
                     content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
                     break;
-                case "PanelPage":
-                    content = File.ReadAllText(path + @"\Interfaces\PanelPage\" + page + ".json");
+                case "PanelsPage":
+                case "NewPanelDialog":
+                    content = File.ReadAllText(path + @"\Interfaces\PanelsPage\" + page + ".json");
                     break;
                 case "DataProfilesPage":
                     content = File.ReadAllText(path + @"\Interfaces\DataProfilesPage\" + page + ".json");
@@ -81,7 +83,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     break;
             }
-            
+
             var result = new JavaScriptSerializer().Deserialize<List<control>>(content);
             string[] control = new string[2];
             foreach (var item in result)
@@ -154,9 +156,21 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).Clear();
             FindWebElement(locator).SendKeys(value);
         }
+
+        public void CheckACheckbox(string locator)
+        {
+            
+        }
+
+        public void UnCheckACheckbox(string locator)
+        {
+            
+        }
+
+
         public void Logout()
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             if (TestData.browser == "chrome" || TestData.browser == "ie")
             {
                 ClickItemByJS("user tab");
@@ -168,7 +182,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 Click("logout tab");
             }
             // For edge
-            Thread.Sleep(1000);
+            Sleep(1);
         }
 
         public void MouseHover(string locator)
@@ -178,7 +192,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenDataProfilesPage()
         {
-
+            MouseHover("administer tab");
+            Click("create profile tab");
         }
         public void OpenPanelsPage()
         {
@@ -187,7 +202,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
-
+            Sleep(1);
+            MouseHover("global setting tab");
+            Click("create profile tab");
         }
         public void OpenExecutionDashboardPage()
         {
@@ -197,16 +214,69 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
 
         }
-        public void OpenNewPageDialog()
-        {
-
-        }
         public void OpenNewPanelDialogFromGeneralPage()
         {
-            Thread.Sleep(1000);
+        }
+        public void OpenAddPageDialog()
+        {
+            Sleep(1);
             MouseHover("global setting tab");
             Click("add page tab");
+        }
 
+        public void DeletePage()
+        {
+            Sleep(1);
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("global setting tab");
+                ClickItemByJS("delete tab");
+            }
+            else
+            {
+                MouseHover("global setting tab");
+                Click("delete tab");
+            }
+            ClosePopup();
+
+        }
+
+        public void DeletePages()
+        {
+            string xpath = string.Empty;
+            string xpathNext = string.Empty;
+            string locatorClass = string.Empty;
+            int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
+            int pageIndex = numTab - 3;
+            while (pageIndex != 1)
+            {
+                for (int i = numTab - 4; i >= 1; i--)
+                {
+                    int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
+                    Console.WriteLine(numChildren);
+                    for (int j = 0; j <= numChildren; j++)
+                    {
+                        xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
+                        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        while (locatorClass.Equals("haschild"))
+                        {
+                            Actions builder = new Actions(WebDriver.driver);
+                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                            xpathNext = "/following-sibling::ul/li/a";
+                            xpath = xpath + xpathNext;
+                            locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        }
+                        WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                        DeletePage();
+                    }
+                    pageIndex = pageIndex - 1;
+                }
+            }
+        }
+
+        public void Sleep(int second)
+        {
+            Thread.Sleep(second*1000);
         }
 
         public void SelectItemByText(string locator, string value)
@@ -231,14 +301,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public string GetUserName()
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             return GetText("user tab");
         }
 
        public string GetRepository()
        {
-           Thread.Sleep(1000);
-           return GetText("repository label");
+            Sleep(1);
+            return GetText("repository label");
        }
 
         public void ClickOnDynamicElement(string control, string value)

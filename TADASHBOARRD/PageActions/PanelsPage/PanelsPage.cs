@@ -8,10 +8,11 @@ using TADASHBOARRD.PageActions.GeneralPage;
 
 namespace TADASHBOARRD.PageActions.PanelsPage
 {
-    class PanelsPage:GeneralPage.GeneralPage
+    public class PanelsPage:GeneralPage.GeneralPage
     {
-        public void ClickAddNewPanel()
+        public void OpenNewPanelDialogFromPanelsPage()
         {
+            System.Threading.Thread.Sleep(1000);
             Click("addnew link");
         }
     }

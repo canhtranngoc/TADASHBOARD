@@ -30,7 +30,7 @@ namespace TADASHBOARRD.Testcases
             loginPage.Login(TestData.defaulRepository, TestData.invalidUsername, TestData.invalidPassword);
             string actual = loginPage.GetTextPopup();
             CheckTextDisplays(actual, TestData.errorLoginMessage);
-            loginPage.ConfirmPopup();
+            loginPage.ClosePopup();
         }
 
         [TestMethod]
@@ -60,7 +60,7 @@ namespace TADASHBOARRD.Testcases
             loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testLowercasePassword);
             string actualMessage = generalPage.GetTextPopup();
             CheckTextDisplays(actualMessage, TestData.errorLoginMessage);
-            generalPage.ConfirmPopup();
+            generalPage.ClosePopup();
         }
 
         [TestMethod]

@@ -2,7 +2,7 @@
 
 namespace TADASHBOARRD.Common
 {
-    public class TestData
+    public class TestData :CommonActions
     {
         public static string browser = ConfigurationManager.AppSettings["browser"];
         public static string dashBoardURL = ConfigurationManager.AppSettings["url"];
@@ -27,5 +27,6 @@ namespace TADASHBOARRD.Common
         public static string blankPassword = "";
         public static string errorBlankUsernameLoginMessage = "Please enter username";
         public static string addPageName = "test123";
+        public static string panelName = "test"+GetDateTime();
     }
 }
