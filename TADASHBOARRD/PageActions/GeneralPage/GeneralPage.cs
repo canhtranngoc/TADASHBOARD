@@ -383,5 +383,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("repository label");
        }
 
+        public string GetSecondPageName()
+        {
+            Sleep(1);
+            return GetText("second page tab");
+        }
+
     }
 }
