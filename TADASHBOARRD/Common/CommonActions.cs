@@ -24,7 +24,7 @@ namespace TADASHBOARRD.Common
         }
         public static string GetDateTime()
         {
-            return DateTime.Now.ToString("mmddyyhhmmss");
+            return DateTime.Now.ToString("ddmmyyyyhhmmss");
         }
         public void test()
         {
