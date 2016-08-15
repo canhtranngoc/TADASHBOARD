@@ -22,11 +22,13 @@ namespace TADASHBOARRD.Testcases
             GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
             generalSettingsPage.ClickNextWithoutName();
             string actualMessage1 = generalPage.GetTextPopup();
-            CheckTextDisplays(TestData.errorMessageWhenCreataProfileWithoutName, actualMessage1);
+            // VP: 
+            CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithoutName, actualMessage1);
             generalSettingsPage.AcceptAlert();
             generalSettingsPage.ClickFinishWithoutName();
+            // VP: 
             string actualMessage2 = generalPage.GetTextPopup();
-            CheckTextDisplays(TestData.errorMessageWhenCreataProfileWithoutName, actualMessage2);
+            CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithoutName, actualMessage2);
             generalSettingsPage.AcceptAlert();
             generalPage.Logout();
 
@@ -41,8 +43,16 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenDataProfilesPage();
             DataProfilesPage dataProfilesPage = new DataProfilesPage();
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
-            //GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
-
+            // Pre-Condition: Creata a Profile
+            GeneralSettingsPage generalSettingsPage = new GeneralSettingsPage();
+            generalSettingsPage.CreateNewProfile(TestData.profileName,"","");
+            dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
+            generalSettingsPage.CreateNewProfile(TestData.profileName, "", "");
+            // VP:
+            string actualMessage= generalPage.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithExitingName,actualMessage);
+            generalSettingsPage.AcceptAlert();
+            generalPage.Logout();
         }
     }
 }

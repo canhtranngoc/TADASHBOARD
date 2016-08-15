@@ -27,7 +27,7 @@ namespace TADASHBOARRD.Common
         public static string blankPassword = "";
         public static string errorBlankUsernameLoginMessage = "Please enter username";
         public static string addPageName = "test123";
-        public static string panelName = "test"+ GetDateTime();
+        public static string panelName = "test" + GetDateTime();
         //public static string pageName = CommonActions.GetDateTime();
         public static string blankParentPage = "";
         public static string blankNumberOfColumns = "";
@@ -36,6 +36,8 @@ namespace TADASHBOARRD.Common
         public static string statusPublic = "public";
         public static string anotherValidUsername = "dieu.nguyen";
         public static string anotherValidPassword = "123";
-        public static string errorMessageWhenCreataProfileWithoutName = "Please input profile name";
+        public static string errorMessageWhenCreateProfileWithoutName = "Please input profile name";
+        public static string errorMessageWhenCreateProfileWithExitingName = "Data Profile name already exists";
+        public static string profileName = "test" + GetDateTime();
     }
 }

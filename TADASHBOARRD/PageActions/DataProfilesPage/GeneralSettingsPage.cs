@@ -22,8 +22,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             EnterValue("name textbox", name);
             EnterValueDropdownList("item type combobox",itemtype);
             EnterValueDropdownList("related data combobox",relateddata);
-
-
+            Click("finish button");
         }
     }
 }
