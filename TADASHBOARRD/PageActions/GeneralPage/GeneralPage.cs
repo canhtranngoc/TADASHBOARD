@@ -53,7 +53,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public string GetTextPopup()
         {
-            //Sleep(1);
+            Sleep(1);
             //waitForAlert(WebDriver.driver);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
@@ -205,9 +205,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenOverviewPage()
         {
             Click("overview tab");
-        }
-        public void OpenNewPanelDialogFromGeneralPage()
-        {
         }
         public void OpenAddPageDialog()
         {

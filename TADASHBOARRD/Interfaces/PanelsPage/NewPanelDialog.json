@@ -12,6 +12,11 @@
   {
     "controlName": "ok button",
     "type": "xpath",
-    "value":  "//input[@id = 'OK']"
+    "value": "//input[@id = 'OK']"
+  },
+  {
+    "controlName": "cancel button",
+    "type": "xpath",
+    "value": "//input[@id = 'Cancel']"
   }
 ]

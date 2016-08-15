@@ -28,5 +28,10 @@ namespace TADASHBOARRD.Common
         public static string errorBlankUsernameLoginMessage = "Please enter username";
         public static string addPageName = "test123";
         public static string panelName = "test"+GetDateTime();
+        public static string duplicatedPanelName = "Duplicated panel";
+        public static string specialPanelName = "Logigear#$%";
+        public static string panelSeries = "Name";
+        public static string errorInvalidNamePanelPage = "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"" +"#{[]{};";
+        public static string errorDuplicatedNamePanelPage = "Duplicated panel already exists. Please enter a different name.";
     }
 }
