@@ -11,7 +11,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
 {
     public class PanelsPage:GeneralPage.GeneralPage
     {
-        public void OpenNewPanelDialogFromPanelsPage()
+        public void OpenNewPanelDialog()
         {
             Sleep(1);
             Click("addnew link");

@@ -21,7 +21,7 @@ namespace TADASHBOARRD.Testcases.Draft
             generalPage.OpenPanelsPage();
             PanelsPage panelsPage = new PanelsPage();
             Thread.Sleep(1000);
-            panelsPage.OpenNewPanelDialogFromPanelsPage();
+            panelsPage.OpenNewPanelDialog();
             NewPanelDialog newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel("ngan", "Name");
             Thread.Sleep(1000);

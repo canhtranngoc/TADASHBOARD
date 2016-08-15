@@ -89,6 +89,7 @@
     <Compile Include="Testcases\LoginTestCases.cs" />
     <Compile Include="Testcases\Draft\Dieu1.cs" />
     <Compile Include="Testcases\DataProfilesTestCases.cs" />
+    <Compile Include="Testcases\PanelsTestCases.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

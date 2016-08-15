@@ -16,6 +16,14 @@ namespace TADASHBOARRD.PageActions.PanelsPage
             EnterValueDropdownList("series dropdown list", name);
             Click("ok button");
         }
+        public string GetErrorMessage()
+        {
+            return GetTextPopup();
+        }
+        public void CloseNewPanelDialog()
+        {
+            Click("cancel button");
+        }
        
     }
 }

@@ -17,7 +17,9 @@ namespace TADASHBOARRD.Testcases
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
             string actualUsername = generalPage.GetUserName();
+            // VP: Verify that Dashboard Mainpage appears
             CheckTextDisplays(TestData.validUsername, actualUsername);
+            // Post-Condition
             generalPage.Logout();
         }
 
@@ -27,7 +29,9 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.invalidUsername, TestData.invalidPassword);
             string actualMessage = loginPage.GetTextPopup();
+            // VP: Verify that Dashboard Error message "Username or password is invalid" appears
             CheckTextDisplays(TestData.errorLoginMessage, actualMessage);
+            // Post-Condition
             loginPage.AcceptAlert();
         }
 
@@ -40,7 +44,9 @@ namespace TADASHBOARRD.Testcases
             generalPage.Logout();
             loginPage.Login(TestData.testRepository, TestData.validUsername, TestData.validPassword);
             string actualUsername = generalPage.GetUserName();
+            // VP: Verify that Dashboard Mainpage appears
             CheckTextDisplays(TestData.validUsername, actualUsername);
+            // Post-Condition
             generalPage.Logout();
         }
 
@@ -51,11 +57,14 @@ namespace TADASHBOARRD.Testcases
             loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testUppercasePassword);
             generalPage = new GeneralPage();
             string actualUsername = generalPage.GetUserName();
+            // VP: Verify that Dashboard Mainpage appears
             CheckTextDisplays(TestData.testUsername, actualUsername);
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testLowercasePassword);
             string actualMessage = generalPage.GetTextPopup();
+            // VP: Verify that Dashboard Error message "Username or password is invalid" appears
             CheckTextDisplays(TestData.errorLoginMessage, actualMessage);
+            // Post-Condition
             generalPage.AcceptAlert();
         }
 
@@ -66,7 +75,9 @@ namespace TADASHBOARRD.Testcases
             loginPage.Login(TestData.defaulRepository, TestData.specialUsername, TestData.specialCharactersPassword);
             generalPage = new GeneralPage();
             string actualUsername = generalPage.GetUserName();
+            // VP: Verify that Dashboard Mainpage appears
             CheckTextDisplays(TestData.specialUsername, actualUsername);
+            // Post-Condition
             generalPage.Logout();
         }
     }
