@@ -98,6 +98,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     content = File.ReadAllText(path + @"\Interfaces\PanelsPage\" + page + ".json");
                     break;
                 case "DataProfilesPage":
+                case "GeneralSettingsPage":
                     content = File.ReadAllText(path + @"\Interfaces\DataProfilesPage\" + page + ".json");
                     break;
                 default:
@@ -186,7 +187,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenDataProfilesPage()
         {
             MouseHover("administer tab");
-            Click("create profile tab");
+            Click("data profiles tab");
         }
         public void OpenPanelsPage()
         {

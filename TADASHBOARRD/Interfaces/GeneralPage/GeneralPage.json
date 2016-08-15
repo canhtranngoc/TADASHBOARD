@@ -73,5 +73,11 @@
     "controlName": "choose panels button",
     "type": "id",
     "value": "btnChoosepanel"
+  },
+   {
+    "controlName": "data profiles tab",
+    "type": "xpath",
+    "value": "//a[.='Data Profiles']"
   }
+
 ]

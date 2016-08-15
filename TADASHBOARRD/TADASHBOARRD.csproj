@@ -88,10 +88,12 @@
     <Compile Include="Common\TestData.cs" />
     <Compile Include="Testcases\LoginTestCases.cs" />
     <Compile Include="Testcases\Draft\Dieu1.cs" />
+    <Compile Include="Testcases\DataProfilesTestCases.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Interfaces\DataProfilesPage\DataProfilesPage.json" />
+    <None Include="Interfaces\DataProfilesPage\GeneralSettingsPage.json" />
     <None Include="Interfaces\GeneralPage\GeneralPage.json" />
     <None Include="Interfaces\LoginPage\LoginPage.json" />
     <None Include="Interfaces\GeneralPage\NewPageDialog.json" />
