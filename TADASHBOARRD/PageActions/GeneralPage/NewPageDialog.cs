@@ -32,8 +32,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
             if (status == "public")
             {
-                Click("public checkbox");
+                TickCheckbox("public checkbox");
             }
+
             Sleep(1);
             Click("ok button");
         }

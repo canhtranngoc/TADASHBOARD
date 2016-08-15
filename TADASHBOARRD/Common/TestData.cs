@@ -36,7 +36,6 @@ namespace TADASHBOARRD.Common
         public static string statusPublic = "public";
         public static string anotherValidUsername = "dieu.nguyen";
         public static string anotherValidPassword = "123";
-        public static string panelName = "test" + GetDateTime();
         public static string errorMessageWhenCreataProfileWithoutName = "Please input profile name";
     }
 }

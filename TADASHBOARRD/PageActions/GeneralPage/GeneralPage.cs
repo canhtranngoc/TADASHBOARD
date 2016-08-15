@@ -166,15 +166,20 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void TickCheckbox(string locator)
         {
-            
+            if (FindWebElement(locator).Selected == false)
+            {
+                FindWebElement(locator).Click();
+            }
         }
 
         public void UntickCheckbox(string locator)
         {
-            
+            if (FindWebElement(locator).Selected)
+            {
+                FindWebElement(locator).Click();
+            }
         }
-
-
+        
         public void Logout()
         {
             Sleep(1);
