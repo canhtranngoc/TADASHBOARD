@@ -30,9 +30,11 @@ namespace TADASHBOARRD.Testcases
             generalSettingsPage.ClickFinishWithoutName();
             string actualMessage2 = generalPage.GetTextPopup();
             generalSettingsPage.AcceptAlert();
+            //Post-Condition
             generalPage.Logout();
-
+            // VP: Check dialog message "Please input profile name" appears
             CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithoutName, actualMessage1);
+            // VP: Check dialog message "Please input profile name" appears
             CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithoutName, actualMessage2);
         }
 
@@ -45,17 +47,18 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenDataProfilesPage();
             dataProfilesPage = new DataProfilesPage();
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
-            // Pre-Condition: Creata a Profile
+            //Pre-Condition: Creata a Profile
             generalSettingsPage = new GeneralSettingsPage();
-            generalSettingsPage.CreateNewProfile(TestData.profileName,"","");
+            generalSettingsPage.CreateNewProfile(TestData.profileName,TestData.defaultItemType,TestData.defaultRelatedData);
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
-            generalSettingsPage.CreateNewProfile(TestData.profileName, "", "");
+            generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData);
             string actualMessage= generalPage.GetTextPopup();
             generalSettingsPage.AcceptAlert();
             generalSettingsPage.OpenDataProfilesPage();
+            //Post-Condition
             dataProfilesPage.DeleteProfile(TestData.profileName);
             generalPage.Logout();
-
+            // VP: Check dialog message "Data Profile name already exists"
             CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithExitingName, actualMessage);
         }
     }

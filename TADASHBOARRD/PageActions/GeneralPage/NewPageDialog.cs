@@ -15,26 +15,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Sleep(1);
             EnterValue("pagename textbox", pageName);
-           
-            if (parentPage != "")
-            {
-                SelectItemByText("parentpage combobox", parentPage);
-            }
-
-            if (numberOfColumns != "")
-            {
-                SelectItemByText("numberofcolumns combobox", numberOfColumns);
-            }
-            if (displayAfter != "")
-            {
-                SelectItemByText("displayafter combobox", displayAfter);
-            }
-
-            if (status == "public")
-            {
-                TickCheckbox("public checkbox");
-            }
-
+            SelectItemByText("parentpage combobox", parentPage);
+            SelectItemByText("numberofcolumns combobox", numberOfColumns);
+            SelectItemByText("displayafter combobox", displayAfter);
+            TickCheckbox("public checkbox");
             Sleep(1);
             Click("ok button");
         }
