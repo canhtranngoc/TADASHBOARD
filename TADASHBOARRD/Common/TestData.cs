@@ -27,6 +27,14 @@ namespace TADASHBOARRD.Common
         public static string blankPassword = "";
         public static string errorBlankUsernameLoginMessage = "Please enter username";
         public static string addPageName = "test123";
-        public static string panelName = "test"+GetDateTime();
+        public static string panelName = "test"+ GetDateTime();
+        //public static string pageName = CommonActions.GetDateTime();
+        public static string blankParentPage = "";
+        public static string blankNumberOfColumns = "";
+        public static string blankDisplayAfter = "";
+        public static string statusNotPublic = "";
+        public static string statusPublic = "public";
+        public static string anotherValidUsername = "dieu.nguyen";
+        public static string anotherValidPassword = "123";
     }
 }
