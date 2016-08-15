@@ -20,12 +20,32 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
+            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
             newPageDialog= new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
-            newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.blankPublic);
+            newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusNotPublic);
             string actualPageName = generalPage.GetSecondPageName();
             CheckTextDisplays(pageName, actualPageName);
+            generalPage.DeleteAllPages();
+        }
+
+        [TestMethod]
+        public void DA_MP_TC014_Verify_that_Public_pages_can_be_visible_and_accessed_by_all_users_of_working_repository()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.DeleteAllPages();
+            generalPage.OpenAddPageDialog();
+            newPageDialog = new NewPageDialog();
+            string pageName = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            generalPage.Logout();
+            loginPage.Login(TestData.defaulRepository, TestData.anotherValidUsername, TestData.anotherValidPassword);
+            generalPage.CheckPageDisplays(pageName);
+            generalPage.Logout();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage.DeleteAllPages();
         }
     }

@@ -32,6 +32,9 @@ namespace TADASHBOARRD.Common
         public static string blankParentPage = "";
         public static string blankNumberOfColumns = "";
         public static string blankDisplayAfter = "";
-        public static string blankPublic = "";
+        public static string statusNotPublic = "";
+        public static string statusPublic = "public";
+        public static string anotherValidUsername = "dieu.nguyen";
+        public static string anotherValidPassword = "123";
     }
 }
