@@ -77,7 +77,7 @@
   {
     "controlName": "path child page",
     "type": "xpath",
-    "value": "//div[@id='main-menu']/div/ul/li[2]/a"
+    "value": "//div[@id='main-menu']/div/ul/li[{0}]/a"
   }
 
 ]
