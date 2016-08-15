@@ -13,7 +13,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
     {
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status)
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             EnterValue("pagename textbox", pageName);
            
             if (parentPage != "")
@@ -32,12 +32,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
             if (status == "public")
             {
-                Click("public checkbox");
+                TickCheckbox("public checkbox");
             }
+
             Sleep(1);
             Click("ok button");
-
-
         }
     }
 }

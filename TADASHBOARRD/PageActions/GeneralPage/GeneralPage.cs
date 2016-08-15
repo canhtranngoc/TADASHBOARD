@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
@@ -62,6 +63,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             return FindWebElement(locator).Text;
         }
+
         private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
@@ -99,6 +101,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     content = File.ReadAllText(path + @"\Interfaces\PanelsPage\" + page + ".json");
                     break;
                 case "DataProfilesPage":
+                case "GeneralSettingsPage":
                     content = File.ReadAllText(path + @"\Interfaces\DataProfilesPage\" + page + ".json");
                     break;
                 default:
@@ -119,10 +122,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return null;
         }
 
-        public IWebElement FindWebElement(string name)
+        public IWebElement FindWebElement(string locator)
         {
-            string[] control = GetControlValue(name);
-            Console.WriteLine(control[1]);
+            string[] control = GetControlValue(locator);
             switch (control[0].ToUpper())
             {
                 case "ID":
@@ -167,12 +169,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return WebDriver.driver.FindElement(By.XPath(dynamicControl));
         }
 
-        public IWebElement FindDynamicWebElements(string name, string value)
-        {
-
-            return FindDynamicWebElement(name, value);
-        }
-
         public void Click(string locator)
         {
             FindWebElement(locator).Click();
@@ -189,17 +185,22 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).SendKeys(value);
         }
 
-        public void CheckACheckbox(string locator)
+        public void TickCheckbox(string locator)
         {
-            
+            if (FindWebElement(locator).Selected == false)
+            {
+                FindWebElement(locator).Click();
+            }
         }
 
-        public void UnCheckACheckbox(string locator)
+        public void UntickCheckbox(string locator)
         {
-            
+            if (FindWebElement(locator).Selected)
+            {
+                FindWebElement(locator).Click();
+            }
         }
-
-
+        
         public void Logout()
         {
             Sleep(1);
@@ -224,19 +225,44 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenDataProfilesPage()
         {
-            MouseHover("administer tab");
-            Click("create profile tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("administer tab");
+                ClickItemByJS("data profiles tab");
+            }
+            else
+            {
+                MouseHover("administer tab");
+                Click("data profiles tab");
+            }
         }
         public void OpenPanelsPage()
         {
-            MouseHover("administer tab");
-            Click("create panel tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("administer tab");
+                ClickItemByJS("create panel tab");
+            }
+            else
+            {
+                MouseHover("administer tab");
+                Click("create panel tab");
+            }
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
             Sleep(1);
-            MouseHover("global setting tab");
-            Click("create profile tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("global setting tab");
+                ClickItemByJS("create profile tab");
+            }
+            else
+            {
+                MouseHover("global setting tab");
+                Click("create profile tab");
+            }
+            
         }
         public void OpenExecutionDashboardPage()
         {
@@ -252,8 +278,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenAddPageDialog()
         {
             Sleep(1);
-            MouseHover("global setting tab");
-            Click("add page tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("global setting tab");
+                ClickItemByJS("add page tab");
+            }
+            else
+            {
+                MouseHover("global setting tab");
+                Click("add page tab");
+            }
+                
         }
 
         public void PerformDelete()
@@ -272,7 +307,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             AcceptAlert();
         }
 
-        public void DeletePages()
+        public void DeleteAllPages()
         {
             Sleep(1);
             string xpath = string.Empty;
@@ -347,65 +382,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             return GetText("repository label");
        }
-
-        public void ClickOnDynamicElement(string control, string value)
-        {
-            FindDynamicWebElement(control, value).Click();
-        }
-     
-        public void Delete()
-        {
-            string xpath = string.Empty;
-            string next = string.Empty;
-            string locatorClass = string.Empty;
-          //  int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
-            int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
-            int pageIndex = numTab - 3;
-            Console.WriteLine(pageIndex);
-            while (pageIndex != 1)
-            {
-                for (int i = numTab - 4; i >= 1; i--)
-                {
-                    int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a/..//ul/li/a")).Count;
-                    Console.WriteLine(numChildren);
-                    for (int j = 0; j <= numChildren; j++)
-                    {
-                        xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
-                        //xpath = FindDynamicWebElement("path child page",pageIndex.ToString()).ToString();
-                       // xpath = FindWebElement("path child page").ToString();
-                        Console.WriteLine(xpath);
-                        //locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-
-                        Console.WriteLine(locatorClass);
-                        while (locatorClass.Equals("haschild"))
-                        {
-                            Actions builder = new Actions(WebDriver.driver);
-                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                            next = "/following-sibling::ul/li/a";
-                            xpath = xpath + next;
-                            Console.WriteLine(xpath);
-                            locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                            Console.WriteLine(locatorClass);
-                            Thread.Sleep(1000);
-                        }
-                        WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                       // FindDynamicWebElement("path child page", pageIndex.ToString()).Click();
-
-                        // ClickOnDynamicElement("path child page", pageIndex.ToString());
-
-                        WebDriver.driver.FindElement(By.XPath("//li[@class='mn-setting']/a")).Click();
-                        WebDriver.driver.FindElement(By.XPath("//a[.='Delete']")).Click();
-                        WebDriver.driver.SwitchTo().Alert().Accept();
-                        Thread.Sleep(2000);
-                    }
-                    pageIndex = pageIndex - 1;
-                    Console.WriteLine(pageIndex);
-                }
-
-            }
-        }
-    
 
     }
 }

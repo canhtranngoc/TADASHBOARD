@@ -11,24 +11,42 @@ namespace TADASHBOARRD.Testcases
     [TestClass]
     public class MainPageTestCases:BaseTest
     {
+        private LoginPage loginPage;
+        private GeneralPage generalPage;
+        private NewPageDialog newPageDialog;
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_is_able_to_add_additional_pages_besides_Overview_page_successfully()
         {
-            NavigateTADashboard();
-            LoginPage loginPage = new LoginPage();
+            loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
-            GeneralPage generalPage = new GeneralPage();
+            generalPage = new GeneralPage();
+            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
-            NewPageDialog newPageDialog= new NewPageDialog();
-            newPageDialog.CreateNewPage("canh9","", "", "","public");
+            newPageDialog= new NewPageDialog();
+            string pageName = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusNotPublic);
+            string actualPageName = generalPage.GetSecondPageName();
+            CheckTextDisplays(pageName, actualPageName);
+            generalPage.DeleteAllPages();
+        }
 
+        [TestMethod]
+        public void DA_MP_TC014_Verify_that_Public_pages_can_be_visible_and_accessed_by_all_users_of_working_repository()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
-            newPageDialog.CreateNewPage("canh6", "canh9", "", "", "public");
-
-            generalPage.OpenAddPageDialog();
-            newPageDialog.CreateNewPage("canh5", "canh9", "", "", "public");
-
-
+            newPageDialog = new NewPageDialog();
+            string pageName = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            generalPage.Logout();
+            loginPage.Login(TestData.defaulRepository, TestData.anotherValidUsername, TestData.anotherValidPassword);
+            generalPage.CheckPageDisplays(pageName);
+            generalPage.Logout();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage.DeleteAllPages();
         }
     }
 }

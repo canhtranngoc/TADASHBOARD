@@ -75,9 +75,19 @@
     "value": "btnChoosepanel"
   },
   {
-    "controlName": "path child page",
+    "controlName": "second page tab",
     "type": "xpath",
-    "value": "//div[@id='main-menu']/div/ul/li[{0}]/a"
+    "value": "//div[@id='main-menu']/div/ul/li[2]/a"
+  },
+   {
+    "controlName": "random page tab",
+    "type": "xpath",
+    "value": "//a[.='{0}']"
+  },
+   {
+    "controlName": "data profiles tab",
+    "type": "xpath",
+    "value": "//a[.='Data Profiles']"
   }
 
 ]
