@@ -26,6 +26,7 @@ namespace TADASHBOARRD.Testcases
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusNotPublic);
             string actualPageName = generalPage.GetSecondPageName();
+            //VP:
             CheckTextDisplays(pageName, actualPageName);
             generalPage.DeleteAllPages();
         }
