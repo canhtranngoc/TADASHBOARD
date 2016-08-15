@@ -6,7 +6,7 @@ using TADASHBOARRD.PageActions.GeneralPage;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class LoginTestCases:BaseTest
+    public class LoginTestCases : BaseTest
     {
         private LoginPage loginPage;
         private GeneralPage generalPage;

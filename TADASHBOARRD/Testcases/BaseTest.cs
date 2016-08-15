@@ -19,12 +19,12 @@ namespace TADASHBOARRD.Testcases
         }
 
         [TestInitialize]
-        public void TestInit()
+        public void TestInitializeMothod()
         {
             NavigateTADashboard();
         }
         [TestCleanup]
-        public void CleanUp()
+        public void TestCleanupMothod()
         {
             WebDriver.driver.Manage().Cookies.DeleteAllCookies();
         }
