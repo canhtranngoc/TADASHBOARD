@@ -153,8 +153,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         //    FindWebElement(locator).Click();
         //}
 
-        }
-
         public void EnterValue(string locator, string value)
         {
             FindWebElement(locator).Clear();
