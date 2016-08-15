@@ -148,18 +148,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return WebDriver.driver.FindElement(By.XPath(dynamicControl));
         }
 
-        public void Click(string locator)
-        {
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
-            {
-                IWebElement webElement = FindWebElement(locator);
-                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                executor.ExecuteScript("arguments[0].click();", webElement);
-            }
-            else
-            {
-                FindWebElement(locator).Click();
-            }
+        //public void Click(string locator)
+        //{
+        //    FindWebElement(locator).Click();
+        //}
 
         }
 
@@ -199,20 +191,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
         }
 
-        public void MouseHover(string locator)
-        {
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
-            {
-                IWebElement webElement = FindWebElement(locator);
-                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                executor.ExecuteScript("arguments[0].click();", webElement);
-            }
-            else
-            {
-                Actions action = new Actions(WebDriver.driver);
-                action.MoveToElement(FindWebElement(locator)).Perform();
-            }
-        }
+        //public void MouseHover(string locator)
+        //{
+        //    Actions action = new Actions(WebDriver.driver);
+        //    action.MoveToElement(FindWebElement(locator)).Perform();
+        //}
         public void OpenDataProfilesPage()
         {
             Click("administer tab");
@@ -222,11 +205,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Click("administer tab");
             Click("create panel tab");
+            
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
             Sleep(1);
-            MouseHover("global setting tab");
+            Click("global setting tab");
             Click("create profile tab");
         }
         public void OpenExecutionDashboardPage()
@@ -314,6 +298,21 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             IWebElement webElement = FindWebElement(control);
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
             executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
+        public void Click(string locator)
+        {
+            Sleep(1);
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                IWebElement webElement = FindWebElement(locator);
+                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                executor.ExecuteScript("arguments[0].click();", webElement);
+            }
+            else
+            {
+                FindWebElement(locator).Click();
+            }
         }
 
         public string GetUserName()

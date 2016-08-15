@@ -26,7 +26,7 @@ namespace TADASHBOARRD.Testcases
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusNotPublic);
             string actualPageName = generalPage.GetSecondPageName();
-            //VP:
+            // VP: Check "Test" page is displayed besides "Overview" page
             CheckTextDisplays(pageName, actualPageName);
             generalPage.DeleteAllPages();
         }
@@ -44,6 +44,7 @@ namespace TADASHBOARRD.Testcases
             newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.anotherValidUsername, TestData.anotherValidPassword);
+            // VP: Check newly added page is visibled
             generalPage.CheckPageDisplays(pageName);
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
