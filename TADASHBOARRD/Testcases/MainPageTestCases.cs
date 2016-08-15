@@ -28,6 +28,7 @@ namespace TADASHBOARRD.Testcases
             string actualPageName = generalPage.GetSecondPageName();
             // VP: Check "Test" page is displayed besides "Overview" page
             CheckTextDisplays(pageName, actualPageName);
+            // Post-Condition
             generalPage.DeleteAllPages();
         }
 
@@ -46,6 +47,7 @@ namespace TADASHBOARRD.Testcases
             loginPage.Login(TestData.defaulRepository, TestData.anotherValidUsername, TestData.anotherValidPassword);
             // VP: Check newly added page is visibled
             generalPage.CheckPageDisplays(pageName);
+            // Post-Condition
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage.DeleteAllPages();

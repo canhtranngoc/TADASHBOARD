@@ -19,6 +19,7 @@ namespace TADASHBOARRD.Testcases
             string actualUsername = generalPage.GetUserName();
             // VP: Verify that Dashboard Mainpage appears
             CheckTextDisplays(TestData.validUsername, actualUsername);
+            // Post-Condition
             generalPage.Logout();
         }
 
@@ -30,6 +31,7 @@ namespace TADASHBOARRD.Testcases
             string actualMessage = loginPage.GetTextPopup();
             // VP: Verify that Dashboard Error message "Username or password is invalid" appears
             CheckTextDisplays(TestData.errorLoginMessage, actualMessage);
+            // Post-Condition
             loginPage.AcceptAlert();
         }
 
@@ -44,6 +46,7 @@ namespace TADASHBOARRD.Testcases
             string actualUsername = generalPage.GetUserName();
             // VP: Verify that Dashboard Mainpage appears
             CheckTextDisplays(TestData.validUsername, actualUsername);
+            // Post-Condition
             generalPage.Logout();
         }
 
@@ -61,6 +64,7 @@ namespace TADASHBOARRD.Testcases
             string actualMessage = generalPage.GetTextPopup();
             // VP: Verify that Dashboard Error message "Username or password is invalid" appears
             CheckTextDisplays(TestData.errorLoginMessage, actualMessage);
+            // Post-Condition
             generalPage.AcceptAlert();
         }
 
@@ -73,6 +77,7 @@ namespace TADASHBOARRD.Testcases
             string actualUsername = generalPage.GetUserName();
             // VP: Verify that Dashboard Mainpage appears
             CheckTextDisplays(TestData.specialUsername, actualUsername);
+            // Post-Condition
             generalPage.Logout();
         }
     }
