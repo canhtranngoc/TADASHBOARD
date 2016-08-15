@@ -169,6 +169,19 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return WebDriver.driver.FindElement(By.XPath(dynamicControl));
         }
 
+        public bool DoesDynamicElementPresent(string locator, string name)
+        {
+            try
+            {
+                return FindDynamicWebElement(locator, name).Displayed;
+
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
         public void Click(string locator)
         {
             FindWebElement(locator).Click();
