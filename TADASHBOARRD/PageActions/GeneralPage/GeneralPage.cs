@@ -212,8 +212,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 Actions action = new Actions(WebDriver.driver);
                 action.MoveToElement(FindWebElement(locator)).Perform();
             }
-
-
         }
         public void OpenDataProfilesPage()
         {
