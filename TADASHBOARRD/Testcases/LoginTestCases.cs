@@ -6,7 +6,7 @@ using TADASHBOARRD.PageActions.GeneralPage;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class LoginTestCases:BaseTest
+    public class LoginTestCases : BaseTest
     {
         [TestMethod]
         public void DA_LOGIN_TC001_Verify_that_user_can_login_specific_repository_successfully_via_Dashboard_login_page_with_correct_credentials()
@@ -14,8 +14,8 @@ namespace TADASHBOARRD.Testcases
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             GeneralPage generalPage = new GeneralPage();
-            string actual= generalPage.GetUserName();
-            CheckTextDisplays(TestData.validUsername, actual);
+            string actualMessage = generalPage.GetUserName();
+            CheckTextDisplays(TestData.validUsername, actualMessage);
             generalPage.Logout();
         }
 
@@ -24,8 +24,8 @@ namespace TADASHBOARRD.Testcases
         {
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.invalidUsername, TestData.invalidPassword);
-            string actual = loginPage.GetTextPopup();
-            CheckTextDisplays(TestData.errorLoginMessage, actual);
+            string actualMessage = loginPage.GetTextPopup();
+            CheckTextDisplays(TestData.errorLoginMessage, actualMessage);
             loginPage.AcceptAlert();
         }
 
@@ -37,8 +37,8 @@ namespace TADASHBOARRD.Testcases
             GeneralPage generalPage = new GeneralPage();
             generalPage.Logout();
             loginPage.Login(TestData.testRepository, TestData.validUsername, TestData.validPassword);
-            string actual = generalPage.GetUserName();
-            CheckTextDisplays(TestData.validUsername, actual);
+            string actualMessage = generalPage.GetUserName();
+            CheckTextDisplays(TestData.validUsername, actualMessage);
             generalPage.Logout();
         }
 
@@ -63,12 +63,9 @@ namespace TADASHBOARRD.Testcases
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.specialUsername, TestData.specialCharactersPassword);
             GeneralPage generalPage = new GeneralPage();
-            string actual = generalPage.GetUserName();
-            CheckTextDisplays(TestData.specialUsername, actual);
+            string actualMessage = generalPage.GetUserName();
+            CheckTextDisplays(TestData.specialUsername, actualMessage);
             generalPage.Logout();
         }
-
-
-
     }
 }
