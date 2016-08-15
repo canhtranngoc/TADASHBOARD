@@ -7,10 +7,12 @@ using TADASHBOARRD.Common;
 
 namespace TADASHBOARRD.PageActions.DataProfilesPage
 {
-    public class DataProfilesPage:CommonActions
+    public class DataProfilesPage : GeneralPage.GeneralPage
     {
         public void OpenCreateProfilePageFromDataProfilesPage()
         {
+            Sleep(1);
+            Click("add new link");
         }
         public void DeleteProfile()
         {

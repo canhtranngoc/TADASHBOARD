@@ -6,7 +6,23 @@ using System.Threading.Tasks;
 
 namespace TADASHBOARRD.PageActions.DataProfilesPage
 {
-    class GeneralSettingsPage
+    class GeneralSettingsPage : GeneralPage.GeneralPage
     {
+        public void ClickNextWithoutName()
+        {
+            Click("next button");
+        }
+        public void ClickFinishWithoutName()
+        {
+            Click("finish button");
+        }
+
+        public void CreateNewProfile(string name, string itemtype, string relateddata)
+        {
+            EnterValue("name textbox", name);
+            EnterValueDropdownList("item type combobox",itemtype);
+            EnterValueDropdownList("related data combobox",relateddata);
+            Click("finish button");
+        }
     }
 }

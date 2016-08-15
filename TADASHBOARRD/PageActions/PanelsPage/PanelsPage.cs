@@ -13,7 +13,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
     {
         public void OpenNewPanelDialog()
         {
-            System.Threading.Thread.Sleep(1000);
+            Sleep(1);
             Click("addnew link");
         }
 

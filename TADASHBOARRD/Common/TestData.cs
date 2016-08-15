@@ -2,7 +2,7 @@
 
 namespace TADASHBOARRD.Common
 {
-    public class TestData :CommonActions
+    public class TestData : CommonActions
     {
         public static string browser = ConfigurationManager.AppSettings["browser"];
         public static string dashBoardURL = ConfigurationManager.AppSettings["url"];
@@ -27,6 +27,18 @@ namespace TADASHBOARRD.Common
         public static string blankPassword = "";
         public static string errorBlankUsernameLoginMessage = "Please enter username";
         public static string addPageName = "test123";
+        public static string panelName = "test" + GetDateTime();
+        //public static string pageName = CommonActions.GetDateTime();
+        public static string blankParentPage = "";
+        public static string blankNumberOfColumns = "";
+        public static string blankDisplayAfter = "";
+        public static string statusNotPublic = "";
+        public static string statusPublic = "public";
+        public static string anotherValidUsername = "dieu.nguyen";
+        public static string anotherValidPassword = "123";
+        public static string errorMessageWhenCreateProfileWithoutName = "Please input profile name";
+        public static string errorMessageWhenCreateProfileWithExitingName = "Data Profile name already exists";
+        public static string profileName = "test" + GetDateTime();
         public static string panelName = "test"+GetDateTime();
         public static string duplicatedPanelName = "Duplicated panel";
         public static string specialPanelName = "Logigear#$%";

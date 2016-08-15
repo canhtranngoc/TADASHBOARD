@@ -6,19 +6,18 @@ using TADASHBOARRD.PageActions.GeneralPage;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class LoginTestCases:BaseTest
+    public class LoginTestCases : BaseTest
     {
-        public LoginPage loginPage;
-        public GeneralPage generalPage;
-
+        private LoginPage loginPage;
+        private GeneralPage generalPage;
         [TestMethod]
         public void DA_LOGIN_TC001_Verify_that_user_can_login_specific_repository_successfully_via_Dashboard_login_page_with_correct_credentials()
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            string actual= generalPage.GetUserName();
-            CheckTextDisplays(TestData.validUsername, actual);
+            string actualUsername = generalPage.GetUserName();
+            CheckTextDisplays(TestData.validUsername, actualUsername);
             generalPage.Logout();
         }
 
@@ -27,8 +26,8 @@ namespace TADASHBOARRD.Testcases
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.invalidUsername, TestData.invalidPassword);
-            string actual = loginPage.GetTextPopup();
-            CheckTextDisplays(TestData.errorLoginMessage, actual);
+            string actualMessage = loginPage.GetTextPopup();
+            CheckTextDisplays(TestData.errorLoginMessage, actualMessage);
             loginPage.AcceptAlert();
         }
 
@@ -40,8 +39,8 @@ namespace TADASHBOARRD.Testcases
             generalPage = new GeneralPage();
             generalPage.Logout();
             loginPage.Login(TestData.testRepository, TestData.validUsername, TestData.validPassword);
-            string actual = generalPage.GetUserName();
-            CheckTextDisplays(TestData.validUsername, actual);
+            string actualUsername = generalPage.GetUserName();
+            CheckTextDisplays(TestData.validUsername, actualUsername);
             generalPage.Logout();
         }
 
@@ -51,8 +50,8 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testUppercasePassword);
             generalPage = new GeneralPage();
-            string actual = generalPage.GetUserName();
-            CheckTextDisplays(actual, TestData.testUsername);
+            string actualUsername = generalPage.GetUserName();
+            CheckTextDisplays(TestData.testUsername, actualUsername);
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testLowercasePassword);
             string actualMessage = generalPage.GetTextPopup();
@@ -66,12 +65,9 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.specialUsername, TestData.specialCharactersPassword);
             generalPage = new GeneralPage();
-            string actual = generalPage.GetUserName();
-            CheckTextDisplays(TestData.specialUsername, actual);
+            string actualUsername = generalPage.GetUserName();
+            CheckTextDisplays(TestData.specialUsername, actualUsername);
             generalPage.Logout();
         }
-
-
-
     }
 }

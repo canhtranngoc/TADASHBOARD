@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
@@ -62,6 +63,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             return FindWebElement(locator).Text;
         }
+
         private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
@@ -97,6 +99,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     content = File.ReadAllText(path + @"\Interfaces\PanelsPage\" + page + ".json");
                     break;
                 case "DataProfilesPage":
+                case "GeneralSettingsPage":
                     content = File.ReadAllText(path + @"\Interfaces\DataProfilesPage\" + page + ".json");
                     break;
                 default:
@@ -117,9 +120,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return null;
         }
 
-        public IWebElement FindWebElement(string name)
+        public IWebElement FindWebElement(string locator)
         {
-            string[] control = GetControlValue(name);
+            string[] control = GetControlValue(locator);
             switch (control[0].ToUpper())
             {
                 case "ID":
@@ -131,6 +134,18 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     return WebDriver.driver.FindElement(By.XPath(control[1]));
             }
+        }
+
+        public void ClickOnDynamicElement(string control, string value)
+        {
+            FindDynamicWebElement(control, value).Click();
+        }
+
+        public IWebElement FindDynamicWebElement(string name, string value)
+        {
+            string[] control = GetControlValue(name);
+            string dynamicControl = string.Format(control[1].ToString(), value);
+            return WebDriver.driver.FindElement(By.XPath(dynamicControl));
         }
 
         public void Click(string locator)
@@ -149,17 +164,22 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).SendKeys(value);
         }
 
-        public void CheckACheckbox(string locator)
+        public void TickCheckbox(string locator)
         {
-            
+            if (FindWebElement(locator).Selected == false)
+            {
+                FindWebElement(locator).Click();
+            }
         }
 
-        public void UnCheckACheckbox(string locator)
+        public void UntickCheckbox(string locator)
         {
-            
+            if (FindWebElement(locator).Selected)
+            {
+                FindWebElement(locator).Click();
+            }
         }
-
-
+        
         public void Logout()
         {
             Sleep(1);
@@ -185,7 +205,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenDataProfilesPage()
         {
             MouseHover("administer tab");
-            Click("create profile tab");
+            Click("data profiles tab");
         }
         public void OpenPanelsPage()
         {
@@ -229,7 +249,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             AcceptAlert();
         }
 
-        public void DeletePages()
+        public void DeleteAllPages()
         {
             Sleep(1);
             string xpath = string.Empty;
@@ -266,7 +286,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                             PerformDelete();
                         }
-                        
                     }
                     pageIndex = pageIndex - 1;
                 }
@@ -306,5 +325,42 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("repository label");
        }
 
+       public string GetSecondPageName()
+       {
+            Sleep(1);
+            return GetText("second page tab");
+       }
+
+        public bool DoesElementPresent(string locator)
+        {
+            try
+            {
+                return FindWebElement(locator).Displayed;
+
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+        public bool DoesDynamicElementPresent(string locator,string name)
+        {
+            try
+            {
+                return FindDynamicWebElement(locator,name).Displayed;
+
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+        public void CheckPageDisplays(string pageName)
+        {
+            bool exist = DoesDynamicElementPresent("random page tab", pageName);
+            Assert.IsTrue(exist);           
+        }
     }
 }
