@@ -173,8 +173,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return FindDynamicWebElement(name, value);
         }
 
-     
-
         public void Click(string locator)
         {
             FindWebElement(locator).Click();
