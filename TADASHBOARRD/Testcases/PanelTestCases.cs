@@ -17,7 +17,7 @@ namespace TADASHBOARRD.Testcases
         public NewPanelDialog newPanelDialog;
 
         [TestMethod]
-        public void DA_PANEL_TC032_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field()
+        public void DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field()
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
@@ -29,10 +29,15 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.specialPanelName, TestData.panelSeries);
             string actual1 = newPanelDialog.GetErrorMessage();
-            //CheckTextDisplays(actual1,TestData.errorInvalidNamePanelPage);
+            // post condition
+            newPanelDialog.AcceptAlert();
+            newPanelDialog.CloseNewPanelDialog();
+            newPanelDialog.Logout();
+            // VP: Message "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|"#{[]{};" is displayed
+            CheckTextDisplays(actual1,TestData.errorInvalidNamePanelPage);
         }
         [TestMethod]
-        public void DA_PANEL_TC030_Verify_that_user_is_not_allowed_to_create_panel_with_duplicated_Display_Name ()
+        public void DA_PANEL_TC032_Verify_that_user_is_not_allowed_to_create_panel_with_duplicated_Display_Name ()
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
@@ -46,11 +51,13 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
             string actual2 = newPanelDialog.GetErrorMessage();
+            //VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
             CheckTextDisplays(actual2,TestData.errorDuplicatedNamePanelPage);
             // post - condition
             newPanelDialog.AcceptAlert();
             newPanelDialog.CloseNewPanelDialog();
             panelsPage.DeleteAllPanels();
+            panelsPage.Logout();
         }
     }
 }
