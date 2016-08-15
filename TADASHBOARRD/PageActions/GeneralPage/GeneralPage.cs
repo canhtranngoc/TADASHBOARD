@@ -24,7 +24,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void waitForAlert(IWebDriver driver)
+        public void WaitForAlert(IWebDriver driver)
         {
             int i = 0;
             while (i++ < 5)

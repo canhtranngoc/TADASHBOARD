@@ -45,7 +45,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenDataProfilesPage();
             dataProfilesPage = new DataProfilesPage();
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
-            // Pre-Condition: Creata a Profile
+            // Pre-Condition: Create a Profile
             generalSettingsPage = new GeneralSettingsPage();
             generalSettingsPage.CreateNewProfile(TestData.profileName,"","");
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();

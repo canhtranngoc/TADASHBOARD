@@ -9,7 +9,7 @@ using System.Threading;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class PanelTestCases : BaseTest
+    public class PanelsTestCases : BaseTest
     {
         private LoginPage loginPage;
         private GeneralPage generalPage;
