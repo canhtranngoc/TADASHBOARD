@@ -12,10 +12,11 @@ namespace TADASHBOARRD.Testcases
         {
             BrowserManager.OpenBrowser(TestData.browser);
         }
+
         [AssemblyCleanup]
         public static void AssemblyCleapUpMethod()
         {
-           BrowserManager.CloseBrowser();
+            BrowserManager.CloseBrowser();
         }
 
         [TestInitialize]
@@ -23,6 +24,7 @@ namespace TADASHBOARRD.Testcases
         {
             NavigateTADashboard();
         }
+
         [TestCleanup]
         public void TestCleanupMothod()
         {

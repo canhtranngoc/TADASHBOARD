@@ -11,7 +11,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
     {
         public void AddNewPanel(string name, string series)
         {
-            System.Threading.Thread.Sleep(1000);
+            Sleep(1);
             EnterValue("display name textbox", name);
             EnterValueDropdownList("series dropdown list", name);
             Click("ok button");
