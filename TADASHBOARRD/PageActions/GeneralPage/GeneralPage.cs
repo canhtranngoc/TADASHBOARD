@@ -388,6 +388,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             return GetText("second page tab");
         }
-
+        public void CheckPageDisplays(string pageName)
+        {
+            bool exist = DoesDynamicElementPresent("random page tab", pageName);
+            Assert.IsTrue(exist);
+        }
     }
 }
