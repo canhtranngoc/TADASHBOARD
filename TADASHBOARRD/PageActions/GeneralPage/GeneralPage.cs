@@ -24,7 +24,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void waitForAlert(IWebDriver driver)
+        public void WaitForAlert(IWebDriver driver)
         {
             int i = 0;
             while (i++ < 5)
@@ -148,10 +148,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return WebDriver.driver.FindElement(By.XPath(dynamicControl));
         }
 
-        //public void Click(string locator)
-        //{
-        //    FindWebElement(locator).Click();
-        //}
 
         public void EnterValue(string locator, string value)
         {
@@ -203,7 +199,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Click("administer tab");
             Click("create panel tab");
-            
+
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
@@ -291,12 +287,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// <summary>
         /// Using Javascript for IE,Chrome
         /// </summary>
-        public void ClickItemByJS(string control)
-        {
-            IWebElement webElement = FindWebElement(control);
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-            executor.ExecuteScript("arguments[0].click();", webElement);
-        }
+        //public void ClickItemByJS(string control)
+        //{
+        //    IWebElement webElement = FindWebElement(control);
+        //    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+        //    executor.ExecuteScript("arguments[0].click();", webElement);
+        //}
 
         public void Click(string locator)
         {
@@ -364,3 +360,5 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
     }
 }
+
+
