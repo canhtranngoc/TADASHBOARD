@@ -232,7 +232,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             AcceptAlert();
         }
 
-        public void DeletePages()
+        public void DeleteAllPages()
         {
             Sleep(1);
             string xpath = string.Empty;
@@ -269,7 +269,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                             PerformDelete();
                         }
-                        
                     }
                     pageIndex = pageIndex - 1;
                 }
@@ -309,5 +308,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("repository label");
        }
 
+       public string GetSecondPageName()
+       {
+           Sleep(1);
+           return GetText("second page tab");
+       }
     }
 }

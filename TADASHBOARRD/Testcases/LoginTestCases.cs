@@ -16,8 +16,8 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            string actualUserName = generalPage.GetUserName();
-            CheckTextDisplays(TestData.validUsername, actualUserName);
+            string actualUsername = generalPage.GetUserName();
+            CheckTextDisplays(TestData.validUsername, actualUsername);
             generalPage.Logout();
         }
 
@@ -39,8 +39,8 @@ namespace TADASHBOARRD.Testcases
             generalPage = new GeneralPage();
             generalPage.Logout();
             loginPage.Login(TestData.testRepository, TestData.validUsername, TestData.validPassword);
-            string actualUserName = generalPage.GetUserName();
-            CheckTextDisplays(TestData.validUsername, actualUserName);
+            string actualUsername = generalPage.GetUserName();
+            CheckTextDisplays(TestData.validUsername, actualUsername);
             generalPage.Logout();
         }
 
@@ -50,8 +50,8 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testUppercasePassword);
             generalPage = new GeneralPage();
-            string actualUserName = generalPage.GetUserName();
-            CheckTextDisplays(TestData.testUsername, actualUserName);
+            string actualUsername = generalPage.GetUserName();
+            CheckTextDisplays(TestData.testUsername, actualUsername);
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testLowercasePassword);
             string actualMessage = generalPage.GetTextPopup();
@@ -65,8 +65,8 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.specialUsername, TestData.specialCharactersPassword);
             generalPage = new GeneralPage();
-            string actualUserName = generalPage.GetUserName();
-            CheckTextDisplays(TestData.specialUsername, actualUserName);
+            string actualUsername = generalPage.GetUserName();
+            CheckTextDisplays(TestData.specialUsername, actualUsername);
             generalPage.Logout();
         }
     }
