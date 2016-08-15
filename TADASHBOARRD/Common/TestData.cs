@@ -39,7 +39,6 @@ namespace TADASHBOARRD.Common
         public static string errorMessageWhenCreateProfileWithoutName = "Please input profile name";
         public static string errorMessageWhenCreateProfileWithExitingName = "Data Profile name already exists";
         public static string profileName = "test" + GetDateTime();
-        public static string panelName = "test"+GetDateTime();
         public static string duplicatedPanelName = "Duplicated panel";
         public static string specialPanelName = "Logigear#$%";
         public static string panelSeries = "Name";

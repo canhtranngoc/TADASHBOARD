@@ -24,7 +24,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-       public void waitForAlert(IWebDriver driver)
+        public void waitForAlert(IWebDriver driver)
         {
             int i = 0;
             while (i++ < 5)
@@ -39,7 +39,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     Console.WriteLine(e);
                     Sleep(1);
                     continue;
-                    
+
                 }
             }
         }
@@ -150,7 +150,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void Click(string locator)
         {
-            FindWebElement(locator).Click();
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                IWebElement webElement = FindWebElement(locator);
+                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                executor.ExecuteScript("arguments[0].click();", webElement);
+            }
+            else
+            {
+                FindWebElement(locator).Click();
+            }
+
         }
 
         public void EnterValue(string locator, string value)
@@ -179,69 +189,47 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 FindWebElement(locator).Click();
             }
         }
-        
+
         public void Logout()
         {
             Sleep(1);
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
-            {
-                ClickItemByJS("user tab");
-                ClickItemByJS("logout tab");
-            }
-            else
-            {
-                MouseHover("user tab");
-                Click("logout tab");
-            }
+            Click("user tab");
+            Click("logout tab");
             // For edge
             Sleep(1);
         }
 
         public void MouseHover(string locator)
         {
-            Actions action = new Actions(WebDriver.driver);
-            action.MoveToElement(FindWebElement(locator)).Perform();
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                IWebElement webElement = FindWebElement(locator);
+                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                executor.ExecuteScript("arguments[0].click();", webElement);
+            }
+            else
+            {
+                Actions action = new Actions(WebDriver.driver);
+                action.MoveToElement(FindWebElement(locator)).Perform();
+            }
+
+
         }
         public void OpenDataProfilesPage()
         {
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
-            {
-                ClickItemByJS("administer tab");
-                ClickItemByJS("data profiles tab");
-            }
-            else
-            {
-                MouseHover("administer tab");
-                Click("data profiles tab");
-            }
+            Click("administer tab");
+            Click("data profiles tab");
         }
         public void OpenPanelsPage()
         {
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
-            {
-                ClickItemByJS("administer tab");
-                ClickItemByJS("create panel tab");
-            }
-            else
-            {
-                MouseHover("administer tab");
-                Click("create panel tab");
-            }
+            Click("administer tab");
+            Click("create panel tab");
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
             Sleep(1);
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
-            {
-                ClickItemByJS("global setting tab");
-                ClickItemByJS("create profile tab");
-            }
-            else
-            {
-                MouseHover("global setting tab");
-                Click("create profile tab");
-            }
-            
+            MouseHover("global setting tab");
+            Click("create profile tab");
         }
         public void OpenExecutionDashboardPage()
         {
@@ -254,32 +242,15 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenAddPageDialog()
         {
             Sleep(1);
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
-            {
-                ClickItemByJS("global setting tab");
-                ClickItemByJS("add page tab");
-            }
-            else
-            {
-                MouseHover("global setting tab");
-                Click("add page tab");
-            }
-                
+            Click("global setting tab");
+            Click("add page tab");
         }
 
         public void PerformDelete()
         {
             Sleep(1);
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
-            {
-                ClickItemByJS("global setting tab");
-                ClickItemByJS("delete tab");
-            }
-            else
-            {
-                MouseHover("global setting tab");
-                Click("delete tab");
-            }
+            Click("global setting tab");
+            Click("delete tab");
             AcceptAlert();
         }
 
@@ -301,15 +272,15 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
 
+                        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        while (locatorClass.Contains("haschild"))
+                        {
+                            Actions builder = new Actions(WebDriver.driver);
+                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                            xpathNext = "/following-sibling::ul/li/a";
+                            xpath = xpath + xpathNext;
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                            while (locatorClass.Contains("haschild"))
-                            {
-                                Actions builder = new Actions(WebDriver.driver);
-                                builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                                xpathNext = "/following-sibling::ul/li/a";
-                                xpath = xpath + xpathNext;
-                                locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                            }
+                        }
                         string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
                         if (text.Equals("Overview") || text.Equals("Execution Dashboard"))
                         {
@@ -328,7 +299,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void Sleep(int second)
         {
-            Thread.Sleep(second*1000);
+            Thread.Sleep(second * 1000);
         }
 
         public void SelectItemByText(string locator, string value)
@@ -353,17 +324,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("user tab");
         }
 
-       public string GetRepository()
-       {
+        public string GetRepository()
+        {
             Sleep(1);
             return GetText("repository label");
-       }
+        }
 
-       public string GetSecondPageName()
-       {
+        public string GetSecondPageName()
+        {
             Sleep(1);
             return GetText("second page tab");
-       }
+        }
 
         public bool DoesElementPresent(string locator)
         {
@@ -378,11 +349,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public bool DoesDynamicElementPresent(string locator,string name)
+        public bool DoesDynamicElementPresent(string locator, string name)
         {
             try
             {
-                return FindDynamicWebElement(locator,name).Displayed;
+                return FindDynamicWebElement(locator, name).Displayed;
 
             }
             catch (NoSuchElementException)
@@ -394,7 +365,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void CheckPageDisplays(string pageName)
         {
             bool exist = DoesDynamicElementPresent("random page tab", pageName);
-            Assert.IsTrue(exist);           
+            Assert.IsTrue(exist);
         }
     }
 }
