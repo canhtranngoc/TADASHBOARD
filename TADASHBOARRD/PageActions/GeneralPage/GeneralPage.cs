@@ -62,6 +62,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             return FindWebElement(locator).Text;
         }
+
         private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
@@ -149,12 +150,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).SendKeys(value);
         }
 
-        public void CheckACheckbox(string locator)
+        public void TickCheckbox(string locator)
         {
             
         }
 
-        public void UnCheckACheckbox(string locator)
+        public void UntickCheckbox(string locator)
         {
             
         }
