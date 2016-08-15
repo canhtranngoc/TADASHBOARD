@@ -19,6 +19,7 @@ namespace TADASHBOARRD.Testcases
             string actualUsername = generalPage.GetUserName();
             // VP: Verify that Dashboard Mainpage appears
             CheckTextDisplays(TestData.validUsername, actualUsername);
+            // post - condition
             generalPage.Logout();
         }
 
