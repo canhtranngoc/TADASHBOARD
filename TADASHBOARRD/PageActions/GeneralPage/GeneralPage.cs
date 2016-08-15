@@ -135,9 +135,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public IWebElement FindWebElement(By locator)
+        public void ClickOnDynamicElement(string control, string value)
         {
-            return WebDriver.driver.FindElement(locator);
+            FindDynamicWebElement(control, value).Click();
         }
 
         public IWebElement FindDynamicWebElement(string name, string value)
