@@ -13,5 +13,12 @@
     "controlName": "checkall link",
     "type": "xpath",
     "value": "//a[.='Check All']"
+  },
+  {
+    "controlName": "delete link",
+    "type": "xpath",
+    "value": "//tbody//a[.='{0}']/../..//a[.='Delete']"
   }
+
+
 ]

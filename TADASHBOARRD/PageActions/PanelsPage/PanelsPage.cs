@@ -19,8 +19,10 @@ namespace TADASHBOARRD.PageActions.PanelsPage
 
         public void DeletePanel(string name)
         {
-            string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
-            WebDriver.driver.FindElement(By.XPath(xpathLinkDelete)).Click();
+            //string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
+            //WebDriver.driver.FindElement(By.XPath(xpathLinkDelete)).Click();
+            // string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
+            FindDynamicWebElements("delete link",name).Click();
             AcceptAlert();
         }
 

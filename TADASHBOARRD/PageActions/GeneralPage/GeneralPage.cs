@@ -160,6 +160,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
            return FindWebElement(name);
         }
 
+        public IWebElement FindDynamicWebElements(string name,string value)
+        {
+            return FindDynamicWebElement(name,value);
+        }
+
         public IWebElement FindDynamicWebElement(string name, string value)
         {
             string[] control = GetControlValue(name);

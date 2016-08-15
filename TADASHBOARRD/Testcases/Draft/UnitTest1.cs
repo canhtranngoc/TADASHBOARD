@@ -26,7 +26,7 @@ namespace TADASHBOARRD.Testcases.Draft
             newPanelDialog.AddNewPanel("ngan", "Name");
             Thread.Sleep(1000);
             panelsPage.DeletePanel("ngan");
-            panelsPage.DeleteAllPanels();
+           // panelsPage.DeleteAllPanels();
 
         }
     }
