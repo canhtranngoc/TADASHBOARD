@@ -204,19 +204,44 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenDataProfilesPage()
         {
-            MouseHover("administer tab");
-            Click("data profiles tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("administer tab");
+                ClickItemByJS("data profiles tab");
+            }
+            else
+            {
+                MouseHover("administer tab");
+                Click("data profiles tab");
+            }
         }
         public void OpenPanelsPage()
         {
-            MouseHover("administer tab");
-            Click("create panel tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("administer tab");
+                ClickItemByJS("create panel tab");
+            }
+            else
+            {
+                MouseHover("administer tab");
+                Click("create panel tab");
+            }
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
             Sleep(1);
-            MouseHover("global setting tab");
-            Click("create profile tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("global setting tab");
+                ClickItemByJS("create profile tab");
+            }
+            else
+            {
+                MouseHover("global setting tab");
+                Click("create profile tab");
+            }
+            
         }
         public void OpenExecutionDashboardPage()
         {
@@ -232,8 +257,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenAddPageDialog()
         {
             Sleep(1);
-            MouseHover("global setting tab");
-            Click("add page tab");
+            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            {
+                ClickItemByJS("global setting tab");
+                ClickItemByJS("add page tab");
+            }
+            else
+            {
+                MouseHover("global setting tab");
+                Click("add page tab");
+            }
+                
         }
 
         public void PerformDelete()
