@@ -21,7 +21,6 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             //string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
             //WebDriver.driver.FindElement(By.XPath(xpathLinkDelete)).Click();
-            // string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
             FindDynamicWebElements("delete link",name).Click();
             AcceptAlert();
         }
