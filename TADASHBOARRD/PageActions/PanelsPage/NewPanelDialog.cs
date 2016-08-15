@@ -13,12 +13,9 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             System.Threading.Thread.Sleep(1000);
             EnterValue("display name textbox", name);
-            SelectItemByText("series dropdown list", series);
+            EnterValueDropdownList("series dropdown list", name);
             Click("ok button");
         }
-        public void DeletePanel()
-        {
-
-        }
+       
     }
 }

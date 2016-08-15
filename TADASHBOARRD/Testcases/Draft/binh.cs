@@ -1,34 +1,31 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TADASHBOARRD.PageActions.LoginPage;
-using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.Common;
-using TADASHBOARRD.PageActions.PanelsPage;
-using System.Threading;
+using TADASHBOARRD.PageActions.GeneralPage;
 
-namespace TADASHBOARRD.Testcases
+namespace TADASHBOARRD.Testcases.Draft
 {
     [TestClass]
-    public class MainPageTestCases:BaseTest
+    public class binh:BaseTest
     {
         [TestMethod]
-        public void DA_MP_TC012_Verify_that_user_is_able_to_add_additional_pages_besides_Overview_page_successfully()
+        public void Binh()
         {
             NavigateTADashboard();
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             GeneralPage generalPage = new GeneralPage();
+            generalPage.DeletePages();
             generalPage.OpenAddPageDialog();
-            NewPageDialog newPageDialog= new NewPageDialog();
-            newPageDialog.CreateNewPage("canh9","", "", "","public");
-
+            NewPageDialog newPageDialog = new NewPageDialog();
+            newPageDialog.CreateNewPage("Binh", "", "", "", "");
             generalPage.OpenAddPageDialog();
-            newPageDialog.CreateNewPage("canh6", "canh9", "", "", "public");
-
+            newPageDialog.CreateNewPage("Binh1", "Binh", "", "", "");
             generalPage.OpenAddPageDialog();
-            newPageDialog.CreateNewPage("canh5", "canh9", "", "", "public");
+            newPageDialog.CreateNewPage("Binh2", "Binh", "", "", "");
 
-
+            generalPage.DeletePages();
         }
     }
 }

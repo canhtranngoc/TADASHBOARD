@@ -77,12 +77,12 @@
     <Compile Include="PageActions\GeneralPage\GeneralPage.cs" />
     <Compile Include="PageActions\GeneralPage\NewPageDialog.cs" />
     <Compile Include="PageActions\LoginPage\LoginPage.cs" />
-    <Compile Include="PageActions\Pages.cs" />
     <Compile Include="PageActions\PanelsPage\NewPanelDialog.cs" />
     <Compile Include="PageActions\PanelsPage\PanelsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testcases\BaseTest.cs" />
     <Compile Include="Testcases\Draft\Dieu2.cs" />
+    <Compile Include="Testcases\Draft\UnitTest1.cs" />
     <Compile Include="Testcases\Draft\Binh1.cs" />
     <Compile Include="Testcases\MainPageTestCases.cs" />
     <Compile Include="Common\TestData.cs" />

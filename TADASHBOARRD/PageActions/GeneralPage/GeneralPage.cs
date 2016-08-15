@@ -23,16 +23,38 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void ClosePopup()
+       public void waitForAlert(IWebDriver driver)
         {
-            Sleep(1);
+            int i = 0;
+            while (i++ < 5)
+            {
+                try
+                {
+                    IAlert alert = driver.SwitchTo().Alert();
+                    break;
+                }
+                catch (NoAlertPresentException e)
+                {
+                    Console.WriteLine(e);
+                    Sleep(1);
+                    continue;
+                    
+                }
+            }
+        }
+
+        public void AcceptAlert()
+        {
+            //Sleep(1);
+            //waitForAlert(WebDriver.driver);
             WebDriver.driver.SwitchTo().Alert().Accept();
             Sleep(1);
         }
 
         public string GetTextPopup()
         {
-            Sleep(1);
+            //Sleep(1);
+            //waitForAlert(WebDriver.driver);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
 
@@ -156,6 +178,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             FindWebElement(locator).SendKeys(value);
         }
 
+        public void EnterValueDropdownList(string locator, string value)
+        {
+            FindWebElement(locator).SendKeys(value);
+        }
+
         public void CheckACheckbox(string locator)
         {
             
@@ -207,11 +234,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
         public void OpenExecutionDashboardPage()
         {
-
+            Click("execution dashboard tab");
         }
         public void OpenOverviewPage()
         {
-
+            Click("overview tab");
         }
         public void OpenNewPanelDialogFromGeneralPage()
         {
@@ -223,7 +250,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("add page tab");
         }
 
-        public void DeletePage()
+        public void PerformDelete()
         {
             Sleep(1);
             if (TestData.browser == "chrome" || TestData.browser == "ie")
@@ -236,8 +263,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 MouseHover("global setting tab");
                 Click("delete tab");
             }
-            ClosePopup();
-
+            AcceptAlert();
         }
 
         public void DeletePages()
@@ -246,6 +272,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
+
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
             int pageIndex = numTab - 2;
             while (pageIndex != 0)
@@ -256,24 +283,25 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     for (int j = 0; j <= numChildren; j++)
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
-                        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                        while (locatorClass.Contains("haschild"))
-                        {
-                            Actions builder = new Actions(WebDriver.driver);
-                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                            xpathNext = "/following-sibling::ul/li/a";
-                            xpath = xpath + xpathNext;
+
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                        }
-                        string name = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
-                        if (name.Equals("Overview") || name.Equals("Execution Dashboard"))
+                            while (locatorClass.Contains("haschild"))
+                            {
+                                Actions builder = new Actions(WebDriver.driver);
+                                builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                                xpathNext = "/following-sibling::ul/li/a";
+                                xpath = xpath + xpathNext;
+                                locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                            }
+                        string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
+                        if (text.Equals("Overview") || text.Equals("Execution Dashboard"))
                         {
                             break;
                         }
                         else
                         {
                             WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                            DeletePage();
+                            PerformDelete();
                         }
                         
                     }
@@ -301,10 +329,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             IWebElement webElement = FindWebElement(control);
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
             executor.ExecuteScript("arguments[0].click();", webElement);
-        }
-        public void ClickItem(string locator)
-        {
-            FindWebElement(locator).Click();
         }
 
         public string GetUserName()
