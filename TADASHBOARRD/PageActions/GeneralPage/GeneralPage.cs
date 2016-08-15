@@ -291,33 +291,26 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     for (int j = 0; j <= numChildren; j++)
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
-                       // xpath = string.Format("//div[@id='main-menu']/div/ul/li[{0}]/a", pageIndex);
-                          locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                      //  locatorClass = FindDynamicWebElements("path child page", pageIndex.ToString()).GetAttribute("class").ToString();
-                        pageIndex = Convert.ToInt32(pageIndex);
-                        while (locatorClass.Contains("haschild"))
-                            {
-                                Actions builder = new Actions(WebDriver.driver);
-                                builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                                xpathNext = "/following-sibling::ul/li/a";
-                                xpath = xpath + xpathNext;
-                                locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                           // locatorClass = FindDynamicWebElements("path child page", pageIndex.ToString()).GetAttribute("class").ToString();
 
+                        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        while (locatorClass.Contains("haschild"))
+                        {
+                            Actions builder = new Actions(WebDriver.driver);
+                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                            xpathNext = "/following-sibling::ul/li/a";
+                            xpath = xpath + xpathNext;
+                            locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
                         }
                         string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
-                       // string text = FindDynamicWebElements("path child page", pageIndex.ToString()).Text;
-
                         if (text.Equals("Overview") || text.Equals("Execution Dashboard"))
                         {
                             break;
                         }
                         else
                         {
-                            FindDynamicWebElements("path child page", pageIndex.ToString()).Click();
+                            WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                             PerformDelete();
                         }
-                        
                     }
                     pageIndex = pageIndex - 1;
                 }
