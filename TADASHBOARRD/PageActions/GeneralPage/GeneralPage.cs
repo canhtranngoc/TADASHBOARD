@@ -153,7 +153,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         //    FindWebElement(locator).Click();
         //}
 
-        }
+
 
         public void EnterValue(string locator, string value)
         {
@@ -205,7 +205,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Click("administer tab");
             Click("create panel tab");
-            
+
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
@@ -366,3 +366,5 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
     }
 }
+
+
