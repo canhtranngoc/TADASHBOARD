@@ -72,10 +72,9 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenEditPageDialog();
             string numberOfColumns = newPageDialog.GetSelectedValueInNumberOfColumns();
             // VP: There are 3 columns on the above created page
-            CheckTextDisplays(numberOfColumns,TestData.newNumberOfColumns);
+            CheckTextDisplays(numberOfColumns, TestData.newNumberOfColumns);
             // Post-Condition
             generalPage.Logout();
         }
-
     }
 }

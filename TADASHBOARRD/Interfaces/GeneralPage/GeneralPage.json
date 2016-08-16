@@ -98,5 +98,10 @@
     "controlName": "create new panel button",
     "type": "xpath",
     "value": "//span[.='Create new panel']"
-  }
+  },
+  //{
+  //  "controlName": "a chart panel instance link",
+  //  "type": "xpath",
+  //  "value": "//a[.='{0}']"
+  //}
 ]

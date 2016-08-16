@@ -229,6 +229,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("create new panel button");
         }
 
+        //public void OpenAChartPanelInstance(string panelName)
+        //{
+        //    Click("choose panels button");
+        //    Click(FindDynamicWebElement(,panelName));
+        //}
+
         public void OpenCreateProfilePageFromGeneralPage()
         {
             Sleep(1);

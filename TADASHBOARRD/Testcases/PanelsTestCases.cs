@@ -82,5 +82,21 @@ namespace TADASHBOARRD.Testcases
             generalPage.DeleteAllPages();
             panelsPage.Logout();
         }
+
+        [TestMethod]
+        public void DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.DeleteAllPages();
+            generalPage.OpenAddPageDialog();
+            newPageDialog = new NewPageDialog();
+            string pageName = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.OpenNewPanelDialogFromChoosePanels();
+            newPanelDialog = new NewPanelDialog();
+            // In-progress.....
+        }
     }
 }
