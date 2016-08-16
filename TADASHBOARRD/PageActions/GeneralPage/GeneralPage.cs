@@ -198,6 +198,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         //    Actions action = new Actions(WebDriver.driver);
         //    action.MoveToElement(FindWebElement(locator)).Perform();
         //}
+
+
+        public void OpenPage(string pageName)
+        {
+            Sleep(1);
+            ClickOnDynamicElement("random page tab", pageName);
+        }
+
         public void OpenDataProfilesPage()
         {
             Click("administer tab");
@@ -241,6 +249,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             Click("global setting tab");
             Click("add page tab");
+        }
+
+        public void OpenEditPageDialog()
+        {
+            Sleep(1);
+            Click("global setting tab");
+            Click("edit page tab");
         }
 
         public void PerformDelete()
@@ -397,6 +412,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public int CountComboboxChildren(string locator)
         {
             return WebDriver.driver.FindElements(By.XPath(locator)).Count;
+        }
+
+        public string GetSelectedValueInComboBox(string locator)
+        {
+            SelectElement selectedValue = new SelectElement(FindWebElement(locator));
+            string wantedText = selectedValue.SelectedOption.Text;
+            return wantedText;
         }
     }
 }

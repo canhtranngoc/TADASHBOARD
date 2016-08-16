@@ -34,6 +34,8 @@ namespace TADASHBOARRD.Common
         public static string defaultDisplayAfter = "";
         public static string statusNotPublic = "";
         public static string statusPublic = "public";
+        public static string newPageName = "Test 1";
+        public static string newNumberOfColumns = "3";
         public static string anotherValidUsername = "dieu.nguyen";
         public static string anotherValidPassword = "123";
         public static string errorMessageWhenCreateProfileWithoutName = "Please input profile name";
