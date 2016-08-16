@@ -58,6 +58,17 @@ namespace TADASHBOARRD.Testcases
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.DeleteAllPages();
+            generalPage.OpenAddPageDialog();
+            newPageDialog = new NewPageDialog();
+            string pageName1 = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            generalPage.OpenAddPageDialog();
+            newPageDialog = new NewPageDialog();
+            string pageName2 = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+
 
         }
     }

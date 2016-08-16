@@ -18,7 +18,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
            
             if (parentPage != "")
             {
-                SelectItemByText("parentpage combobox", parentPage);
+                EnterValueDropdownList("parentpage combobox", parentPage);
             }
 
             if (numberOfColumns != "")

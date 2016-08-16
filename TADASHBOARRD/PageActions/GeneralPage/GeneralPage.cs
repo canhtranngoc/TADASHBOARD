@@ -223,8 +223,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenPanelsPage()
         {
             Click("administer tab");
-            Click("create panel tab");
+            Click("panels tab");
 
+        }
+        public void OpenPanelsFromGeneralPage()
+        {
+            Click("global setting tab");
+            Click("create panel tab");
         }
         public void OpenCreateProfilePageFromGeneralPage()
         {
@@ -274,6 +279,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
 
                         locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        Console.WriteLine(locatorClass);
                         while (locatorClass.Contains("haschild"))
                         {
                             Actions builder = new Actions(WebDriver.driver);
@@ -296,6 +302,41 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     pageIndex = pageIndex - 1;
                 }
             }
+        }
+
+        public void gotoPage(string pageParent, string pageChild)
+        {
+            Sleep(1);
+            string xpath = string.Empty;
+            string xpathNext = string.Empty;
+            string locatorClass = string.Empty;
+            int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
+            int pageIndex = numTab - 2;
+            int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
+
+            xpath = string.Format("//a[.='{0}']", pageParent);
+            WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+            locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+            while (locatorClass.Contains("haschild"))
+            {
+                Actions builder = new Actions(WebDriver.driver);
+                builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']",pageChild);
+                xpath = xpath + xpathNext;
+                string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
+                if (text == pageChild)
+                {
+                    WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                }
+                else
+                {
+                    locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                }
+
+            }
+            //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+
+            //PerformDelete();
         }
 
         public void Sleep(int second)

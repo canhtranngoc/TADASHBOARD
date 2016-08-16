@@ -32,6 +32,7 @@ namespace TADASHBOARRD.Common
         public static string blankParentPage = "";
         public static string blankNumberOfColumns = "";
         public static string blankDisplayAfter = "";
+        public static string overviewPage = "Overview";
         public static string statusNotPublic = "";
         public static string statusPublic = "public";
         public static string anotherValidUsername = "dieu.nguyen";

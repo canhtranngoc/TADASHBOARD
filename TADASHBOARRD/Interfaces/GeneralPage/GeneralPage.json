@@ -25,9 +25,14 @@
     "value": "//a[.='Create Profile']"
   },
   {
-    "controlName": "create panel tab",
+    "controlName": "panels tab",
     "type": "xpath",
     "value": "//a[.='Panels']"
+  },
+   {
+    "controlName": "create panel tab",
+    "type": "xpath",
+    "value": "//a[.='Create Panel']"
   },
   {
     "controlName": "edit tab",

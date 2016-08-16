@@ -15,6 +15,7 @@ namespace TADASHBOARRD.Testcases
         private GeneralPage generalPage;
         private PanelsPage panelsPage;
         private NewPanelDialog newPanelDialog;
+        private NewPageDialog newPageDialog;
 
         [TestMethod]
         public void DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field()
@@ -37,7 +38,7 @@ namespace TADASHBOARRD.Testcases
             CheckTextDisplays(actualInvalidNameMessage, TestData.errorInvalidNamePanelPage);
         }
         [TestMethod]
-        public void DA_PANEL_TC032_Verify_that_user_is_not_allowed_to_create_panel_with_duplicated_Display_Name ()
+        public void DA_PANEL_TC032_Verify_that_user_is_not_allowed_to_create_panel_with_duplicated_Display_Name()
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
@@ -58,6 +59,22 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog.CloseNewPanelDialog();
             panelsPage.DeleteAllPanels();
             panelsPage.Logout();
+        }
+
+        [TestMethod]
+        public void DA_PANEL_TC037_Verify_that_Category_Series_and_Caption_field_are_enabled_and_disabled_correctly_corresponding_to_each_type_of_the_Chart_Type()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.DeleteAllPages();
+            generalPage.OpenAddPageDialog();
+            newPageDialog = new NewPageDialog();
+            string pageName = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusNotPublic);
+          
+
+
         }
     }
 }
