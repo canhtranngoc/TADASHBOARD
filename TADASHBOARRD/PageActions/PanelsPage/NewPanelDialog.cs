@@ -24,6 +24,14 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             Click("cancel button");
         }
-       
+        public void CheckChartTypeOptions()
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                string actual = FindDynamicWebElement("chart type child", i.ToString()).Text;
+                i = Convert.ToInt32(i);
+                CheckTextDisplays(TestData.chartTypeArray[i], actual);
+            }
+        }
     }
 }

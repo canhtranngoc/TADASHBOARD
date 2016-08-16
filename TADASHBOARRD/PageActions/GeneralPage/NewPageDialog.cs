@@ -13,9 +13,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
     {
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status)
         {
-            Sleep(1);
+            Thread.Sleep(1000);
             EnterValue("pagename textbox", pageName);
-           
+
             if (parentPage != "")
             {
                 EnterValueDropdownList("parentpage combobox", parentPage);
@@ -35,8 +35,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 TickCheckbox("public checkbox");
             }
 
-            Sleep(1);
             Click("ok button");
+
         }
     }
 }

@@ -231,12 +231,25 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("global setting tab");
             Click("create panel tab");
         }
+
+        public void OpenNewPanelDialogFromGlobalSetting()
+        {
+            Click("global setting tab");
+            Click("create panel tab");
+        }
+        public void OpenNewPanelDialogFromChoosePanels()
+        {
+            Click("choose panels button");
+            Click("create new panel button");
+        }
+
         public void OpenCreateProfilePageFromGeneralPage()
         {
             Sleep(1);
             Click("global setting tab");
             Click("create profile tab");
         }
+
         public void OpenExecutionDashboardPage()
         {
             Click("execution dashboard tab");
