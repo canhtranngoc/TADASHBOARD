@@ -52,5 +52,13 @@ namespace TADASHBOARRD.Testcases
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage.DeleteAllPages();
         }
+
+        [TestMethod]
+        public void DA_MP_TC020_Verify_that_user_is_able_to_delete_sibbling_page_as_long_as_that_page_has_not_children_page_under_it()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+
+        }
     }
 }
