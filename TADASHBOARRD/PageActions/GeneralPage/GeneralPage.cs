@@ -353,7 +353,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             try
             {
                 return FindWebElement(locator).Displayed;
-
             }
             catch (NoSuchElementException)
             {
