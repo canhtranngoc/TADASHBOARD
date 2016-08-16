@@ -22,7 +22,7 @@
   {
     "controlName": "chart type combobox",
     "type": "xpath",
-    "value": "//input[@id = 'cbbChartType']"
+    "value": "//select[@id ='cbbChartType']"
   },
   {
     "controlName": "chart type child",

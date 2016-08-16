@@ -53,7 +53,7 @@ namespace TADASHBOARRD.Testcases
             //newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
             string actualDuplicateMessage = newPanelDialog.GetErrorMessage();
-            //VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
+            // VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
             CheckTextDisplays(actualDuplicateMessage, TestData.errorDuplicatedNamePanelPage);
             // Post-Condition
             newPanelDialog.AcceptAlert();
@@ -74,7 +74,13 @@ namespace TADASHBOARRD.Testcases
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             generalPage.OpenNewPanelDialogFromChoosePanels();
+            newPanelDialog = new NewPanelDialog();
+            // VP: Check that 'Chart Type' are listed 5 options: 'Pie', 'Single Bar', 'Stacked Bar', 'Group Bar' and 'Line'
             newPanelDialog.CheckChartTypeOptions();
+            newPanelDialog.CloseNewPanelDialog();
+            // Post-Condition
+            generalPage.DeleteAllPages();
+            panelsPage.Logout();
         }
     }
 }

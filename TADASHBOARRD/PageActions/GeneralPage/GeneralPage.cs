@@ -64,6 +64,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return FindWebElement(locator).Text;
         }
 
+        public string GetTextDynamicElement(string locator, string value)
+        {
+            return FindDynamicWebElement(locator, value).Text;
+        }
+
         private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
@@ -136,9 +141,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void ClickOnDynamicElement(string control, string value)
+        public void ClickOnDynamicElement(string locator, string value)
         {
-            FindDynamicWebElement(control, value).Click();
+            FindDynamicWebElement(locator, value).Click();
         }
 
         public IWebElement FindDynamicWebElement(string name, string value)
@@ -148,6 +153,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return WebDriver.driver.FindElement(By.XPath(dynamicControl));
         }
 
+        //public IWebElement FindDynamicWebElements(string name, string value)
+        //{
+        //}
 
         public void EnterValue(string locator, string value)
         {
@@ -370,6 +378,25 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             bool exist = DoesDynamicElementPresent("random page tab", pageName);
             Assert.IsTrue(exist);
+        }
+        public void CheckOptionsPresent(string locator, string[] array)
+        {
+            // Wait 1 second for the Dialog to load
+            Sleep(1);
+            int count = CountComboboxChildren(locator);
+            Console.WriteLine(count);
+            for (int i = 1; i <= count; i++)
+            {
+                string actual = GetTextDynamicElement("item type combobox child", i.ToString());
+                Console.WriteLine(actual);
+                i = Convert.ToInt32(i);
+                CheckTextDisplays(array[i - 1], actual);
+            }
+        }
+
+        public int CountComboboxChildren(string locator)
+        {
+            return WebDriver.driver.FindElements(By.XPath(locator)).Count;
         }
     }
 }

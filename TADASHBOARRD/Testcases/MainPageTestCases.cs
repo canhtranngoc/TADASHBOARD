@@ -30,6 +30,7 @@ namespace TADASHBOARRD.Testcases
             CheckTextDisplays(pageName, actualPageName);
             // Post-Condition
             generalPage.DeleteAllPages();
+            generalPage.Logout();
         }
 
         [TestMethod]
@@ -51,6 +52,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage.DeleteAllPages();
+            generalPage.Logout();
         }
     }
 }

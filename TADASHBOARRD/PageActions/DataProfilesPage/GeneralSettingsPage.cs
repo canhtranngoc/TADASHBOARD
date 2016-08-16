@@ -16,6 +16,10 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         {
             Click("finish button");
         }
+        public void CancelGeneralSettings()
+        {
+            Click("cancel button");
+        }
 
         public void CreateNewProfile(string name, string itemtype, string relateddata)
         {

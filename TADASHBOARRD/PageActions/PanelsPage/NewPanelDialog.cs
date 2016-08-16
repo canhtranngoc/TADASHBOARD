@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TADASHBOARRD.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+
 
 namespace TADASHBOARRD.PageActions.PanelsPage
 {
-    public class NewPanelDialog: GeneralPage.GeneralPage
+    public class NewPanelDialog : GeneralPage.GeneralPage
     {
         public void AddNewPanel(string name, string series)
         {
@@ -26,11 +29,14 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         }
         public void CheckChartTypeOptions()
         {
+            // Wait 1 second for the New Panel Dialog to load
+            Sleep(1);
             for (int i = 1; i <= 5; i++)
             {
-                string actual = FindDynamicWebElement("chart type child", i.ToString()).Text;
+                string actual = GetTextDynamicElement("chart type child", i.ToString());
+                Console.WriteLine(actual);
                 i = Convert.ToInt32(i);
-                CheckTextDisplays(TestData.chartTypeArray[i], actual);
+                CheckTextDisplays(TestData.chartTypeArray[i - 1], actual);
             }
         }
     }

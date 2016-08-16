@@ -47,7 +47,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenDataProfilesPage();
             dataProfilesPage = new DataProfilesPage();
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
-            //Pre-Condition: Creata a Profile
+            //Pre-Condition: Create a Profile
             generalSettingsPage = new GeneralSettingsPage();
             generalSettingsPage.CreateNewProfile(TestData.profileName,TestData.defaultItemType,TestData.defaultRelatedData);
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
@@ -60,6 +60,23 @@ namespace TADASHBOARRD.Testcases
             generalPage.Logout();
             // VP: Check dialog message "Data Profile name already exists"
             CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithExitingName, actualMessage);
+        }
+
+        [TestMethod]
+        public void DA_DP_TC072_Verify_that_all_data_profile_types_are_listed_under_Item_Type_dropped_down_menu()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.OpenDataProfilesPage();
+            dataProfilesPage = new DataProfilesPage();
+            dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
+            generalSettingsPage = new GeneralSettingsPage();
+            generalSettingsPage.CheckOptionsPresent("//select[@id='cbbEntityType']/option", TestData.itemTypeArray);
+            generalSettingsPage.CancelGeneralSettings();
+            //Post-Condition
+            dataProfilesPage.Logout();
+
         }
     }
 }
