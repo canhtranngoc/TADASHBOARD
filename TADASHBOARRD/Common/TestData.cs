@@ -29,9 +29,9 @@ namespace TADASHBOARRD.Common
         public static string addPageName = "test123";
         public static string panelName = "test" + GetDateTime();
         //public static string pageName = CommonActions.GetDateTime();
-        public static string blankParentPage = "";
-        public static string blankNumberOfColumns = "";
-        public static string blankDisplayAfter = "";
+        public static string defaultParentPage = "";
+        public static string defaultNumberOfColumns = "";
+        public static string defaultDisplayAfter = "";
         public static string statusNotPublic = "";
         public static string statusPublic = "public";
         public static string anotherValidUsername = "dieu.nguyen";
@@ -39,10 +39,13 @@ namespace TADASHBOARRD.Common
         public static string errorMessageWhenCreateProfileWithoutName = "Please input profile name";
         public static string errorMessageWhenCreateProfileWithExitingName = "Data Profile name already exists";
         public static string profileName = "test" + GetDateTime();
+        public static string defaultItemType = "";
+        public static string defaultRelatedData = "";
         public static string duplicatedPanelName = "Duplicated panel";
         public static string specialPanelName = "Logigear#$%";
         public static string panelSeries = "Name";
         public static string errorInvalidNamePanelPage = "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"#{[]{};";
         public static string errorDuplicatedNamePanelPage = "Duplicated panel already exists. Please enter a different name.";
+        public static string [] chartTypeArray = {"Pie", "Single Bar", "Stacked Bar", "Group Bar", "Line"};
     }
 }
