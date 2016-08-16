@@ -74,6 +74,7 @@ namespace TADASHBOARRD.Testcases
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             generalPage.OpenNewPanelDialogFromChoosePanels();
+            newPanelDialog.CheckChartTypeOptions();
         }
     }
 }
