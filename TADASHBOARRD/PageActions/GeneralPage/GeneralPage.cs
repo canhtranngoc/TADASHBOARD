@@ -394,20 +394,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             bool exist = DoesDynamicElementPresent("random page tab", pageName);
             Assert.IsTrue(exist);
         }
-        public void CheckOptionsPresent(string locator, string[] array)
-        {
-            // Wait 1 second for the Dialog to load
-            Sleep(1);
-            int count = CountComboboxChildren(locator);
-            Console.WriteLine(count);
-            for (int i = 1; i <= count; i++)
-            {
-                string actual = GetTextDynamicElement("item type combobox child", i.ToString());
-                Console.WriteLine(actual);
-                i = Convert.ToInt32(i);
-                CheckTextDisplays(array[i - 1], actual);
-            }
-        }
 
         public int CountComboboxChildren(string locator)
         {

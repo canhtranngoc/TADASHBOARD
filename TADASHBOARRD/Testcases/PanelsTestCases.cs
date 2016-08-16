@@ -80,7 +80,7 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog.CloseNewPanelDialog();
             // Post-Condition
             generalPage.DeleteAllPages();
-            panelsPage.Logout();
+            generalPage.Logout();
         }
     }
 }

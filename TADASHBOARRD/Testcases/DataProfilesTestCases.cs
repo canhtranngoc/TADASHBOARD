@@ -72,11 +72,10 @@ namespace TADASHBOARRD.Testcases
             dataProfilesPage = new DataProfilesPage();
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
             generalSettingsPage = new GeneralSettingsPage();
-            generalSettingsPage.CheckOptionsPresent("//select[@id='cbbEntityType']/option", TestData.itemTypeArray);
+            generalSettingsPage.CheckItemTypeOptions();
             generalSettingsPage.CancelGeneralSettings();
             //Post-Condition
             dataProfilesPage.Logout();
-
         }
     }
 }
