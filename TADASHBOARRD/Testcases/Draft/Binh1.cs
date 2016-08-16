@@ -17,7 +17,7 @@ namespace TADASHBOARRD.Testcases.Draft
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             GeneralPage generalPage = new GeneralPage();
-            generalPage.DeletePages();
+            generalPage.PerformDelete();
             generalPage.OpenAddPageDialog();
             NewPageDialog newPageDialog = new NewPageDialog();
             newPageDialog.CreateNewPage("Binh", "", "", "", "");
@@ -25,8 +25,7 @@ namespace TADASHBOARRD.Testcases.Draft
             newPageDialog.CreateNewPage("Binh1", "Binh", "", "", "");
             generalPage.OpenAddPageDialog();
             newPageDialog.CreateNewPage("Binh2", "Binh", "", "", "");
-            
-            generalPage.DeletePages();
+            generalPage.PerformDelete();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace TADASHBOARRD.PageActions.LoginPage
     {
         public void Login(string repository, string username, string password)
         {
-            SelectItemByText("repository combobox", reponsitory);
+            SelectItemByText("repository combobox", repository);
             EnterValue("username textbox", username);
             EnterValue("password textbox", password);
             Click("login button");
