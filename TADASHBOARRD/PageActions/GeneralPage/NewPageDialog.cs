@@ -38,5 +38,44 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("ok button");
 
         }
+        public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus)
+        {
+
+            Thread.Sleep(1000);
+            EnterValue("pagename textbox", newPageName);
+
+            if (newParentPage != "")
+            {
+                EnterValueDropdownList("parentpage combobox", newParentPage);
+            }
+
+            if (newNumberOfColumns != "")
+            {
+                SelectItemByText("numberofcolumns combobox", newNumberOfColumns);
+            }
+            if (newDisplayAfter != "")
+            {
+                SelectItemByText("displayafter combobox", newDisplayAfter);
+            }
+
+            if (newStatus == "public")
+            {
+                TickCheckbox("public checkbox");
+            }
+
+            if (newStatus == "unpublic")
+            {
+                UntickCheckbox("public checkbox");
+            }
+
+            Click("ok button");
+
+        }
+
+        public string GetSelectedValueInNumberOfColumns()
+        {
+            Sleep(1);
+            return GetSelectedValueInComboBox("numberofcolumns combobox");
+        }
     }
 }
