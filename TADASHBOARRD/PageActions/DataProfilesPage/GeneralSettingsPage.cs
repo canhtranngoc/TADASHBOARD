@@ -35,11 +35,9 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             // Wait 1 second for the Dialog to load
             Sleep(1);
             int count = CountComboboxChildren("//select[@id='cbbEntityType']/option");
-            //Console.WriteLine(count);
             for (int i = 1; i <= count; i++)
             {
                 string actual = GetTextDynamicElement("item type combobox child", i.ToString());
-                Console.WriteLine(actual);
                 i = Convert.ToInt32(i);
                 CheckTextDisplays(TestData.itemTypeArray[i - 1], actual);
             }

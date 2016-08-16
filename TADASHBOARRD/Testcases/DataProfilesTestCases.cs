@@ -14,6 +14,7 @@ namespace TADASHBOARRD.Testcases
         private GeneralPage generalPage;
         private DataProfilesPage dataProfilesPage;
         private GeneralSettingsPage generalSettingsPage;
+
         [TestMethod]
         public void DA_DP_TC069_Verify_that_user_is_unable_to_proceed_to_next_step_or_finish_creating_data_profile_if_Name_field_is_left_empty()
         {
@@ -30,7 +31,7 @@ namespace TADASHBOARRD.Testcases
             generalSettingsPage.ClickFinishWithoutName();
             string actualMessage2 = generalPage.GetTextPopup();
             generalSettingsPage.AcceptAlert();
-            //Post-Condition
+            // Post-Condition
             generalPage.Logout();
             // VP: Check dialog message "Please input profile name" appears
             CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithoutName, actualMessage1);
@@ -47,7 +48,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenDataProfilesPage();
             dataProfilesPage = new DataProfilesPage();
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
-            //Pre-Condition: Create a Profile
+            // Pre-Condition: Create a Profile
             generalSettingsPage = new GeneralSettingsPage();
             generalSettingsPage.CreateNewProfile(TestData.profileName,TestData.defaultItemType,TestData.defaultRelatedData);
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
@@ -55,7 +56,7 @@ namespace TADASHBOARRD.Testcases
             string actualMessage= generalPage.GetTextPopup();
             generalSettingsPage.AcceptAlert();
             generalSettingsPage.OpenDataProfilesPage();
-            //Post-Condition
+            // Post-Condition
             dataProfilesPage.DeleteProfile(TestData.profileName);
             generalPage.Logout();
             // VP: Check dialog message "Data Profile name already exists"
@@ -72,6 +73,7 @@ namespace TADASHBOARRD.Testcases
             dataProfilesPage = new DataProfilesPage();
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
             generalSettingsPage = new GeneralSettingsPage();
+            // VP: Check all data profile types are listed under "Item Type" dropped down menu in create profile page
             generalSettingsPage.CheckItemTypeOptions();
             generalSettingsPage.CancelGeneralSettings();
             //Post-Condition

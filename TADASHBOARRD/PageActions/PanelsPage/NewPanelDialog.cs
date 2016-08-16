@@ -35,7 +35,6 @@ namespace TADASHBOARRD.PageActions.PanelsPage
             for (int i = 1; i <= count; i++)
             {
                 string actual = GetTextDynamicElement("chart type child", i.ToString());
-                Console.WriteLine(actual);
                 i = Convert.ToInt32(i);
                 CheckTextDisplays(TestData.chartTypeArray[i - 1], actual);
             }
