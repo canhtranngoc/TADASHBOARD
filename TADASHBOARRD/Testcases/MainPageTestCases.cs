@@ -11,6 +11,7 @@ namespace TADASHBOARRD.Testcases
         private LoginPage loginPage;
         private GeneralPage generalPage;
         private NewPageDialog newPageDialog;
+        private EditPageDialog editPageDialog;
 
         [TestMethod]
         public void DA_MP_TC020_Verify_that_user_is_able_to_delete_sibbling_page_as_long_as_that_page_has_not_children_page_under_it()
@@ -46,12 +47,15 @@ namespace TADASHBOARRD.Testcases
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             generalPage.OpenPage(pageName);
             generalPage.OpenEditPageDialog();
-            newPageDialog.EditPage(TestData.newPageName, TestData.defaultParentPage, TestData.newNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            editPageDialog = new EditPageDialog();
+            editPageDialog.EditPage("Test " + pageName, TestData.defaultParentPage, TestData.newNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.OpenPage("Test " + pageName);
             generalPage.OpenEditPageDialog();
-            string numberOfColumns = newPageDialog.GetSelectedValueInNumberOfColumns();
             // VP: There are 3 columns on the above created page
+            string numberOfColumns = editPageDialog.GetSelectedValueInNumberOfColumns();
             CheckTextDisplays(numberOfColumns, TestData.newNumberOfColumns);
             // Post-Condition
+            editPageDialog.CancelEditPageDialog();
             generalPage.DeleteAllPages();
             generalPage.Logout();
         }
