@@ -11,7 +11,6 @@ namespace TADASHBOARRD.Testcases.Draft
     [TestClass]
     public class UnitTest1: BaseTest
     {
-        [TestMethod]
         public void TestMethod123()
         {
             LoginPage loginPage = new LoginPage();
