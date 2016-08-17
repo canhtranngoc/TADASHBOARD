@@ -317,18 +317,23 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void gotoPage(string pageParent, string pageChild)
+        public void gotoPage(string path)
         {
             Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
-            int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
-            int pageIndex = numTab - 2;
-            int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
-
-            xpath = string.Format("//a[.='{0}']", pageParent);
-            WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+            string[] element = path.Split('/');
+          //  int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
+          //  int pageIndex = numTab - 2;
+          //  int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
+            if (element.Length==1)
+            {
+                xpath = string.Format("//a[.='{0}']", element[0]);
+                //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                Click(xpath);
+            }
+            
             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
             while (locatorClass.Contains("haschild"))
             {
