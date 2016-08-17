@@ -29,7 +29,19 @@ namespace TADASHBOARRD.Testcases
         [TestCleanup]
         public void TestCleanupMothod()
         {
-        WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+            switch (TestContext.TestName)
+            {
+                case "DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field":
+                    newPanelDialog.AcceptAlert();
+                    newPanelDialog.CloseNewPanelDialog();
+                    newPanelDialog.Logout();
+                    break;
+
+                default:
+                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                    break;
+            }
+
         }
 
     }
