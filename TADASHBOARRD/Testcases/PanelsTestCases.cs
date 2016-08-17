@@ -23,6 +23,7 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
+            //
             Thread.Sleep(1000);
             generalPage.OpenPanelsPage();
             panelsPage = new PanelsPage();
@@ -53,6 +54,8 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
             string actualDuplicateMessage = newPanelDialog.GetErrorMessage();
             // VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
+            Console.WriteLine(actualDuplicateMessage);
+            Console.WriteLine(TestData.errorDuplicatedNamePanelPage);
             CheckTextDisplays(actualDuplicateMessage, TestData.errorDuplicatedNamePanelPage);
             // Post-Condition
             newPanelDialog.AcceptAlert();
