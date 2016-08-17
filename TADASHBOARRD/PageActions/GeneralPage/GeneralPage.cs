@@ -333,8 +333,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                 Click(xpath);
             }
-            
+            else
+            {
+                xpathNext = 
+            }
             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+
             while (locatorClass.Contains("haschild"))
             {
                 Actions builder = new Actions(WebDriver.driver);
