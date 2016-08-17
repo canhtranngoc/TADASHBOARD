@@ -88,13 +88,12 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            generalPage.DeleteAllPages();
-            generalPage.OpenAddPageDialog();
+                        generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
-            generalPage.OpenNewPanelDialogFromChoosePanels();
-            newPanelDialog = new NewPanelDialog();
+            //generalPage.OpenNewPanelDialogFromChoosePanels();
+            //newPanelDialog = new NewPanelDialog();
             // In-progress.....
         }
     }

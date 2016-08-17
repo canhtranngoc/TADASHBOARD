@@ -6,6 +6,7 @@ using System.Threading;
 using TADASHBOARRD.Common;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -229,11 +230,27 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("create new panel button");
         }
 
-        //public void OpenAChartPanelInstance(string panelName)
-        //{
-        //    Click("choose panels button");
-        //    Click(FindDynamicWebElement(,panelName));
-        //}
+        public void OpenRandomChartPanelInstance()
+        {
+            Click("choose panels button");
+            Click("random chart instance link");
+
+        }
+
+        public string RandomChartPanelInstance()
+        {
+
+            int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
+            int randomRow = new Random().Next(1, rowCount);
+
+            int colunmCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr[" + randomRow + "]/td")).Count;
+            int randomColumn = new Random().Next(1, rowCount);
+
+            IWebElement a = WebDriver.driver.FindElement(By.XPath("//div[@class='ptit pchart']/../table//tr[{0}]/td[{1}]"));
+            return RandomChartPanelInstance();
+
+
+        }
 
         public void OpenCreateProfilePageFromGeneralPage()
         {
