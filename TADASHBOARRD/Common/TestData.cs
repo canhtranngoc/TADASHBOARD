@@ -43,11 +43,11 @@ namespace TADASHBOARRD.Common
         public static string profileName = "test" + GetDateTime();
         public static string defaultItemType = "";
         public static string defaultRelatedData = "";
-        public static string duplicatedPanelName = "Duplicated panel";
+        public static string duplicatedPanelName = "Duplicated panel"+ GetDateTime();
         public static string specialPanelName = "Logigear#$%";
         public static string panelSeries = "Name";
-        public static string errorInvalidNamePanelPage = "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"#{[]{};";
-        public static string errorDuplicatedNamePanelPage = "Duplicated panel already exists. Please enter a different name.";
+        public static string errorInvalidNamePanelPage = " Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"#{[]{};";
+        public static string errorDuplicatedNamePanelPage = duplicatedPanelName + " already exists. Please enter a different name.";
         public static string [] chartTypeArray = {"Pie", "Single Bar", "Stacked Bar", "Group Bar", "Line"};
         public static string [] itemTypeArray = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets", "Actions", "Interface Entities", "Test Results", "Test Case Results", "Test Suites", "Bugs" };
         public static string actionFinish = "finish";
