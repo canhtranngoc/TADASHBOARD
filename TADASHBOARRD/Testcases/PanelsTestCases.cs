@@ -50,7 +50,6 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
             panelsPage.OpenNewPanelDialog();
-            //newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
             string actualDuplicateMessage = newPanelDialog.GetErrorMessage();
             // VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
@@ -80,7 +79,7 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog.CloseNewPanelDialog();
             // Post-Condition
             generalPage.DeleteAllPages();
-            panelsPage.Logout();
+            generalPage.Logout();
         }
 
         [TestMethod]

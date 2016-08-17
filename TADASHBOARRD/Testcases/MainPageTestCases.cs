@@ -14,6 +14,7 @@ namespace TADASHBOARRD.Testcases
         private LoginPage loginPage;
         private GeneralPage generalPage;
         private NewPageDialog newPageDialog;
+
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_is_able_to_add_additional_pages_besides_Overview_page_successfully()
         {

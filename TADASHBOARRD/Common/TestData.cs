@@ -49,6 +49,6 @@ namespace TADASHBOARRD.Common
         public static string errorInvalidNamePanelPage = "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"#{[]{};";
         public static string errorDuplicatedNamePanelPage = "Duplicated panel already exists. Please enter a different name.";
         public static string [] chartTypeArray = {"Pie", "Single Bar", "Stacked Bar", "Group Bar", "Line"};
-        public static string[] itemTypeArray = {"test modules", "test cases", "test objectives", "data sets", "actions", "interface entities", "test results", "test case results", "test suites", "bugs" };
+        public static string [] itemTypeArray = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets", "Actions", "Interface Entities", "Test Results", "Test Case Results", "Test Suites", "Bugs" };
     }
 }

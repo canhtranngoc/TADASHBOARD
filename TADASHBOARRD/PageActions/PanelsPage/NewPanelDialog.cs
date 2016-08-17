@@ -31,10 +31,10 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             // Wait 1 second for the New Panel Dialog to load
             Sleep(1);
-            for (int i = 1; i <= 5; i++)
+            int count = CountComboboxChildren("//select[@id='cbbChartType']/option");
+            for (int i = 1; i <= count; i++)
             {
                 string actual = GetTextDynamicElement("chart type child", i.ToString());
-                Console.WriteLine(actual);
                 i = Convert.ToInt32(i);
                 CheckTextDisplays(TestData.chartTypeArray[i - 1], actual);
             }
