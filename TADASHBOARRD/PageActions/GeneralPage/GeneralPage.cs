@@ -283,17 +283,32 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     for (int j = 0; j <= numChildren; j++)
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
-
+                        Console.WriteLine(xpath);
                         locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        Console.WriteLine(locatorClass);
                         while (locatorClass.Contains("haschild"))
                         {
-                            Actions builder = new Actions(WebDriver.driver);
-                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                            if (TestData.browser == "chrome" || TestData.browser == "ie")
+                            {
+                                IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
+                                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                                executor.ExecuteScript("arguments[0].click();", webElement);
+                            }
+                            else
+                            {
+                                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                            }
+                            //Actions builder = new Actions(WebDriver.driver);
+                            //builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
                             xpathNext = "/following-sibling::ul/li/a";
+                            Console.WriteLine(xpathNext);
                             xpath = xpath + xpathNext;
+                            Console.WriteLine(xpath);
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                            Console.WriteLine(locatorClass);
                         }
                         string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
+                        Console.WriteLine(text);
                         if (text.Equals("Overview") || text.Equals("Execution Dashboard"))
                         {
                             break;
@@ -305,6 +320,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         }
                     }
                     pageIndex = pageIndex - 1;
+                    Console.WriteLine(pageIndex);
                 }
             }
         }
