@@ -14,7 +14,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         public void OpenNewPanelDialog()
         {
             Sleep(1);
-            Click("addnew link");
+            Click("add new link");
         }
 
         public void DeletePanel(string name)
@@ -28,13 +28,13 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             try
             {
-                Click("checkall link");
+                Click("check all link");
                 Click("delete link");
                 AcceptAlert();
             }
             catch (WebDriverException)
             {
-                Console.WriteLine("no panels display");
+                Console.WriteLine("no panel displays");
             }
         }
 

@@ -47,16 +47,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void AcceptAlert()
         {
-            //Sleep(1);
-            //waitForAlert(WebDriver.driver);
+            WaitForAlert(WebDriver.driver);
             WebDriver.driver.SwitchTo().Alert().Accept();
             Sleep(1);
         }
 
         public string GetTextPopup()
         {
-            Sleep(1);
-            //waitForAlert(WebDriver.driver);
+            WaitForAlert(WebDriver.driver);
             return WebDriver.driver.SwitchTo().Alert().Text;
         }
 

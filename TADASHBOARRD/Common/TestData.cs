@@ -56,5 +56,13 @@ namespace TADASHBOARRD.Common
         public static string [] itemTypeArray = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets", "Actions", "Interface Entities", "Test Results", "Test Case Results", "Test Suites", "Bugs" };
         public static string actionFinish = "finish";
         public static string actionNext = "next";
+        public static string displayFields = "Display Fields";
+        public static string sortFields = "Sort Fields";
+        public static string filterFields = "Filter Fields";
+        public static string statisticFields = "Statistic Fields";
+        public static string displaySubFields = "Display Sub-Fields";
+        public static string sortSubFields = "Sort Sub-Fields";
+        public static string filterSubFields = "Filter Sub-Fields";
+        public static string statisticSubFields = "Statistic Sub-Fields";
     }
 }

@@ -50,10 +50,10 @@ namespace TADASHBOARRD.Testcases
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
             // Pre-Condition: Create a Profile
             generalSettingsPage = new GeneralSettingsPage();
-            generalSettingsPage.CreateNewProfile(TestData.profileName,TestData.defaultItemType,TestData.defaultRelatedData, TestData.actionFinish);
+            generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData, TestData.actionFinish);
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
             generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData, TestData.actionFinish);
-            string actualMessage= generalPage.GetTextPopup();
+            string actualMessage = generalPage.GetTextPopup();
             generalSettingsPage.AcceptAlert();
             generalSettingsPage.OpenDataProfilesPage();
             // Post-Condition
@@ -78,6 +78,28 @@ namespace TADASHBOARRD.Testcases
             generalSettingsPage.CancelGeneralSettings();
             //Post-Condition
             dataProfilesPage.Logout();
+        }
+
+        [TestMethod]
+        public void DA_DP_TC076_Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.OpenDataProfilesPage();
+            dataProfilesPage = new DataProfilesPage();
+            dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
+            generalSettingsPage = new GeneralSettingsPage();
+            generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData, TestData.actionFinish);
+            // VP: Check Display Fields page appears
+            // VP: Check Sort Fields page appears
+            // VP: Check Filter Fields page appears
+            // VP: Check Statistic Fields page appears
+            // VP: Check Display Sub-Fields page appears
+            // VP: Check Sort Sub-Fields page appears
+            // VP: Check Filter Sub-Fields page appears
+            // VP: Check Statistic Sub-Fields page appears
+            dataProfilesPage.CheckDataProfileOtherSettingPages(TestData.profileName);
         }
 
         [TestMethod]

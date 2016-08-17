@@ -23,7 +23,7 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            //
+            // wait for Panel Page link displays
             Thread.Sleep(1000);
             generalPage.OpenPanelsPage();
             panelsPage = new PanelsPage();
@@ -31,10 +31,6 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.specialPanelName, TestData.panelSeries);
             string actualInvalidNameMessage = newPanelDialog.GetErrorMessage();
-            // Post-Condition
-            newPanelDialog.AcceptAlert();
-            newPanelDialog.CloseNewPanelDialog();
-            newPanelDialog.Logout();
             // VP: Message "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|"#{[]{};" is displayed
             CheckTextDisplays(actualInvalidNameMessage, TestData.errorInvalidNamePanelPage);
         }
@@ -70,7 +66,6 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();

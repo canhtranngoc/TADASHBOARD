@@ -21,7 +21,6 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
@@ -40,7 +39,6 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
@@ -74,6 +72,7 @@ namespace TADASHBOARRD.Testcases
             // VP: There are 3 columns on the above created page
             CheckTextDisplays(numberOfColumns, TestData.newNumberOfColumns);
             // Post-Condition
+            generalPage.DeleteAllPages();
             generalPage.Logout();
         }
     }
