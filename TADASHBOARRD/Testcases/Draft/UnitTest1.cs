@@ -26,7 +26,10 @@ namespace TADASHBOARRD.Testcases.Draft
             Thread.Sleep(1000);
             panelsPage.DeletePanel("ngan");
             panelsPage.DeleteAllPanels();
-
+            string a = "Invalid display name.The name can't contain high ASCII characters or any of following characters: /:*?<>|\"" +  "#{[]{};";
+            string b = "\"";
+            Console.WriteLine(a);
+            Console.WriteLine(b);
         }
     }
 }

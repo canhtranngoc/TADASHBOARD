@@ -60,10 +60,8 @@ namespace TADASHBOARRD.Testcases
         public void TestMethod1()
         {
             NavigateTADashboard();
-            WebDriver.driver.FindElement(By.XPath("//select[@id='repository']")).SendKeys("SampleRepository");
-            WebDriver.driver.FindElement(By.XPath("//input[@id='username']")).SendKeys("administrator");
-            WebDriver.driver.FindElement(By.XPath("//input[@id='password']")).SendKeys("");
-            WebDriver.driver.FindElement(By.XPath("//div[@class='btn-login']")).Click();
+            LoginPage loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             Thread.Sleep(1000);
 
             string xpath = string.Empty;

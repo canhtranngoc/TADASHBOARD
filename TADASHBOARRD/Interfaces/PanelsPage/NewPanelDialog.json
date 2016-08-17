@@ -28,5 +28,25 @@
     "controlName": "chart type child",
     "type": "xpath",
     "value": "//select[@id='cbbChartType']/option[{0}]"
+  },
+  {
+    "controlName": "category combobox",
+    "type": "xpath",
+    "value": "//select[@id='cbbCategoryField']"
+  },
+  {
+    "controlName": "category combobox",
+    "type": "xpath",
+    "value": "//select[@id='cbbCategoryField']"
+  },
+  {
+    "controlName": "caption textbox",
+    "type": "xpath",
+    "value": "//input[@id='txtCategoryXAxis']"
+  },
+   {
+    "controlName": "series combobox",
+    "type": "xpath",
+    "value": "//select[@id='cbbSeriesField']"
   }
 ]

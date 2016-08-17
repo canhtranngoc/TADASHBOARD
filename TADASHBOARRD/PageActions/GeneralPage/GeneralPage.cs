@@ -6,6 +6,7 @@ using System.Threading;
 using TADASHBOARRD.Common;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -49,12 +50,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             WaitForAlert(WebDriver.driver);
             WebDriver.driver.SwitchTo().Alert().Accept();
             Sleep(1);
+            //waitForAlert(WebDriver.driver);
         }
 
         public string GetTextPopup()
         {
             WaitForAlert(WebDriver.driver);
             return WebDriver.driver.SwitchTo().Alert().Text;
+
         }
 
         public string GetText(string locator)
@@ -84,6 +87,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public string[] GetControlValue(string nameControl)
         {
             string page = GetClassCaller();
+            //string page = "GeneralPage";
+
             Console.WriteLine(page);
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             path = path.Replace("\\bin\\Debug", "");
@@ -95,6 +100,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     break;
                 case "GeneralPage":
                 case "NewPageDialog":
+                case "PanelConfigurationDialog":
                     content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
                     break;
                 case "PanelsPage":
@@ -138,6 +144,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     return WebDriver.driver.FindElement(By.XPath(control[1]));
             }
+            //return WebDriver.driver.FindElement(FinFindWebElement(name));
+
         }
 
         public void ClickOnDynamicElement(string locator, string value)
@@ -213,8 +221,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenPanelsPage()
         {
             Click("administer tab");
-            Click("create panel tab");
+            Click("panels tab");
 
+        }
+        public void OpenPanelsFromGeneralPage()
+        {
+            Click("global setting tab");
+            Click("create panel tab");
         }
 
         public void OpenNewPanelDialogFromGlobalSetting()
@@ -226,6 +239,28 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Click("choose panels button");
             Click("create new panel button");
+        }
+
+        //public void OpenRandomChartPanelInstance()
+        //{
+        //    Click("choose panels button");
+        //    Click("random chart instance link");
+
+        //}
+
+        public void OpenRandomChartPanelInstance()
+        {
+            Click("choose panels button");
+            Sleep(1);
+            int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
+            int randomRow = new Random().Next(1, rowCount);
+            Console.WriteLine(randomRow);
+            int colunmCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr[" + randomRow + "]/td")).Count;
+            int randomColumn = new Random().Next(1, colunmCount);
+            Console.WriteLine(randomColumn);
+            string a = string.Format("//div[@class='ptit pchart']/../table//tr[{0}]/td[{1}]//a", randomRow, randomColumn);
+            IWebElement randomChartPanelInstance = WebDriver.driver.FindElement(By.XPath(a));
+            randomChartPanelInstance.Click();
         }
 
         public void OpenCreateProfilePageFromGeneralPage()
@@ -336,6 +371,33 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        public void goToPage(string path)
+        {
+            Sleep(1);
+            string currentpath = string.Empty;
+            string xpathNext = string.Empty;
+            string lastpath = string.Empty;
+            string[] element = path.Split('/');
+            Console.WriteLine(element);
+            string xpath = string.Format("//a[.='{0}']", element[0]);
+            if (element.Length == 1)
+            {
+                currentpath = xpath;
+                WebDriver.driver.FindElement(By.XPath(currentpath)).Click();
+            }
+            else
+            {
+                for (int i = 1; i < element.Length; i++)
+                {
+                    Actions builder = new Actions(WebDriver.driver);
+                    builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                    xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
+                    xpath = xpath + xpathNext;
+                }
+                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+            }
+        }
+
         public void Sleep(int second)
         {
             Thread.Sleep(second * 1000);
@@ -395,7 +457,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             try
             {
                 return FindWebElement(locator).Displayed;
-
             }
             catch (NoSuchElementException)
             {
@@ -432,6 +493,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             SelectElement selectedValue = new SelectElement(FindWebElement(locator));
             string wantedText = selectedValue.SelectedOption.Text;
             return wantedText;
+        }
+
+        public void CheckDynamicTextDisplays(string dynamicExpectedText, string actualText)
+        {
+            string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);
+            Assert.AreEqual(expectedMessage, actualText);
         }
     }
 }

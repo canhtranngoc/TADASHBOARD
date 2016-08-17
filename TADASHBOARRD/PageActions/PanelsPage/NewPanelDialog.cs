@@ -39,5 +39,43 @@ namespace TADASHBOARRD.PageActions.PanelsPage
                 CheckTextDisplays(TestData.chartTypeArray[i - 1], actual);
             }
         }
+        public void selectChartType(string chartType)
+        {
+            Sleep(1);
+            EnterValueDropdownList("chart type combobox", chartType);
+        }
+
+
+        public bool checkStatuses(string chartType)
+        {
+            return checkStatus(chartType);
+        }
+        public bool checkStatus(string chartType)
+        {
+            bool check = false;
+            switch (chartType)
+            {
+                case "Stacked Bar":
+                    if (FindWebElement("category combobox").Text.Contains(""))
+                    {
+                       
+                        return check = true;
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("hi");
+                    }
+                    //if (FindWebElement("category combobox").GetAttribute("disable") == "")
+                    //{
+                    //    return check = true;
+                    //}
+                    break;
+                case "":
+                    break;
+            }
+            return check;
+
+        }
     }
 }

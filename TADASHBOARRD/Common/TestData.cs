@@ -29,6 +29,10 @@ namespace TADASHBOARRD.Common
         public static string addPageName = "test123";
         public static string panelName = "test" + GetDateTime();
         //public static string pageName = CommonActions.GetDateTime();
+        public static string blankParentPage = "";
+        public static string blankNumberOfColumns = "";
+        public static string blankDisplayAfter = "";
+        public static string overviewPage = "Overview";
         public static string defaultParentPage = "";
         public static string defaultNumberOfColumns = "";
         public static string defaultDisplayAfter = "";
@@ -46,6 +50,8 @@ namespace TADASHBOARRD.Common
         public static string duplicatedPanelName = "Duplicated panel"+ GetDateTime();
         public static string specialPanelName = "Logigear#$%";
         public static string panelSeries = "Name";
+        public static string errorMessageWhenEnterOutOfRule = "Panel height must be greater than or equal to 300 and less than or equal to 800.";
+        public static string errorMessageWhenEnterCharacter = "Panel height must be an integer number";
         public static string errorInvalidNamePanelPage = " Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"#{[]{};";
         public static string errorDuplicatedNamePanelPage = duplicatedPanelName + " already exists. Please enter a different name.";
         public static string [] chartTypeArray = {"Pie", "Single Bar", "Stacked Bar", "Group Bar", "Line"};
