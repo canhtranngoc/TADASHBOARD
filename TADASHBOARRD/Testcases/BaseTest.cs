@@ -40,6 +40,7 @@ namespace TADASHBOARRD.Testcases
                     newPanelDialog.AcceptAlert();
                     newPanelDialog.CloseNewPanelDialog();
                     newPanelDialog.Logout();
+                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
 
                 default:

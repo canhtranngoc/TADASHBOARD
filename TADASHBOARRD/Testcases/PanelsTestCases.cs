@@ -23,7 +23,7 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            //
+            // wait for Panel Page link displays
             Thread.Sleep(1000);
             generalPage.OpenPanelsPage();
             panelsPage = new PanelsPage();
