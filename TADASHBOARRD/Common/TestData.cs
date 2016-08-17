@@ -50,5 +50,7 @@ namespace TADASHBOARRD.Common
         public static string errorDuplicatedNamePanelPage = "Duplicated panel already exists. Please enter a different name.";
         public static string [] chartTypeArray = {"Pie", "Single Bar", "Stacked Bar", "Group Bar", "Line"};
         public static string [] itemTypeArray = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets", "Actions", "Interface Entities", "Test Results", "Test Case Results", "Test Suites", "Bugs" };
+        public static string actionFinish = "finish";
+        public static string actionNext = "next";
     }
 }

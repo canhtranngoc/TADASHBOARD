@@ -22,14 +22,23 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             Click("cancel button");
         }
 
-        public void CreateNewProfile(string name, string itemtype, string relateddata)
+        public void CreateNewProfile(string name, string itemtype, string relateddata, string action)
         {
             EnterValue("name textbox", name);
-            EnterValueDropdownList("item type combobox",itemtype);
-            EnterValueDropdownList("related data combobox",relateddata);
-            Click("finish button");
+            EnterValueDropdownList("item type combobox", itemtype);
+            EnterValueDropdownList("related data combobox", relateddata);
+            if (action.ToUpper() == "FINISH")
+            {
+                Click("finish button");
+            }
+            else if (action.ToUpper() == "NEXT")
+            {
+                Click("next button");
+            }
         }
-
+                    
+                    
+        
         public void CheckItemTypeOptions()
         {
             // Wait 1 second for the Dialog to load
