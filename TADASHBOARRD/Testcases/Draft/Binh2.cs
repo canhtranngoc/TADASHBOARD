@@ -16,7 +16,7 @@ namespace TADASHBOARRD.Testcases.Draft
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             GeneralPage generalPage = new GeneralPage();
-            generalPage.gotoPage("Overview/binh");
+            generalPage.goToPage("Overview/binh");
             generalPage.PerformDelete();
             
             string c = "binh";

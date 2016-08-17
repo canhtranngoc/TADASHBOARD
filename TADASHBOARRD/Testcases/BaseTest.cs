@@ -13,9 +13,6 @@ namespace TADASHBOARRD.Testcases
         public TestContext TestContext { get; set; }
         NewPanelDialog newPanelDialog = new NewPanelDialog();
         DataProfilesPage dataProfilesPage = new DataProfilesPage();
-
-        public TestContext TestContext { get; set; }
-        NewPanelDialog newPanelDialog = new NewPanelDialog();
         GeneralPage generalPage = new GeneralPage();
 
         [AssemblyInitialize]
