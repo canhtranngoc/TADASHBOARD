@@ -7,6 +7,7 @@ namespace TADASHBOARRD.Testcases
     [TestClass]
     public class BaseTest : CommonActions
     {
+        public TestContext TestContext { get; set; }
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
