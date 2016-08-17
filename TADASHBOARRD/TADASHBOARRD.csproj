@@ -75,6 +75,7 @@
     <Compile Include="PageActions\DataProfilesPage\SortFieldsPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\StatisticFieldsPage.cs" />
     <Compile Include="PageActions\GeneralPage\GeneralPage.cs" />
+    <Compile Include="PageActions\GeneralPage\IJavascriptExecutor.cs" />
     <Compile Include="PageActions\GeneralPage\NewPageDialog.cs" />
     <Compile Include="PageActions\LoginPage\LoginPage.cs" />
     <Compile Include="PageActions\PanelsPage\NewPanelDialog.cs" />
