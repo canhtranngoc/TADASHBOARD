@@ -88,8 +88,12 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.blankParentPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusNotPublic);
-          
-
+            generalPage.OpenNewPanelDialogFromChoosePanels();
+            newPanelDialog = new NewPanelDialog();
+            //Select 'Pie' Chart Type
+            newPanelDialog.selectChartType(TestData.chartTypeArray[0]);
+            // VP: Check that 'Category' and 'Caption' are disabled, 'Series' is enabled
+            newPanelDialog.checkStatuses("Stacked Bar");
 
         }
     }
