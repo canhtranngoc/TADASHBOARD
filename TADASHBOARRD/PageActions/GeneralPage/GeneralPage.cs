@@ -98,6 +98,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     break;
                 case "GeneralPage":
                 case "NewPageDialog":
+                case "PanelConfigurationDialog":
                     content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
                     break;
                 case "PanelsPage":
@@ -230,26 +231,26 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("create new panel button");
         }
 
+        //public void OpenRandomChartPanelInstance()
+        //{
+        //    Click("choose panels button");
+        //    Click("random chart instance link");
+
+        //}
+
         public void OpenRandomChartPanelInstance()
         {
             Click("choose panels button");
-            Click("random chart instance link");
-
-        }
-
-        public string RandomChartPanelInstance()
-        {
-
+            Sleep(1);
             int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
             int randomRow = new Random().Next(1, rowCount);
-
+            Console.WriteLine(randomRow);
             int colunmCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr[" + randomRow + "]/td")).Count;
-            int randomColumn = new Random().Next(1, rowCount);
-
-            IWebElement a = WebDriver.driver.FindElement(By.XPath("//div[@class='ptit pchart']/../table//tr[{0}]/td[{1}]"));
-            return RandomChartPanelInstance();
-
-
+            int randomColumn = new Random().Next(1, colunmCount);
+            Console.WriteLine(randomColumn);
+            string a = string.Format("//div[@class='ptit pchart']/../table//tr[{0}]/td[{1}]//a", randomRow, randomColumn);
+            IWebElement randomChartPanelInstance = WebDriver.driver.FindElement(By.XPath(a));
+            randomChartPanelInstance.Click();
         }
 
         public void OpenCreateProfilePageFromGeneralPage()

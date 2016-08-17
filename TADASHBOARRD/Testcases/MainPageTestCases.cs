@@ -62,7 +62,6 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = GetDateTime();
