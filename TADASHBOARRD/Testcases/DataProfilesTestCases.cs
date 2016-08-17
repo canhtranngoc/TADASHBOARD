@@ -91,6 +91,14 @@ namespace TADASHBOARRD.Testcases
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
             generalSettingsPage = new GeneralSettingsPage();
             generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData, TestData.actionFinish);
+            // VP: Check Display Fields page appears
+            // VP: Check Sort Fields page appears
+            // VP: Check Filter Fields page appears
+            // VP: Check Statistic Fields page appears
+            // VP: Check Display Sub-Fields page appears
+            // VP: Check Sort Sub-Fields page appears
+            // VP: Check Filter Sub-Fields page appears
+            // VP: Check Statistic Sub-Fields page appears
             dataProfilesPage.CheckDataProfileOtherSettingPages(TestData.profileName);
             // Post-Condition
             dataProfilesPage.DeleteAllProfiles();
