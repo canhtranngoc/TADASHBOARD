@@ -34,7 +34,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
             }
             catch (WebDriverException)
             {
-                Console.WriteLine("no panels display");
+                Console.WriteLine("no panel displays");
             }
         }
 
