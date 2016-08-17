@@ -46,8 +46,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void AcceptAlert()
         {
-              WebDriver.driver.SwitchTo().Alert().Accept();
-                Sleep(1);
+            WebDriver.driver.SwitchTo().Alert().Accept();
+            Sleep(1);
             //waitForAlert(WebDriver.driver);
         }
 
@@ -56,7 +56,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             //waitForAlert(WebDriver.driver);
             return WebDriver.driver.SwitchTo().Alert().Text;
-            
+
         }
 
         public string GetText(string locator)
@@ -137,12 +137,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     return WebDriver.driver.FindElement(By.XPath(control[1]));
             }
             //return WebDriver.driver.FindElement(FinFindWebElement(name));
-            
+
         }
 
         public IWebElement FindWebElements(string name)
         {
-           return FindWebElement(name);
+            return FindWebElement(name);
         }
 
         public IWebElement FindDynamicWebElement(string name, string value)
@@ -309,14 +309,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string[] element = path.Split('/');
             Console.WriteLine(element);
             string xpath = string.Format("//a[.='{0}']", element[0]);
-            if (element.Length==1)
+            if (element.Length == 1)
             {
                 currentpath = xpath;
                 WebDriver.driver.FindElement(By.XPath(currentpath)).Click();
             }
             else
             {
-                for (int i =1; i <element.Length;i++)
+                for (int i = 1; i < element.Length; i++)
                 {
                     Actions builder = new Actions(WebDriver.driver);
                     builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
