@@ -411,6 +411,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             bool exist = DoesDynamicElementPresent("random page tab", pageName);
             Assert.IsTrue(exist);
         }
+
+        public void CheckDynamicTextDisplays(string dynamicExpectedText, string actualText)
+        {
+            string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);
+            Assert.AreEqual(expectedMessage, actualText);
+        }
     }
 }
 

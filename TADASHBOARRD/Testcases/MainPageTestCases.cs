@@ -68,8 +68,10 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName2 = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName2, pageName1, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
-            
-
+            generalPage.gotoPage(TestData.overviewPage+"/"+pageName1);
+            generalPage.PerformDelete();
+            string actualMessage = generalPage.GetTextPopup();
+            generalPage.CheckDynamicTextDisplays(pageName1,actualMessage);
         }
     }
 }
