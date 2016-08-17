@@ -24,7 +24,7 @@ namespace TADASHBOARRD.Testcases
         [AssemblyCleanup]
         public static void AssemblyCleapUpMethod()
         {
-           BrowserManager.CloseBrowser();
+            BrowserManager.CloseBrowser();
         }
 
         [TestInitialize]
@@ -35,7 +35,7 @@ namespace TADASHBOARRD.Testcases
         [TestCleanup]
         public void TestCleanupMethod()
         {
-            switch(TestContext.TestName)
+            switch (TestContext.TestName)
             {
                 case "DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field":
                     newPanelDialog.AcceptAlert();
@@ -46,18 +46,7 @@ namespace TADASHBOARRD.Testcases
                 case "DA_DP_TC076_Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel":
                     dataProfilesPage.OpenDataProfilesPage();
                     dataProfilesPage.DeleteAllProfiles();
-                    dataProfilesPage.Logout();                    
-                    break;
-                default:
-                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
-                    break;
-            }       
-            switch (TestContext.TestName)
-            {
-                case "DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field":
-                    newPanelDialog.AcceptAlert();
-                    newPanelDialog.CloseNewPanelDialog();
-                    newPanelDialog.Logout();
+                    dataProfilesPage.Logout();
                     break;
                 case "DA_MP_TC020_Verify_that_user_is_able_to_delete_sibbling_page_as_long_as_that_page_has_not_children_page_under_it":
                     generalPage.AcceptAlert();
@@ -68,7 +57,6 @@ namespace TADASHBOARRD.Testcases
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
             }
-
         }
     }
 }
