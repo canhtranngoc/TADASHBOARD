@@ -100,9 +100,6 @@ namespace TADASHBOARRD.Testcases
             // VP: Check Filter Sub-Fields page appears
             // VP: Check Statistic Sub-Fields page appears
             dataProfilesPage.CheckDataProfileOtherSettingPages(TestData.profileName);
-            // Post-Condition
-            dataProfilesPage.DeleteAllProfiles();
-            generalPage.Logout();
         }
 
         [TestMethod]
