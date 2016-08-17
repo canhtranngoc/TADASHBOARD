@@ -100,6 +100,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     break;
                 case "GeneralPage":
                 case "NewPageDialog":
+                case "EditPageDialog":
                 case "PanelConfigurationDialog":
                     content = File.ReadAllText(path + @"\Interfaces\GeneralPage\" + page + ".json");
                     break;
