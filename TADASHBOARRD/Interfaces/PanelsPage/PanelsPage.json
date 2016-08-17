@@ -1,6 +1,6 @@
 [
   {
-    "controlName": "addnew link",
+    "controlName": "add new link",
     "type": "xpath",
     "value": "//a[.='Add New']"
   },
@@ -10,7 +10,7 @@
     "value": "//div[@class='panel_tag2']//a[.='Delete']"
   },
   {
-    "controlName": "checkall link",
+    "controlName": "check all link",
     "type": "xpath",
     "value": "//a[.='Check All']"
   }

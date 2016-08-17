@@ -14,20 +14,20 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status)
         {
             Thread.Sleep(1000);
-            EnterValue("pagename textbox", pageName);
+            EnterValue("page name textbox", pageName);
 
             if (parentPage != "")
             {
-                SelectItemByText("parentpage combobox", parentPage);
+                SelectItemByText("parent page combobox", parentPage);
             }
 
             if (numberOfColumns != "")
             {
-                SelectItemByText("numberofcolumns combobox", numberOfColumns);
+                SelectItemByText("number of columns combobox", numberOfColumns);
             }
             if (displayAfter != "")
             {
-                SelectItemByText("displayafter combobox", displayAfter);
+                SelectItemByText("display after combobox", displayAfter);
             }
 
             if (status == "public")
@@ -42,20 +42,20 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
 
             Thread.Sleep(1000);
-            EnterValue("pagename textbox", newPageName);
+            EnterValue("page name textbox", newPageName);
 
             if (newParentPage != "")
             {
-                EnterValueDropdownList("parentpage combobox", newParentPage);
+                EnterValueDropdownList("parent page combobox", newParentPage);
             }
 
             if (newNumberOfColumns != "")
             {
-                SelectItemByText("numberofcolumns combobox", newNumberOfColumns);
+                SelectItemByText("number of columns combobox", newNumberOfColumns);
             }
             if (newDisplayAfter != "")
             {
-                SelectItemByText("displayafter combobox", newDisplayAfter);
+                SelectItemByText("display after combobox", newDisplayAfter);
             }
 
             if (newStatus == "public")
@@ -75,7 +75,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public string GetSelectedValueInNumberOfColumns()
         {
             Sleep(1);
-            return GetSelectedValueInComboBox("numberofcolumns combobox");
+            return GetSelectedValueInComboBox("number of columns combobox");
         }
     }
 }

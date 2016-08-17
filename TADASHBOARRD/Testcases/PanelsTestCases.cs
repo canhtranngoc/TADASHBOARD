@@ -31,10 +31,6 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.specialPanelName, TestData.panelSeries);
             string actualInvalidNameMessage = newPanelDialog.GetErrorMessage();
-            // Post-Condition
-            newPanelDialog.AcceptAlert();
-            newPanelDialog.CloseNewPanelDialog();
-            newPanelDialog.Logout();
             // VP: Message "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|"#{[]{};" is displayed
             CheckTextDisplays(actualInvalidNameMessage, TestData.errorInvalidNamePanelPage);
         }
