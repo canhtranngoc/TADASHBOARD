@@ -300,7 +300,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void gotoPage(string path)
+        public void goToPage(string path)
         {
             Sleep(1);
             string currentpath = string.Empty;
