@@ -64,6 +64,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return FindWebElement(locator).Text;
         }
 
+        public string GetTextDynamicElement(string locator, string value)
+        {
+            return FindDynamicWebElement(locator, value).Text;
+        }
+
         private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
@@ -137,9 +142,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
-        public void ClickOnDynamicElement(string control, string value)
+        public void ClickOnDynamicElement(string locator, string value)
         {
-            FindDynamicWebElement(control, value).Click();
+            FindDynamicWebElement(locator, value).Click();
         }
 
         public IWebElement FindDynamicWebElement(string name, string value)
@@ -149,6 +154,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return WebDriver.driver.FindElement(By.XPath(dynamicControl));
         }
 
+        //public IWebElement FindDynamicWebElements(string name, string value)
+        //{
+        //}
 
         public void EnterValue(string locator, string value)
         {
@@ -191,6 +199,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         //    Actions action = new Actions(WebDriver.driver);
         //    action.MoveToElement(FindWebElement(locator)).Perform();
         //}
+
+
+        public void OpenPage(string pageName)
+        {
+            Sleep(1);
+            ClickOnDynamicElement("random page tab", pageName);
+        }
+
         public void OpenDataProfilesPage()
         {
             Click("administer tab");
@@ -236,6 +252,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("add page tab");
         }
 
+        public void OpenEditPageDialog()
+        {
+            Sleep(1);
+            Click("global setting tab");
+            Click("edit page tab");
+        }
+
         public void PerformDelete()
         {
             Sleep(1);
@@ -261,17 +284,32 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     for (int j = 0; j <= numChildren; j++)
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
-
+                        Console.WriteLine(xpath);
                         locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                        Console.WriteLine(locatorClass);
                         while (locatorClass.Contains("haschild"))
                         {
-                            Actions builder = new Actions(WebDriver.driver);
-                            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                            if (TestData.browser == "chrome" || TestData.browser == "ie")
+                            {
+                                IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
+                                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                                executor.ExecuteScript("arguments[0].click();", webElement);
+                            }
+                            else
+                            {
+                                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                            }
+                            //Actions builder = new Actions(WebDriver.driver);
+                            //builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
                             xpathNext = "/following-sibling::ul/li/a";
+                            Console.WriteLine(xpathNext);
                             xpath = xpath + xpathNext;
+                            Console.WriteLine(xpath);
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
+                            Console.WriteLine(locatorClass);
                         }
                         string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
+                        Console.WriteLine(text);
                         if (text.Equals("Overview") || text.Equals("Execution Dashboard"))
                         {
                             break;
@@ -283,6 +321,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         }
                     }
                     pageIndex = pageIndex - 1;
+                    Console.WriteLine(pageIndex);
                 }
             }
         }
@@ -371,6 +410,18 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             bool exist = DoesDynamicElementPresent("random page tab", pageName);
             Assert.IsTrue(exist);
+        }
+
+        public int CountComboboxChildren(string locator)
+        {
+            return WebDriver.driver.FindElements(By.XPath(locator)).Count;
+        }
+
+        public string GetSelectedValueInComboBox(string locator)
+        {
+            SelectElement selectedValue = new SelectElement(FindWebElement(locator));
+            string wantedText = selectedValue.SelectedOption.Text;
+            return wantedText;
         }
     }
 }

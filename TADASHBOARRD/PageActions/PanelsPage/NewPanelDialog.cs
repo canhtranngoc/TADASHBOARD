@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TADASHBOARRD.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+
 
 namespace TADASHBOARRD.PageActions.PanelsPage
 {
-    public class NewPanelDialog: GeneralPage.GeneralPage
+    public class NewPanelDialog : GeneralPage.GeneralPage
     {
         public void AddNewPanel(string name, string series)
         {
@@ -24,6 +27,17 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             Click("cancel button");
         }
-       
+        public void CheckChartTypeOptions()
+        {
+            // Wait 1 second for the New Panel Dialog to load
+            Sleep(1);
+            int count = CountComboboxChildren("//select[@id='cbbChartType']/option");
+            for (int i = 1; i <= count; i++)
+            {
+                string actual = GetTextDynamicElement("chart type child", i.ToString());
+                i = Convert.ToInt32(i);
+                CheckTextDisplays(TestData.chartTypeArray[i - 1], actual);
+            }
+        }
     }
 }

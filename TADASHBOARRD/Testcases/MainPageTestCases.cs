@@ -9,11 +9,12 @@ using System.Threading;
 namespace TADASHBOARRD.Testcases
 {
     [TestClass]
-    public class MainPageTestCases:BaseTest
+    public class MainPageTestCases : BaseTest
     {
         private LoginPage loginPage;
         private GeneralPage generalPage;
         private NewPageDialog newPageDialog;
+
         [TestMethod]
         public void DA_MP_TC012_Verify_that_user_is_able_to_add_additional_pages_besides_Overview_page_successfully()
         {
@@ -22,7 +23,7 @@ namespace TADASHBOARRD.Testcases
             generalPage = new GeneralPage();
             generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
-            newPageDialog= new NewPageDialog();
+            newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             string actualPageName = generalPage.GetSecondPageName();
@@ -30,6 +31,7 @@ namespace TADASHBOARRD.Testcases
             CheckTextDisplays(pageName, actualPageName);
             // Post-Condition
             generalPage.DeleteAllPages();
+            generalPage.Logout();
         }
 
         [TestMethod]
@@ -51,6 +53,30 @@ namespace TADASHBOARRD.Testcases
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage.DeleteAllPages();
+            generalPage.Logout();
         }
+
+        [TestMethod]
+        public void DA_MP_TC026_Verify_that_page_column_is_correct_when_user_edit_Number_of_Columns_field_of_a_specific_page()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.DeleteAllPages();
+            generalPage.OpenAddPageDialog();
+            newPageDialog = new NewPageDialog();
+            string pageName = GetDateTime();
+            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.OpenPage(pageName);
+            generalPage.OpenEditPageDialog();
+            newPageDialog.EditPage(TestData.newPageName, TestData.defaultParentPage, TestData.newNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.OpenEditPageDialog();
+            string numberOfColumns = newPageDialog.GetSelectedValueInNumberOfColumns();
+            // VP: There are 3 columns on the above created page
+            CheckTextDisplays(numberOfColumns,TestData.newNumberOfColumns);
+            // Post-Condition
+            generalPage.Logout();
+        }
+
     }
 }

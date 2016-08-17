@@ -34,6 +34,8 @@ namespace TADASHBOARRD.Common
         public static string defaultDisplayAfter = "";
         public static string statusNotPublic = "";
         public static string statusPublic = "public";
+        public static string newPageName = "Test 1";
+        public static string newNumberOfColumns = "3";
         public static string anotherValidUsername = "dieu.nguyen";
         public static string anotherValidPassword = "123";
         public static string errorMessageWhenCreateProfileWithoutName = "Please input profile name";
@@ -46,6 +48,8 @@ namespace TADASHBOARRD.Common
         public static string panelSeries = "Name";
         public static string errorInvalidNamePanelPage = "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"#{[]{};";
         public static string errorDuplicatedNamePanelPage = "Duplicated panel already exists. Please enter a different name.";
+        public static string [] chartTypeArray = {"Pie", "Single Bar", "Stacked Bar", "Group Bar", "Line"};
+        public static string [] itemTypeArray = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets", "Actions", "Interface Entities", "Test Results", "Test Case Results", "Test Suites", "Bugs" };
         public static string actionFinish = "finish";
         public static string actionNext = "next";
     }
