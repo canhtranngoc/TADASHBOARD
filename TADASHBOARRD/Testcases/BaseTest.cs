@@ -1,6 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TADASHBOARRD.Common;
+using TADASHBOARRD.PageActions.PanelsPage;
+using TADASHBOARRD.PageActions.GeneralPage;
 
 namespace TADASHBOARRD.Testcases
 {
@@ -8,6 +9,9 @@ namespace TADASHBOARRD.Testcases
     public class BaseTest : CommonActions
     {
         public TestContext TestContext { get; set; }
+        NewPanelDialog newPanelDialog = new NewPanelDialog();
+        GeneralPage generalPage = new GeneralPage();
+
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
         {
@@ -36,7 +40,11 @@ namespace TADASHBOARRD.Testcases
                     newPanelDialog.CloseNewPanelDialog();
                     newPanelDialog.Logout();
                     break;
-
+                case "DA_MP_TC020_Verify_that_user_is_able_to_delete_sibbling_page_as_long_as_that_page_has_not_children_page_under_it":
+                    generalPage.AcceptAlert();
+                    generalPage.DeleteAllPages();
+                    generalPage.Logout();
+                    break;
                 default:
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
