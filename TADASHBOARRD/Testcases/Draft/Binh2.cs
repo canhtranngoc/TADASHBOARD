@@ -18,6 +18,14 @@ namespace TADASHBOARRD.Testcases.Draft
             GeneralPage generalPage = new GeneralPage();
             generalPage.gotoPage("Overview/binh");
             generalPage.PerformDelete();
+            
+            string c = "binh";
+            string actualMessage = generalPage.GetTextPopup();
+            Console.WriteLine(actualMessage);
+            string a = string.Format("Cannot delete page '{0}' since it has child page(s).",c);
+            CheckTextDisplays(a, actualMessage);
+            generalPage.AcceptAlert();
+            generalPage.DeleteAllPages();
         }
     }
 }

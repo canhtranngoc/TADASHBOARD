@@ -46,8 +46,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void AcceptAlert()
         {
-                IAlert alert = WebDriver.driver.SwitchTo().Alert();
-                alert.Accept();
+              WebDriver.driver.SwitchTo().Alert().Accept();
                 Sleep(1);
             //waitForAlert(WebDriver.driver);
         }
@@ -57,6 +56,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             //waitForAlert(WebDriver.driver);
             return WebDriver.driver.SwitchTo().Alert().Text;
+            
         }
 
         public string GetText(string locator)
@@ -324,6 +324,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string xpathNext = string.Empty;
             string lastpath = string.Empty;
             string[] element = path.Split('/');
+            Console.WriteLine(element);
             string xpath = string.Format("//a[.='{0}']", element[0]);
             //  int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
             //  int pageIndex = numTab - 2;
@@ -331,21 +332,21 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             if (element.Length==1)
             {
                 currentpath = xpath;
-                //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-                Click(xpath);
+                WebDriver.driver.FindElement(By.XPath(currentpath)).Click();
+               
             }
             else
             {
-                for (int i =1; i <=element.Length;i++)
+                for (int i =1; i <element.Length;i++)
                 {
+                    Actions builder = new Actions(WebDriver.driver);
+                    builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
                     xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
-                    
+                    xpath = xpath + xpathNext;
                 }
-                lastpath = xpath + xpathNext;
-                
+                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
             }
-            Actions builder = new Actions(WebDriver.driver);
-            builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(lastpath))).Build().Perform();
+           
             //locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
 
             //while (locatorClass.Contains("haschild"))
