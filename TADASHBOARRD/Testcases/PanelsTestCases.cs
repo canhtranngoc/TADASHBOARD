@@ -40,7 +40,7 @@ namespace TADASHBOARRD.Testcases
         }
 
         [TestMethod]
-        public void DA_PANEL_TC032_Verify_that_user_is_not_allowed_to_create_panel_with_duplicated_Display_Name ()
+        public void DA_PANEL_TC032_Verify_that_user_is_not_allowed_to_create_panel_with_duplicated_Display_Name()
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
@@ -83,6 +83,55 @@ namespace TADASHBOARRD.Testcases
             // Post-Condition
             generalPage.DeleteAllPages();
             generalPage.Logout();
+        }
+
+        [TestMethod]
+        public void DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, "canh.tran", "123");
+            generalPage = new GeneralPage();
+            generalPage.OpenAddPageDialog();
+            newPageDialog = new NewPageDialog();
+            string pageName = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.OpenRandomChartPanelInstance();
+            
+            PanelConfigurationDialog panelConfigurationDialog=new PanelConfigurationDialog();
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("299");
+            // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
+            string actualErrorMessage = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule,actualErrorMessage);
+            panelConfigurationDialog.AcceptAlert();
+
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("801");
+            // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
+            string actualErrorMessage1 = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage1);
+            panelConfigurationDialog.AcceptAlert();
+
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("-2");
+            // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
+            string actualErrorMessage2 = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage2);
+            panelConfigurationDialog.AcceptAlert();
+
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("3.1");
+            // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
+            string actualErrorMessage3 = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage3);
+            panelConfigurationDialog.AcceptAlert();
+
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("abc");
+            // VP: Error message 'Panel height must be an integer number' display
+            string actualErrorMessage4 = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterCharacter, actualErrorMessage4);
+            panelConfigurationDialog.AcceptAlert();
+
+            // Post-Condition
+            panelConfigurationDialog.CancelPanelConfigurationDialog();
+            generalPage.Logout();
+
         }
     }
 }

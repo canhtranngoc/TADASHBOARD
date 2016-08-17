@@ -77,6 +77,7 @@
     <Compile Include="PageActions\GeneralPage\GeneralPage.cs" />
     <Compile Include="PageActions\GeneralPage\IJavascriptExecutor.cs" />
     <Compile Include="PageActions\GeneralPage\NewPageDialog.cs" />
+    <Compile Include="PageActions\GeneralPage\PanelConfigurationDialog.cs" />
     <Compile Include="PageActions\LoginPage\LoginPage.cs" />
     <Compile Include="PageActions\PanelsPage\NewPanelDialog.cs" />
     <Compile Include="PageActions\PanelsPage\PanelsPage.cs" />
@@ -97,6 +98,7 @@
     <None Include="Interfaces\DataProfilesPage\DisplayFieldsPage.json" />
     <None Include="Interfaces\DataProfilesPage\GeneralSettingsPage.json" />
     <None Include="Interfaces\GeneralPage\GeneralPage.json" />
+    <None Include="Interfaces\GeneralPage\PanelConfigurationDialog.json" />
     <None Include="Interfaces\LoginPage\LoginPage.json" />
     <None Include="Interfaces\GeneralPage\NewPageDialog.json" />
     <None Include="Interfaces\PanelsPage\NewPanelDialog.json" />

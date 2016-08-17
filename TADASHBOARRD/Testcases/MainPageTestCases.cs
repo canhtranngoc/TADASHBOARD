@@ -62,7 +62,6 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = GetDateTime();
@@ -73,10 +72,9 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenEditPageDialog();
             string numberOfColumns = newPageDialog.GetSelectedValueInNumberOfColumns();
             // VP: There are 3 columns on the above created page
-            CheckTextDisplays(numberOfColumns,TestData.newNumberOfColumns);
+            CheckTextDisplays(numberOfColumns, TestData.newNumberOfColumns);
             // Post-Condition
             generalPage.Logout();
         }
-
     }
 }
