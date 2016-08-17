@@ -71,7 +71,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.goToPage(TestData.overviewPage+"/"+pageName1);
             generalPage.PerformDelete();
             string actualMessage = generalPage.GetTextPopup();
-            //VP: Check text message on Delete Page popup
+            //VP: Check message "Can't delete page "page 1" since it has children page"
             generalPage.CheckDynamicTextDisplays(pageName1,actualMessage);
         }
     }
