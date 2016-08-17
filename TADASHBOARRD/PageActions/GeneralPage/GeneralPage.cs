@@ -140,23 +140,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             
         }
 
-        //public By FindWebElement(string name)
-        //{
-        //    string[] control = GetControlValue(name);
-        //    Console.WriteLine(control[1]);
-        //    switch (control[0].ToUpper())
-        //    {
-        //        case "ID":
-        //            return By.Id(control[1]);
-
-        //        case "NAME":
-        //            return By.Name(control[1]);
-        //        case "CLASSNAME":
-        //            return By.ClassName(control[1]);
-        //        default:
-        //            return By.XPath(control[1]);
-        //    }
-        //}
         public IWebElement FindWebElements(string name)
         {
            return FindWebElement(name);
@@ -326,14 +309,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string[] element = path.Split('/');
             Console.WriteLine(element);
             string xpath = string.Format("//a[.='{0}']", element[0]);
-            //  int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
-            //  int pageIndex = numTab - 2;
-            //  int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
             if (element.Length==1)
             {
                 currentpath = xpath;
                 WebDriver.driver.FindElement(By.XPath(currentpath)).Click();
-               
             }
             else
             {
@@ -346,29 +325,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 }
                 WebDriver.driver.FindElement(By.XPath(xpath)).Click();
             }
-           
-            //locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-
-            //while (locatorClass.Contains("haschild"))
-            //{
-            //    Actions builder = new Actions(WebDriver.driver);
-            //    builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-            //    xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']",pageChild);
-            //    xpath = xpath + xpathNext;
-            //    string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
-            //    if (text == pageChild)
-            //    {
-            //        WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-            //    }
-            //    else
-            //    {
-            //        locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-            //    }
-
-            //}
-            //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
-
-            //PerformDelete();
         }
 
         public void Sleep(int second)
