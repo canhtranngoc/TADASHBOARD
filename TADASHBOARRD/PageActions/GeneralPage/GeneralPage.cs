@@ -274,12 +274,15 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string locatorClass = string.Empty;
 
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
+            Console.WriteLine(numTab);
             int pageIndex = numTab - 2;
+            Console.WriteLine(pageIndex);
             while (pageIndex != 0)
             {
                 for (int i = numTab - 2; i >= 1; i--)
                 {
                     int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
+                    Console.WriteLine(numChildren);
                     for (int j = 0; j <= numChildren; j++)
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
@@ -296,10 +299,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             }
                             else
                             {
+                                //Actions builder = new Actions(WebDriver.driver);
+                                //builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
                                 WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                             }
-                            //Actions builder = new Actions(WebDriver.driver);
-                            //builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
                             xpathNext = "/following-sibling::ul/li/a";
                             Console.WriteLine(xpathNext);
                             xpath = xpath + xpathNext;
@@ -315,7 +318,16 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         }
                         else
                         {
-                            WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                            if (TestData.browser == "chrome" || TestData.browser == "ie")
+                            {
+                                IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
+                                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                                executor.ExecuteScript("arguments[0].click();", webElement);
+                            }
+                            else
+                            {
+                                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                            }
                             PerformDelete();
                         }
                     }
