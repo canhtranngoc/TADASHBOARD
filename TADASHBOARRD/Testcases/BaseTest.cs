@@ -3,7 +3,6 @@ using TADASHBOARRD.Common;
 using TADASHBOARRD.PageActions.PanelsPage;
 using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.PageActions.DataProfilesPage;
-using TADASHBOARRD.PageActions.LoginPage;
 
 namespace TADASHBOARRD.Testcases
 {
