@@ -93,6 +93,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Interfaces\DataProfilesPage\DataProfilesPage.json" />
+    <None Include="Interfaces\DataProfilesPage\DisplayFieldsPage.json" />
     <None Include="Interfaces\DataProfilesPage\GeneralSettingsPage.json" />
     <None Include="Interfaces\GeneralPage\GeneralPage.json" />
     <None Include="Interfaces\LoginPage\LoginPage.json" />

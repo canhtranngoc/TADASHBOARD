@@ -14,6 +14,7 @@ namespace TADASHBOARRD.Testcases
         private GeneralPage generalPage;
         private DataProfilesPage dataProfilesPage;
         private GeneralSettingsPage generalSettingsPage;
+        private DisplayFieldsPage displayFieldsPage;
         [TestMethod]
         public void DA_DP_TC069_Verify_that_user_is_unable_to_proceed_to_next_step_or_finish_creating_data_profile_if_Name_field_is_left_empty()
         {
@@ -49,9 +50,9 @@ namespace TADASHBOARRD.Testcases
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
             //Pre-Condition: Creata a Profile
             generalSettingsPage = new GeneralSettingsPage();
-            generalSettingsPage.CreateNewProfile(TestData.profileName,TestData.defaultItemType,TestData.defaultRelatedData);
+            generalSettingsPage.CreateNewProfile(TestData.profileName,TestData.defaultItemType,TestData.defaultRelatedData, TestData.actionFinish);
             dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
-            generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData);
+            generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData, TestData.actionFinish);
             string actualMessage= generalPage.GetTextPopup();
             generalSettingsPage.AcceptAlert();
             generalSettingsPage.OpenDataProfilesPage();
@@ -60,6 +61,27 @@ namespace TADASHBOARRD.Testcases
             generalPage.Logout();
             // VP: Check dialog message "Data Profile name already exists"
             CheckTextDisplays(TestData.errorMessageWhenCreateProfileWithExitingName, actualMessage);
+        }
+
+        [TestMethod]
+        public void DA_DP_TC079_Verify_that_Check_All_Uncheck_All_Links_are_working_correctly()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
+            generalPage = new GeneralPage();
+            generalPage.OpenDataProfilesPage();
+            dataProfilesPage = new DataProfilesPage();
+            dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
+            generalSettingsPage = new GeneralSettingsPage();
+            generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData, TestData.actionNext);
+            displayFieldsPage = new DisplayFieldsPage();
+            displayFieldsPage.ClickCheckAllLink();
+            // VP: Verify that all checkbox is checked
+            Assert.IsTrue(displayFieldsPage.AreAllCheckboxChecked());
+            displayFieldsPage.ClickUnCheckAllLink();
+            // VP: Verify that all checkbox is unchecked
+            Assert.IsTrue(displayFieldsPage.AreAllCheckboxUnChecked());
+
         }
     }
 }

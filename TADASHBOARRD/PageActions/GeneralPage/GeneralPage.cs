@@ -100,6 +100,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     break;
                 case "DataProfilesPage":
                 case "GeneralSettingsPage":
+                case "DisplayFieldsPage":
                     content = File.ReadAllText(path + @"\Interfaces\DataProfilesPage\" + page + ".json");
                     break;
                 default:

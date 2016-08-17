@@ -13,7 +13,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             Sleep(1);
             EnterValue("display name textbox", name);
-            EnterValueDropdownList("series dropdown list", name);
+            EnterValueDropdownList("series combobox", name);
             Click("ok button");
         }
         public string GetErrorMessage()
