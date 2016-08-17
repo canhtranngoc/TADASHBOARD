@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TADASHBOARRD.Common;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+
 
 namespace TADASHBOARRD.PageActions.PanelsPage
 {
@@ -13,7 +16,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             Sleep(1);
             EnterValue("display name textbox", name);
-            EnterValueDropdownList("series dropdown list", name);
+            EnterValueDropdownList("series combobox", name);
             Click("ok button");
         }
         public string GetErrorMessage()
@@ -26,11 +29,14 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         }
         public void CheckChartTypeOptions()
         {
-            for (int i = 1; i <= 5; i++)
+            // Wait 1 second for the New Panel Dialog to load
+            Sleep(1);
+            int count = CountComboboxChildren("//select[@id='cbbChartType']/option");
+            for (int i = 1; i <= count; i++)
             {
-                string actual = FindDynamicWebElement("chart type child", i.ToString()).Text;
+                string actual = GetTextDynamicElement("chart type child", i.ToString());
                 i = Convert.ToInt32(i);
-                CheckTextDisplays(TestData.chartTypeArray[i], actual);
+                CheckTextDisplays(TestData.chartTypeArray[i - 1], actual);
             }
         }
         public void selectChartType(string chartType)

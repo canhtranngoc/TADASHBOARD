@@ -5,7 +5,7 @@
     "value": "//input[@id = 'txtDisplayName']"
   },
   {
-    "controlName": "series dropdown list",
+    "controlName": "series combobox",
     "type": "xpath",
     "value": "//select[@id = 'cbbSeriesField']"
   },
@@ -22,7 +22,7 @@
   {
     "controlName": "chart type combobox",
     "type": "xpath",
-    "value": "//select[@id = 'cbbChartType']"
+    "value": "//select[@id ='cbbChartType']"
   },
   {
     "controlName": "chart type child",

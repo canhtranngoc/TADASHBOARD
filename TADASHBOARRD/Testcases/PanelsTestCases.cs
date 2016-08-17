@@ -23,6 +23,7 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
+            // wait for Panel Page link displays
             Thread.Sleep(1000);
             generalPage.OpenPanelsPage();
             panelsPage = new PanelsPage();
@@ -30,10 +31,6 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.specialPanelName, TestData.panelSeries);
             string actualInvalidNameMessage = newPanelDialog.GetErrorMessage();
-            // Post-Condition
-            newPanelDialog.AcceptAlert();
-            newPanelDialog.CloseNewPanelDialog();
-            newPanelDialog.Logout();
             // VP: Message "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|"#{[]{};" is displayed
             CheckTextDisplays(actualInvalidNameMessage, TestData.errorInvalidNamePanelPage);
         }
@@ -50,10 +47,11 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
             panelsPage.OpenNewPanelDialog();
-            //newPanelDialog = new NewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
             string actualDuplicateMessage = newPanelDialog.GetErrorMessage();
-            //VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
+            // VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
+            Console.WriteLine(actualDuplicateMessage);
+            Console.WriteLine(TestData.errorDuplicatedNamePanelPage);
             CheckTextDisplays(actualDuplicateMessage, TestData.errorDuplicatedNamePanelPage);
             // Post-Condition
             newPanelDialog.AcceptAlert();
@@ -68,13 +66,67 @@ namespace TADASHBOARRD.Testcases
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            generalPage.DeleteAllPages();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             generalPage.OpenNewPanelDialogFromChoosePanels();
+            newPanelDialog = new NewPanelDialog();
+            // VP: Check that 'Chart Type' are listed 5 options: 'Pie', 'Single Bar', 'Stacked Bar', 'Group Bar' and 'Line'
             newPanelDialog.CheckChartTypeOptions();
+            newPanelDialog.CloseNewPanelDialog();
+            // Post-Condition
+            generalPage.DeleteAllPages();
+            generalPage.Logout();
+        }
+
+        [TestMethod]
+        public void DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field()
+        {
+            loginPage = new LoginPage();
+            loginPage.Login(TestData.defaulRepository, "canh.tran", "123");
+            generalPage = new GeneralPage();
+            generalPage.OpenAddPageDialog();
+            newPageDialog = new NewPageDialog();
+            string pageName = CommonActions.GetDateTime();
+            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.OpenRandomChartPanelInstance();
+            
+            PanelConfigurationDialog panelConfigurationDialog=new PanelConfigurationDialog();
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("299");
+            // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
+            string actualErrorMessage = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule,actualErrorMessage);
+            panelConfigurationDialog.AcceptAlert();
+
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("801");
+            // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
+            string actualErrorMessage1 = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage1);
+            panelConfigurationDialog.AcceptAlert();
+
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("-2");
+            // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
+            string actualErrorMessage2 = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage2);
+            panelConfigurationDialog.AcceptAlert();
+
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("3.1");
+            // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
+            string actualErrorMessage3 = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage3);
+            panelConfigurationDialog.AcceptAlert();
+
+            panelConfigurationDialog.EnterValueToHeighThenClickOk("abc");
+            // VP: Error message 'Panel height must be an integer number' display
+            string actualErrorMessage4 = panelConfigurationDialog.GetTextPopup();
+            CheckTextDisplays(TestData.errorMessageWhenEnterCharacter, actualErrorMessage4);
+            panelConfigurationDialog.AcceptAlert();
+
+            // Post-Condition
+            panelConfigurationDialog.CancelPanelConfigurationDialog();
+            generalPage.Logout();
+
         }
 
         [TestMethod]

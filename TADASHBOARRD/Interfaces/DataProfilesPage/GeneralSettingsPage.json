@@ -28,6 +28,16 @@
     "controlName": "cancel button",
     "type": "xpath",
     "value": "//input[@value='Cancel']"
+  },
+  {
+    "controlName": "item type combobox child",
+    "type": "xpath",
+    "value": "//select[@id='cbbEntityType']/option[{0}]"
+  },
+  {
+    "controlName": "item type combobox",
+    "type": "xpath",
+    "value": "//select[@id='cbbEntityType']"
   }
 
 ]

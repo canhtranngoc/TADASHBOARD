@@ -19,6 +19,11 @@
     "type": "xpath",
     "value": "//a[.='Add Page']"
   },
+    {
+    "controlName": "edit page tab",
+    "type": "xpath",
+    "value": "//a[.='Edit']"
+  },
   {
     "controlName": "create profile tab",
     "type": "xpath",
@@ -98,5 +103,15 @@
     "controlName": "create new panel button",
     "type": "xpath",
     "value": "//span[.='Create new panel']"
+  },
+  {
+    "controlName": "chart instance table",
+    "type": "xpath",
+    "value": "//div[@class='ptit pchart']/../table/tr"
+  },
+  {
+    "controlName": "random chart instance link",
+    "type": "xpath",
+    "value": "//div[@class='ptit pchart']/../table//tr[{0}]/td[{1}]"
   }
-]
+  ]
