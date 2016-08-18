@@ -51,12 +51,6 @@ namespace TADASHBOARRD.Testcases
                     generalPage.Logout();
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
-                case "DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field":
-                    newPanelDialog.AcceptAlert();
-                    newPanelDialog.CloseNewPanelDialog();
-                    newPanelDialog.Logout();
-                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
-                    break;
                 case "DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field":
                     panelConfigurationDialog.AcceptAlert();
                     panelConfigurationDialog.CancelPanelConfigurationDialog();
