@@ -32,18 +32,14 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///<summary>
         ///
         ///</summary>
-        // Xem lai Does Element roi the vao day
+
         public void DeleteAllProfiles()
         {
-            try
+            if (DoesElementPresent("check all link")==true)
             {
                 Click("check all link");
                 Click("delete link");
                 AcceptAlert();
-            }
-            catch (WebDriverException)
-            {
-                Console.WriteLine("no profile displays");
             }
         }
 
