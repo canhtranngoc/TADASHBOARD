@@ -9,19 +9,33 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
 {
     class GeneralSettingsPage : GeneralPage.GeneralPage
     {
+        ///<summary>
+        ///
+        ///</summary>
         public void ClickNextWithoutName()
         {
             Click("next button");
         }
+
+        ///<summary>
+        ///
+        ///</summary>
         public void ClickFinishWithoutName()
         {
             Click("finish button");
         }
+
+        ///<summary>
+        ///
+        ///</summary>
         public void CancelGeneralSettings()
         {
             Click("cancel button");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void CreateNewProfile(string name, string itemtype, string relateddata, string action)
         {
             EnterValue("name textbox", name);
@@ -36,9 +50,10 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
                 Click("next button");
             }
         }
-                    
-                    
-        
+
+        ///<summary>
+        ///
+        ///</summary>
         public void CheckItemTypeOptions()
         {
             // Wait 1 second for the Dialog to load

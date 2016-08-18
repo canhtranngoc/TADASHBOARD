@@ -10,18 +10,28 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
 {
     public class DataProfilesPage : GeneralPage.GeneralPage
     {
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenCreateProfilePageFromDataProfilesPage()
         {
             Sleep(1);
             Click("add new link");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
+        // Viet thanh dynamic jason
         public void DeleteProfile(string name)
         {
             ClickOnDynamicElement("delete a profile link", name);
             AcceptAlert();
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         // Xem lai Does Element roi the vao day
         public void DeleteAllProfiles()
         {
@@ -33,6 +43,9 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void CheckDataProfileOtherSettingPages(string name)
         {
             // Wait for page loads
