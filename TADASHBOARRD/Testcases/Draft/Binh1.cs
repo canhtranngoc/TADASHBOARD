@@ -10,7 +10,6 @@ namespace TADASHBOARRD.Testcases.Draft
     [TestClass]
     public class Binh1:BaseTest
     {
-        [TestMethod]
         public void Binh()
         {
             NavigateTADashboard();

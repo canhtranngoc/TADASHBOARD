@@ -74,6 +74,7 @@
     <Compile Include="PageActions\DataProfilesPage\GeneralSettingsPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\SortFieldsPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\StatisticFieldsPage.cs" />
+    <Compile Include="PageActions\GeneralPage\EditPageDialog.cs" />
     <Compile Include="PageActions\GeneralPage\GeneralPage.cs" />
     <Compile Include="PageActions\GeneralPage\NewPageDialog.cs" />
     <Compile Include="PageActions\GeneralPage\PanelConfigurationDialog.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="PageActions\PanelsPage\PanelsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testcases\BaseTest.cs" />
+    <Compile Include="Testcases\Draft\BackUpTestCases.cs" />
     <Compile Include="Testcases\Draft\UnitTest1.cs" />
     <Compile Include="Testcases\Draft\Binh1.cs" />
     <Compile Include="Testcases\Draft\Binh2.cs" />
@@ -97,6 +99,7 @@
     <None Include="Interfaces\DataProfilesPage\DataProfilesPage.json" />
     <None Include="Interfaces\DataProfilesPage\DisplayFieldsPage.json" />
     <None Include="Interfaces\DataProfilesPage\GeneralSettingsPage.json" />
+    <None Include="Interfaces\GeneralPage\EditPageDialog.json" />
     <None Include="Interfaces\GeneralPage\GeneralPage.json" />
     <None Include="Interfaces\GeneralPage\PanelConfigurationDialog.json" />
     <None Include="Interfaces\LoginPage\LoginPage.json" />

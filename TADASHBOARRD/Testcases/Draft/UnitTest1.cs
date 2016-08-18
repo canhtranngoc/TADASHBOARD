@@ -11,26 +11,13 @@ namespace TADASHBOARRD.Testcases.Draft
     [TestClass]
     public class UnitTest1: BaseTest
     {
-        [TestMethod]
+       
         public void TestMethod123()
         {
             LoginPage loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             GeneralPage generalPage = new GeneralPage();
-            Thread.Sleep(1000);
-            generalPage.OpenPanelsPage();
-            PanelsPage panelsPage = new PanelsPage();
-            Thread.Sleep(1000);
-            panelsPage.OpenNewPanelDialog();
-            NewPanelDialog newPanelDialog = new NewPanelDialog();
-            newPanelDialog.AddNewPanel("ngan", "Name");
-            Thread.Sleep(1000);
-            panelsPage.DeletePanel("ngan");
-            panelsPage.DeleteAllPanels();
-            string a = "Invalid display name.The name can't contain high ASCII characters or any of following characters: /:*?<>|\"" +  "#{[]{};";
-            string b = "\"";
-            Console.WriteLine(a);
-            Console.WriteLine(b);
+            generalPage.DeleteAllPages();
         }
     }
 }
