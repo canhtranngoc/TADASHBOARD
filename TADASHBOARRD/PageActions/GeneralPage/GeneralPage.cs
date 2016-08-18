@@ -441,12 +441,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Sleep(1);
             string xpathNext = string.Empty;
-            if (!path.Contains("/"))
-            {
+            if (!(path.Contains("/")))
+            {   
                 string xpath = string.Format("//a[.='{0}']", path);
+                Console.WriteLine(xpath);
+                Sleep(1);
                 if (TestData.browser == "chrome" || TestData.browser == "ie")
                 {
-                    IWebElement webElement = FindWebElement(xpath);
+                    IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
                     IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
                     executor.ExecuteScript("arguments[0].click();", webElement);
                 }
@@ -463,7 +465,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 {
                     if (TestData.browser == "chrome" || TestData.browser == "ie")
                     {
-                        IWebElement webElement = FindWebElement(xpath);
+                        IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
                         IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
                         executor.ExecuteScript("arguments[0].click();", webElement);
                     }
@@ -480,7 +482,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 }
                 if (TestData.browser == "chrome" || TestData.browser == "ie")
                 {
-                    IWebElement webElement = FindWebElement(xpath);
+                    IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
                     IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
                     executor.ExecuteScript("arguments[0].click();", webElement);
                 }
