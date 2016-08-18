@@ -38,7 +38,7 @@ namespace TADASHBOARRD.Common
         public static string defaultDisplayAfter = "";
         public static string statusNotPublic = "";
         public static string statusPublic = "public";
-        public static string newPageName = "Test 1"+GetDateTime();
+        public static string newPageName = "Test 1"+ GetDateTime();
         public static string newNumberOfColumns = "3";
         public static string anotherValidUsername = "dieu.nguyen";
         public static string anotherValidPassword = "123";
@@ -50,9 +50,14 @@ namespace TADASHBOARRD.Common
         public static string duplicatedPanelName = "Duplicated panel"+ GetDateTime();
         public static string specialPanelName = "Logigear#$%";
         public static string panelSeries = "Name";
-        public static string errorMessageWhenEnterOutOfRule = "Panel height must be greater than or equal to 300 and less than or equal to 800.";
-        public static string errorMessageWhenEnterCharacter = "Panel height must be an integer number";
-        public static string errorInvalidNamePanelPage = " Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"#{[]{};";
+        public static string numberlessthan300 = "299";
+        public static string numbermorethan800 = "801";
+        public static string decimalnumber = "3.1";
+        public static string negativenumber = "-5";
+        public static string character = "abc";
+        public static string errorMessageWhenEnterOutOfRule = "Panel height must be greater than or equal to 300 and lower than or equal to 800";
+        public static string errorMessageWhenEnterCharacter = "'Panel height must be an integer number";
+        public static string errorInvalidNamePanelPage = "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|\"#{[]{};";
         public static string errorDuplicatedNamePanelPage = duplicatedPanelName + " already exists. Please enter a different name.";
         public static string [] chartTypeArray = {"Pie", "Single Bar", "Stacked Bar", "Group Bar", "Line"};
         public static string [] itemTypeArray = {"Test Modules", "Test Cases", "Test Objectives", "Data Sets", "Actions", "Interface Entities", "Test Results", "Test Case Results", "Test Suites", "Bugs" };
