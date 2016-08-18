@@ -6,17 +6,14 @@
         {
             Sleep(1);
             EnterValue("page name textbox", pageName);
-            Sleep(3);
             if (parentPage != "")
             {
                 EnterValueDropdownList("parent page combobox", parentPage);
             }
-            Sleep(1);
             if (numberOfColumns != "")
             {
                 SelectItemByText("number of columns combobox", numberOfColumns);
             }
-            Sleep(1);
             if (displayAfter != "")
             {
                 SelectItemByText("display after combobox", displayAfter);
@@ -26,7 +23,11 @@
             {
                 TickCheckbox("public checkbox");
             }
-            Sleep(1);
+
+            if (status == "unpublic")
+            {
+                UntickCheckbox("public checkbox");
+            }
             Click("ok button");
             Sleep(1);
         }
