@@ -9,10 +9,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 {
     class EditPageDialog:GeneralPage
     {
+        ///<summary>
+        ///
+        ///</summary>
         public void CancelEditPageDialog()
         {
             Click("cancel button");
         }
+
+        ///<summary>
+        ///
+        ///</summary>
         public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus)
         {
 
@@ -47,6 +54,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string GetSelectedValueInNumberOfColumns()
         {
             Sleep(1);
