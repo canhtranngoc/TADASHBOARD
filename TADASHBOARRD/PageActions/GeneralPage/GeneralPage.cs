@@ -473,10 +473,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     {
                         Actions builder = new Actions(WebDriver.driver);
                         builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                        // WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                     }
-                    //Actions builder = new Actions(WebDriver.driver);
-                    //builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
                     xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
                     xpath = xpath + xpathNext;
                 }
@@ -510,6 +507,25 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             SelectElement selectcontrol = new SelectElement(FindWebElement(locator));
             selectcontrol.SelectByText(value);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ClickItemJsonByJS(string control)
+        {
+            IWebElement webElement = FindWebElement(control);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ClickItemXpathByJS(By control)
+        {
+            IWebElement webElement = WebDriver.driver.FindElement(control);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
+        }
 
         ///<summary>
         ///
@@ -519,9 +535,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             if (TestData.browser == "chrome" || TestData.browser == "ie")
             {
-                IWebElement webElement = FindWebElement(locator);
-                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                executor.ExecuteScript("arguments[0].click();", webElement);
+                ClickItemJsonByJS(locator);
             }
             else
             {
