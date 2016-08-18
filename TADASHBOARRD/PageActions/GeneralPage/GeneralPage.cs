@@ -377,7 +377,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             string currentpath = string.Empty;
             string xpathNext = string.Empty;
-            string lastpath = string.Empty;
             string[] element = path.Split('/');
             Console.WriteLine(element);
             string xpath = string.Format("//a[.='{0}']", element[0]);
