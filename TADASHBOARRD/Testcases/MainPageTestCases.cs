@@ -45,19 +45,15 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName = GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
-            generalPage.OpenPage(pageName);
+            generalPage.goToPage(pageName);
             generalPage.OpenEditPageDialog();
             editPageDialog = new EditPageDialog();
-            editPageDialog.EditPage("Test " + pageName, TestData.defaultParentPage, TestData.newNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
-            generalPage.OpenPage("Test " + pageName);
+            editPageDialog.EditPage(pageName, TestData.defaultParentPage, TestData.newNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.goToPage(pageName);
             generalPage.OpenEditPageDialog();
             // VP: There are 3 columns on the above created page
             string numberOfColumns = editPageDialog.GetSelectedValueInNumberOfColumns();
             CheckTextDisplays(numberOfColumns, TestData.newNumberOfColumns);
-            // Post-Condition
-            editPageDialog.CancelEditPageDialog();
-            generalPage.DeleteAllPages();
-            generalPage.Logout();
         }
     }
 }
