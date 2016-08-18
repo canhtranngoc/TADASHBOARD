@@ -168,7 +168,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         public void EnterValueDropdownList(string locator, string value)
-        {
+        {          
             FindWebElement(locator).SendKeys(value);
         }
 
@@ -284,7 +284,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void PerformDelete()
         {
-            Sleep(3);
+            Sleep(1);
             Click("global setting tab");
             Click("delete tab");
             AcceptAlert();

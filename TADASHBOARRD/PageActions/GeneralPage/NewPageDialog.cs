@@ -6,7 +6,7 @@
         {
             Sleep(1);
             EnterValue("page name textbox", pageName);
-            Sleep(1);
+            Sleep(3);
             if (parentPage != "")
             {
                 EnterValueDropdownList("parent page combobox", parentPage);
