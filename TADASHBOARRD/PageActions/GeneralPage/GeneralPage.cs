@@ -15,7 +15,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 {
     public class GeneralPage : CommonActions
     {
-
+        ///<summary>
+        ///
+        ///</summary>
         public void WaitForElementLoad(By locator, int timeoutInSeconds)
         {
             if (timeoutInSeconds > 0)
@@ -25,6 +27,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void WaitForAlert(IWebDriver driver)
         {
             int i = 0;
@@ -45,6 +50,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void AcceptAlert()
         {
             WaitForAlert(WebDriver.driver);
@@ -53,6 +61,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             //waitForAlert(WebDriver.driver);
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string GetTextPopup()
         {
             WaitForAlert(WebDriver.driver);
@@ -60,16 +71,25 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string GetText(string locator)
         {
             return FindWebElement(locator).Text;
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string GetTextDynamicElement(string locator, string value)
         {
             return FindDynamicWebElement(locator, value).Text;
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         private static string GetClassCaller(int level = 4)
         {
             var m = new StackTrace().GetFrame(level).GetMethod();
@@ -84,6 +104,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             public string value { get; set; }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string[] GetControlValue(string nameControl)
         {
             string page = GetClassCaller();
@@ -131,6 +154,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return null;
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public IWebElement FindWebElement(string locator)
         {
             string[] control = GetControlValue(locator);
@@ -149,11 +175,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void ClickOnDynamicElement(string locator, string value)
         {
             FindDynamicWebElement(locator, value).Click();
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public IWebElement FindDynamicWebElement(string name, string value)
         {
             string[] control = GetControlValue(name);
@@ -161,17 +193,26 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return WebDriver.driver.FindElement(By.XPath(dynamicControl));
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void EnterValue(string locator, string value)
         {
             FindWebElement(locator).Clear();
             FindWebElement(locator).SendKeys(value);
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void EnterValueDropdownList(string locator, string value)
         {
             FindWebElement(locator).SendKeys(value);
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void TickCheckbox(string locator)
         {
             if (FindWebElement(locator).Selected == false)
@@ -180,6 +221,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void UntickCheckbox(string locator)
         {
             if (FindWebElement(locator).Selected)
@@ -188,6 +232,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void Logout()
         {
             Sleep(1);
@@ -203,35 +250,55 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         //    action.MoveToElement(FindWebElement(locator)).Perform();
         //}
 
-
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenPage(string pageName)
         {
             Sleep(1);
             ClickOnDynamicElement("random page tab", pageName);
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenDataProfilesPage()
         {
             Click("administer tab");
             Click("data profiles tab");
         }
+
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenPanelsPage()
         {
             Click("administer tab");
             Click("panels tab");
 
         }
+
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenPanelsFromGeneralPage()
         {
             Click("global setting tab");
             Click("create panel tab");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenNewPanelDialogFromGlobalSetting()
         {
             Click("global setting tab");
             Click("create panel tab");
         }
+
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenNewPanelDialogFromChoosePanels()
         {
             Click("choose panels button");
@@ -245,6 +312,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         //}
 
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenRandomChartPanelInstance()
         {
             Click("choose panels button");
@@ -260,6 +330,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             randomChartPanelInstance.Click();
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenCreateProfilePageFromGeneralPage()
         {
             Sleep(1);
@@ -267,6 +340,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("create profile tab");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenExecutionDashboardPage()
         {
             Click("execution dashboard tab");
@@ -275,6 +351,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Click("overview tab");
         }
+
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenAddPageDialog()
         {
             Sleep(1);
@@ -282,6 +362,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("add page tab");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenEditPageDialog()
         {
             Sleep(1);
@@ -289,6 +372,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("edit page tab");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void PerformDelete()
         {
             Sleep(3);
@@ -297,6 +383,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             AcceptAlert();
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void DeleteAllPages()
         {
             Sleep(1);
@@ -368,6 +457,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void goToPage(string path)
         {
             Sleep(1);
@@ -394,17 +486,26 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void Sleep(int second)
         {
             Thread.Sleep(second * 1000);
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void SelectItemByText(string locator, string value)
         {
             SelectElement selectcontrol = new SelectElement(FindWebElement(locator));
             selectcontrol.SelectByText(value);
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void Click(string locator)
         {
             Sleep(1);
@@ -420,24 +521,36 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string GetUserName()
         {
             Sleep(1);
             return GetText("user tab");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string GetRepository()
         {
             Sleep(1);
             return GetText("repository label");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string GetSecondPageName()
         {
             Sleep(1);
             return GetText("second page tab");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public bool DoesElementPresent(string locator)
         {
             try
@@ -450,6 +563,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public bool DoesDynamicElementPresent(string locator, string name)
         {
             try
@@ -463,17 +579,26 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void CheckPageDisplays(string pageName)
         {
             bool exist = DoesDynamicElementPresent("random page tab", pageName);
             Assert.IsTrue(exist);
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public int CountComboboxChildren(string locator)
         {
             return WebDriver.driver.FindElements(By.XPath(locator)).Count;
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public string GetSelectedValueInComboBox(string locator)
         {
             SelectElement selectedValue = new SelectElement(FindWebElement(locator));
@@ -481,6 +606,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return wantedText;
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void CheckDynamicTextDisplays(string dynamicExpectedText, string actualText)
         {
             string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);

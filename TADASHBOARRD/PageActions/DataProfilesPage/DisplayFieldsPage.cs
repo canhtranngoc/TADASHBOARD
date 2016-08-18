@@ -13,16 +13,25 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
     {
         protected readonly By tableDisplayFields = By.XPath("//*[@id='profilesettings']/tbody/tr");
 
+        ///<summary>
+        ///
+        ///</summary>
         public void ClickCheckAllLink()
         {
             Click("checkall link");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public void ClickUnCheckAllLink()
         {
             Click("uncheckall link");
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public bool AreAllCheckboxChecked()
         {
             bool check = true;
@@ -43,6 +52,9 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             return check;
         }
 
+        ///<summary>
+        ///
+        ///</summary>
         public bool AreAllCheckboxUnChecked()
         {
             bool check = true;
