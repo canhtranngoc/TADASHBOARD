@@ -22,6 +22,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///<summary>
         ///
         ///</summary>
+        // Viet thanh dynamic jason
         public void DeleteProfile(string name)
         {
             string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
@@ -32,6 +33,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///<summary>
         ///
         ///</summary>
+        // Xem lai Does Element roi the vao day
         public void DeleteAllProfiles()
         {
             try
