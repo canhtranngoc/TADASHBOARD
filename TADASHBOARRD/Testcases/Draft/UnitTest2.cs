@@ -15,7 +15,7 @@ namespace TADASHBOARRD.Testcases.Draft
         private DataProfilesPage dataProfilesPage;
         private GeneralSettingsPage generalSettingsPage;
         private DisplayFieldsPage displayFieldsPage;
-        [TestMethod]
+
         public void CanhTest()
         {
             loginPage = new LoginPage();
