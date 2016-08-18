@@ -17,6 +17,7 @@ namespace TADASHBOARRD.Testcases
         private NewPageDialog newPageDialog;
 
         [TestMethod]
+        [Priority(7)]
         public void DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field()
         {
             loginPage = new LoginPage();
@@ -35,6 +36,7 @@ namespace TADASHBOARRD.Testcases
         }
 
         [TestMethod]
+        [Priority(8)]
         public void DA_PANEL_TC036_Verify_that_all_chart_types_Pie_SingleBar_StackedBar_GroupBar_Line_are_listed_correctly_under_Chart_Type_dropped_down_menu()
         {
             loginPage = new LoginPage();
@@ -56,6 +58,7 @@ namespace TADASHBOARRD.Testcases
 
 
         [TestMethod]
+        [Priority(9)]
         public void DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field()
         {
 

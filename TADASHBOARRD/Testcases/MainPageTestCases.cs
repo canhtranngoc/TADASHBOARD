@@ -14,6 +14,7 @@ namespace TADASHBOARRD.Testcases
         private EditPageDialog editPageDialog;
 
         [TestMethod]
+        [Priority(5)]
         public void DA_MP_TC020_Verify_that_user_is_able_to_delete_sibbling_page_as_long_as_that_page_has_not_children_page_under_it()
         {
             loginPage = new LoginPage();
@@ -36,6 +37,7 @@ namespace TADASHBOARRD.Testcases
         }
 
         [TestMethod]
+        [Priority(6)]
         public void DA_MP_TC026_Verify_that_page_column_is_correct_when_user_edit_Number_of_Columns_field_of_a_specific_page()
         {
             loginPage = new LoginPage();
