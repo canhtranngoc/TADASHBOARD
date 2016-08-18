@@ -13,7 +13,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
     {
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status)
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             EnterValue("page name textbox", pageName);
 
             if (parentPage != "")
@@ -29,19 +29,19 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 SelectItemByText("display after combobox", displayAfter);
             }
-
+            Sleep(1);
             if (status == "public")
             {
                 TickCheckbox("public checkbox");
             }
-
             Click("ok button");
+            Sleep(1);
 
         }
         public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus)
         {
 
-            Thread.Sleep(1000);
+            Sleep(1);
             EnterValue("page name textbox", newPageName);
 
             if (newParentPage != "")
