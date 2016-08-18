@@ -6,7 +6,6 @@ using System.Threading;
 using TADASHBOARRD.Common;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -206,7 +205,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///
         ///</summary>
         public void EnterValueDropdownList(string locator, string value)
-        {
+        {          
             FindWebElement(locator).SendKeys(value);
         }
 
@@ -250,18 +249,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         //    action.MoveToElement(FindWebElement(locator)).Perform();
         //}
 
-        ///<summary>
-        ///
-        ///</summary>
-        public void OpenPage(string pageName)
-        {
-            Sleep(1);
-            ClickOnDynamicElement("random page tab", pageName);
-        }
-
-        ///<summary>
-        ///
-        ///</summary>
         public void OpenDataProfilesPage()
         {
             Click("administer tab");
@@ -367,7 +354,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void PerformDelete()
         {
-            Sleep(3);
+            Sleep(1);
             Click("global setting tab");
             Click("delete tab");
             AcceptAlert();
@@ -453,26 +440,54 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void goToPage(string path)
         {
             Sleep(1);
-            string currentpath = string.Empty;
             string xpathNext = string.Empty;
-            string[] element = path.Split('/');
-            Console.WriteLine(element);
-            string xpath = string.Format("//a[.='{0}']", element[0]);
-            if (element.Length == 1)
-            {
-                currentpath = xpath;
-                WebDriver.driver.FindElement(By.XPath(currentpath)).Click();
+            if (!(path.Contains("/")))
+            {   
+                string xpath = string.Format("//a[.='{0}']", path);
+                Console.WriteLine(xpath);
+                Sleep(1);
+                if (TestData.browser == "chrome" || TestData.browser == "ie")
+                {
+                    IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
+                    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                    executor.ExecuteScript("arguments[0].click();", webElement);
+                }
+                else
+                {
+                    WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                }
             }
             else
             {
+                string[] element = path.Split('/');
+                string xpath = string.Format("//a[.='{0}']", element[0]);
                 for (int i = 1; i < element.Length; i++)
                 {
-                    Actions builder = new Actions(WebDriver.driver);
-                    builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                    if (TestData.browser == "chrome" || TestData.browser == "ie")
+                    {
+                        IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
+                        IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                        executor.ExecuteScript("arguments[0].click();", webElement);
+                    }
+                    else
+                    {
+                        Actions builder = new Actions(WebDriver.driver);
+                        builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                    }
                     xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
                     xpath = xpath + xpathNext;
                 }
-                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                if (TestData.browser == "chrome" || TestData.browser == "ie")
+                {
+                    IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
+                    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                    executor.ExecuteScript("arguments[0].click();", webElement);
+                }
+                else
+                {
+                    WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                }
+
             }
         }
 
@@ -492,6 +507,25 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             SelectElement selectcontrol = new SelectElement(FindWebElement(locator));
             selectcontrol.SelectByText(value);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ClickItemJsonByJS(string control)
+        {
+            IWebElement webElement = FindWebElement(control);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ClickItemXpathByJS(By control)
+        {
+            IWebElement webElement = WebDriver.driver.FindElement(control);
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+            executor.ExecuteScript("arguments[0].click();", webElement);
+        }
 
         ///<summary>
         ///
@@ -501,9 +535,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             if (TestData.browser == "chrome" || TestData.browser == "ie")
             {
-                IWebElement webElement = FindWebElement(locator);
-                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                executor.ExecuteScript("arguments[0].click();", webElement);
+                ClickItemJsonByJS(locator);
             }
             else
             {
@@ -547,6 +579,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 return FindWebElement(locator).Displayed;
             }
+
             catch (NoSuchElementException)
             {
                 return false;

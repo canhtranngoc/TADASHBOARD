@@ -25,8 +25,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         // Viet thanh dynamic jason
         public void DeleteProfile(string name)
         {
-            string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
-            WebDriver.driver.FindElement(By.XPath(xpathLinkDelete)).Click();
+            ClickOnDynamicElement("delete a profile link", name);
             AcceptAlert();
         }
 
