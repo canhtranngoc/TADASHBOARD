@@ -14,6 +14,7 @@ namespace TADASHBOARRD.Testcases
         DataProfilesPage dataProfilesPage = new DataProfilesPage();
         GeneralPage generalPage = new GeneralPage();
         PanelConfigurationDialog panelConfigurationDialog=new PanelConfigurationDialog();
+        EditPageDialog editPageDialog=new EditPageDialog();
 
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
@@ -24,7 +25,7 @@ namespace TADASHBOARRD.Testcases
         [AssemblyCleanup]
         public static void AssemblyCleapUpMethod()
         {
-            BrowserManager.CloseBrowser();
+            //BrowserManager.CloseBrowser();
         }
 
         [TestInitialize]
@@ -44,7 +45,7 @@ namespace TADASHBOARRD.Testcases
                     generalPage.Logout();
                     break;
                 case "DA_MP_TC026_Verify_that_page_column_is_correct_when_user_edit_Number_of_Columns_field_of_a_specific_page":
-                    panelConfigurationDialog.CancelPanelConfigurationDialog();
+                    editPageDialog.CancelEditPageDialog();
                     generalPage.DeleteAllPages();
                     generalPage.Logout();
                     break;
@@ -54,13 +55,19 @@ namespace TADASHBOARRD.Testcases
                     newPanelDialog.Logout();
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
+                case "DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field":
+                    panelConfigurationDialog.AcceptAlert();
+                    panelConfigurationDialog.CancelPanelConfigurationDialog();
+                    generalPage.DeleteAllPages();
+                    generalPage.Logout();
+                    break;
                 case "DA_DP_TC076_Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel":
                     dataProfilesPage.OpenDataProfilesPage();
                     dataProfilesPage.DeleteAllProfiles();
                     dataProfilesPage.Logout();
                     break;
                 default:
-                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                    //WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
             }
         }
