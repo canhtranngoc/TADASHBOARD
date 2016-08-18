@@ -332,7 +332,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             {
                                 Actions builder = new Actions(WebDriver.driver);
                                 builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                               // WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                                //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                             }
                             xpathNext = "/following-sibling::ul/li/a";
                             Console.WriteLine(xpathNext);
