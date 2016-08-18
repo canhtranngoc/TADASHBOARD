@@ -16,25 +16,20 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             Click("add new link");
         }
 
-        // Viet thanh dynamic jason
         public void DeleteProfile(string name)
         {
-            string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
-            WebDriver.driver.FindElement(By.XPath(xpathLinkDelete)).Click();
+            ClickOnDynamicElement("delete a profile link", name);
             AcceptAlert();
         }
+
         // Xem lai Does Element roi the vao day
         public void DeleteAllProfiles()
         {
-            try
+            if (DoesElementPresent("check all link") == true)
             {
                 Click("check all link");
                 Click("delete link");
                 AcceptAlert();
-            }
-            catch (WebDriverException)
-            {
-                Console.WriteLine("no profile displays");
             }
         }
 

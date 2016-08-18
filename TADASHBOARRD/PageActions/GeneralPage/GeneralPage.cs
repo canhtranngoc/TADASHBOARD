@@ -203,13 +203,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         //    action.MoveToElement(FindWebElement(locator)).Perform();
         //}
 
-
-        //public void OpenPage(string pageName)
-        //{
-        //    Sleep(1);
-        //    ClickOnDynamicElement("random page tab", pageName);
-        //}
-
         public void OpenDataProfilesPage()
         {
             Click("administer tab");
@@ -437,6 +430,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 return FindWebElement(locator).Displayed;
             }
+
             catch (NoSuchElementException)
             {
                 return false;
