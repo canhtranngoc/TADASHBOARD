@@ -16,7 +16,7 @@ namespace TADASHBOARRD.Testcases
         private DisplayFieldsPage displayFieldsPage;
 
         [TestMethod]
-        public void DA_DP_TC072_Verify_that_all_data_profile_types_are_listed_under_Item_Type_dropped_down_menu()
+        public void DA_QDP_TC072_Verify_that_all_data_profile_types_are_listed_under_Item_Type_dropped_down_menu()
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);

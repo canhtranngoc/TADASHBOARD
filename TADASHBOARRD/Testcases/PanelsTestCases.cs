@@ -35,6 +35,7 @@ namespace TADASHBOARRD.Testcases
         }
 
         [TestMethod]
+
         public void DA_PANEL_TC036_Verify_that_all_chart_types_Pie_SingleBar_StackedBar_GroupBar_Line_are_listed_correctly_under_Chart_Type_dropped_down_menu()
         {
             loginPage = new LoginPage();
