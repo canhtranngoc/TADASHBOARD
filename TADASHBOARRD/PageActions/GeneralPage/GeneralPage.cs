@@ -237,14 +237,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("choose panels button");
             Click("create new panel button");
         }
-
-        //public void OpenRandomChartPanelInstance()
-        //{
-        //    Click("choose panels button");
-        //    Click("random chart instance link");
-
-        //}
-
+        
         public void OpenRandomChartPanelInstance()
         {
             Click("choose panels button");

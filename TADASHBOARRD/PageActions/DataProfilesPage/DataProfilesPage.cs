@@ -16,12 +16,14 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             Click("add new link");
         }
 
+        // Viet thanh dynamic jason
         public void DeleteProfile(string name)
         {
             string xpathLinkDelete = string.Format("//tbody//a[.='{0}']/../..//a[.='Delete']", name);
             WebDriver.driver.FindElement(By.XPath(xpathLinkDelete)).Click();
             AcceptAlert();
         }
+        // Xem lai Does Element roi the vao day
         public void DeleteAllProfiles()
         {
             try
