@@ -44,7 +44,6 @@ namespace TADASHBOARRD.Testcases
                     generalPage.Logout();
                     break;
                 case "DA_MP_TC026_Verify_that_page_column_is_correct_when_user_edit_Number_of_Columns_field_of_a_specific_page":
-                    panelConfigurationDialog.AcceptAlert();
                     panelConfigurationDialog.CancelPanelConfigurationDialog();
                     generalPage.DeleteAllPages();
                     generalPage.Logout();

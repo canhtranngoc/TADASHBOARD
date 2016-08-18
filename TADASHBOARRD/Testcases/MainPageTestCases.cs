@@ -22,11 +22,11 @@ namespace TADASHBOARRD.Testcases
             generalPage = new GeneralPage();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
-            string pageName1 = CommonActions.GetDateTime();
+            string pageName1 = GetDateTime();
             newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
-            string pageName2 = CommonActions.GetDateTime();
+            string pageName2 = GetDateTime();
             newPageDialog.CreateNewPage(pageName2, pageName1, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.PerformDelete();
@@ -46,11 +46,11 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName = GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
-            generalPage.OpenPage(pageName);
+            generalPage.goToPage(pageName);
             generalPage.OpenEditPageDialog();
             editPageDialog = new EditPageDialog();
-            editPageDialog.EditPage("Test " + pageName, TestData.defaultParentPage, TestData.newNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
-            generalPage.OpenPage("Test " + pageName);
+            editPageDialog.EditPage(pageName, TestData.defaultParentPage, TestData.newNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.goToPage(pageName);
             generalPage.OpenEditPageDialog();
             // VP: There are 3 columns on the above created page
             string numberOfColumns = editPageDialog.GetSelectedValueInNumberOfColumns();

@@ -204,11 +204,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         //}
 
 
-        public void OpenPage(string pageName)
-        {
-            Sleep(1);
-            ClickOnDynamicElement("random page tab", pageName);
-        }
+        //public void OpenPage(string pageName)
+        //{
+        //    Sleep(1);
+        //    ClickOnDynamicElement("random page tab", pageName);
+        //}
 
         public void OpenDataProfilesPage()
         {
