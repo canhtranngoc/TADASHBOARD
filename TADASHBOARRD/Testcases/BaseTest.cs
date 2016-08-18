@@ -13,6 +13,7 @@ namespace TADASHBOARRD.Testcases
         NewPanelDialog newPanelDialog = new NewPanelDialog();
         DataProfilesPage dataProfilesPage = new DataProfilesPage();
         GeneralPage generalPage = new GeneralPage();
+        PanelConfigurationDialog panelConfigurationDialog=new PanelConfigurationDialog();
 
         [AssemblyInitialize]
         public static void AssemblyInitializeMeThod(TestContext testContext)
@@ -38,6 +39,12 @@ namespace TADASHBOARRD.Testcases
             {
                 case "DA_MP_TC020_Verify_that_user_is_able_to_delete_sibbling_page_as_long_as_that_page_has_not_children_page_under_it":
                     generalPage.AcceptAlert();
+                    generalPage.DeleteAllPages();
+                    generalPage.Logout();
+                    break;
+                case "DA_MP_TC026_Verify_that_page_column_is_correct_when_user_edit_Number_of_Columns_field_of_a_specific_page":
+                    panelConfigurationDialog.AcceptAlert();
+                    panelConfigurationDialog.CancelPanelConfigurationDialog();
                     generalPage.DeleteAllPages();
                     generalPage.Logout();
                     break;

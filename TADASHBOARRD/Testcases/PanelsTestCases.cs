@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TADASHBOARRD.Common;
 using TADASHBOARRD.PageActions.LoginPage;
 using TADASHBOARRD.PageActions.GeneralPage;
@@ -16,7 +15,7 @@ namespace TADASHBOARRD.Testcases
         private PanelsPage panelsPage;
         private NewPanelDialog newPanelDialog;
         private NewPageDialog newPageDialog;
-        
+
         [TestMethod]
         public void DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field()
         {
@@ -65,12 +64,12 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
-            generalPage.OpenRandomChartPanelInstance();        
-            PanelConfigurationDialog panelConfigurationDialog=new PanelConfigurationDialog();
+            generalPage.OpenRandomChartPanelInstance();
+            PanelConfigurationDialog panelConfigurationDialog = new PanelConfigurationDialog();
             panelConfigurationDialog.EnterValueToHeighThenClickOk("299");
             // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
             string actualErrorMessage = panelConfigurationDialog.GetTextPopup();
-            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule,actualErrorMessage);
+            CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage);
             panelConfigurationDialog.AcceptAlert();
             panelConfigurationDialog.EnterValueToHeighThenClickOk("801");
             // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
@@ -91,10 +90,6 @@ namespace TADASHBOARRD.Testcases
             // VP: Error message 'Panel height must be an integer number' display
             string actualErrorMessage4 = panelConfigurationDialog.GetTextPopup();
             CheckTextDisplays(TestData.errorMessageWhenEnterCharacter, actualErrorMessage4);
-            panelConfigurationDialog.AcceptAlert();
-            // Post-Condition
-            panelConfigurationDialog.CancelPanelConfigurationDialog();
-            generalPage.Logout();
         }
     }
 }
