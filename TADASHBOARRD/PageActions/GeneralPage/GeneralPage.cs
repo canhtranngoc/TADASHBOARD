@@ -170,8 +170,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     return WebDriver.driver.FindElement(By.XPath(control[1]));
             }
-            //return WebDriver.driver.FindElement(FinFindWebElement(name));
-
         }
 
         ///<summary>
@@ -369,7 +367,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
-
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
             Console.WriteLine(numTab);
             int pageIndex = numTab - 2;
@@ -390,15 +387,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         {
                             if (TestData.browser == "chrome" || TestData.browser == "ie")
                             {
-                                IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
-                                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                                executor.ExecuteScript("arguments[0].click();", webElement);
+                                ClickItemXpathByJS(xpath);
                             }
                             else
                             {
                                 Actions builder = new Actions(WebDriver.driver);
                                 builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                                //WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                             }
                             xpathNext = "/following-sibling::ul/li/a";
                             Console.WriteLine(xpathNext);
@@ -417,9 +411,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         {
                             if (TestData.browser == "chrome" || TestData.browser == "ie")
                             {
-                                IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
-                                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                                executor.ExecuteScript("arguments[0].click();", webElement);
+                                ClickItemXpathByJS(xpath);
                             }
                             else
                             {
@@ -448,9 +440,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 Sleep(1);
                 if (TestData.browser == "chrome" || TestData.browser == "ie")
                 {
-                    IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
-                    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                    executor.ExecuteScript("arguments[0].click();", webElement);
+                    ClickItemXpathByJS(xpath);
                 }
                 else
                 {
@@ -465,9 +455,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 {
                     if (TestData.browser == "chrome" || TestData.browser == "ie")
                     {
-                        IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
-                        IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                        executor.ExecuteScript("arguments[0].click();", webElement);
+                        ClickItemXpathByJS(xpath);
                     }
                     else
                     {
@@ -479,15 +467,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 }
                 if (TestData.browser == "chrome" || TestData.browser == "ie")
                 {
-                    IWebElement webElement = WebDriver.driver.FindElement(By.XPath(xpath));
-                    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-                    executor.ExecuteScript("arguments[0].click();", webElement);
+                    ClickItemXpathByJS(xpath);
                 }
                 else
                 {
                     WebDriver.driver.FindElement(By.XPath(xpath)).Click();
                 }
-
             }
         }
 
@@ -511,9 +496,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// <summary>
         /// 
         /// </summary>
-        public void ClickItemXpathByJS(By control)
+        public void ClickItemXpathByJS(string locator)
         {
-            IWebElement webElement = WebDriver.driver.FindElement(control);
+            IWebElement webElement = WebDriver.driver.FindElement(By.XPath(locator));
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
             executor.ExecuteScript("arguments[0].click();", webElement);
         }
