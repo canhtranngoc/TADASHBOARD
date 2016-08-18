@@ -409,16 +409,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             selectcontrol.SelectByText(value);
         }
 
-        /// <summary>
-        /// Using Javascript for IE,Chrome
-        /// </summary>
-        //public void ClickItemByJS(string control)
-        //{
-        //    IWebElement webElement = FindWebElement(control);
-        //    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-        //    executor.ExecuteScript("arguments[0].click();", webElement);
-        //}
-
         public void Click(string locator)
         {
             Sleep(1);
