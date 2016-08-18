@@ -13,12 +13,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
     {
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status)
         {
-            Thread.Sleep(1000);
+            Sleep(1);
             EnterValue("page name textbox", pageName);
             if (parentPage != "")
             {
                 EnterValueDropdownList("parent page combobox", parentPage);
             }
+            Sleep(1);
             if (numberOfColumns != "")
             {
                 SelectItemByText("number of columns combobox", numberOfColumns);
@@ -32,6 +33,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 TickCheckbox("public checkbox");
             }
             Click("ok button");
+            Sleep(1);
         }
     }
 }
