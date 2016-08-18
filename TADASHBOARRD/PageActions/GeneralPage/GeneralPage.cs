@@ -507,15 +507,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             SelectElement selectcontrol = new SelectElement(FindWebElement(locator));
             selectcontrol.SelectByText(value);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        public void ClickItemJsonByJS(string control)
-        {
-            IWebElement webElement = FindWebElement(control);
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
-            executor.ExecuteScript("arguments[0].click();", webElement);
-        }
 
         /// <summary>
         /// 
@@ -535,7 +526,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             if (TestData.browser == "chrome" || TestData.browser == "ie")
             {
-                ClickItemJsonByJS(locator);
+                IWebElement webElement = FindWebElement(locator);
+                IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                executor.ExecuteScript("arguments[0].click();", webElement);
             }
             else
             {
