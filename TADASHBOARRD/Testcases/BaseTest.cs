@@ -25,7 +25,7 @@ namespace TADASHBOARRD.Testcases
         [AssemblyCleanup]
         public static void AssemblyCleapUpMethod()
         {
-            //BrowserManager.CloseBrowser();
+            BrowserManager.CloseBrowser();
         }
 
         [TestInitialize]
@@ -67,7 +67,7 @@ namespace TADASHBOARRD.Testcases
                     dataProfilesPage.Logout();
                     break;
                 default:
-                    //WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
             }
         }
