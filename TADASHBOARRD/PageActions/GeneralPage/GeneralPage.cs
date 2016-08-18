@@ -371,26 +371,55 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void goToPage(string path)
         {
             Sleep(1);
-            string currentpath = string.Empty;
             string xpathNext = string.Empty;
-            string[] element = path.Split('/');
-            Console.WriteLine(element);
-            string xpath = string.Format("//a[.='{0}']", element[0]);
-            if (element.Length == 1)
+            if (!path.Contains("/"))
             {
-                currentpath = xpath;
-                WebDriver.driver.FindElement(By.XPath(currentpath)).Click();
+                string xpath = string.Format("//a[.='{0}']", path);
+                if (TestData.browser == "chrome" || TestData.browser == "ie")
+                {
+                    IWebElement webElement = FindWebElement(xpath);
+                    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                    executor.ExecuteScript("arguments[0].click();", webElement);
+                }
+                else
+                {
+                    WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                }
             }
             else
             {
+                string[] element = path.Split('/');
+                string xpath = string.Format("//a[.='{0}']", element[0]);
                 for (int i = 1; i < element.Length; i++)
                 {
-                    Actions builder = new Actions(WebDriver.driver);
-                    builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                    if (TestData.browser == "chrome" || TestData.browser == "ie")
+                    {
+                        IWebElement webElement = FindWebElement(xpath);
+                        IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                        executor.ExecuteScript("arguments[0].click();", webElement);
+                    }
+                    else
+                    {
+                        Actions builder = new Actions(WebDriver.driver);
+                        builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+                        // WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                    }
+                    //Actions builder = new Actions(WebDriver.driver);
+                    //builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
                     xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
                     xpath = xpath + xpathNext;
                 }
-                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                if (TestData.browser == "chrome" || TestData.browser == "ie")
+                {
+                    IWebElement webElement = FindWebElement(xpath);
+                    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                    executor.ExecuteScript("arguments[0].click();", webElement);
+                }
+                else
+                {
+                    WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                }
+
             }
         }
 
