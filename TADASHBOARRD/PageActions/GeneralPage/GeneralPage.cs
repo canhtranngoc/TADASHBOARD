@@ -6,7 +6,6 @@ using System.Threading;
 using TADASHBOARRD.Common;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
