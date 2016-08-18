@@ -30,6 +30,7 @@ namespace TADASHBOARRD.Testcases
         [TestInitialize]
         public void TestInitializeMethod()
         {
+            generalPage.Sleep(1);
             NavigateTADashboard();
         }
         [TestCleanup]
