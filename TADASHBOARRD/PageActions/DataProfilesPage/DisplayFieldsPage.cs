@@ -35,13 +35,16 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         public bool AreAllCheckboxChecked()
         {
             bool check = true;
-            int n = WebDriver.driver.FindElements(tableDisplayFields).Count;
-            Console.WriteLine(n);
-            for (int column = 1; column <=2; column++)
+            int rownumber = WebDriver.driver.FindElements(tableDisplayFields).Count;
+            for (int row = 3; row < rownumber - 1; row++)
             {
-                for (int row = 3; row < n - 1; row++)
+                string xpathcolumn = string.Format("//*[@id='profilesettings']/tbody/tr[{0}]/td", row);
+                int columnnumber = WebDriver.driver.FindElements(By.XPath(xpathcolumn)).Count;
+                for(int column = 1; column<=columnnumber; column++)
                 {
                     string xpathCheckbox = string.Format("//*[@id='profilesettings']/tbody/tr[{0}]/td[{1}]//input[@type = 'checkbox']", row, column);
+                    Console.WriteLine(row);
+                    Console.WriteLine(column);
                     if (WebDriver.driver.FindElement(By.XPath(xpathCheckbox)).Selected == false)
                     {
                         check = false;
@@ -58,13 +61,16 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         public bool AreAllCheckboxUnChecked()
         {
             bool check = true;
-            int n = WebDriver.driver.FindElements(tableDisplayFields).Count;
-            Console.WriteLine(n);
-            for (int column = 1; column <= 2; column++)
+            int rownumber = WebDriver.driver.FindElements(tableDisplayFields).Count;
+            for (int row = 3; row < rownumber - 1; row++)
             {
-                for (int row = 3; row < n - 1; row++)
+                string xpathcolumn = string.Format("//*[@id='profilesettings']/tbody/tr[{0}]/td", row);
+                int columnnumber = WebDriver.driver.FindElements(By.XPath(xpathcolumn)).Count;
+                for (int column = 1; column <= columnnumber; column++)
                 {
                     string xpathCheckbox = string.Format("//*[@id='profilesettings']/tbody/tr[{0}]/td[{1}]//input[@type = 'checkbox']", row, column);
+                    Console.WriteLine(row);
+                    Console.WriteLine(column);
                     if (WebDriver.driver.FindElement(By.XPath(xpathCheckbox)).Selected == true)
                     {
                         check = false;
