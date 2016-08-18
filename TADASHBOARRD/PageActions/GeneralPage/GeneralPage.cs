@@ -373,7 +373,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         public void goToPage(string path)
         {
-            Sleep(1);
+            Sleep(3);
             string currentpath = string.Empty;
             string xpathNext = string.Empty;
             string lastpath = string.Empty;
