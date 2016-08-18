@@ -87,6 +87,7 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName1 = CommonActions.GetDateTime();
             newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            Console.WriteLine("binhday");
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName2 = CommonActions.GetDateTime();
