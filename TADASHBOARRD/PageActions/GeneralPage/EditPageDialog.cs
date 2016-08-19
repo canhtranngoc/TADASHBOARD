@@ -28,6 +28,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 EnterValueDropdownList("parent page combobox", newParentPage);
             }
+            //wait for add page popup is loaded completedly
+            Sleep(1);
             EnterValue("page name textbox", newPageName);
             if (newNumberOfColumns != "")
             {

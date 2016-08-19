@@ -9,6 +9,7 @@
             {
                 EnterValueDropdownList("parent page combobox", parentPage);
             }
+            Sleep(1);
             EnterValue("page name textbox", pageName);
 
             if (numberOfColumns != "")
