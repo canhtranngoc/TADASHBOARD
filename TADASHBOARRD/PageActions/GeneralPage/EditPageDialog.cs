@@ -5,14 +5,6 @@
         #region Methods
 
         ///<summary>
-        /// Method to cancel edit page dialog
-        ///</summary>
-        public void CancelEditPageDialog()
-        {
-            Click("cancel button");
-        }
-
-        ///<summary>
         /// Method to edit page
         ///</summary>
         public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus)
