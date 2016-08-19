@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using TADASHBOARRD.Common;
-
 
 namespace TADASHBOARRD.PageActions.DataProfilesPage
 {
@@ -13,8 +8,10 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
     {
         protected readonly By tableDisplayFields = By.XPath("//*[@id='profilesettings']/tbody/tr");
 
+        #region Methods
+
         ///<summary>
-        ///
+        /// Method to click check all link
         ///</summary>
         public void ClickCheckAllLink()
         {
@@ -22,7 +19,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         }
 
         ///<summary>
-        ///
+        /// Method to click uncheck all link
         ///</summary>
         public void ClickUnCheckAllLink()
         {
@@ -30,7 +27,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         }
 
         ///<summary>
-        ///
+        /// Method to check whether all checkboxs of Display Fields are checked or not
         ///</summary>
         public bool AreAllCheckboxChecked()
         {
@@ -40,11 +37,9 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             {
                 string xpathcolumn = string.Format("//*[@id='profilesettings']/tbody/tr[{0}]/td", row);
                 int columnnumber = WebDriver.driver.FindElements(By.XPath(xpathcolumn)).Count;
-                for(int column = 1; column<=columnnumber; column++)
+                for(int column = 1; column <= columnnumber; column++)
                 {
                     string xpathCheckbox = string.Format("//*[@id='profilesettings']/tbody/tr[{0}]/td[{1}]//input[@type = 'checkbox']", row, column);
-                    Console.WriteLine(row);
-                    Console.WriteLine(column);
                     if (WebDriver.driver.FindElement(By.XPath(xpathCheckbox)).Selected == false)
                     {
                         check = false;
@@ -56,7 +51,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         }
 
         ///<summary>
-        ///
+        /// Method to check whether all checkboxs of Display Fields are unchecked or not
         ///</summary>
         public bool AreAllCheckboxUnChecked()
         {
@@ -69,8 +64,6 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
                 for (int column = 1; column <= columnnumber; column++)
                 {
                     string xpathCheckbox = string.Format("//*[@id='profilesettings']/tbody/tr[{0}]/td[{1}]//input[@type = 'checkbox']", row, column);
-                    Console.WriteLine(row);
-                    Console.WriteLine(column);
                     if (WebDriver.driver.FindElement(By.XPath(xpathCheckbox)).Selected == true)
                     {
                         check = false;
@@ -80,5 +73,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             }
             return check;
         }
+
+        #endregion
     }
 }

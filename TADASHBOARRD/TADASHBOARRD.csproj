@@ -70,10 +70,7 @@
     <Compile Include="Common\WebDriver.cs" />
     <Compile Include="PageActions\DataProfilesPage\DataProfilesPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\DisplayFieldsPage.cs" />
-    <Compile Include="PageActions\DataProfilesPage\FilterFieldsPage.cs" />
     <Compile Include="PageActions\DataProfilesPage\GeneralSettingsPage.cs" />
-    <Compile Include="PageActions\DataProfilesPage\SortFieldsPage.cs" />
-    <Compile Include="PageActions\DataProfilesPage\StatisticFieldsPage.cs" />
     <Compile Include="PageActions\GeneralPage\EditPageDialog.cs" />
     <Compile Include="PageActions\GeneralPage\GeneralPage.cs" />
     <Compile Include="PageActions\GeneralPage\NewPageDialog.cs" />
@@ -83,20 +80,16 @@
     <Compile Include="PageActions\PanelsPage\PanelsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testcases\BaseTest.cs" />
-    <Compile Include="Testcases\Draft\BackUpTestCases.cs" />
-    <Compile Include="Testcases\Draft\UnitTest1.cs" />
-    <Compile Include="Testcases\Draft\Binh1.cs" />
-    <Compile Include="Testcases\Draft\Binh2.cs" />
-    <Compile Include="Testcases\Draft\UnitTest2.cs" />
     <Compile Include="Testcases\MainPageTestCases.cs" />
     <Compile Include="Common\TestData.cs" />
     <Compile Include="Testcases\LoginTestCases.cs" />
-    <Compile Include="Testcases\Draft\Dieu1.cs" />
     <Compile Include="Testcases\DataProfilesTestCases.cs" />
     <Compile Include="Testcases\PanelsTestCases.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Interfaces\DataProfilesPage\DataProfilesPage.json" />
     <None Include="Interfaces\DataProfilesPage\DisplayFieldsPage.json" />
     <None Include="Interfaces\DataProfilesPage\GeneralSettingsPage.json" />
@@ -142,12 +135,14 @@
       <Link>MicrosoftWebDriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\packages\WebDriver.IEDriverServer.win32.2.53\content\IEDriverServer.exe">
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\packages\WebDriver.IEDriverServer.win32.2.44\content\IEDriverServer.exe">
       <Link>IEDriverServer.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

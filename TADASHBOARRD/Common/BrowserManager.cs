@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
@@ -13,6 +8,11 @@ namespace TADASHBOARRD.Common
 {
     class BrowserManager
     {
+        #region Methods
+
+        /// <summary>
+        /// Method to open the specific browser
+        /// </summary>
         public static void OpenBrowser(string browsername)
         {
             switch (browsername.ToUpper())
@@ -41,6 +41,10 @@ namespace TADASHBOARRD.Common
                     break;
             }
         }
+
+        /// <summary>
+        /// Method to close the browser. If IE, kill process to close the browser
+        /// </summary>
         public static void CloseBrowser()
         {
             WebDriver.driver.Manage().Cookies.DeleteAllCookies();
@@ -49,7 +53,8 @@ namespace TADASHBOARRD.Common
             {
                 process.Kill();
             }
-
         }
+
+        #endregion
     }
 }

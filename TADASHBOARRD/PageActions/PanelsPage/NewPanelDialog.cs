@@ -57,25 +57,18 @@ namespace TADASHBOARRD.PageActions.PanelsPage
             {
                 case "Stacked Bar":
                     if (FindWebElement("category combobox").Text.Contains(""))
-                    {
-                       
-                        return check = true;
-                        
+                    {                   
+                        return check = true;                    
                     }
                     else
                     {
                         Console.WriteLine("hi");
                     }
-                    //if (FindWebElement("category combobox").GetAttribute("disable") == "")
-                    //{
-                    //    return check = true;
-                    //}
                     break;
                 case "":
                     break;
             }
             return check;
-
         }
     }
 }

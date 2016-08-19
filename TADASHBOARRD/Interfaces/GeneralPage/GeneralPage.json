@@ -114,4 +114,4 @@
     "type": "xpath",
     "value": "//div[@class='ptit pchart']/../table//tr[{0}]/td[{1}]"
   }
-  ]
+]
