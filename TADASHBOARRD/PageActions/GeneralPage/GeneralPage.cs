@@ -14,10 +14,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 {
     public class GeneralPage : CommonActions
     {
+        #region Methods
+
         ///<summary>
-        ///
+        /// Method to wait for element to load
         ///</summary>
-        public void WaitForElementLoad(By locator, int timeoutInSeconds)
+        public void WaitForElementLoads(By locator, int timeoutInSeconds)
         {
             if (timeoutInSeconds > 0)
             {
@@ -27,7 +29,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to wait for an alert
         ///</summary>
         public void WaitForAlert(IWebDriver driver)
         {
@@ -42,6 +44,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 catch (NoAlertPresentException e)
                 {
                     Console.WriteLine(e);
+                    // Comment li do
                     Sleep(1);
                     continue;
 
@@ -50,20 +53,20 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to accept alert
         ///</summary>
         public void AcceptAlert()
         {
             WaitForAlert(WebDriver.driver);
             WebDriver.driver.SwitchTo().Alert().Accept();
+            // Comment li do
             Sleep(1);
-            //waitForAlert(WebDriver.driver);
         }
 
         ///<summary>
-        ///
+        /// Method to get text of the alert
         ///</summary>
-        public string GetTextPopup()
+        public string GetTextAlert()
         {
             WaitForAlert(WebDriver.driver);
             return WebDriver.driver.SwitchTo().Alert().Text;
@@ -71,7 +74,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to get text of an element
         ///</summary>
         public string GetText(string locator)
         {
@@ -79,7 +82,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to get text of a dynamic element
         ///</summary>
         public string GetTextDynamicElement(string locator, string value)
         {
@@ -87,7 +90,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to get the class name from a method
         ///</summary>
         private static string GetClassCaller(int level = 4)
         {
@@ -95,7 +98,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string className = m.DeclaringType.Name;
             return className;
         }
-
         public class control
         {
             public string controlName { get; set; }
@@ -104,14 +106,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to get value of a control from json
         ///</summary>
         public string[] GetControlValue(string nameControl)
         {
             string page = GetClassCaller();
-            //string page = "GeneralPage";
-
-            Console.WriteLine(page);
             string path = Directory.GetParent(System.Reflection.Assembly.GetExecutingAssembly().Location).FullName;
             path = path.Replace("\\bin\\Debug", "");
             string content = string.Empty;
@@ -138,7 +137,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 default:
                     break;
             }
-
             var result = new JavaScriptSerializer().Deserialize<List<control>>(content);
             string[] control = new string[2];
             foreach (var item in result)
@@ -154,7 +152,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to find a web element
         ///</summary>
         public IWebElement FindWebElement(string locator)
         {
@@ -173,7 +171,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to click on dynamic element
         ///</summary>
         public void ClickOnDynamicElement(string locator, string value)
         {
@@ -181,7 +179,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to find a dynamic web element
         ///</summary>
         public IWebElement FindDynamicWebElement(string name, string value)
         {
@@ -191,7 +189,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to enter value to a control
         ///</summary>
         public void EnterValue(string locator, string value)
         {
@@ -200,15 +198,15 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to enter value to a control
         ///</summary>
-        public void EnterValueDropdownList(string locator, string value)
+        public void SelectValueDropdownList(string locator, string value)
         {          
             FindWebElement(locator).SendKeys(value);
         }
 
         ///<summary>
-        ///
+        /// Method to tick a checkbox
         ///</summary>
         public void TickCheckbox(string locator)
         {
@@ -219,7 +217,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to untick a checkbox
         ///</summary>
         public void UntickCheckbox(string locator)
         {
@@ -230,10 +228,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to log out TA Dashboard site
         ///</summary>
         public void Logout()
         {
+            // Comment li do
             Sleep(1);
             Click("user tab");
             Click("logout tab");
@@ -242,7 +241,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to open data profiles page
         ///</summary>
         public void OpenDataProfilesPage()
         {
@@ -251,7 +250,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to open panels page
         ///</summary>
         public void OpenPanelsPage()
         {
@@ -263,33 +262,19 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///<summary>
         ///
         ///</summary>
-        public void OpenPanelsFromGeneralPage()
-        {
-            Click("global setting tab");
-            Click("create panel tab");
-        }
-
-        ///<summary>
-        ///
-        ///</summary>
-        public void OpenNewPanelDialogFromGlobalSetting()
-        {
-            Click("global setting tab");
-            Click("create panel tab");
-        }
-
-        ///<summary>
-        ///
-        ///</summary>
         public void OpenNewPanelDialogFromChoosePanels()
         {
             Click("choose panels button");
             Click("create new panel button");
         }
-        
+
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenRandomChartPanelInstance()
         {
             Click("choose panels button");
+            // Comment li do
             Sleep(1);
             int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
             int randomRow = new Random().Next(1, rowCount);
@@ -300,28 +285,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string a = string.Format("//div[@class='ptit pchart']/../table//tr[{0}]/td[{1}]//a", randomRow, randomColumn);
             IWebElement randomChartPanelInstance = WebDriver.driver.FindElement(By.XPath(a));
             randomChartPanelInstance.Click();
-        }
-
-        ///<summary>
-        ///
-        ///</summary>
-        public void OpenCreateProfilePageFromGeneralPage()
-        {
-            Sleep(1);
-            Click("global setting tab");
-            Click("create profile tab");
-        }
-
-        ///<summary>
-        ///
-        ///</summary>
-        public void OpenExecutionDashboardPage()
-        {
-            Click("execution dashboard tab");
-        }
-        public void OpenOverviewPage()
-        {
-            Click("overview tab");
         }
 
         ///<summary>
@@ -620,6 +583,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);
             Assert.AreEqual(expectedMessage, actualText);
         }
+
+        #endregion
     }
 }
 

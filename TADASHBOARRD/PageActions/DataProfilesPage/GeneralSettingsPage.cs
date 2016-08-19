@@ -21,8 +21,8 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         public void CreateNewProfile(string name, string itemtype, string relateddata, string action)
         {
             EnterValue("name textbox", name);
-            EnterValueDropdownList("item type combobox", itemtype);
-            EnterValueDropdownList("related data combobox", relateddata);
+            SelectValueDropdownList("item type combobox", itemtype);
+            SelectValueDropdownList("related data combobox", relateddata);
             if (action.ToUpper() == "FINISH")
             {
                 Click("finish button");

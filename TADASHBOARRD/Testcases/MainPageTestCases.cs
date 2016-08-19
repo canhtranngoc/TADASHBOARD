@@ -29,7 +29,7 @@ namespace TADASHBOARRD.Testcases
             newPageDialog.CreateNewPage(pageName2, pageName1, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.PerformDelete();
-            string actualMessage = generalPage.GetTextPopup();
+            string actualMessage = generalPage.GetTextAlert();
             //VP: Check message "Can't delete page "page 1" since it has children page"
             generalPage.CheckDynamicTextDisplays(pageName1, actualMessage);
         }
