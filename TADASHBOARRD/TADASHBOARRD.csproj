@@ -87,6 +87,7 @@
     <Compile Include="Testcases\Draft\UnitTest1.cs" />
     <Compile Include="Testcases\Draft\Binh1.cs" />
     <Compile Include="Testcases\Draft\Binh2.cs" />
+    <Compile Include="Testcases\Draft\UnitTest2.cs" />
     <Compile Include="Testcases\MainPageTestCases.cs" />
     <Compile Include="Common\TestData.cs" />
     <Compile Include="Testcases\LoginTestCases.cs" />

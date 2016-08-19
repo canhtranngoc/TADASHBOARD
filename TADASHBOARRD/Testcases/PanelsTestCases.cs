@@ -17,26 +17,29 @@ namespace TADASHBOARRD.Testcases
         private NewPageDialog newPageDialog;
 
         [TestMethod]
-        [Priority(7)]
-        public void DA_PANEL_TC030_Verify_that_no_special_character_is_allowed_to_be_inputted_into_Display_Name_field()
+        public void DA_PANEL_TC032_Verify_that_user_is_not_allowed_to_create_panel_with_duplicated_Display_Name()
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
-            // wait for Panel Page link displays
-            Thread.Sleep(1000);
             generalPage.OpenPanelsPage();
             panelsPage = new PanelsPage();
             panelsPage.OpenNewPanelDialog();
             newPanelDialog = new NewPanelDialog();
-            newPanelDialog.AddNewPanel(TestData.specialPanelName, TestData.panelSeries);
-            string actualInvalidNameMessage = newPanelDialog.GetErrorMessage();
-            // VP: Message "Invalid display name. The name can't contain high ASCII characters or any of following characters: /:*?<>|"#{[]{};" is displayed
-            CheckTextDisplays(actualInvalidNameMessage, TestData.errorInvalidNamePanelPage);
+            newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
+            panelsPage.OpenNewPanelDialog();
+            newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
+            string actualDuplicateMessage = newPanelDialog.GetErrorMessage();
+            // VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
+            CheckTextDisplays(actualDuplicateMessage, TestData.errorDuplicatedNamePanelPage);
+            // Post-Condition
+            newPanelDialog.AcceptAlert();
+            newPanelDialog.CloseNewPanelDialog();
+            panelsPage.DeleteAllPanels();
+            panelsPage.Logout();
         }
 
         [TestMethod]
-
         public void DA_PANEL_TC036_Verify_that_all_chart_types_Pie_SingleBar_StackedBar_GroupBar_Line_are_listed_correctly_under_Chart_Type_dropped_down_menu()
         {
             loginPage = new LoginPage();
