@@ -44,28 +44,28 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName1 = GetDateTime();
+            //Add page 1
             newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             generalPage.OpenAddPageDialog();
-            newPageDialog = new NewPageDialog();
             string pageName2 = GetDateTime();
+            // Add page 2
             newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.OpenEditPageDialog();
             editPageDialog = new EditPageDialog();
             string pageName1Edit = GetDateTime();
+            // Edit page 1
             editPageDialog.EditPage(pageName1Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             // VP: User is able to edit the name of parent page successfully
             string pageName1AfterEdit = generalPage.GetPageNameOfPageOpened();
-            Console.WriteLine(pageName1AfterEdit);
             CheckTextDisplays(pageName1Edit, pageName1AfterEdit);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1Edit + "/" + pageName2);
             generalPage.OpenEditPageDialog();
-            editPageDialog = new EditPageDialog();
             string pageName2Edit = GetDateTime();
+            // Edit page 2
             editPageDialog.EditPage(pageName2Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             string pageName2AfterEdit = generalPage.GetPageNameOfPageOpened();
             // VP: User is able to edit the name of sibbling page successfully
-            Console.WriteLine(pageName2AfterEdit);
             CheckTextDisplays(pageName2Edit, pageName2AfterEdit);
             // Post-Condition
             generalPage.DeleteAllPages();
