@@ -74,27 +74,27 @@ namespace TADASHBOARRD.Testcases
             PanelConfigurationDialog panelConfigurationDialog = new PanelConfigurationDialog();
             panelConfigurationDialog.EnterValueToHeighThenClickOk(TestData.numberLessThan300);
             // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
-            string actualErrorMessage = panelConfigurationDialog.GetTextPopup();
+            string actualErrorMessage = panelConfigurationDialog.GetTextAlert();
             CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage);
             panelConfigurationDialog.AcceptAlert();
             panelConfigurationDialog.EnterValueToHeighThenClickOk(TestData.numberMoreThan800);
             // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
-            string actualErrorMessage1 = panelConfigurationDialog.GetTextPopup();
+            string actualErrorMessage1 = panelConfigurationDialog.GetTextAlert();
             CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage1);
             panelConfigurationDialog.AcceptAlert();
             panelConfigurationDialog.EnterValueToHeighThenClickOk(TestData.negativeNumber);
             // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
-            string actualErrorMessage2 = panelConfigurationDialog.GetTextPopup();
+            string actualErrorMessage2 = panelConfigurationDialog.GetTextAlert();
             CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage2);
             panelConfigurationDialog.AcceptAlert();
             panelConfigurationDialog.EnterValueToHeighThenClickOk(TestData.decimalNumber);
             // VP: Error message 'Panel height must be greater than or equal to 300 and lower than or equal to 800' display
-            string actualErrorMessage3 = panelConfigurationDialog.GetTextPopup();
+            string actualErrorMessage3 = panelConfigurationDialog.GetTextAlert();
             CheckTextDisplays(TestData.errorMessageWhenEnterOutOfRule, actualErrorMessage3);
             panelConfigurationDialog.AcceptAlert();
             panelConfigurationDialog.EnterValueToHeighThenClickOk(TestData.character);
             // VP: Error message 'Panel height must be an integer number' display
-            string actualErrorMessage4 = panelConfigurationDialog.GetTextPopup();
+            string actualErrorMessage4 = panelConfigurationDialog.GetTextAlert();
             CheckTextDisplays(TestData.errorMessageWhenEnterCharacter, actualErrorMessage4);
         }
     }

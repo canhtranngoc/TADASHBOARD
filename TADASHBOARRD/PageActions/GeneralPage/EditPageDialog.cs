@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace TADASHBOARRD.PageActions.GeneralPage
+﻿namespace TADASHBOARRD.PageActions.GeneralPage
 {
     class EditPageDialog:GeneralPage
     {
+        #region Methods
+
         ///<summary>
-        ///
+        /// Method to cancel edit page dialog
         ///</summary>
         public void CancelEditPageDialog()
         {
@@ -18,16 +13,16 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to edit page
         ///</summary>
         public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus)
         {
-
+            // Comment li do
             Sleep(1);
             EnterValue("page name textbox", newPageName);
             if (newParentPage != "")
             {
-                EnterValueDropdownList("parent page combobox", newParentPage);
+                SelectValueDropdownList("parent page combobox", newParentPage);
             }
             if (newNumberOfColumns != "")
             {
@@ -37,6 +32,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 SelectItemByText("display after combobox", newDisplayAfter);
             }
+            // Comment li do
             Sleep(1);
             if (newStatus == "public")
             {
@@ -47,16 +43,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 UntickCheckbox("public checkbox");
             }
             Click("ok button");
+            // Comment li do
             Sleep(1);
         }
 
-        ///<summary>
-        ///
-        ///</summary>
-        public string GetSelectedValueInNumberOfColumns()
-        {
-            Sleep(1);
-            return GetSelectedValueInComboBox("number of columns combobox");
-        }
+        #endregion
     }
 }

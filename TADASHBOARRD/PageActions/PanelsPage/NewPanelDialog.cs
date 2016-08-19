@@ -16,12 +16,12 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
             Sleep(1);
             EnterValue("display name textbox", name);
-            EnterValueDropdownList("series combobox", name);
+            SelectValueDropdownList("series combobox", name);
             Click("ok button");
         }
         public string GetErrorMessage()
         {
-            return GetTextPopup();
+            return GetTextAlert();
         }
         public void CloseNewPanelDialog()
         {
@@ -42,7 +42,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         public void selectChartType(string chartType)
         {
             Sleep(1);
-            EnterValueDropdownList("chart type combobox", chartType);
+            SelectValueDropdownList("chart type combobox", chartType);
         }
 
 
