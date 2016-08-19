@@ -10,12 +10,14 @@
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status)
         {
             // Comment li do
-            Sleep(1);
-            EnterValue("page name textbox", pageName);
+            Sleep(1);        
             if (parentPage != "")
             {
                 SelectValueDropdownList("parent page combobox", parentPage);
             }
+            // Comment li do
+            Sleep(1);
+            EnterValue("page name textbox", pageName);
             if (numberOfColumns != "")
             {
                 SelectItemByText("number of columns combobox", numberOfColumns);
