@@ -334,6 +334,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Sleep(1);
             Click("global setting tab");
+            Sleep(1);
             Click("add page tab");
         }
 
@@ -385,7 +386,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         Console.WriteLine(locatorClass);
                         while (locatorClass.Contains("haschild"))
                         {
-                            if (TestData.browser == "chrome" || TestData.browser == "ie")
+                            if ( TestData.browser == "ie")
                             {
                                 ClickItemXpathByJS(xpath);
                             }
@@ -409,7 +410,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         }
                         else
                         {
-                            if (TestData.browser == "chrome" || TestData.browser == "ie")
+                            if (TestData.browser == "ie")
                             {
                                 ClickItemXpathByJS(xpath);
                             }
@@ -509,7 +510,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void Click(string locator)
         {
             Sleep(1);
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            if (TestData.browser == "ie")
             {
                 IWebElement webElement = FindWebElement(locator);
                 IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
