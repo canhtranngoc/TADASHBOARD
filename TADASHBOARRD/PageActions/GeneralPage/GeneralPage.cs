@@ -12,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
-    public class GeneralPage : CommonActions
+    public class GeneralPage: CommonActions
     {
         #region Methods
 
@@ -201,7 +201,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// Method to enter value to a control
         ///</summary>
         public void SelectValueDropdownList(string locator, string value)
-        {          
+        {
             FindWebElement(locator).SendKeys(value);
         }
 
@@ -260,7 +260,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to open new panel dialog from choose panels button
         ///</summary>
         public void OpenNewPanelDialogFromChoosePanels()
         {
@@ -269,7 +269,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to open random chart panel instance
         ///</summary>
         public void OpenRandomChartPanelInstance()
         {
@@ -288,30 +288,33 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to open add page dialog
         ///</summary>
         public void OpenAddPageDialog()
         {
+            // Comment li do
             Sleep(1);
             Click("global setting tab");
             Click("add page tab");
         }
 
         ///<summary>
-        ///
+        /// Method to open edit page dialog
         ///</summary>
         public void OpenEditPageDialog()
         {
+            // Comment li do
             Sleep(1);
             Click("global setting tab");
             Click("edit page tab");
         }
 
         ///<summary>
-        ///
+        /// Method to perform the delete page action
         ///</summary>
         public void PerformDelete()
         {
+            // Comment li do
             Sleep(1);
             Click("global setting tab");
             Click("delete tab");
@@ -319,10 +322,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to delete all pages
         ///</summary>
         public void DeleteAllPages()
         {
+            // Comment li do
             Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
@@ -387,16 +391,17 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to go to a specific page
         ///</summary>
         public void goToPage(string path)
         {
+            // Comment li do
             Sleep(1);
             string xpathNext = string.Empty;
             if (!(path.Contains("/")))
             {
                 string xpath = string.Format("//a[.='{0}']", path);
-                Console.WriteLine(xpath);
+                // Comment li do
                 Sleep(1);
                 if (TestData.browser == "chrome" || TestData.browser == "ie")
                 {
@@ -437,7 +442,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to perform sleep action in specific seconds
         ///</summary>
         public void Sleep(int second)
         {
@@ -445,7 +450,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to select item by its text
         ///</summary>
         public void SelectItemByText(string locator, string value)
         {
@@ -454,7 +459,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         /// <summary>
-        /// 
+        /// Method to click an element by xpath using javascript
         /// </summary>
         public void ClickItemXpathByJS(string locator)
         {
@@ -464,7 +469,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to click an element by xpath
         ///</summar
         public void ClickItemXpath(string locator)
         {
@@ -472,10 +477,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to click on an element
         ///</summary>
         public void Click(string locator)
         {
+            // Comment li do
             Sleep(1);
             if (TestData.browser == "chrome" || TestData.browser == "ie")
             {
@@ -490,44 +496,27 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to get user name after log in
         ///</summary>
         public string GetUserName()
         {
+            // Comment li do
             Sleep(1);
             return GetText("user tab");
         }
 
-        ///<summary>
-        ///
-        ///</summary>
-        public string GetRepository()
-        {
-            Sleep(1);
-            return GetText("repository label");
-        }
-
-        ///<summary>
-        ///
-        ///</summary>
-        public string GetSecondPageName()
-        {
-            Sleep(1);
-            return GetText("second page tab");
-        }
-
         /// <summary>
-        /// 
+        /// Method to get the page name based on driver's title
         /// </summary>
-        /// <returns></returns>
         public string GetPageNameOfPageOpened()
         {
             string titlename = WebDriver.driver.Title;
-            titlename = titlename.Replace("TestArchitect ™ - ","");
+            titlename = titlename.Replace("TestArchitect ™ - ", "");
             return titlename;
         }
+
         ///<summary>
-        ///
+        /// Method to check whether element presents or not
         ///</summary>
         public bool DoesElementPresent(string locator)
         {
@@ -543,7 +532,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        /// Method to check whether dynamic element presents or not
         ///</summary>
         public bool DoesDynamicElementPresent(string locator, string name)
         {
@@ -559,30 +548,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
-        ///</summary>
-        public void CheckPageDisplays(string pageName)
-        {
-            bool exist = DoesDynamicElementPresent("random page tab", pageName);
-            Assert.IsTrue(exist);
-        }
-
-        ///<summary>
-        ///
+        /// Method to count how many children present in the combobox
         ///</summary>
         public int CountComboboxChildren(string locator)
         {
             return WebDriver.driver.FindElements(By.XPath(locator)).Count;
-        }
-
-        ///<summary>
-        ///
-        ///</summary>
-        public string GetSelectedValueInComboBox(string locator)
-        {
-            SelectElement selectedValue = new SelectElement(FindWebElement(locator));
-            string wantedText = selectedValue.SelectedOption.Text;
-            return wantedText;
         }
 
         ///<summary>

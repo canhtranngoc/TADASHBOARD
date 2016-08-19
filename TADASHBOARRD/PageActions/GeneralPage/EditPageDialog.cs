@@ -1,6 +1,6 @@
 ﻿namespace TADASHBOARRD.PageActions.GeneralPage
 {
-    class EditPageDialog:GeneralPage
+    class EditPageDialog: GeneralPage
     {
         #region Methods
 
