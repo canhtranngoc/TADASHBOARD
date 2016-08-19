@@ -510,7 +510,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void Click(string locator)
         {
             Sleep(1);
-            if (TestData.browser == "ie")
+            if (TestData.browser == "ie" || TestData.browser == "chrome")
             {
                 IWebElement webElement = FindWebElement(locator);
                 IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
