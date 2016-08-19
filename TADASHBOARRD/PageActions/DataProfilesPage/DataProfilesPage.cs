@@ -48,42 +48,24 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void CheckDataProfileOtherSettingPages(string name)
         {
-            // Wait for page loads
             Sleep(1);
             string xpathDataProfile = string.Format("//a[.='{0}']", name);
-            WebDriver.driver.FindElement(By.XPath(xpathDataProfile)).Click();
-            Click("display fields tab");
-            // Wait for page loads
+            ClickItemXpath(xpathDataProfile);
+            CheckDataProfileSettingHeader("display fields tab", TestData.displayFields);
+            CheckDataProfileSettingHeader("sort fields tab", TestData.sortFields);
+            CheckDataProfileSettingHeader("filter fields tab", TestData.filterFields);
+            CheckDataProfileSettingHeader("statistic fields tab", TestData.statisticFields);
+            CheckDataProfileSettingHeader("display sub-fields tab", TestData.displaySubFields);
+            CheckDataProfileSettingHeader("sort sub-fields tab", TestData.sortSubFields);
+            CheckDataProfileSettingHeader("filter sub - fields tab", TestData.filterSubFields);
+            CheckDataProfileSettingHeader("statistic sub-fields tab", TestData.statisticSubFields);
+        }
+        public void CheckDataProfileSettingHeader(string tab, string header)
+        {
+            Click(tab);
+            // Wait for new page to load
             Sleep(1);
-            CheckTextDisplays(TestData.displayFields, GetText("fields header"));
-            Click("sort fields tab");
-            // Wait for page loads
-            Sleep(1);
-            CheckTextDisplays(TestData.sortFields, GetText("fields header"));
-            Click("filter fields tab");
-            // Wait for page loads
-            Sleep(1);
-            CheckTextDisplays(TestData.filterFields, GetText("fields header"));
-            Click("statistic fields tab");
-            // Wait for page loads
-            Sleep(1);
-            CheckTextDisplays(TestData.statisticFields, GetText("fields header"));
-            Click("display sub-fields tab");
-            // Wait for page loads
-            Sleep(1);
-            CheckTextDisplays(TestData.displaySubFields, GetText("fields header"));
-            Click("sort sub-fields tab");
-            // Wait for page loads
-            Sleep(1);
-            CheckTextDisplays(TestData.sortSubFields, GetText("fields header"));
-            Click("filter sub-fields tab");
-            // Wait for page loads
-            Sleep(1);
-            CheckTextDisplays(TestData.filterSubFields, GetText("fields header"));
-            Click("statistic sub-fields tab");
-            // Wait for page loads
-            Sleep(1);
-            CheckTextDisplays(TestData.statisticSubFields, GetText("fields header"));
+            CheckTextDisplays(header, GetText("fields header"));
         }
     }
 }

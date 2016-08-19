@@ -241,12 +241,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
         }
 
-        //public void MouseHover(string locator)
-        //{
-        //    Actions action = new Actions(WebDriver.driver);
-        //    action.MoveToElement(FindWebElement(locator)).Perform();
-        //}
-
+        ///<summary>
+        ///
+        ///</summary>
         public void OpenDataProfilesPage()
         {
             Click("administer tab");
@@ -415,7 +412,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                             }
                             else
                             {
-                                WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                                ClickItemXpath(xpath);
                             }
                             PerformDelete();
                         }
@@ -444,7 +441,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 }
                 else
                 {
-                    WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                    ClickItemXpath(xpath);
                 }
             }
             else
@@ -471,7 +468,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 }
                 else
                 {
-                    WebDriver.driver.FindElement(By.XPath(xpath)).Click();
+                    ClickItemXpath(xpath);
                 }
             }
         }
@@ -501,6 +498,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             IWebElement webElement = WebDriver.driver.FindElement(By.XPath(locator));
             IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
             executor.ExecuteScript("arguments[0].click();", webElement);
+        }
+
+        ///<summary>
+        ///
+        ///</summar
+        public void ClickItemXpath(string locator)
+        {
+            WebDriver.driver.FindElement(By.XPath(locator)).Click();
         }
 
         ///<summary>

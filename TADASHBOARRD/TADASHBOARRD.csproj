@@ -96,7 +96,9 @@
     <Compile Include="Testcases\PanelsTestCases.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Interfaces\DataProfilesPage\DataProfilesPage.json" />
     <None Include="Interfaces\DataProfilesPage\DisplayFieldsPage.json" />
     <None Include="Interfaces\DataProfilesPage\GeneralSettingsPage.json" />
@@ -142,12 +144,14 @@
       <Link>MicrosoftWebDriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\packages\WebDriver.IEDriverServer.win32.2.53\content\IEDriverServer.exe">
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="..\packages\WebDriver.IEDriverServer.win32.2.44\content\IEDriverServer.exe">
       <Link>IEDriverServer.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
