@@ -10,6 +10,7 @@ using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
     public class GeneralPage : CommonActions
@@ -55,7 +56,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void AcceptAlert()
         {
             WaitForAlert(WebDriver.driver);
-            WebDriver.driver.SwitchTo().Alert().Accept();
+            Actions action = new Actions(WebDriver.driver);
+            action.KeyDown(Keys.Tab);
+            action.KeyDown(Keys.Tab);
+            action.KeyDown(Keys.Tab);
+            action.KeyDown(Keys.Enter);
+          //  WebDriver.driver.SwitchTo().Alert().Accept();
             Sleep(1);
             //waitForAlert(WebDriver.driver);
         }
