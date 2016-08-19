@@ -23,11 +23,11 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName1 = GetDateTime();
-            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic);
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName2 = GetDateTime();
-            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.PerformDelete();
             string actualMessage = generalPage.GetTextAlert();
