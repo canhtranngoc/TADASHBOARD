@@ -13,12 +13,5 @@
     "controlName": "check all link",
     "type": "xpath",
     "value": "//a[.='Check All']"
-  },
-  {
-    "controlName": "delete panel link",
-    "type": "xpath",
-    "value": "//tbody//a[.='{0}']/../..//a[.='Delete']"
   }
-
-
 ]

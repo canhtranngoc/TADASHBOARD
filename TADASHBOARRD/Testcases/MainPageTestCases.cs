@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TADASHBOARRD.PageActions.LoginPage;
 using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.Common;
@@ -22,37 +23,53 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName1 = GetDateTime();
-            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic);
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName2 = GetDateTime();
-            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.PerformDelete();
-            string actualMessage = generalPage.GetTextPopup();
+            string actualMessage = generalPage.GetTextAlert();
             //VP: Check message "Can't delete page "page 1" since it has children page"
             generalPage.CheckDynamicTextDisplays(pageName1, actualMessage);
         }
 
         [TestMethod]
-        public void DA_MP_TC026_Verify_that_page_column_is_correct_when_user_edit_Number_of_Columns_field_of_a_specific_page()
+        public void DA_MP_TC021_Verify_that_user_is_able_to_edit_the_name_of_the_page_Parent_and_Sibbling_successfully()
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.validUsername, TestData.validPassword);
             generalPage = new GeneralPage();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
-            string pageName = GetDateTime();
-            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
-            generalPage.goToPage(pageName);
+            string pageName1 = GetDateTime();
+            //Add page 1
+            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.OpenAddPageDialog();
+            string pageName2 = GetDateTime();
+            // Add page 2
+            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.OpenEditPageDialog();
             editPageDialog = new EditPageDialog();
-            editPageDialog.EditPage(pageName, TestData.defaultParentPage, TestData.newNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
-            generalPage.goToPage(pageName);
+            string pageName1Edit = GetDateTime();
+            // Edit page 1
+            editPageDialog.EditPage(pageName1Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            // VP: User is able to edit the name of parent page successfully
+            string pageName1AfterEdit = generalPage.GetPageNameOfPageOpened();
+            CheckTextDisplays(pageName1Edit, pageName1AfterEdit);
+            generalPage.goToPage(TestData.overviewPage + "/" + pageName1Edit + "/" + pageName2);
             generalPage.OpenEditPageDialog();
-            // VP: There are 3 columns on the above created page
-            string numberOfColumns = editPageDialog.GetSelectedValueInNumberOfColumns();
-            CheckTextDisplays(numberOfColumns, TestData.newNumberOfColumns);
+            string pageName2Edit = GetDateTime();
+            // Edit page 2
+            editPageDialog.EditPage(pageName2Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            string pageName2AfterEdit = generalPage.GetPageNameOfPageOpened();
+            // VP: User is able to edit the name of sibbling page successfully
+            CheckTextDisplays(pageName2Edit, pageName2AfterEdit);
+            // Post-Condition
+            generalPage.DeleteAllPages();
+            generalPage.Logout();
         }
     }
 }

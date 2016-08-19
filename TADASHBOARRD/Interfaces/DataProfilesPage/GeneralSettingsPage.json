@@ -1,6 +1,6 @@
 [
   {
-    "controlName":  "name textbox",
+    "controlName": "name textbox",
     "type": "id",
     "value": "txtProfileName"
   },
@@ -39,5 +39,4 @@
     "type": "xpath",
     "value": "//select[@id='cbbEntityType']"
   }
-
 ]

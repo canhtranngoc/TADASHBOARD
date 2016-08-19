@@ -29,7 +29,7 @@ namespace TADASHBOARRD.Testcases
         {
             loginPage = new LoginPage();
             loginPage.Login(TestData.defaulRepository, TestData.invalidUsername, TestData.invalidPassword);
-            string actualMessage = loginPage.GetTextPopup();
+            string actualMessage = loginPage.GetTextAlert();
             // VP: Verify that Dashboard Error message "Username or password is invalid" appears
             CheckTextDisplays(TestData.errorLoginMessage, actualMessage);
             // Post-Condition
@@ -62,7 +62,7 @@ namespace TADASHBOARRD.Testcases
             CheckTextDisplays(TestData.testUsername, actualUsername);
             generalPage.Logout();
             loginPage.Login(TestData.defaulRepository, TestData.testUsername, TestData.testLowercasePassword);
-            string actualMessage = generalPage.GetTextPopup();
+            string actualMessage = generalPage.GetTextAlert();
             // VP: Verify that Dashboard Error message "Username or password is invalid" appears
             CheckTextDisplays(TestData.errorLoginMessage, actualMessage);
             // Post-Condition

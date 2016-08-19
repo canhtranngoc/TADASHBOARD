@@ -1,34 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace TADASHBOARRD.PageActions.GeneralPage
+﻿namespace TADASHBOARRD.PageActions.GeneralPage
 {
-    class EditPageDialog:GeneralPage
+    class EditPageDialog: GeneralPage
     {
-        ///<summary>
-        ///
-        ///</summary>
-        public void CancelEditPageDialog()
-        {
-            Click("cancel button");
-        }
+        #region Methods
 
         ///<summary>
-        ///
+        /// Method to edit page
         ///</summary>
         public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus)
         {
-
-            Sleep(1);
-            EnterValue("page name textbox", newPageName);
             if (newParentPage != "")
             {
-                EnterValueDropdownList("parent page combobox", newParentPage);
+                SelectValueDropdownList("parent page combobox", newParentPage);
             }
+            // Comment li do
+            Sleep(1);
+            EnterValue("page name textbox", newPageName);
             if (newNumberOfColumns != "")
             {
                 SelectItemByText("number of columns combobox", newNumberOfColumns);
@@ -37,6 +24,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 SelectItemByText("display after combobox", newDisplayAfter);
             }
+            // Comment li do
             Sleep(1);
             if (newStatus == "public")
             {
@@ -47,16 +35,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 UntickCheckbox("public checkbox");
             }
             Click("ok button");
+            // Comment li do
             Sleep(1);
         }
 
-        ///<summary>
-        ///
-        ///</summary>
-        public string GetSelectedValueInNumberOfColumns()
-        {
-            Sleep(1);
-            return GetSelectedValueInComboBox("number of columns combobox");
-        }
+        #endregion
     }
 }

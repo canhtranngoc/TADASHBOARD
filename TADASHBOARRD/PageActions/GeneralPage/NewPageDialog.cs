@@ -1,15 +1,23 @@
 ﻿namespace TADASHBOARRD.PageActions.GeneralPage
 {
-    public class NewPageDialog : GeneralPage
+    public class NewPageDialog: GeneralPage
     {
+        #region Methods
+
+        /// <summary>
+        /// Method to create a new page
+        /// </summary>
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status)
         {
-            Sleep(1);
-            EnterValue("page name textbox", pageName);
+            // Comment li do
+            Sleep(1);        
             if (parentPage != "")
             {
-                EnterValueDropdownList("parent page combobox", parentPage);
+                SelectValueDropdownList("parent page combobox", parentPage);
             }
+            // Comment li do
+            Sleep(1);
+            EnterValue("page name textbox", pageName);
             if (numberOfColumns != "")
             {
                 SelectItemByText("number of columns combobox", numberOfColumns);
@@ -18,6 +26,7 @@
             {
                 SelectItemByText("display after combobox", displayAfter);
             }
+            // Comment li do
             Sleep(1);
             if (status == "public")
             {
@@ -29,7 +38,10 @@
                 UntickCheckbox("public checkbox");
             }
             Click("ok button");
+            // Comment li do
             Sleep(1);
         }
+
+        #endregion
     }
 }
