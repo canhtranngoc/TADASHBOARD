@@ -29,7 +29,7 @@ namespace TADASHBOARRD.Testcases
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
             panelsPage.OpenNewPanelDialog();
             newPanelDialog.AddNewPanel(TestData.duplicatedPanelName, TestData.panelSeries);
-            string actualDuplicateMessage = newPanelDialog.GetErrorMessage();
+            string actualDuplicateMessage = newPanelDialog.GetTextAlert();
             // VP: Warning message: "Dupicated panel already exists. Please enter a different name" show up
             CheckTextDisplays(actualDuplicateMessage, TestData.errorDuplicatedNamePanelPage);
             // Post-Condition
