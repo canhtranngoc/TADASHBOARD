@@ -15,31 +15,35 @@ namespace TADASHBOARRD.Common
     {
         public static void OpenBrowser(string browsername)
         {
-            switch (browsername.ToUpper())
+            if (TestData.runtype.ToUpper() == "LOCAL")
             {
-                case "FIREFOX":
-                    WebDriver.driver = new FirefoxDriver();
-                    WebDriver.driver.Manage().Window.Maximize();
-                    break;
-                case "CHROME":
-                    ChromeOptions options = new ChromeOptions();
-                    options.AddArguments("--disable-extensions");
-                    WebDriver.driver = new ChromeDriver(options);
-                    WebDriver.driver.Manage().Window.Maximize();
-                    break;
-                case "IE":
-                    WebDriver.driver = new InternetExplorerDriver();
-                    WebDriver.driver.Manage().Window.Maximize();
-                    break;
-                case "EDGE":
-                    WebDriver.driver = new EdgeDriver();
-                    WebDriver.driver.Manage().Window.Maximize();
-                    break;
-                default:
-                    WebDriver.driver = new FirefoxDriver();
-                    WebDriver.driver.Manage().Window.Maximize();
-                    break;
+                switch (browsername.ToUpper())
+                {
+                    case "FIREFOX":
+                        WebDriver.driver = new FirefoxDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                    case "CHROME":
+                        ChromeOptions options = new ChromeOptions();
+                        options.AddArguments("--disable-extensions");
+                        WebDriver.driver = new ChromeDriver(options);
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                    case "IE":
+                        WebDriver.driver = new InternetExplorerDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                    case "EDGE":
+                        WebDriver.driver = new EdgeDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                    default:
+                        WebDriver.driver = new FirefoxDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                }
             }
+            
         }
         public static void CloseBrowser()
         {

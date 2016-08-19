@@ -22,7 +22,6 @@ namespace TADASHBOARRD.Testcases.Draft
         private NewPageDialog newPageDialog;
         private DataProfilesPage dataProfilesPage;
         private GeneralSettingsPage generalSettingsPage;
-        private DisplayFieldsPage displayFieldsPage;
 
         public void DA_LOGIN_TC008_Verify_that_password_with_special_characters_is_working_correctly()
         {

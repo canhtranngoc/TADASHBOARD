@@ -4,8 +4,11 @@ namespace TADASHBOARRD.Common
 {
     public class TestData : CommonActions
     {
+        public static string runtype = ConfigurationManager.AppSettings["run type"];
         public static string browser = ConfigurationManager.AppSettings["browser"];
         public static string dashBoardURL = ConfigurationManager.AppSettings["url"];
+        public static string firefoxVersion = ConfigurationManager.AppSettings["firefox version"];
+        public static string firefoxPlatform = ConfigurationManager.AppSettings["firefox platform"];
         public static string validUsername = "administrator";
         public static string validPassword = "";
         public static string defaulRepository = "SampleRepository";
