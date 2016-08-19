@@ -19,7 +19,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
 
         public void DeletePanel(string name)
         {
-            ClickOnDynamicElement("delete panel link", name);
+            ClickOnDynamicElement("delete a panel link", name);
             AcceptAlert();
         }
 

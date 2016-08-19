@@ -1,41 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
-using TADASHBOARRD.Common;
+﻿using TADASHBOARRD.Common;
 
 namespace TADASHBOARRD.PageActions.DataProfilesPage
 {
     public class DataProfilesPage : GeneralPage.GeneralPage
     {
+        #region Methods
+
         ///<summary>
-        ///
+        /// Method to open create profile (general settings) page from data profiles page
         ///</summary>
         public void OpenCreateProfilePageFromDataProfilesPage()
         {
+            // Comment li do
             Sleep(1);
             Click("add new link");
         }
 
         ///<summary>
-        ///
+        /// Method to delete all profiles
         ///</summary>
-        // Viet thanh dynamic jason
-        public void DeleteProfile(string name)
-        {
-            ClickOnDynamicElement("delete a profile link", name);
-            AcceptAlert();
-        }
-
-        ///<summary>
-        ///
-        ///</summary>
-
         public void DeleteAllProfiles()
         {
-            if (DoesElementPresent("check all link")==true)
+            if (DoesElementPresent("check all link") == true)
             {
                 Click("check all link");
                 Click("delete link");
@@ -44,7 +30,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         }
 
         ///<summary>
-        ///
+        /// Method to check correct page loads when navigating through setting pages on the left navigation panel
         ///</summary>
         public void CheckDataProfileOtherSettingPages(string name)
         {
@@ -60,6 +46,10 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             CheckDataProfileSettingHeader("filter sub - fields tab", TestData.filterSubFields);
             CheckDataProfileSettingHeader("statistic sub-fields tab", TestData.statisticSubFields);
         }
+
+        /// <summary>
+        /// Method to check the header of the corresponding setting page when navigating through setting pages on the left navigation panel
+        /// </summary>
         public void CheckDataProfileSettingHeader(string tab, string header)
         {
             Click(tab);
@@ -67,5 +57,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             Sleep(1);
             CheckTextDisplays(header, GetText("fields header"));
         }
+
+        #endregion
     }
 }

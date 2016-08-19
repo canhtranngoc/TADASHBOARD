@@ -1,32 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TADASHBOARRD.Common;
 
 namespace TADASHBOARRD.PageActions.DataProfilesPage
 {
     class GeneralSettingsPage : GeneralPage.GeneralPage
     {
-        ///<summary>
-        ///
-        ///</summary>
-        public void ClickNextWithoutName()
-        {
-            Click("next button");
-        }
+        #region Methods
 
         ///<summary>
-        ///
-        ///</summary>
-        public void ClickFinishWithoutName()
-        {
-            Click("finish button");
-        }
-
-        ///<summary>
-        ///
+        /// Method to cancel general settings
         ///</summary>
         public void CancelGeneralSettings()
         {
@@ -34,7 +16,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         }
 
         ///<summary>
-        ///
+        /// Method to create a new data profile
         ///</summary>
         public void CreateNewProfile(string name, string itemtype, string relateddata, string action)
         {
@@ -52,7 +34,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         }
 
         ///<summary>
-        ///
+        /// Method to check item type options display correctly or not
         ///</summary>
         public void CheckItemTypeOptions()
         {
@@ -66,5 +48,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
                 CheckTextDisplays(TestData.itemTypeArray[i - 1], actual);
             }
         }
+
+        #endregion
     }
 }
