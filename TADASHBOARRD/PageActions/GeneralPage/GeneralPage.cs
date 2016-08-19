@@ -386,7 +386,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         Console.WriteLine(locatorClass);
                         while (locatorClass.Contains("haschild"))
                         {
-                            if ( TestData.browser == "ie")
+                            if ( TestData.browser == "ie" || TestData.browser == "chrome")
                             {
                                 ClickItemXpathByJS(xpath);
                             }
@@ -410,7 +410,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         }
                         else
                         {
-                            if (TestData.browser == "ie")
+                            if (TestData.browser == "ie" || TestData.browser == "chrome")
                             {
                                 ClickItemXpathByJS(xpath);
                             }
