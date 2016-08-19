@@ -608,7 +608,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        ///
+        ///Check message informs that user cannot delete page that has children.
         ///</summary>
         public void CheckDynamicTextDisplays(string dynamicExpectedText, string actualText)
         {

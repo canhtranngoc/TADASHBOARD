@@ -16,7 +16,6 @@ namespace TADASHBOARRD.Testcases
         private DisplayFieldsPage displayFieldsPage;
 
         [TestMethod]
-        [Priority(10)]
         public void DA_DP_TC072_Verify_that_all_data_profile_types_are_listed_under_Item_Type_dropped_down_menu()
         {
             loginPage = new LoginPage();
@@ -34,7 +33,6 @@ namespace TADASHBOARRD.Testcases
         }
 
         [TestMethod]
-        [Priority(11)]
         public void DA_DP_TC076_Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel()
         {
             loginPage = new LoginPage();
@@ -57,7 +55,6 @@ namespace TADASHBOARRD.Testcases
         }
 
         [TestMethod]
-        [Priority(12)]
         public void DA_DP_TC079_Verify_that_Check_All_Uncheck_All_Links_are_working_correctly()
         {
             loginPage = new LoginPage();

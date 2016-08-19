@@ -61,7 +61,6 @@ namespace TADASHBOARRD.Testcases
 
 
         [TestMethod]
-        [Priority(9)]
         public void DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field()
         {
 
