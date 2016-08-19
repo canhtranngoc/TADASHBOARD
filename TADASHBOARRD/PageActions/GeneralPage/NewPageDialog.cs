@@ -7,17 +7,30 @@
         /// <summary>
         /// Method to create a new page
         /// </summary>
-        public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status)
+        public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status, int parentLevel)
         {
-            // Comment li do
-            Sleep(1);        
-            if (parentPage != "")
-            {
-                SelectValueDropdownList("parent page combobox", parentPage);
-            }
             // Comment li do
             Sleep(1);
             EnterValue("page name textbox", pageName);
+            if (parentPage != "")
+            {
+                if (parentLevel == 0)
+                {
+                    SelectItemByText("parent page combobox", parentPage);
+                }
+                if (parentLevel == 1)
+                {
+                    SelectItemByText("parent page combobox", ("    " + parentPage));
+                }
+                if (parentLevel == 2)
+                {
+                    SelectItemByText("parent page combobox", ("        " + parentPage));
+                }
+                if (parentLevel == 3)
+                {
+                    SelectItemByText("parent page combobox", ("            " + parentPage));
+                }
+            }
             if (numberOfColumns != "")
             {
                 SelectItemByText("number of columns combobox", numberOfColumns);
