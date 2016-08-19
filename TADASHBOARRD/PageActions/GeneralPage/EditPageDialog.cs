@@ -24,11 +24,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
 
             Sleep(1);
-            EnterValue("page name textbox", newPageName);
             if (newParentPage != "")
             {
                 EnterValueDropdownList("parent page combobox", newParentPage);
             }
+            EnterValue("page name textbox", newPageName);
             if (newNumberOfColumns != "")
             {
                 SelectItemByText("number of columns combobox", newNumberOfColumns);

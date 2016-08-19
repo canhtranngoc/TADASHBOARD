@@ -2,6 +2,7 @@
 using TADASHBOARRD.PageActions.LoginPage;
 using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.Common;
+using System;
 
 namespace TADASHBOARRD.Testcases
 {
@@ -27,7 +28,9 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName2 = GetDateTime();
             newPageDialog.CreateNewPage(pageName2, pageName1, TestData.blankNumberOfColumns, TestData.blankDisplayAfter, TestData.statusPublic);
+            Console.WriteLine("12354");
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
+            Console.WriteLine("123");
             generalPage.PerformDelete();
             string actualMessage = generalPage.GetTextPopup();
             //VP: Check message "Can't delete page "page 1" since it has children page"
