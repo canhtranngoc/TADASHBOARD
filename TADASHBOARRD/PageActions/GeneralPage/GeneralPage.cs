@@ -203,7 +203,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///
         ///</summary>
         public void EnterValueDropdownList(string locator, string value)
-        {          
+        {
             FindWebElement(locator).SendKeys(value);
         }
 
@@ -289,7 +289,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("choose panels button");
             Click("create new panel button");
         }
-        
+
         public void OpenRandomChartPanelInstance()
         {
             Click("choose panels button");
@@ -434,7 +434,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             string xpathNext = string.Empty;
             if (!(path.Contains("/")))
-            {   
+            {
                 string xpath = string.Format("//a[.='{0}']", path);
                 Console.WriteLine(xpath);
                 Sleep(1);
@@ -548,6 +548,16 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return GetText("second page tab");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string GetPageNameOfPageOpened()
+        {
+            string titlename = WebDriver.driver.Title;
+            titlename = titlename.Replace("TestArchitect ™ - ","");
+            return titlename;
+        }
         ///<summary>
         ///
         ///</summary>

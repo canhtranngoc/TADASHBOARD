@@ -45,12 +45,6 @@ namespace TADASHBOARRD.Testcases
                     generalPage.Logout();
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
-                case "DA_MP_TC026_Verify_that_page_column_is_correct_when_user_edit_Number_of_Columns_field_of_a_specific_page":
-                    editPageDialog.CancelEditPageDialog();
-                    generalPage.DeleteAllPages();
-                    generalPage.Logout();
-                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
-                    break;
                 case "DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field":
                     panelConfigurationDialog.AcceptAlert();
                     panelConfigurationDialog.CancelPanelConfigurationDialog();
