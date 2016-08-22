@@ -4,6 +4,8 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using System;
+using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 
 namespace TADASHBOARRD.Common
 {
@@ -16,36 +18,43 @@ namespace TADASHBOARRD.Common
         /// </summary>
         public static void OpenBrowser(string browsername)
         {
-            if (TestData.runtype.ToUpper() == "LOCAL")
+            switch (browsername.ToUpper())
             {
-                Console.WriteLine("local");
-                switch (browsername.ToUpper())
-                {
-                    case "FIREFOX":
+                case "FIREFOX":
+                    if (TestData.runtype.ToUpper() == "LOCAL")
+                    {
                         WebDriver.driver = new FirefoxDriver();
                         WebDriver.driver.Manage().Window.Maximize();
-                        break;
-                    case "CHROME":
-                        ChromeOptions options = new ChromeOptions();
-                        options.AddArguments("--disable-extensions");
-                        WebDriver.driver = new ChromeDriver(options);
-                        WebDriver.driver.Manage().Window.Maximize();
-                        break;
-                    case "IE":
-                        WebDriver.driver = new InternetExplorerDriver();
-                        WebDriver.driver.Manage().Window.Maximize();
-                        break;
-                    case "EDGE":
-                        WebDriver.driver = new EdgeDriver();
-                        WebDriver.driver.Manage().Window.Maximize();
-                        break;
-                    default:
-                        WebDriver.driver = new FirefoxDriver();
-                        WebDriver.driver.Manage().Window.Maximize();
-                        break;
-                }
+                    }
+                    else if (TestData.runtype.ToUpper() == "GRID")
+                    {
+                        DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
+                        capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
+                        capabilities.SetCapability(CapabilityType.Version, "47.0.1");
+                        capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.remoteDriver = new RemoteWebDriver(new Uri("http://192.168.189.242:7070"), capabilities, TimeSpan.FromSeconds(1000));
+                    }
+                    break;
+
+                case "CHROME":
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("--disable-extensions");
+                    WebDriver.driver = new ChromeDriver(options);
+                    WebDriver.driver.Manage().Window.Maximize();
+                    break;
+                case "IE":
+                    WebDriver.driver = new InternetExplorerDriver();
+                    WebDriver.driver.Manage().Window.Maximize();
+                    break;
+                case "EDGE":
+                    WebDriver.driver = new EdgeDriver();
+                    WebDriver.driver.Manage().Window.Maximize();
+                    break;
+                default:
+                    WebDriver.driver = new FirefoxDriver();
+                    WebDriver.driver.Manage().Window.Maximize();
+                    break;
             }
-            
         }
 
         /// <summary>

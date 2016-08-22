@@ -3,7 +3,7 @@ using OpenQA.Selenium.Remote;
 
 namespace TADASHBOARRD.Common
 {
-    class WebDriver
+    public class WebDriver
     {  
         public static IWebDriver driver;
         public static RemoteWebDriver remoteDriver;
