@@ -1,34 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
 
 namespace TADASHBOARRD.Common
 {
     public class CommonActions
     {
+        #region Methods
+
+        /// <summary>
+        /// Method to navigate to TA Dashboard site
+        /// </summary>
         public static void NavigateTADashboard()
         {
-            WebDriver.driver.Navigate().GoToUrl(TestData.dashBoardURL);
+            if (TestData.runtype.ToUpper() == "LOCAL")
+            {
+                WebDriver.driver.Navigate().GoToUrl(TestData.dashBoardURL);
+            }
+            else if (TestData.runtype.ToUpper() == "GRID")
+            {
+                WebDriver.remoteDriver.Navigate().GoToUrl(TestData.dashBoardURL);
+            }
+                
         }
 
+        /// <summary>
+        /// Method to check whether the displayed text matches expectation or not
+        /// </summary>
         public static void CheckTextDisplays(string expectedText, string actualText)
         {
             Assert.AreEqual(expectedText, actualText);
         }
+
+        /// <summary>
+        /// Method to the the date time of the system
+        /// </summary>
         public static string GetDateTime()
         {
             return DateTime.Now.ToString("ddmmyyyyhhmmss");
         }
-        public void test()
-        {
-            
-        }
+
+        #endregion
     }
 }

@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TADASHBOARRD.PageActions.GeneralPage;
-using TADASHBOARRD.PageActions;
-
-namespace TADASHBOARRD.PageActions.LoginPage
+﻿namespace TADASHBOARRD.PageActions.LoginPage
 {
-    public class LoginPage : GeneralPage.GeneralPage
+    public class LoginPage: GeneralPage.GeneralPage
     {
+        #region Methods
+
+        /// <summary>
+        /// Method to login TA Dashboard site
+        /// </summary>
         public void Login(string repository, string username, string password)
         {
             SelectItemByText("repository combobox", repository);
             EnterValue("username textbox", username);
             EnterValue("password textbox", password);
             Click("login button");
-            //waitPageLoad("complete",30);
+            // Comment li do
             Sleep(1);
         }
+
+        #endregion
     }
 }

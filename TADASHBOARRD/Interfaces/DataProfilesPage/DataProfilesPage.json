@@ -20,11 +20,6 @@
     "value": "//a[.='UnCheck All']"
   },
   {
-    "controlName": "delete a profile link",
-    "type": "xpath",
-    "value": "//tbody//a[.='{0}']/../..//a[.='Delete']"
-  },
-  {
     "controlName": "general settings tab",
     "type": "xpath",
     "value": "//li[.='General Settings']"

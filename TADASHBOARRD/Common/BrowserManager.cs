@@ -1,26 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using System;
+using OpenQA.Selenium.Remote;
+using OpenQA.Selenium;
 
 namespace TADASHBOARRD.Common
 {
     class BrowserManager
     {
+        #region Methods
+
+        /// <summary>
+        /// Method to open the specific browser
+        /// </summary>
         public static void OpenBrowser(string browsername)
         {
             switch (browsername.ToUpper())
             {
                 case "FIREFOX":
-                    WebDriver.driver = new FirefoxDriver();
-                    WebDriver.driver.Manage().Window.Maximize();
+                    if (TestData.runtype.ToUpper() == "LOCAL")
+                    {
+                        WebDriver.driver = new FirefoxDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                    }
+                    else if (TestData.runtype.ToUpper() == "GRID")
+                    {
+                        DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
+                        capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
+                        capabilities.SetCapability(CapabilityType.Version, "47.0.1");
+                        capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.remoteDriver = new RemoteWebDriver(new Uri("http://192.168.189.242:7070"), capabilities, TimeSpan.FromSeconds(1000));
+                    }
                     break;
+
                 case "CHROME":
                     ChromeOptions options = new ChromeOptions();
                     options.AddArguments("--disable-extensions");
@@ -41,6 +56,10 @@ namespace TADASHBOARRD.Common
                     break;
             }
         }
+
+        /// <summary>
+        /// Method to close the browser. If IE, kill process to close the browser
+        /// </summary>
         public static void CloseBrowser()
         {
             WebDriver.driver.Manage().Cookies.DeleteAllCookies();
@@ -49,7 +68,8 @@ namespace TADASHBOARRD.Common
             {
                 process.Kill();
             }
-
         }
+
+        #endregion
     }
 }
