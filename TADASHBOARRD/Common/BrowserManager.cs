@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
+using System;
 
 namespace TADASHBOARRD.Common
 {
@@ -17,6 +18,7 @@ namespace TADASHBOARRD.Common
         {
             if (TestData.runtype.ToUpper() == "LOCAL")
             {
+                Console.WriteLine("local");
                 switch (browsername.ToUpper())
                 {
                     case "FIREFOX":
