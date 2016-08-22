@@ -1,4 +1,6 @@
-﻿namespace TADASHBOARRD.PageActions.GeneralPage
+﻿using System;
+
+namespace TADASHBOARRD.PageActions.GeneralPage
 {
     public class NewPageDialog: GeneralPage
     {
@@ -16,10 +18,12 @@
             {
                 if (parentLevel == 0)
                 {
+                    Console.WriteLine(parentPage);
                     SelectItemByText("parent page combobox", parentPage);
                 }
                 if (parentLevel == 1)
                 {
+                    Console.WriteLine("    " + parentPage);
                     SelectItemByText("parent page combobox", ("    " + parentPage));
                 }
                 if (parentLevel == 2)
