@@ -241,10 +241,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void Logout()
         {
             Sleep(1);
+           // waitPageLoad("complete", 30);
             Click("user tab");
             Click("logout tab");
             // For edge
-            Sleep(1);
+             Sleep(1);
         }
 
         //public void MouseHover(string locator)
@@ -533,7 +534,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public string GetUserName()
         {
-            Sleep(1);
+             Sleep(1);
+           // waitPageLoad("complete",30);
             return GetText("user tab");
         }
 
@@ -621,6 +623,15 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);
             Assert.AreEqual(expectedMessage, actualText);
+        }
+
+        /// <summary>
+        /// Wait for page loads
+        /// </summary>
+        public void waitPageLoad(string status,int timeOutSecond)
+        {
+            WebDriverWait wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(timeOutSecond));
+            wait.Until(driver=> (IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").Equals(status);
         }
     }
 }
