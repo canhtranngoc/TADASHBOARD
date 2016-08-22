@@ -22,11 +22,11 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName1 = GetDateTime();
-            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic, TestData.levelOne);
+            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic, TestData.levelZero);
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName2 = GetDateTime();
-            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic,TestData.levelTwo);
+            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic,TestData.levelOne);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.PerformDelete();
             string actualMessage = generalPage.GetTextAlert();
@@ -44,11 +44,11 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName1 = GetDateTime();
             //Add page 1
-            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelOne);
+            newPageDialog.CreateNewPage(pageName1, TestData.overviewPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelZero);
             generalPage.OpenAddPageDialog();
             string pageName2 = GetDateTime();
             // Add page 2
-            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelTwo);
+            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelOne);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.OpenEditPageDialog();
             editPageDialog = new EditPageDialog();
