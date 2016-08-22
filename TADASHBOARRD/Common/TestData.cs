@@ -51,6 +51,8 @@ namespace TADASHBOARRD.Common
         public static string sortSubFields = "Sort Sub-Fields";
         public static string filterSubFields = "Filter Sub-Fields";
         public static string statisticSubFields = "Statistic Sub-Fields";
+        public static int levelOne = 1;
+        public static int levelTwo = 2;
 
         //public static string uppercaseUsername = "UPPERCASEUSERNAME";
         //public static string lowercasePassword = "uppercaseusername";

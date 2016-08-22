@@ -9,11 +9,6 @@
         ///</summary>
         public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus)
         {
-            if (newParentPage != "")
-            {
-                SelectValueDropdownList("parent page combobox", newParentPage);
-            }
-            // Comment li do
             Sleep(1);
             EnterValue("page name textbox", newPageName);
             if (newNumberOfColumns != "")
@@ -33,6 +28,10 @@
             if (newStatus == "unpublic")
             {
                 UntickCheckbox("public checkbox");
+            }
+            if (newParentPage != "")
+            {
+                SelectValueDropdownList("parent page combobox", newParentPage);
             }
             Click("ok button");
             // Comment li do

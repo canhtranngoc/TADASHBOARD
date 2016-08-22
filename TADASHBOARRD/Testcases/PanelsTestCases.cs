@@ -3,7 +3,6 @@ using TADASHBOARRD.Common;
 using TADASHBOARRD.PageActions.LoginPage;
 using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.PageActions.PanelsPage;
-using System.Threading;
 
 namespace TADASHBOARRD.Testcases
 {
@@ -48,7 +47,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
-            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelOne);
             generalPage.OpenNewPanelDialogFromChoosePanels();
             newPanelDialog = new NewPanelDialog();
             // VP: Check that 'Chart Type' are listed 5 options: 'Pie', 'Single Bar', 'Stacked Bar', 'Group Bar' and 'Line'
@@ -69,7 +68,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName = CommonActions.GetDateTime();
-            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelOne);
             generalPage.OpenRandomChartPanelInstance();
             PanelConfigurationDialog panelConfigurationDialog = new PanelConfigurationDialog();
             panelConfigurationDialog.EnterValueToHeighThenClickOk(TestData.numberLessThan300);
