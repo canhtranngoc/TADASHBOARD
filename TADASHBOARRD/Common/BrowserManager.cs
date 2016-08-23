@@ -29,10 +29,10 @@ namespace TADASHBOARRD.Common
                     else if (TestData.runtype.ToUpper() == "GRID")
                     {
                         DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-                        capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
-                        capabilities.SetCapability(CapabilityType.Version, "47.0.1");
+                        capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
+                        capabilities.SetCapability(CapabilityType.Version, "47");
                         capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                        WebDriver.remoteDriver = new RemoteWebDriver(new Uri("http://192.168.189.242:7070"), capabilities, TimeSpan.FromSeconds(1000));
+                        WebDriver.remoteDriver = new RemoteWebDriver(new Uri("http://192.168.191.92:4444"), capabilities);
                     }
                     break;
 
