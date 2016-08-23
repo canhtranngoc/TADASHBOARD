@@ -10,9 +10,10 @@ using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
-    public class GeneralPage: CommonActions
+    public class GeneralPage : CommonActions
     {
         #region Methods
 
@@ -25,6 +26,29 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 WebDriverWait wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(timeoutInSeconds));
                 wait.Until(ExpectedConditions.ElementIsVisible(locator));
+            }
+        }
+
+        /// <summary>
+        /// Wait for control 
+        /// </summary>
+        public void WaitForControl(By locator, int timeoutInSeconds)
+        {
+            IWebElement element;
+            bool check = false;
+            for (int i = 0; i < timeoutInSeconds; i++)
+            {
+                element = WebDriver.driver.FindElement(locator);
+                if (check != element.Displayed)
+                {
+                    Sleep(1);
+                    break;
+                }
+                else
+                {
+                    Sleep(1);
+                    continue;
+                }
             }
         }
 
@@ -234,6 +258,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             // Comment li do
             Sleep(1);
+            // waitPageLoad("complete", 30);
             Click("user tab");
             Click("logout tab");
             // For edge
@@ -295,6 +320,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             // Comment li do
             Sleep(1);
             Click("global setting tab");
+            Sleep(1);
             Click("add page tab");
         }
 
@@ -349,7 +375,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         Console.WriteLine(locatorClass);
                         while (locatorClass.Contains("haschild"))
                         {
-                            if (TestData.browser == "chrome" || TestData.browser == "ie")
+                            if (TestData.browser == "ie" || TestData.browser == "chrome")
                             {
                                 ClickItemXpathByJS(xpath);
                             }
@@ -373,7 +399,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         }
                         else
                         {
-                            if (TestData.browser == "chrome" || TestData.browser == "ie")
+                            if (TestData.browser == "ie" || TestData.browser == "chrome")
                             {
                                 ClickItemXpathByJS(xpath);
                             }
@@ -483,7 +509,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             // Comment li do
             Sleep(1);
-            if (TestData.browser == "chrome" || TestData.browser == "ie")
+            if (TestData.browser == "ie" || TestData.browser == "chrome")
             {
                 IWebElement webElement = FindWebElement(locator);
                 IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
@@ -562,6 +588,22 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);
             Assert.AreEqual(expectedMessage, actualText);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void WaitForPageStatus(string status)
+        {
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(30.00));
+                wait.Until(w => ((IJavaScriptExecutor)WebDriver.driver).ExecuteScript("return document.readyState").Equals(status));
+            }
+            catch (WebDriverException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         #endregion

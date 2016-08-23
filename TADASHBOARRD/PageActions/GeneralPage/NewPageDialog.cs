@@ -13,7 +13,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             // Comment li do
             Sleep(1);
-            EnterValue("page name textbox", pageName);
             if (parentPage != "")
             {
                 if (parentLevel == 0)
@@ -35,6 +34,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     SelectItemByText("parent page combobox", ("            " + parentPage));
                 }
             }
+            Sleep(1);
+            EnterValue("page name textbox", pageName);
+
             if (numberOfColumns != "")
             {
                 SelectItemByText("number of columns combobox", numberOfColumns);
