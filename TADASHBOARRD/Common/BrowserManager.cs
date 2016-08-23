@@ -28,28 +28,52 @@ namespace TADASHBOARRD.Common
                     }
                     else if (TestData.runtype.ToUpper() == "GRID")
                     {
-                        //DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-                        //capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
-                        //capabilities.SetCapability(CapabilityType.Version, TestData.firefoxVersion);
-                        //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                        WebDriver.driver = new RemoteWebDriver(new Uri("http://192.168.189.212:4444/wd/hub/"), DesiredCapabilities.Firefox());
-                       // WebDriver.driver.Manage().Window.Maximize();
+                        DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
+                        capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
+                        capabilities.SetCapability(CapabilityType.Version, TestData.firefoxVersion);
+                        capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), capabilities);
+                        WebDriver.driver.Manage().Window.Maximize();
                     }
                     break;
 
                 case "CHROME":
-                    ChromeOptions options = new ChromeOptions();
-                    options.AddArguments("--disable-extensions");
-                    WebDriver.driver = new ChromeDriver(options);
-                    WebDriver.driver.Manage().Window.Maximize();
+                    if (TestData.runtype.ToUpper() == "LOCAL")
+                    {
+                        ChromeOptions options = new ChromeOptions();
+                        options.AddArguments("--disable-extensions");
+                        WebDriver.driver = new ChromeDriver(options);
+                        WebDriver.driver.Manage().Window.Maximize();
+                    }
+                    else if (TestData.runtype.ToUpper() == "GRID")
+                    {
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
+                        WebDriver.driver.Manage().Window.Maximize();
+                    }
                     break;
                 case "IE":
-                    WebDriver.driver = new InternetExplorerDriver();
-                    WebDriver.driver.Manage().Window.Maximize();
+                    if (TestData.runtype.ToUpper() == "LOCAL")
+                    {
+                        WebDriver.driver = new InternetExplorerDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                    }
+                    else if (TestData.runtype.ToUpper() == "GRID")
+                    {
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.InternetExplorer());
+                        WebDriver.driver.Manage().Window.Maximize();
+                    }
                     break;
                 case "EDGE":
-                    WebDriver.driver = new EdgeDriver();
-                    WebDriver.driver.Manage().Window.Maximize();
+                    if (TestData.runtype.ToUpper() == "LOCAL")
+                    {
+                        WebDriver.driver = new EdgeDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                    }
+                    else if (TestData.runtype.ToUpper() == "GRID")
+                    {
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Edge());
+                        WebDriver.driver.Manage().Window.Maximize();
+                    }
                     break;
                 default:
                     WebDriver.driver = new FirefoxDriver();
