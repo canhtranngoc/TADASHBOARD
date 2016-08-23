@@ -28,12 +28,12 @@ namespace TADASHBOARRD.Common
                     }
                     else if (TestData.runtype.ToUpper() == "GRID")
                     {
-                        //DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-                        //capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
-                        //capabilities.SetCapability(CapabilityType.Version, TestData.firefoxVersion);
-                        //capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                        WebDriver.driver = new RemoteWebDriver(new Uri("http://192.168.189.212:4444/wd/hub/"), DesiredCapabilities.Firefox());
-                       // WebDriver.driver.Manage().Window.Maximize();
+                        DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
+                        capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
+                        capabilities.SetCapability(CapabilityType.Version, TestData.firefoxVersion);
+                        capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.driver = new RemoteWebDriver(new Uri("http://192.168.190.158:4444/wd/hub/"), DesiredCapabilities.Firefox());
+                        WebDriver.driver.Manage().Window.Maximize();
                     }
                     break;
 
