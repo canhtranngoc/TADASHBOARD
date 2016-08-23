@@ -567,6 +567,21 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Assert.AreEqual(expectedMessage, actualText);
         }
 
+        public void waitForPageLoad()
+        {
+            try
+            {
+                IWait<IWebDriver> wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(30.00));
+                wait.Until(driver => ((IJavaScriptExecutor)WebDriver.driver).ExecuteScript("return document.readyState").Equals("complete"));
+                Thread.Sleep(1000);
+            }
+            catch (WebDriverException e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+        }
+
         #endregion
     }
 }
