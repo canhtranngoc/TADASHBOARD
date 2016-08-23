@@ -28,11 +28,13 @@ namespace TADASHBOARRD.Common
                     }
                     else if (TestData.runtype.ToUpper() == "GRID")
                     {
-                        DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-                        capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
-                        capabilities.SetCapability(CapabilityType.Version, "47.0.1");
-                        capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                        WebDriver.remoteDriver = new RemoteWebDriver(new Uri("http://192.168.189.242:7070/wd/hub"), capabilities, TimeSpan.FromSeconds(1000));
+                       // DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
+                     //   capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
+                     //   capabilities.SetCapability(CapabilityType.Version, "47.0.1");
+                     //   capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.driver = new RemoteWebDriver(new Uri("http://192.168.190.158:4444/wd/hub"), DesiredCapabilities.Firefox());
+                        WebDriver.driver.Manage().Window.Maximize();
+                        // WebDriver.driver.Navigate().GoToUrl("http://google.com.vn");
                     }
                     break;
 

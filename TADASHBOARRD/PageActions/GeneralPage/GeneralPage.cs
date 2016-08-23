@@ -13,7 +13,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
-    public class GeneralPage: CommonActions
+    public class GeneralPage : CommonActions
     {
         #region Methods
 
@@ -26,6 +26,29 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 WebDriverWait wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(timeoutInSeconds));
                 wait.Until(ExpectedConditions.ElementIsVisible(locator));
+            }
+        }
+
+        /// <summary>
+        /// Wait for control 
+        /// </summary>
+        public void WaitForControl(By locator, int timeoutInSeconds)
+        {
+            IWebElement element;
+            bool check = false;
+            for (int i = 0; i < timeoutInSeconds; i++)
+            {
+                element = WebDriver.driver.FindElement(locator);
+                if (check != element.Displayed)
+                {
+                    Sleep(1);
+                    break;
+                }
+                else
+                {
+                    Sleep(1);
+                    continue;
+                }
             }
         }
 
@@ -235,11 +258,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             // Comment li do
             Sleep(1);
-           // waitPageLoad("complete", 30);
+            // waitPageLoad("complete", 30);
             Click("user tab");
             Click("logout tab");
             // For edge
-             Sleep(1);
+            Sleep(1);
         }
 
         ///<summary>
@@ -352,7 +375,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         Console.WriteLine(locatorClass);
                         while (locatorClass.Contains("haschild"))
                         {
-                            if ( TestData.browser == "ie" || TestData.browser == "chrome")
+                            if (TestData.browser == "ie" || TestData.browser == "chrome")
                             {
                                 ClickItemXpathByJS(xpath);
                             }
@@ -567,17 +590,18 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Assert.AreEqual(expectedMessage, actualText);
         }
 
-        public void waitForPageLoad()
+        /// <summary>
+        /// 
+        /// </summary>
+        public void WaitForPageStatus(string status)
         {
             try
             {
-                IWait<IWebDriver> wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(30.00));
-                wait.Until(driver => ((IJavaScriptExecutor)WebDriver.driver).ExecuteScript("return document.readyState").Equals("complete"));
-                Thread.Sleep(1000);
+                WebDriverWait wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(30.00));
+                wait.Until(w => ((IJavaScriptExecutor)WebDriver.driver).ExecuteScript("return document.readyState").Equals(status));
             }
             catch (WebDriverException e)
             {
-
                 Console.WriteLine(e.Message);
             }
         }
