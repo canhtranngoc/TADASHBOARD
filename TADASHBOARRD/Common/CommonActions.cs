@@ -12,15 +12,7 @@ namespace TADASHBOARRD.Common
         /// </summary>
         public static void NavigateTADashboard()
         {
-            if (TestData.runtype.ToUpper() == "LOCAL")
-            {
-                WebDriver.driver.Navigate().GoToUrl(TestData.dashBoardURL);
-            }
-            else if (TestData.runtype.ToUpper() == "GRID")
-            {
-                WebDriver.remoteDriver.Navigate().GoToUrl(TestData.dashBoardURL);
-            }
-                
+            WebDriver.driver.Navigate().GoToUrl(TestData.dashBoardURL);
         }
 
         /// <summary>
