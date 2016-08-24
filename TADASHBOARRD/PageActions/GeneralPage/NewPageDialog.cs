@@ -11,7 +11,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// </summary>
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status, int parentLevel)
         {
-            // Comment li do
+            // Wait for new page dialog is loaded
             Sleep(1);
             if (parentPage != "")
             {
@@ -34,6 +34,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     SelectItemByText("parent page combobox", ("            " + parentPage));
                 }
             }
+            // Wait for combobox value is changed
             Sleep(1);
             EnterValue("page name textbox", pageName);
 
@@ -45,7 +46,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 SelectItemByText("display after combobox", displayAfter);
             }
-            // Comment li do
+            // Wait for combobox value is changed
             Sleep(1);
             if (status == "public")
             {
@@ -57,8 +58,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 UntickCheckbox("public checkbox");
             }
             Click("ok button");
-            // Comment li do
-            Sleep(1);
         }
 
         #endregion

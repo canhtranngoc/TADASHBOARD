@@ -9,6 +9,7 @@
         ///</summary>
         public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus)
         {
+            // Wait for edit page is loaded
             Sleep(1);
             EnterValue("page name textbox", newPageName);
             if (newNumberOfColumns != "")
@@ -19,7 +20,7 @@
             {
                 SelectItemByText("display after combobox", newDisplayAfter);
             }
-            // Comment li do
+            // Wait for combobox value is changed
             Sleep(1);
             if (newStatus == "public")
             {
@@ -34,8 +35,6 @@
                 SelectValueDropdownList("parent page combobox", newParentPage);
             }
             Click("ok button");
-            // Comment li do
-            Sleep(1);
         }
 
         #endregion
