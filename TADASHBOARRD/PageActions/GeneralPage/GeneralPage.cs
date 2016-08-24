@@ -256,12 +256,13 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void Logout()
         {
             // Comment li do
-            Sleep(1);
+            //Sleep(1);
+            WaitForPageComplete();
             // waitPageLoad("complete", 30);
             Click("user tab");
             Click("logout tab");
             // For edge
-            Sleep(1);
+           // Sleep(1);
         }
 
         ///<summary>
@@ -526,7 +527,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public string GetUserName()
         {
             // Comment li do
-            Sleep(1);
+            //  Sleep(1);
+             //WaitForPageComplete();
             return GetText("user tab");
         }
 
