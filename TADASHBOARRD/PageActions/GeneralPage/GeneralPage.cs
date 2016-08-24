@@ -10,7 +10,6 @@ using System.Web.Script.Serialization;
 using OpenQA.Selenium.Interactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-
 namespace TADASHBOARRD.PageActions.GeneralPage
 {
     public class GeneralPage : CommonActions
@@ -604,6 +603,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void WaitInSpecificTime(int second)
+        {
+            WebDriver.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(second));
         }
 
         #endregion
