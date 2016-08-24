@@ -10,8 +10,8 @@ namespace TADASHBOARRD.Common
         public static string firefoxVersion = ConfigurationManager.AppSettings["firefox version"];
         public static string firefoxPlatform = ConfigurationManager.AppSettings["firefox platform"];
         public static string hub = ConfigurationManager.AppSettings["hub"];
-        public static string validUsername = "administrator";
-        public static string validPassword = "";
+        public static string validUsername = "ngan.truong";
+        public static string validPassword = "123";
         public static string defaulRepository = "SampleRepository";
         public static string invalidUsername = "abc";
         public static string invalidPassword = "abc";

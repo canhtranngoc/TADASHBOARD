@@ -1,4 +1,7 @@
-﻿namespace TADASHBOARRD.PageActions.LoginPage
+﻿using System;
+using TADASHBOARRD.Common;
+
+namespace TADASHBOARRD.PageActions.LoginPage
 {
     public class LoginPage: GeneralPage.GeneralPage
     {

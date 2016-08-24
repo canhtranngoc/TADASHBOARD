@@ -12,8 +12,6 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void AddNewPanel(string name, string series)
         {
-            // Comment li do
-            Sleep(1);
             EnterValue("display name textbox", name);
             SelectValueDropdownList("series combobox", name);
             Click("ok button");
@@ -32,8 +30,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void CheckChartTypeOptions()
         {
-            // Wait 1 second for the new panel dialog to load
-            Sleep(1);
+            WaitInSpecificTime(10);
             int count = CountComboboxChildren("//select[@id='cbbChartType']/option");
             for (int i = 1; i <= count; i++)
             {

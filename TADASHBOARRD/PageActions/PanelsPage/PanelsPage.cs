@@ -12,7 +12,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void OpenNewPanelDialog()
         {
-            Sleep(1);
+            WaitInSpecificTime(10);
             Click("add new link");
         }
 
