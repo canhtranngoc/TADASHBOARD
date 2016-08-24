@@ -13,8 +13,7 @@
             EnterValue("username textbox", username);
             EnterValue("password textbox", password);
             Click("login button");
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
         }
 
         #endregion

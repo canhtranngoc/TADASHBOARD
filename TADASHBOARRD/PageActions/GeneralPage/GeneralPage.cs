@@ -17,46 +17,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         #region Methods
 
         ///<summary>
-        /// Method to wait for element to load
-        ///</summary>
-        public void WaitForElementLoads(By locator, int timeoutInSeconds)
-        {
-            if (timeoutInSeconds > 0)
-            {
-                WebDriverWait wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(timeoutInSeconds));
-                wait.Until(ExpectedConditions.ElementIsVisible(locator));
-            }
-        }
-
-        /// <summary>
-        /// Wait for control 
-        /// </summary>
-        public void WaitForControl(By locator, int timeoutInSeconds)
-        {
-            IWebElement element;
-            bool check = false;
-            for (int i = 0; i < timeoutInSeconds; i++)
-            {
-                element = WebDriver.driver.FindElement(locator);
-                if (check != element.Displayed)
-                {
-                    Sleep(1);
-                    break;
-                }
-                else
-                {
-                    Sleep(1);
-                    continue;
-                }
-            }
-        }
-
-        ///<summary>
         /// Method to wait for an alert
         ///</summary>
         public void WaitForAlert(IWebDriver driver)
         {
             int i = 0;
+            // Wait in maximum 5 seconds
             while (i++ < 5)
             {
                 try
@@ -67,7 +33,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 catch (NoAlertPresentException e)
                 {
                     Console.WriteLine(e);
-                    // Comment li do
+                    // If alert is not presented, sleep 1 second then continue
                     Sleep(1);
                     continue;
 
@@ -82,7 +48,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             WaitForAlert(WebDriver.driver);
             WebDriver.driver.SwitchTo().Alert().Accept();
-            // Comment li do
+            // Sleep 1 second after accept the alert
             Sleep(1);
         }
 
@@ -194,14 +160,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        /// Method to click on dynamic element
-        ///</summary>
-        public void ClickOnDynamicElement(string locator, string value)
-        {
-            FindDynamicWebElement(locator, value).Click();
-        }
-
-        ///<summary>
         /// Method to find a dynamic web element
         ///</summary>
         public IWebElement FindDynamicWebElement(string name, string value)
@@ -255,13 +213,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void Logout()
         {
-            // Comment li do
-            Sleep(1);
-            // waitPageLoad("complete", 30);
+            WaitInSpecificTime(10);
             Click("user tab");
             Click("logout tab");
             // For edge
-            Sleep(1);
+            WaitInSpecificTime(10);
         }
 
         ///<summary>
@@ -298,14 +254,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenRandomChartPanelInstance()
         {
             Click("choose panels button");
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
             int randomRow = new Random().Next(1, rowCount);
-            Console.WriteLine(randomRow);
             int colunmCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr[" + randomRow + "]/td")).Count;
             int randomColumn = new Random().Next(1, colunmCount);
-            Console.WriteLine(randomColumn);
             string a = string.Format("//div[@class='ptit pchart']/../table//tr[{0}]/td[{1}]//a", randomRow, randomColumn);
             IWebElement randomChartPanelInstance = WebDriver.driver.FindElement(By.XPath(a));
             randomChartPanelInstance.Click();
@@ -316,10 +269,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenAddPageDialog()
         {
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             Click("global setting tab");
-            Sleep(1);
             Click("add page tab");
         }
 
@@ -328,8 +279,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenEditPageDialog()
         {
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             Click("global setting tab");
             Click("edit page tab");
         }
@@ -339,8 +289,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void PerformDelete()
         {
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             Click("global setting tab");
             Click("delete tab");
             AcceptAlert();
@@ -351,27 +300,21 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void DeleteAllPages()
         {
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
             int numTab = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li/a")).Count;
-            Console.WriteLine(numTab);
             int pageIndex = numTab - 2;
-            Console.WriteLine(pageIndex);
             while (pageIndex != 0)
             {
                 for (int i = numTab - 2; i >= 1; i--)
                 {
                     int numChildren = WebDriver.driver.FindElements(By.XPath("//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a//..//ul/li/a")).Count;
-                    Console.WriteLine(numChildren);
                     for (int j = 0; j <= numChildren; j++)
                     {
                         xpath = "//div[@id='main-menu']/div/ul/li[" + pageIndex + "]/a";
-                        Console.WriteLine(xpath);
                         locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                        Console.WriteLine(locatorClass);
                         while (locatorClass.Contains("haschild"))
                         {
                             if (TestData.browser == "ie" || TestData.browser == "chrome")
@@ -384,14 +327,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                                 builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
                             }
                             xpathNext = "/following-sibling::ul/li/a";
-                            Console.WriteLine(xpathNext);
                             xpath = xpath + xpathNext;
-                            Console.WriteLine(xpath);
                             locatorClass = WebDriver.driver.FindElement(By.XPath(xpath)).GetAttribute("class").ToString();
-                            Console.WriteLine(locatorClass);
                         }
                         string text = WebDriver.driver.FindElement(By.XPath(xpath)).Text;
-                        Console.WriteLine(text);
                         if (text.Equals("Overview") || text.Equals("Execution Dashboard"))
                         {
                             break;
@@ -410,7 +349,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                         }
                     }
                     pageIndex = pageIndex - 1;
-                    Console.WriteLine(pageIndex);
                 }
             }
         }
@@ -420,14 +358,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void goToPage(string path)
         {
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             string xpathNext = string.Empty;
             if (!(path.Contains("/")))
             {
                 string xpath = string.Format("//a[.='{0}']", path);
-                // Comment li do
-                Sleep(1);
                 if (TestData.browser == "chrome" || TestData.browser == "ie")
                 {
                     ClickItemXpathByJS(xpath);
@@ -506,8 +441,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void Click(string locator)
         {
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             if (TestData.browser == "ie" || TestData.browser == "chrome")
             {
                 IWebElement webElement = FindWebElement(locator);
@@ -525,8 +459,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public string GetUserName()
         {
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             return GetText("user tab");
         }
 
@@ -557,22 +490,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         ///<summary>
-        /// Method to check whether dynamic element presents or not
-        ///</summary>
-        public bool DoesDynamicElementPresent(string locator, string name)
-        {
-            try
-            {
-                return FindDynamicWebElement(locator, name).Displayed;
-
-            }
-            catch (NoSuchElementException)
-            {
-                return false;
-            }
-        }
-
-        ///<summary>
         /// Method to count how many children present in the combobox
         ///</summary>
         public int CountComboboxChildren(string locator)
@@ -590,23 +507,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        public void WaitForPageComplete()
-        {
-            try
-            {
-                WebDriverWait wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(30.00));
-                wait.Until(w => ((IJavaScriptExecutor)WebDriver.driver).ExecuteScript("return document.readyState").Equals("complete"));
-            }
-            catch (WebDriverException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        /// <summary>
-        /// 
+        /// Implicitly wait up to 10 seconds
         /// </summary>
         public void WaitInSpecificTime(int second)
         {
