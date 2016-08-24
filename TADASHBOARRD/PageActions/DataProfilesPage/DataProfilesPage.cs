@@ -11,8 +11,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void OpenCreateProfilePageFromDataProfilesPage()
         {
-            // Comment li do
-            Sleep(1);
+            WaitInSpecificTime(10);
             Click("add new link");
         }
 
@@ -34,6 +33,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void CheckDataProfileOtherSettingPages(string name)
         {
+            //Wait for page is loaded
             Sleep(1);
             string xpathDataProfile = string.Format("//a[.='{0}']", name);
             ClickItemXpath(xpathDataProfile);
