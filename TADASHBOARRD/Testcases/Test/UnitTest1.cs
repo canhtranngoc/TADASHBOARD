@@ -13,12 +13,11 @@ namespace TADASHBOARRD.Testcases.Test
         {
             IWebDriver driver;
 
-//DesiredCapabilities capabilities = new DesiredCapabilities();
+          //DesiredCapabilities capabilities = new DesiredCapabilities();
             //capabilities.SetCapability(CapabilityType.BrowserName, "Firefox");
             //capabilities.SetCapability(CapabilityType.Version, "47");
             //capabilities.SetCapability(CapabilityType.Platform, "WINDOWS");
-            driver = new RemoteWebDriver(new Uri("http://192.168.191.92:4444/wd/hub"), DesiredCapabilities.Firefox());
-            
+            driver = new RemoteWebDriver(new Uri("http://192.168.190.158:4444/wd/hub"), DesiredCapabilities.Firefox());
             driver.Navigate().GoToUrl("http://google.com.vn");
         }
     }
