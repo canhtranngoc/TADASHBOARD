@@ -607,6 +607,14 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void WaitInSpecificTime(int second)
+        {
+            WebDriver.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(second));
+        }
+
         #endregion
     }
 }
