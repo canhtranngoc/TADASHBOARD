@@ -1,4 +1,7 @@
-﻿namespace TADASHBOARRD.PageActions.LoginPage
+﻿using System;
+using TADASHBOARRD.Common;
+
+namespace TADASHBOARRD.PageActions.LoginPage
 {
     public class LoginPage: GeneralPage.GeneralPage
     {
@@ -14,7 +17,8 @@
             EnterValue("password textbox", password);
             Click("login button");
             // Comment li do
-            Sleep(1);
+            //Sleep(1);
+           // WebDriver.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
         }
 
         #endregion
