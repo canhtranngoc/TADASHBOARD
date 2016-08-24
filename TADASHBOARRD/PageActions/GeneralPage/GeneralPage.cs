@@ -593,12 +593,12 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// <summary>
         /// 
         /// </summary>
-        public void WaitForPageStatus(string status)
+        public void WaitForPageComplete()
         {
             try
             {
                 WebDriverWait wait = new WebDriverWait(WebDriver.driver, TimeSpan.FromSeconds(30.00));
-                wait.Until(w => ((IJavaScriptExecutor)WebDriver.driver).ExecuteScript("return document.readyState").Equals(status));
+                wait.Until(w => ((IJavaScriptExecutor)WebDriver.driver).ExecuteScript("return document.readyState").Equals("complete"));
             }
             catch (WebDriverException e)
             {
