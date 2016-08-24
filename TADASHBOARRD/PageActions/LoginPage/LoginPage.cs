@@ -16,9 +16,7 @@ namespace TADASHBOARRD.PageActions.LoginPage
             EnterValue("username textbox", username);
             EnterValue("password textbox", password);
             Click("login button");
-            // Comment li do
-            //Sleep(1);
-           // WebDriver.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            WaitInSpecificTime(10);
         }
 
         #endregion
