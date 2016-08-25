@@ -35,6 +35,7 @@
                 SelectValueDropdownList("parent page combobox", newParentPage);
             }
             Click("ok button");
+            Sleep(1);
         }
 
         #endregion

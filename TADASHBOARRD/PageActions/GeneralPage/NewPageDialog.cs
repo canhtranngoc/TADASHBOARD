@@ -58,6 +58,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 UntickCheckbox("public checkbox");
             }
             Click("ok button");
+            Sleep(1);
         }
 
         #endregion
