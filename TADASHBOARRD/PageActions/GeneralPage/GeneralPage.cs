@@ -217,7 +217,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("user tab");
             Click("logout tab");
             // For edge
-            WaitInSpecificTime(10);
+           WaitInSpecificTime(10);
         }
 
         ///<summary>
@@ -268,8 +268,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// Method to open add page dialog
         ///</summary>
         public void OpenAddPageDialog()
-        {
-            WaitInSpecificTime(10);
+        {   
+            // Wait for page load
+            Sleep(1);
             Click("global setting tab");
             Click("add page tab");
         }
