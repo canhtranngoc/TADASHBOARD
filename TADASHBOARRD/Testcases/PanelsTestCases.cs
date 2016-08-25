@@ -67,7 +67,7 @@ namespace TADASHBOARRD.Testcases
             generalPage = new GeneralPage();
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
-            string pageName = CommonActions.GetDateTime();
+            string pageName = GetDateTime();
             newPageDialog.CreateNewPage(pageName, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelOne);
             generalPage.OpenRandomChartPanelInstance();
             PanelConfigurationDialog panelConfigurationDialog = new PanelConfigurationDialog();

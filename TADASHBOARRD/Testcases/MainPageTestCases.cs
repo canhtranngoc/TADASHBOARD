@@ -27,7 +27,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName2 = GetDateTime();
-            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic,TestData.levelOne);
+            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic, TestData.levelOne);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.PerformDelete();
             string actualMessage = generalPage.GetTextAlert();
@@ -58,7 +58,6 @@ namespace TADASHBOARRD.Testcases
             editPageDialog.EditPage(pageName1Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
             // VP: User is able to edit the name of parent page successfully
             string pageName1AfterEdit = generalPage.GetPageNameOfPageOpened();
-            Console.WriteLine("pagename1afteredit:" + pageName1AfterEdit);
             CheckTextDisplays(pageName1Edit, pageName1AfterEdit);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1Edit + "/" + pageName2);
             generalPage.OpenEditPageDialog();

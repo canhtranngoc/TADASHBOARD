@@ -254,7 +254,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenRandomChartPanelInstance()
         {
             Click("choose panels button");
-            WaitInSpecificTime(10);
+            // wait for Choose panels is loaded
+            Sleep(1);
             int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
             int randomRow = new Random().Next(1, rowCount);
             int colunmCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr[" + randomRow + "]/td")).Count;
