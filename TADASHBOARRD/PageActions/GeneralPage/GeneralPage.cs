@@ -270,6 +270,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenAddPageDialog()
         {
+            Sleep(1);
             WaitInSpecificTime(10);
             Click("global setting tab");
             Click("add page tab");
