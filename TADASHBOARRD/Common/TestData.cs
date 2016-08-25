@@ -11,7 +11,7 @@ namespace TADASHBOARRD.Common
         public static string firefoxPlatform = ConfigurationManager.AppSettings["firefox platform"];
         public static string hub = ConfigurationManager.AppSettings["hub"];
         public static string validUsername = "administrator";
-        public static string validPassword = " ";
+        public static string validPassword = "";
         public static string defaulRepository = "SampleRepository";
         public static string invalidUsername = "abc";
         public static string invalidPassword = "abc";
