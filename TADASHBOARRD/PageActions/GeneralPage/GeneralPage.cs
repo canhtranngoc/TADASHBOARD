@@ -280,7 +280,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenEditPageDialog()
         {
-            WaitInSpecificTime(10);
+            //WaitInSpecificTime(10);
+            // Wait for page is loaded
+            Sleep(1);
             Click("global setting tab");
             Click("edit page tab");
         }
