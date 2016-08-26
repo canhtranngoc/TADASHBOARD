@@ -20,6 +20,8 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void CreateNewProfile(string name, string itemtype, string relateddata, string action)
         {
+            // Sleep 1 second before enter value
+            Sleep(1);
             EnterValue("name textbox", name);
             SelectValueDropdownList("item type combobox", itemtype);
             SelectValueDropdownList("related data combobox", relateddata);

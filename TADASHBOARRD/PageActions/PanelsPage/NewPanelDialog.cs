@@ -12,8 +12,10 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void AddNewPanel(string name, string series)
         {
+            // Sleep 1 second before enter value
+            Sleep(1);
             EnterValue("display name textbox", name);
-            SelectValueDropdownList("series combobox", series);
+            SelectItemByText("series combobox", ("  " + series));
             Click("ok button");
         }
 
