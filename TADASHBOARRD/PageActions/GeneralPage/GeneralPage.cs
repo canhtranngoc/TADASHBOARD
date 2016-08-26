@@ -254,7 +254,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void OpenRandomChartPanelInstance()
         {
             Click("choose panels button");
-            WaitInSpecificTime(10);
+            // wait for Choose panels is loaded
+            Sleep(1);
             int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
             int randomRow = new Random().Next(1, rowCount);
             int colunmCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr[" + randomRow + "]/td")).Count;
@@ -269,6 +270,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenAddPageDialog()
         {
+            //Sleep(1);
             WaitInSpecificTime(10);
             Click("global setting tab");
             Click("add page tab");
@@ -430,7 +432,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
 
         ///<summary>
         /// Method to click an element by xpath
-        ///</summar
+        ///</summary
         public void ClickItemXpath(string locator)
         {
             WebDriver.driver.FindElement(By.XPath(locator)).Click();
@@ -441,7 +443,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void Click(string locator)
         {
-            WaitInSpecificTime(10);
+            //Wait 1 second before perform click action
+            Sleep(1);
             if (TestData.browser == "ie" || TestData.browser == "chrome")
             {
                 IWebElement webElement = FindWebElement(locator);
@@ -468,9 +471,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// </summary>
         public string GetPageNameOfPageOpened()
         {
-            string titlename = WebDriver.driver.Title;
-            titlename = titlename.Replace("TestArchitect ™ - ", "");
-            return titlename;
+            string titleName = WebDriver.driver.Title;
+            titleName = titleName.Replace("TestArchitect ™ - ", "");
+            return titleName;
         }
 
         ///<summary>
@@ -483,8 +486,9 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 return FindWebElement(locator).Displayed;
             }
 
-            catch (NoSuchElementException)
+            catch (NoSuchElementException e)
             {
+                Console.WriteLine(e);
                 return false;
             }
         }

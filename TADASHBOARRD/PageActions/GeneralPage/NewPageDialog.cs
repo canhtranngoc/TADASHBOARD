@@ -17,12 +17,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 if (parentLevel == 0)
                 {
-                    Console.WriteLine(parentPage);
                     SelectItemByText("parent page combobox", parentPage);
                 }
                 if (parentLevel == 1)
                 {
-                    Console.WriteLine("    " + parentPage);
                     SelectItemByText("parent page combobox", ("    " + parentPage));
                 }
                 if (parentLevel == 2)
@@ -58,6 +56,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 UntickCheckbox("public checkbox");
             }
             Click("ok button");
+            // Wait for created page loads
             Sleep(1);
         }
 
