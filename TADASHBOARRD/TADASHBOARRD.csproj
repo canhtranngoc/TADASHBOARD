@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fenton.Selenium.SuperDriver, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fenton.Selenium.SuperDriver.0.2.0.0\lib\net45\Fenton.Selenium.SuperDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
@@ -65,6 +69,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Common\Browser.cs" />
     <Compile Include="Common\BrowserManager.cs" />
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\WebDriver.cs" />
