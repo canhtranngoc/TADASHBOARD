@@ -56,6 +56,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                 UntickCheckbox("public checkbox");
             }
             Click("ok button");
+            // Wait for created page loads
             Sleep(1);
         }
 

@@ -55,7 +55,7 @@ namespace TADASHBOARRD.Testcases
             editPageDialog = new EditPageDialog();
             string pageName1Edit = GetDateTime();
             // Edit page 1
-            editPageDialog.EditPage(pageName1Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            editPageDialog.EditPage(pageName1Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelZero);
             // VP: User is able to edit the name of parent page successfully
             string pageName1AfterEdit = generalPage.GetPageNameOfPageOpened();
             CheckTextDisplays(pageName1Edit, pageName1AfterEdit);
@@ -63,7 +63,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenEditPageDialog();
             string pageName2Edit = GetDateTime();
             // Edit page 2
-            editPageDialog.EditPage(pageName2Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            editPageDialog.EditPage(pageName2Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelZero);
             string pageName2AfterEdit = generalPage.GetPageNameOfPageOpened();
             // VP: User is able to edit the name of sibbling page successfully
             CheckTextDisplays(pageName2Edit, pageName2AfterEdit);

@@ -12,8 +12,8 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void OpenNewPanelDialog()
         {
-            // wait for add new link is loaded
-            Sleep(1);
+            // Wait for add new link is loaded
+            //Sleep(1);
             Click("add new link");
         }
 

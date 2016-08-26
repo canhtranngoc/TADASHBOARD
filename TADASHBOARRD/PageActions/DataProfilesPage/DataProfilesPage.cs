@@ -9,9 +9,10 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///<summary>
         /// Method to open create profile (general settings) page from data profiles page
         ///</summary>
-        public void OpenCreateProfilePageFromDataProfilesPage()
+        public void OpenCreateProfilePage()
         {
-            WaitInSpecificTime(10);
+            // Wait for add new link is loaded
+            //Sleep(1);
             Click("add new link");
         }
 
