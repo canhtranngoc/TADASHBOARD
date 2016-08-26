@@ -23,7 +23,7 @@ namespace TADASHBOARRD.Testcases
             generalPage = new GeneralPage();
             generalPage.OpenDataProfilesPage();
             dataProfilesPage = new DataProfilesPage();
-            dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
+            dataProfilesPage.OpenCreateProfilePage();
             generalSettingsPage = new GeneralSettingsPage();
             // VP: Check all data profile types are listed under "Item Type" dropped down menu in create profile page
             generalSettingsPage.CheckItemTypeOptions();
@@ -40,7 +40,7 @@ namespace TADASHBOARRD.Testcases
             generalPage = new GeneralPage();
             generalPage.OpenDataProfilesPage();
             dataProfilesPage = new DataProfilesPage();
-            dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
+            dataProfilesPage.OpenCreateProfilePage();
             generalSettingsPage = new GeneralSettingsPage();
             generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData, TestData.actionFinish);
             // VP: Check Display Fields page appears
@@ -62,7 +62,7 @@ namespace TADASHBOARRD.Testcases
             generalPage = new GeneralPage();
             generalPage.OpenDataProfilesPage();
             dataProfilesPage = new DataProfilesPage();
-            dataProfilesPage.OpenCreateProfilePageFromDataProfilesPage();
+            dataProfilesPage.OpenCreateProfilePage();
             generalSettingsPage = new GeneralSettingsPage();
             generalSettingsPage.CreateNewProfile(TestData.profileName, TestData.defaultItemType, TestData.defaultRelatedData, TestData.actionNext);
             displayFieldsPage = new DisplayFieldsPage();

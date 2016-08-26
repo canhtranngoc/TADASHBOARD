@@ -18,70 +18,71 @@ namespace TADASHBOARRD.Common
         /// </summary>
         public static void OpenBrowser(string browsername)
         {
-            switch (browsername.ToUpper())
+            if (TestData.runtype.ToUpper() == "LOCAL")
             {
-                case "FIREFOX":
-                    if (TestData.runtype.ToUpper() == "LOCAL")
-                    {
+                switch (browsername.ToUpper())
+                {
+                    case "FIREFOX":
                         WebDriver.driver = new FirefoxDriver();
                         WebDriver.driver.Manage().Window.Maximize();
-                    }
-                    else if (TestData.runtype.ToUpper() == "GRID")
-                    {
+                        break;
+                    case "CHROME":
+                        ChromeOptions options = new ChromeOptions();
+                        options.AddArguments("--disable-extensions");
+                        WebDriver.driver = new ChromeDriver(options);
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                    case "IE":
+                        WebDriver.driver = new InternetExplorerDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                    case "EDGE":
+                        WebDriver.driver = new EdgeDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                    default:
+                        WebDriver.driver = new FirefoxDriver();
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                }
+            }
+            else if (TestData.runtype.ToUpper() == "GRID")
+            {
+                switch (browsername.ToUpper())
+                {
+                    case "FIREFOX":
                         DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
                         capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
                         capabilities.SetCapability(CapabilityType.Version, TestData.firefoxVersion);
                         capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
                         WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), capabilities);
                         WebDriver.driver.Manage().Window.Maximize();
-                    }
-                    break;
-
-                case "CHROME":
-                    if (TestData.runtype.ToUpper() == "LOCAL")
-                    {
-                        ChromeOptions options = new ChromeOptions();
-                        options.AddArguments("--disable-extensions");
-                        WebDriver.driver = new ChromeDriver(options);
-                        WebDriver.driver.Manage().Window.Maximize();
-                    }
-                    else if (TestData.runtype.ToUpper() == "GRID")
-                    {
+                        break;
+                    case "CHROME":
                         WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
                         WebDriver.driver.Manage().Window.Maximize();
-                    }
-                    break;
-
-                case "IE":
-                    if (TestData.runtype.ToUpper() == "LOCAL")
-                    {
-                        WebDriver.driver = new InternetExplorerDriver();
-                        WebDriver.driver.Manage().Window.Maximize();
-                    }
-                    else if (TestData.runtype.ToUpper() == "GRID")
-                    {
+                        break;
+                    case "IE":
                         WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.InternetExplorer());
                         WebDriver.driver.Manage().Window.Maximize();
-                    }
-                    break;
-                case "EDGE":
-                    if (TestData.runtype.ToUpper() == "LOCAL")
-                    {
-                        WebDriver.driver = new EdgeDriver();
-                        WebDriver.driver.Manage().Window.Maximize();
-                    }
-                    else if (TestData.runtype.ToUpper() == "GRID")
-                    {
+                        break;
+                    case "EDGE":
                         WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Edge());
                         WebDriver.driver.Manage().Window.Maximize();
-                    }
-                    break;
-                default:
-                    WebDriver.driver = new FirefoxDriver();
-                    WebDriver.driver.Manage().Window.Maximize();
-                    break;
+                        break;
+                    default:
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
+                }
+            }
+
+            else if (TestData.runtype.ToUpper() == "PARALLEL")
+            {
+               // WebDriver.driver = GetDriver();
             }
         }
+
 
         /// <summary>
         /// Method to close the browser. If IE, kill process to close the browser
@@ -95,7 +96,6 @@ namespace TADASHBOARRD.Common
                 process.Kill();
             }
         }
-
         #endregion
     }
 }

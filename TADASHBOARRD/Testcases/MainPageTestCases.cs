@@ -27,7 +27,7 @@ namespace TADASHBOARRD.Testcases
             generalPage.OpenAddPageDialog();
             newPageDialog = new NewPageDialog();
             string pageName2 = GetDateTime();
-            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic,TestData.levelOne);
+            newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic, TestData.levelOne);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.PerformDelete();
             string actualMessage = generalPage.GetTextAlert();
@@ -55,16 +55,15 @@ namespace TADASHBOARRD.Testcases
             editPageDialog = new EditPageDialog();
             string pageName1Edit = GetDateTime();
             // Edit page 1
-            editPageDialog.EditPage(pageName1Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            editPageDialog.EditPage(pageName1Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelZero);
             // VP: User is able to edit the name of parent page successfully
             string pageName1AfterEdit = generalPage.GetPageNameOfPageOpened();
-            Console.WriteLine("pagename1afteredit:" + pageName1AfterEdit);
             CheckTextDisplays(pageName1Edit, pageName1AfterEdit);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1Edit + "/" + pageName2);
             generalPage.OpenEditPageDialog();
             string pageName2Edit = GetDateTime();
             // Edit page 2
-            editPageDialog.EditPage(pageName2Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic);
+            editPageDialog.EditPage(pageName2Edit, TestData.defaultParentPage, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusNotPublic, TestData.levelZero);
             string pageName2AfterEdit = generalPage.GetPageNameOfPageOpened();
             // VP: User is able to edit the name of sibbling page successfully
             CheckTextDisplays(pageName2Edit, pageName2AfterEdit);

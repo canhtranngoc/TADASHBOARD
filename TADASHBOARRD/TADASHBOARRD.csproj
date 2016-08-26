@@ -69,6 +69,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Common\Browser.cs" />
     <Compile Include="Common\BrowserManager.cs" />
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\WebDriver.cs" />
