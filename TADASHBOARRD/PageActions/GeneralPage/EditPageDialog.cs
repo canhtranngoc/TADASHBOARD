@@ -9,8 +9,7 @@
         ///</summary>
         public void EditPage(string newPageName, string newParentPage, string newNumberOfColumns, string newDisplayAfter, string newStatus, int newParentLevel)
         {
-            // Wait for edit page is loaded
-            Sleep(1);
+            WaitForControl("parent page combobox", 5);
             if (newParentPage != "")
             {
                 if (newParentLevel == 0)
@@ -30,8 +29,7 @@
                     SelectItemByText("parent page combobox", ("            " + newParentPage));
                 }
             }
-            // Wait for combobox value is changed
-            Sleep(1);
+            WaitForControl("page name textbox", 5);
             EnterValue("page name textbox", newPageName);
 
             if (newNumberOfColumns != "")
@@ -42,8 +40,7 @@
             {
                 SelectItemByText("display after combobox", newDisplayAfter);
             }
-            // Wait for combobox value is changed
-            Sleep(1);
+            WaitForControl("public checkbox", 5);
             if (newStatus == "public")
             {
                 TickCheckbox("public checkbox");

@@ -11,8 +11,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// </summary>
         public void CreateNewPage(string pageName, string parentPage, string numberOfColumns, string displayAfter, string status, int parentLevel)
         {
-            // Wait for new page dialog is loaded
-            Sleep(1);
+            WaitForControl("parent page combobox", 5);
             if (parentPage != "")
             {
                 if (parentLevel == 0)
@@ -32,8 +31,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     SelectItemByText("parent page combobox", ("            " + parentPage));
                 }
             }
-            // Wait for combobox value is changed
-            Sleep(1);
+            WaitForControl("page name textbox", 5);
             EnterValue("page name textbox", pageName);
 
             if (numberOfColumns != "")
@@ -44,8 +42,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             {
                 SelectItemByText("display after combobox", displayAfter);
             }
-            // Wait for combobox value is changed
-            Sleep(1);
+            WaitForControl("public checkbox", 5);
             if (status == "public")
             {
                 TickCheckbox("public checkbox");
