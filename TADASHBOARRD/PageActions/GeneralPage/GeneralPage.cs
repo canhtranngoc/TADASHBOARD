@@ -272,7 +272,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Click("user tab");
             Click("logout tab");
             // For edge
-            WaitInSpecificTime(10);
+            Sleep(1);
         }
 
         ///<summary>
@@ -310,7 +310,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Click("choose panels button");
             // wait for Choose panels is loaded
-            Sleep(1);
+            WaitForControl(By.XPath("//div[@class='ptit pchart']/../table"),5);
             int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
             int randomRow = new Random().Next(1, rowCount);
             int colunmCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr[" + randomRow + "]/td")).Count;
@@ -325,8 +325,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenAddPageDialog()
         {
-            //Sleep(1);
-            WaitInSpecificTime(10);
+            WaitForControl("global setting tab", 5);
             Click("global setting tab");
             Click("add page tab");
         }
@@ -336,7 +335,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenEditPageDialog()
         {
-            WaitInSpecificTime(10);
+            WaitForControl("global setting tab", 5);
             Click("global setting tab");
             Click("edit page tab");
         }
@@ -346,7 +345,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void PerformDelete()
         {
-            WaitInSpecificTime(10);
+            WaitForControl("global setting tab",5);
             Click("global setting tab");
             Click("delete tab");
             AcceptAlert();
@@ -357,7 +356,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void DeleteAllPages()
         {
-            WaitInSpecificTime(10);
+            // wait for page loads
+            Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
@@ -517,7 +517,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public string GetUserName()
         {
-            WaitInSpecificTime(10);
+            WaitForControl("user tab", 5);
             return GetText("user tab");
         }
 
