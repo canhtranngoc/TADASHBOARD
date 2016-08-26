@@ -20,8 +20,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void CreateNewProfile(string name, string itemtype, string relateddata, string action)
         {
-            // Sleep 1 second before enter value
-            Sleep(1);
+            WaitForControl("name textbox", 5);
             EnterValue("name textbox", name);
             SelectValueDropdownList("item type combobox", itemtype);
             SelectValueDropdownList("related data combobox", relateddata);
@@ -40,7 +39,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void CheckItemTypeOptions()
         {
-            WaitInSpecificTime(10);
+            WaitForControl("item type combobox", 5);
             int count = CountComboboxChildren("//select[@id='cbbEntityType']/option");
             for (int i = 1; i <= count; i++)
             {

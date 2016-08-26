@@ -13,8 +13,6 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void AddNewPanel(string name, string series)
         {
-            // Sleep 1 second before enter value
-            // Sleep(1);
             WaitForControl("display name textbox", 5);
             EnterValue("display name textbox", name);
             SelectItemByText("series combobox", ("  " + series));
@@ -26,8 +24,6 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void CloseNewPanelDialog()
         {
-            // Sleep 1 second for stable running
-            Sleep(1);
             Click("cancel button");
         }
 
@@ -36,7 +32,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void CheckChartTypeOptions()
         {
-            //WaitInSpecificTime(10);
+            WaitForControl("chart type combobox", 5);
             string chartTypeChildren = "//select[@id='cbbChartType']/option";
             WaitForControl(By.XPath(chartTypeChildren), 5);
             int count = CountComboboxChildren(chartTypeChildren);

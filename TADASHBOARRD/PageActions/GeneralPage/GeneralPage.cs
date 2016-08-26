@@ -299,7 +299,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenNewPanelDialogFromChoosePanels()
         {
+            WaitForControl("choose panels button", 5);
             Click("choose panels button");
+            // Sleep 1 second for create new panel button displays
+            Sleep(1);
             Click("create new panel button");
         }
 
@@ -356,8 +359,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void DeleteAllPages()
         {
-            // Sleep 1 second for stable running
-            Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
@@ -408,6 +409,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     pageIndex = pageIndex - 1;
                 }
             }
+            // Sleep 1 second for the page to load again
+            Sleep(1);
         }
 
         ///<summary>
@@ -499,8 +502,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void Click(string locator)
         {
-            //Wait 1 second before perform click action
-            //Sleep(1);
             if (TestData.browser == "ie" || TestData.browser == "chrome")
             {
                 IWebElement webElement = FindWebElement(locator);
@@ -518,7 +519,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public string GetUserName()
         {
-            //WaitInSpecificTime(10);
             WaitForControl("user tab", 5);
             return GetText("user tab");
         }
@@ -565,14 +565,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);
             Assert.AreEqual(expectedMessage, actualText);
-        }
-
-        /// <summary>
-        /// Implicitly wait up to 10 seconds
-        /// </summary>
-        public void WaitInSpecificTime(int second)
-        {
-            WebDriver.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(second));
         }
 
         #endregion

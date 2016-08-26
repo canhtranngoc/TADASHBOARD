@@ -9,6 +9,7 @@
         /// </summary>
         public void EnterValueToHeighThenClickOk(string value)
         {
+            WaitForControl("height textbox", 5);
             EnterValue("height textbox", value);
             Click("ok button");
         }
