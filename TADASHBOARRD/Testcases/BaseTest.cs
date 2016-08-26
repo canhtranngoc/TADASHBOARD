@@ -44,10 +44,6 @@ namespace TADASHBOARRD.Testcases
                     generalPage.DeleteAllPages();
                     generalPage.Logout();
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
-                    //if (TestContext.CurrentTestOutcome.ToString() == "Failed")
-                    //{
-                    //    WebDriver.driver.Quit();
-                    //}
                     break;
                 case "DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field":
                     panelConfigurationDialog.AcceptAlert();
