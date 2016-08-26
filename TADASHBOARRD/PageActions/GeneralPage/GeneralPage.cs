@@ -357,7 +357,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void DeleteAllPages()
         {
-            WaitInSpecificTime(10);
+            // Sleep 1 second for stable running
+            Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
@@ -499,7 +500,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void Click(string locator)
         {
             //Wait 1 second before perform click action
-            Sleep(1);
+            //Sleep(1);
             if (TestData.browser == "ie" || TestData.browser == "chrome")
             {
                 IWebElement webElement = FindWebElement(locator);
@@ -517,7 +518,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public string GetUserName()
         {
-            WaitInSpecificTime(10);
+            //WaitInSpecificTime(10);
+            WaitForControl("user tab", 5);
             return GetText("user tab");
         }
 

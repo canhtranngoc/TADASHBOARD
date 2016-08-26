@@ -2,7 +2,6 @@
 using TADASHBOARRD.PageActions.LoginPage;
 using TADASHBOARRD.PageActions.GeneralPage;
 using TADASHBOARRD.Common;
-using System;
 
 namespace TADASHBOARRD.Testcases
 {

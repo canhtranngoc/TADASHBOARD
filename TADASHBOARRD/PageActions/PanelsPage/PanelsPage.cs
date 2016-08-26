@@ -12,6 +12,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void OpenNewPanelDialog()
         {
+            WaitForControl("add new link", 5);
             Click("add new link");
         }
 
@@ -22,6 +23,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         {
            if (DoesElementPresent("check all link") == true)
             {
+                WaitForControl("check all link", 5);
                 Click("check all link");
                 Click("delete link");
                 AcceptAlert();

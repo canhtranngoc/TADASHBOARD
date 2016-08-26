@@ -1,4 +1,5 @@
 ﻿using System;
+using OpenQA.Selenium;
 using TADASHBOARRD.Common;
 
 namespace TADASHBOARRD.PageActions.PanelsPage
@@ -13,7 +14,8 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         public void AddNewPanel(string name, string series)
         {
             // Sleep 1 second before enter value
-            Sleep(1);
+            // Sleep(1);
+            WaitForControl("display name textbox", 5);
             EnterValue("display name textbox", name);
             SelectItemByText("series combobox", ("  " + series));
             Click("ok button");
@@ -24,6 +26,8 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void CloseNewPanelDialog()
         {
+            // Sleep 1 second for stable running
+            Sleep(1);
             Click("cancel button");
         }
 
@@ -32,8 +36,10 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void CheckChartTypeOptions()
         {
-            WaitInSpecificTime(10);
-            int count = CountComboboxChildren("//select[@id='cbbChartType']/option");
+            //WaitInSpecificTime(10);
+            string chartTypeChildren = "//select[@id='cbbChartType']/option";
+            WaitForControl(By.XPath(chartTypeChildren), 5);
+            int count = CountComboboxChildren(chartTypeChildren);
             for (int i = 1; i <= count; i++)
             {
                 string actual = GetTextDynamicElement("chart type child", i.ToString());
