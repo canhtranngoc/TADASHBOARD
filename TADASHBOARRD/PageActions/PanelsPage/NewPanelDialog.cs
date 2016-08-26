@@ -13,7 +13,7 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         public void AddNewPanel(string name, string series)
         {
             EnterValue("display name textbox", name);
-            SelectValueDropdownList("series combobox", name);
+            SelectValueDropdownList("series combobox", series);
             Click("ok button");
         }
 
