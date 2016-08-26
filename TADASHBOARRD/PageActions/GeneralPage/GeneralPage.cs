@@ -16,6 +16,61 @@ namespace TADASHBOARRD.PageActions.GeneralPage
     {
         #region Methods
 
+        /// <summary>
+        /// Method to wait for control by locator
+        /// </summary>
+        public void WaitForControl(By locator, int timeoutInSeconds)
+        {
+            IWebElement element;
+            bool check = false;
+            for (int i = 0; i < timeoutInSeconds; i++)
+            {
+                try
+                {
+                    element = WebDriver.driver.FindElement(locator);
+                    if (element.Displayed!=check)
+                    {
+                        Sleep(1);
+                        return;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    Sleep(1);
+                    continue;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Method to wait for control by json
+        /// </summary>
+
+        public void WaitForControl(string locator, int timeoutInSeconds)
+        {
+            IWebElement element;
+            bool check = false;
+            for (int i = 0; i < timeoutInSeconds; i++)
+            {
+                try
+                {
+                    element = FindWebElement(locator);
+                    if (element.Displayed!=check)
+                    {
+                        Sleep(1);
+                        break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    Sleep(1);
+                    continue;                   
+                }              
+            }
+        }
+
         ///<summary>
         /// Method to wait for an alert
         ///</summary>
