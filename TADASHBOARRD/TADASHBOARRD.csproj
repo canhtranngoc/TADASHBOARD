@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fenton.Selenium.SuperDriver, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fenton.Selenium.SuperDriver.0.2.0.0\lib\net45\Fenton.Selenium.SuperDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Drawing" />
@@ -85,6 +89,7 @@
     <Compile Include="Testcases\LoginTestCases.cs" />
     <Compile Include="Testcases\DataProfilesTestCases.cs" />
     <Compile Include="Testcases\PanelsTestCases.cs" />
+    <Compile Include="Testcases\Test\UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -136,9 +141,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Testcases\Test\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="..\packages\WebDriver.IEDriverServer.win32.2.44\content\IEDriverServer.exe">
       <Link>IEDriverServer.exe</Link>
