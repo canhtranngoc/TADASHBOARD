@@ -141,9 +141,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Testcases\Test\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="..\packages\WebDriver.IEDriverServer.win32.2.44\content\IEDriverServer.exe">
       <Link>IEDriverServer.exe</Link>
