@@ -6,6 +6,9 @@ using OpenQA.Selenium.IE;
 using System;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium;
+using Fenton.Selenium.SuperDriver;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TADASHBOARRD.Common
 {
@@ -40,6 +43,10 @@ namespace TADASHBOARRD.Common
                         WebDriver.driver = new EdgeDriver();
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
+                    case "SUPERWEBDRIVER":
+                        WebDriver.driver = GetDriver(Browser.SuperWebDriver);
+                        WebDriver.driver.Manage().Window.Maximize();
+                        break;
                     default:
                         WebDriver.driver = new FirefoxDriver();
                         WebDriver.driver.Manage().Window.Maximize();
@@ -70,6 +77,8 @@ namespace TADASHBOARRD.Common
                         WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Edge());
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
+                    case "SUPERWEBDRIVER":
+                        break;
                     default:
                         WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
                         WebDriver.driver.Manage().Window.Maximize();
@@ -77,10 +86,45 @@ namespace TADASHBOARRD.Common
                 }
             }
 
-            else if (TestData.runtype.ToUpper() == "PARALLEL")
+           
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static IWebDriver GetDriver(Browser browser)
+        {
+            IWebDriver driver = null;
+            switch (browser)
             {
-               // WebDriver.driver = GetDriver();
+                case Browser.SuperWebDriver:
+                    driver = new SuperWebDriver(GetDriverSuite());
+                    break;
+                case Browser.Chrome:
+                    driver = new ChromeDriver();
+                    break;
+                case Browser.InternetExplorer:
+                    driver = new InternetExplorerDriver(new InternetExplorerOptions() { IntroduceInstabilityByIgnoringProtectedModeSettings = true });
+                    break;
+                default:
+                    driver = new FirefoxDriver();
+                    break;
             }
+
+            return driver;
+        }
+
+        public static IList<IWebDriver> GetDriverSuite()
+        {
+            // Allow some degree of parallelism when creating drivers, which can be slow
+            IList<IWebDriver> drivers = new List<Func<IWebDriver>>
+            {
+                () => { return GetDriver(Browser.Chrome); },
+                () => { return GetDriver(Browser.Firefox); },
+                () => { return GetDriver(Browser.InternetExplorer); },
+            }.AsParallel().Select(d => d()).ToList();
+
+            return drivers;
         }
 
 
@@ -96,6 +140,8 @@ namespace TADASHBOARRD.Common
                 process.Kill();
             }
         }
+
+
         #endregion
     }
 }
