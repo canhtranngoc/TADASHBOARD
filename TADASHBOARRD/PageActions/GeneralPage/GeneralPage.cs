@@ -268,7 +268,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void Logout()
         {
-            WaitInSpecificTime(10);
+            WaitForControl("user tab", 5);
             Click("user tab");
             Click("logout tab");
             // For edge
@@ -356,7 +356,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void DeleteAllPages()
         {
-            // wait for page loads
+            // 
             Sleep(1);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
@@ -415,7 +415,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void goToPage(string path)
         {
-            WaitInSpecificTime(10);
+            // Wait for page loads
+            Sleep(1);
             string xpathNext = string.Empty;
             if (!(path.Contains("/")))
             {
@@ -499,7 +500,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         public void Click(string locator)
         {
             //Wait 1 second before perform click action
-            Sleep(1);
+            //Sleep(1);
             if (TestData.browser == "ie" || TestData.browser == "chrome")
             {
                 IWebElement webElement = FindWebElement(locator);
