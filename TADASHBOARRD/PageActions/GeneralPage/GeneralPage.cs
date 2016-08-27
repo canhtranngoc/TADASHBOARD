@@ -348,7 +348,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void PerformDelete()
         {
-            WaitForControl("global setting tab",5);
+          //  WaitForControl("global setting tab",5);
+            Sleep(1);
             Click("global setting tab");
             Click("delete tab");
             AcceptAlert();
@@ -416,51 +417,90 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///<summary>
         /// Method to go to a specific page
         ///</summary>
-        public void goToPage(string path)
+        //public void goToPage(string path)
+        //{
+        //    // Wait for page loads
+        //    Sleep(1);
+        //    string xpathNext = string.Empty;
+        //    if (!(path.Contains("/")))
+        //    {
+        //        string xpath = string.Format("//a[.='{0}']", path);
+        //        if (TestData.browser == "chrome" || TestData.browser == "ie")
+        //        {
+        //            ClickItemXpathByJS(xpath);
+        //        }
+        //        else
+        //        {
+        //            ClickItemXpath(xpath);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        string[] element = path.Split('/');
+        //        string xpath = string.Format("//a[.='{0}']", element[0]);
+        //        for (int i = 1; i < element.Length; i++)
+        //        {
+        //            if (TestData.browser == "chrome" || TestData.browser == "ie")
+        //            {
+        //                ClickItemXpathByJS(xpath);
+        //            }
+        //            else
+        //            {
+        //                Actions builder = new Actions(WebDriver.driver);
+        //                builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
+        //            }
+        //            xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
+        //            xpath = xpath + xpathNext;
+        //        }
+        //        if (TestData.browser == "chrome" || TestData.browser == "ie")
+        //        {
+        //            ClickItemXpathByJS(xpath);
+        //        }
+        //        else
+        //        {
+        //            ClickItemXpath(xpath);
+        //        }
+        //    }
+        //}
+
+        public void goToPage(string way)
         {
-            // Wait for page loads
             Sleep(1);
-            string xpathNext = string.Empty;
-            if (!(path.Contains("/")))
+            string[] allpages = way.Split('/');
+            By lastpage = By.XPath("");
+           // string lastpage = string.Empty;
+            string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
+
+            if (allpages.Length == 1)
             {
-                string xpath = string.Format("//a[.='{0}']", path);
-                if (TestData.browser == "chrome" || TestData.browser == "ie")
-                {
-                    ClickItemXpathByJS(xpath);
-                }
-                else
-                {
-                    ClickItemXpath(xpath);
-                }
+                //There is only main page without child
+                lastpage = By.XPath(currentpagexpath);
+                WebDriver.driver.FindElement(lastpage).Click();
             }
             else
             {
-                string[] element = path.Split('/');
-                string xpath = string.Format("//a[.='{0}']", element[0]);
-                for (int i = 1; i < element.Length; i++)
+                //There is main page with has own childrens 
+                for (int b = 1; b < allpages.Length; b++)
                 {
-                    if (TestData.browser == "chrome" || TestData.browser == "ie")
-                    {
-                        ClickItemXpathByJS(xpath);
-                    }
-                    else
-                    {
-                        Actions builder = new Actions(WebDriver.driver);
-                        builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-                    }
-                    xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
-                    xpath = xpath + xpathNext;
+                    Actions builder = new Actions(WebDriver.driver);
+                    Actions hoverClick = builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(currentpagexpath)));
+                    hoverClick.Build().Perform();
+                    string next = "/following-sibling::ul/li/a[text()='" + allpages[b] + "']";
+                    currentpagexpath = currentpagexpath + next;
+                    lastpage = By.XPath(currentpagexpath);
                 }
+
                 if (TestData.browser == "chrome" || TestData.browser == "ie")
                 {
-                    ClickItemXpathByJS(xpath);
+                    IWebElement webElement = WebDriver.driver.FindElement(lastpage);
+                    IJavaScriptExecutor executor = (IJavaScriptExecutor)WebDriver.driver;
+                    executor.ExecuteScript("arguments[0].click();", webElement);
                 }
                 else
-                {
-                    ClickItemXpath(xpath);
-                }
+                    WebDriver.driver.FindElement(lastpage).Click();
             }
         }
+
 
         ///<summary>
         /// Method to perform sleep action in specific seconds

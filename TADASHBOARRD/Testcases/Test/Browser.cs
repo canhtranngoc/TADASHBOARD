@@ -11,6 +11,7 @@ namespace TADASHBOARRD.Testcases.Test
         Chrome,
         Firefox,
         InternetExplorer,
+        MicrosoftEdge,
         SuperWebDriver
     }
 }

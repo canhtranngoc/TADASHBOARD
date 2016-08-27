@@ -68,7 +68,7 @@ namespace TADASHBOARRD.Common
                         DesiredCapabilities chromeCapabilities = DesiredCapabilities.Chrome();
                         chromeCapabilities.SetCapability(CapabilityType.Version, TestData.chromeVersion);
                         chromeCapabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), chromeCapabilities);
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     case "IE":
@@ -147,6 +147,16 @@ namespace TADASHBOARRD.Common
             }
         }
 
+        /// <summary>
+        /// Using for Parallel
+        /// </summary>
+        public enum Browser
+        {
+            Chrome,
+            Firefox,
+            InternetExplorer,
+            SuperWebDriver
+        }
 
         #endregion
     }

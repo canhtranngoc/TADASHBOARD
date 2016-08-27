@@ -35,6 +35,9 @@ namespace TADASHBOARRD.Testcases.Test
                 case Browser.InternetExplorer:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
                     break;
+                case Browser.MicrosoftEdge:
+                    driver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
+                    break;
                 default:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
                     break;
@@ -50,6 +53,7 @@ namespace TADASHBOARRD.Testcases.Test
                 () =>  { return GetCapabilityFor(Browser.Chrome); },
                 () =>  { return GetCapabilityFor(Browser.Firefox); },
                 () => { return GetCapabilityFor(Browser.InternetExplorer); },
+                () => { return GetCapabilityFor(Browser.MicrosoftEdge); },
             }.AsParallel().Select(d => d()).ToList();
 
             return drivers;
