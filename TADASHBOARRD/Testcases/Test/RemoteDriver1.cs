@@ -12,7 +12,7 @@ namespace TADASHBOARRD.Testcases.Test
 {
     class RemoteDriver1
     {
-        public static IWebDriver GetDriverGrid(Browser browser)
+        public static IWebDriver GetDriverGrid(Browser1 browser)
         {
             IWebDriver driver = GetCapabilityFor(browser);
             driver.Manage().Window.Maximize();
@@ -20,22 +20,22 @@ namespace TADASHBOARRD.Testcases.Test
             return driver;
         }
 
-        public static IWebDriver GetCapabilityFor(Browser browser)
+        public static IWebDriver GetCapabilityFor(Browser1 browser)
         {
             var uri = new Uri(ConfigurationManager.AppSettings["hub"]);
             IWebDriver driver;
             switch (browser)
             {
-                case Browser.SuperWebDriver:
+                case Browser1.SuperWebDriver:
                     driver = new SuperWebDriver(GetDriverSuiteGrid());
                     break;
-                case Browser.Chrome:
+                case Browser1.Chrome:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome());
                     break;
-                case Browser.InternetExplorer:
+                case Browser1.InternetExplorer:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
                     break;
-                case Browser.MicrosoftEdge:
+                case Browser1.MicrosoftEdge:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
                     break;
                 default:
@@ -50,10 +50,10 @@ namespace TADASHBOARRD.Testcases.Test
             // Allow some degree of parallelism when creating drivers, which can be slow
             IList<IWebDriver> drivers = new List<Func<IWebDriver>>
             {
-                () =>  { return GetCapabilityFor(Browser.Chrome); },
-                () =>  { return GetCapabilityFor(Browser.Firefox); },
-                () => { return GetCapabilityFor(Browser.InternetExplorer); },
-                () => { return GetCapabilityFor(Browser.MicrosoftEdge); },
+                () =>  { return GetCapabilityFor(Browser1.Chrome); },
+                () =>  { return GetCapabilityFor(Browser1.Firefox); },
+                () => { return GetCapabilityFor(Browser1.InternetExplorer); },
+                () => { return GetCapabilityFor(Browser1.MicrosoftEdge); },
             }.AsParallel().Select(d => d()).ToList();
 
             return drivers;

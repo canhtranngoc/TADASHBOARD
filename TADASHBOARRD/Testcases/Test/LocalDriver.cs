@@ -14,21 +14,21 @@ namespace TADASHBOARRD.Testcases.Test
 {
    public class LocalDriver
     {   
-        public static IWebDriver GetDriver(Browser browser)
+        public static IWebDriver GetDriver(Browser1 browser)
         {
             IWebDriver driver = null;
             switch (browser)
             {
-                case Browser.SuperWebDriver:
+                case Browser1.SuperWebDriver:
                     driver = new SuperWebDriver(GetDriverSuite());
                     break;
-                case Browser.Chrome:
+                case Browser1.Chrome:
                     driver = new ChromeDriver();
                     break;
-                case Browser.InternetExplorer:
+                case Browser1.InternetExplorer:
                     driver = new InternetExplorerDriver(new InternetExplorerOptions() { IntroduceInstabilityByIgnoringProtectedModeSettings = true });
                     break;
-                case Browser.MicrosoftEdge:
+                case Browser1.MicrosoftEdge:
                     driver = new EdgeDriver();
                     break;
                 default:
@@ -45,10 +45,10 @@ namespace TADASHBOARRD.Testcases.Test
             // Allow some degree of parallelism when creating drivers, which can be slow
             IList<IWebDriver> drivers = new List<Func<IWebDriver>>
             {
-                () => { return GetDriver(Browser.Chrome); },
-                () => { return GetDriver(Browser.Firefox); },
-                () => { return GetDriver(Browser.InternetExplorer); },
-                () => { return GetDriver(Browser.MicrosoftEdge); },
+                () => { return GetDriver(Browser1.Chrome); },
+                () => { return GetDriver(Browser1.Firefox); },
+                () => { return GetDriver(Browser1.InternetExplorer); },
+                () => { return GetDriver(Browser1.MicrosoftEdge); },
             }.AsParallel().Select(d => d()).ToList();
 
             return drivers;
