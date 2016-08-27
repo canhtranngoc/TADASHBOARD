@@ -69,7 +69,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Common\Browser.cs" />
     <Compile Include="Common\BrowserManager.cs" />
     <Compile Include="Common\CommonActions.cs" />
     <Compile Include="Common\WebDriver.cs" />
@@ -90,7 +89,6 @@
     <Compile Include="Testcases\LoginTestCases.cs" />
     <Compile Include="Testcases\DataProfilesTestCases.cs" />
     <Compile Include="Testcases\PanelsTestCases.cs" />
-    <Compile Include="Testcases\Test\Browser.cs" />
     <Compile Include="Testcases\Test\LocalDriver.cs" />
     <Compile Include="Testcases\Test\RemoteDriver1.cs" />
     <Compile Include="Testcases\Test\UnitTest1.cs" />
