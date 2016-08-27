@@ -43,20 +43,20 @@ namespace TADASHBOARRD.Testcases
                     generalPage.AcceptAlert();
                     generalPage.DeleteAllPages();
                     generalPage.Logout();
-                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                   // WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
                 case "DA_PANEL_TC043_Verify_that_only_integer_number_inputs_from_300_800_are_valid_for_Height_field":
                     panelConfigurationDialog.AcceptAlert();
                     panelConfigurationDialog.CancelPanelConfigurationDialog();
                     generalPage.DeleteAllPages();
                     generalPage.Logout();
-                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                    //WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
                 case "DA_DP_TC076_Verify_that_for_newly_created_data_profile_user_is_able_to_navigate_through_other_setting_pages_on_the_left_navigation_panel":
                     dataProfilesPage.OpenDataProfilesPage();
                     dataProfilesPage.DeleteAllProfiles();
                     dataProfilesPage.Logout();
-                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                   // WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
                 default:
                    // WebDriver.driver.Manage().Cookies.DeleteAllCookies();
