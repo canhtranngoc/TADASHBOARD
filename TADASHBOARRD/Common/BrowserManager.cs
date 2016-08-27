@@ -58,23 +58,31 @@ namespace TADASHBOARRD.Common
                 switch (browsername.ToUpper())
                 {
                     case "FIREFOX":
-                        DesiredCapabilities capabilities = DesiredCapabilities.Firefox();
-                        capabilities.SetCapability(CapabilityType.BrowserName, "firefox");
-                        capabilities.SetCapability(CapabilityType.Version, TestData.firefoxVersion);
-                        capabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), capabilities);
+                        DesiredCapabilities firefoxCapabilities = DesiredCapabilities.Firefox();
+                        firefoxCapabilities.SetCapability(CapabilityType.Version, TestData.firefoxVersion);
+                        firefoxCapabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), firefoxCapabilities);
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     case "CHROME":
-                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
+                        DesiredCapabilities chromeCapabilities = DesiredCapabilities.Chrome();
+                        chromeCapabilities.SetCapability(CapabilityType.Version, TestData.chromeVersion);
+                        chromeCapabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), chromeCapabilities);
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     case "IE":
-                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.InternetExplorer());
+                        DesiredCapabilities ieCapabilities = DesiredCapabilities.InternetExplorer();
+                        ieCapabilities.SetCapability(CapabilityType.Version, TestData.ieVersion);
+                        ieCapabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), ieCapabilities);
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     case "EDGE":
-                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Edge());
+                        DesiredCapabilities edgeCapabilities = DesiredCapabilities.Edge();
+                        edgeCapabilities.SetCapability(CapabilityType.Version, TestData.edgeVersion);
+                        edgeCapabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), edgeCapabilities);
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     case "SUPERWEBDRIVER":
