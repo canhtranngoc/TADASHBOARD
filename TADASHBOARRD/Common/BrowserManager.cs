@@ -119,6 +119,8 @@ namespace TADASHBOARRD.Common
                     driver = new EdgeDriver();
                     break;
                 default:
+                    TestData.validUsername = "ngan.truong";
+                    TestData.validPassword = "123";
                     driver = new FirefoxDriver();
                     break;
             }
@@ -214,10 +216,6 @@ namespace TADASHBOARRD.Common
 
             return drivers;
         }
-
-
-
-
 
         #endregion
     }
