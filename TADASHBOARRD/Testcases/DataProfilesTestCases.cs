@@ -72,6 +72,7 @@ namespace TADASHBOARRD.Testcases
             displayFieldsPage.ClickUnCheckAllLink();
             // VP: Verify that all checkbox is unchecked
             Assert.IsTrue(displayFieldsPage.AreAllCheckboxUnChecked());
+            displayFieldsPage.Logout();
         }
     }
 }

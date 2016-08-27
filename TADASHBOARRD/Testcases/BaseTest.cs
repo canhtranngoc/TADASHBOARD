@@ -30,8 +30,7 @@ namespace TADASHBOARRD.Testcases
 
         [TestInitialize]
         public void TestInitializeMethod()
-        {
-            //generalPage.Sleep(1);
+        {          
             NavigateTADashboard();
         }
         [TestCleanup]
@@ -59,7 +58,7 @@ namespace TADASHBOARRD.Testcases
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
                 default:
-                   // WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
             }
         }
