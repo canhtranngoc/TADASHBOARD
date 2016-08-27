@@ -132,8 +132,7 @@ namespace TADASHBOARRD.Common
 
             return drivers;
         }
-
-
+        
         /// <summary>
         /// Method to close the browser. If IE, kill process to close the browser
         /// </summary>
@@ -146,8 +145,6 @@ namespace TADASHBOARRD.Common
                 process.Kill();
             }
         }
-
-
         #endregion
     }
 }
