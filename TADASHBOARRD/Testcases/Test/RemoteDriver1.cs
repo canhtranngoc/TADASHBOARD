@@ -16,7 +16,7 @@ namespace TADASHBOARRD.Testcases.Test
         {
             IWebDriver driver = GetCapabilityFor(browser);
             driver.Manage().Window.Maximize();
-            driver.Manage().Cookies.DeleteAllCookies();
+        //    driver.Manage().Cookies.DeleteAllCookies();
             return driver;
         }
 
