@@ -85,8 +85,6 @@ namespace TADASHBOARRD.Common
                         break;
                 }
             }
-
-           
         }
 
         /// <summary>

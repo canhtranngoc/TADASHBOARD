@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace TADASHBOARRD.Testcases.Test
 {
    public class LocalDriver
-    {
+    {   
         public static IWebDriver GetDriver(Browser browser)
         {
             IWebDriver driver = null;
