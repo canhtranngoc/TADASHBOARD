@@ -59,7 +59,7 @@ namespace TADASHBOARRD.Testcases
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
                 default:
-                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                   // WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
             }
         }

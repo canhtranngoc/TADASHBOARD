@@ -27,7 +27,7 @@ namespace TADASHBOARRD.Testcases.Test
             switch (browser)
             {
                 case Browser.SuperWebDriver:
-                    driver = new SuperWebDriver(GetDriverSuite());
+                    driver = new SuperWebDriver(GetDriverSuiteGrid());
                     break;
                 case Browser.Chrome:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome());
@@ -45,7 +45,7 @@ namespace TADASHBOARRD.Testcases.Test
             return driver;
         }
 
-        public static IList<IWebDriver> GetDriverSuite()
+        public static IList<IWebDriver> GetDriverSuiteGrid()
         {
             // Allow some degree of parallelism when creating drivers, which can be slow
             IList<IWebDriver> drivers = new List<Func<IWebDriver>>
