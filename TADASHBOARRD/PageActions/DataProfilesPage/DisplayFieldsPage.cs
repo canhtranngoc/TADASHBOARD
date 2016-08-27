@@ -15,6 +15,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void ClickCheckAllLink()
         {
+            WaitForControl("checkall link", 5);
             Click("checkall link");
         }
 
@@ -23,6 +24,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void ClickUnCheckAllLink()
         {
+            WaitForControl("uncheckall link", 5);
             Click("uncheckall link");
         }
 

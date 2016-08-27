@@ -11,6 +11,7 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
         ///</summary>
         public void OpenCreateProfilePage()
         {
+            WaitForControl("add new link", 5);
             Click("add new link");
         }
 

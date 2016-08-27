@@ -16,6 +16,61 @@ namespace TADASHBOARRD.PageActions.GeneralPage
     {
         #region Methods
 
+        /// <summary>
+        /// Method to wait for control by locator
+        /// </summary>
+        public void WaitForControl(By locator, int timeoutInSeconds)
+        {
+            IWebElement element;
+            bool check = false;
+            for (int i = 0; i < timeoutInSeconds; i++)
+            {
+                try
+                {
+                    element = WebDriver.driver.FindElement(locator);
+                    if (element.Displayed!=check)
+                    {
+                        Sleep(1);
+                        return;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    Sleep(1);
+                    continue;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Method to wait for control by json
+        /// </summary>
+
+        public void WaitForControl(string locator, int timeoutInSeconds)
+        {
+            IWebElement element;
+            bool check = false;
+            for (int i = 0; i < timeoutInSeconds; i++)
+            {
+                try
+                {
+                    element = FindWebElement(locator);
+                    if (element.Displayed!=check)
+                    {
+                        Sleep(1);
+                        break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    Sleep(1);
+                    continue;                   
+                }              
+            }
+        }
+
         ///<summary>
         /// Method to wait for an alert
         ///</summary>
@@ -213,11 +268,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void Logout()
         {
-            WaitInSpecificTime(10);
+            WaitForControl("user tab", 5);
             Click("user tab");
             Click("logout tab");
             // For edge
-           WaitInSpecificTime(10);
+            Sleep(1);
         }
 
         ///<summary>
@@ -244,7 +299,10 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenNewPanelDialogFromChoosePanels()
         {
+            WaitForControl("choose panels button", 5);
             Click("choose panels button");
+            // Sleep 1 second for create new panel button displays
+            Sleep(1);
             Click("create new panel button");
         }
 
@@ -255,7 +313,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             Click("choose panels button");
             // wait for Choose panels is loaded
-            Sleep(1);
+            WaitForControl(By.XPath("//div[@class='ptit pchart']/../table"),5);
             int rowCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr")).Count;
             int randomRow = new Random().Next(1, rowCount);
             int colunmCount = WebDriver.driver.FindElements(By.XPath("//div[@class='ptit pchart']/../table//tr[" + randomRow + "]/td")).Count;
@@ -269,9 +327,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         /// Method to open add page dialog
         ///</summary>
         public void OpenAddPageDialog()
-        {   
-            // Wait for page load
-            Sleep(1);
+        {
+            WaitForControl("global setting tab", 5);
             Click("global setting tab");
             Click("add page tab");
         }
@@ -281,9 +338,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenEditPageDialog()
         {
-            //WaitInSpecificTime(10);
-            // Wait for page is loaded
-            Sleep(1);
+            WaitForControl("global setting tab", 5);
             Click("global setting tab");
             Click("edit page tab");
         }
@@ -293,7 +348,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void PerformDelete()
         {
-            WaitInSpecificTime(10);
+            WaitForControl("global setting tab",5);
             Click("global setting tab");
             Click("delete tab");
             AcceptAlert();
@@ -304,7 +359,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void DeleteAllPages()
         {
-            WaitInSpecificTime(10);
             string xpath = string.Empty;
             string xpathNext = string.Empty;
             string locatorClass = string.Empty;
@@ -355,6 +409,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
                     pageIndex = pageIndex - 1;
                 }
             }
+            // Sleep 1 second for the page to load again
+            Sleep(1);
         }
 
         ///<summary>
@@ -362,7 +418,8 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void goToPage(string path)
         {
-            WaitInSpecificTime(10);
+            // Wait for page loads
+            Sleep(1);
             string xpathNext = string.Empty;
             if (!(path.Contains("/")))
             {
@@ -445,8 +502,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void Click(string locator)
         {
-            //Wait 1 second before perform click action
-            Sleep(1);
             if (TestData.browser == "ie" || TestData.browser == "chrome")
             {
                 IWebElement webElement = FindWebElement(locator);
@@ -464,7 +519,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public string GetUserName()
         {
-            WaitInSpecificTime(10);
+            WaitForControl("user tab", 5);
             return GetText("user tab");
         }
 
@@ -510,14 +565,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         {
             string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);
             Assert.AreEqual(expectedMessage, actualText);
-        }
-
-        /// <summary>
-        /// Implicitly wait up to 10 seconds
-        /// </summary>
-        public void WaitInSpecificTime(int second)
-        {
-            WebDriver.driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(second));
         }
 
         #endregion

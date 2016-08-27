@@ -1,4 +1,5 @@
 ﻿using System;
+using OpenQA.Selenium;
 using TADASHBOARRD.Common;
 
 namespace TADASHBOARRD.PageActions.PanelsPage
@@ -12,8 +13,9 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void AddNewPanel(string name, string series)
         {
+            WaitForControl("display name textbox", 5);
             EnterValue("display name textbox", name);
-            SelectValueDropdownList("series combobox", series);
+            SelectItemByText("series combobox", ("  " + series));
             Click("ok button");
         }
 
@@ -30,8 +32,10 @@ namespace TADASHBOARRD.PageActions.PanelsPage
         /// </summary>
         public void CheckChartTypeOptions()
         {
-            WaitInSpecificTime(10);
-            int count = CountComboboxChildren("//select[@id='cbbChartType']/option");
+            WaitForControl("chart type combobox", 5);
+            string chartTypeChildren = "//select[@id='cbbChartType']/option";
+            WaitForControl(By.XPath(chartTypeChildren), 5);
+            int count = CountComboboxChildren(chartTypeChildren);
             for (int i = 1; i <= count; i++)
             {
                 string actual = GetTextDynamicElement("chart type child", i.ToString());
