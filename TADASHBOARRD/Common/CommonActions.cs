@@ -30,7 +30,6 @@ namespace TADASHBOARRD.Common
         {
             return DateTime.Now.ToString("ddmmyyyyhhmmss");
         }
-
         #endregion
     }
 }

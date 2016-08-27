@@ -120,6 +120,9 @@ namespace TADASHBOARRD.Common
             return driver;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static IList<IWebDriver> GetDriverSuite()
         {
             // Allow some degree of parallelism when creating drivers, which can be slow
