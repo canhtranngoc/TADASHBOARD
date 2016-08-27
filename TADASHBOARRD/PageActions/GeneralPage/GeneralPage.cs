@@ -280,6 +280,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenDataProfilesPage()
         {
+            WaitForControl("administer tab", 5);
             Click("administer tab");
             Click("data profiles tab");
         }
@@ -289,6 +290,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenPanelsPage()
         {
+            WaitForControl("administer tab", 5);
             Click("administer tab");
             Click("panels tab");
 
