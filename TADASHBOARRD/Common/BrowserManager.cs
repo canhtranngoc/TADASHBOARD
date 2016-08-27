@@ -9,7 +9,7 @@ using OpenQA.Selenium;
 using Fenton.Selenium.SuperDriver;
 using System.Collections.Generic;
 using System.Linq;
-using TADASHBOARRD.Testcases.Test;
+using System.Configuration;
 
 namespace TADASHBOARRD.Common
 {
@@ -69,7 +69,7 @@ namespace TADASHBOARRD.Common
                         DesiredCapabilities chromeCapabilities = DesiredCapabilities.Chrome();
                         chromeCapabilities.SetCapability(CapabilityType.Version, TestData.chromeVersion);
                         chromeCapabilities.SetCapability(CapabilityType.Platform, new Platform(PlatformType.Windows));
-                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), chromeCapabilities);
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     case "IE":
@@ -87,6 +87,8 @@ namespace TADASHBOARRD.Common
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     case "SUPERWEBDRIVER":
+                        WebDriver.driver = GetDriverGrid(Browser.SuperWebDriver);
+                        WebDriver.driver.Manage().Window.Maximize();
                         break;
                     default:
                         WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
@@ -112,6 +114,9 @@ namespace TADASHBOARRD.Common
                     break;
                 case Browser.InternetExplorer:
                     driver = new InternetExplorerDriver(new InternetExplorerOptions() { IntroduceInstabilityByIgnoringProtectedModeSettings = true });
+                    break;
+                case Browser.MicrosoftEdge:
+                    driver = new EdgeDriver();
                     break;
                 default:
                     driver = new FirefoxDriver();
@@ -149,6 +154,71 @@ namespace TADASHBOARRD.Common
                 process.Kill();
             }
         }
+
+        /// <summary>
+        /// Using for Parallel
+        /// </summary>
+        public enum Browser
+        {
+            Chrome,
+            Firefox,
+            InternetExplorer,
+            MicrosoftEdge,
+            SuperWebDriver
+        }
+
+        public static IWebDriver GetDriverGrid(Browser browser)
+        {
+            IWebDriver driver = GetCapabilityFor(browser);
+            driver.Manage().Window.Maximize();
+            //    driver.Manage().Cookies.DeleteAllCookies();
+            return driver;
+        }
+
+
+        public static IWebDriver GetCapabilityFor(Browser browser)
+        {
+            var uri = new Uri(TestData.hub);
+            IWebDriver driver;
+            switch (browser)
+            {
+                case Browser.SuperWebDriver:
+                    driver = new SuperWebDriver(GetDriverSuiteGrid());
+                    break;
+                case Browser.Chrome:
+                    driver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome());
+                    break;
+                case Browser.InternetExplorer:
+                    driver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
+                    break;
+                case Browser.MicrosoftEdge:
+                    driver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
+                    break;
+                default:
+                    driver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
+                    break;
+            }
+            return driver;
+        }
+
+        public static IList<IWebDriver> GetDriverSuiteGrid()
+        {
+            // Allow some degree of parallelism when creating drivers, which can be slow
+            IList<IWebDriver> drivers = new List<Func<IWebDriver>>
+            {
+                () =>  { return GetCapabilityFor(Browser.Chrome); },
+                () =>  { return GetCapabilityFor(Browser.Firefox); },
+                () => { return GetCapabilityFor(Browser.InternetExplorer); },
+                () => { return GetCapabilityFor(Browser.MicrosoftEdge); },
+            }.AsParallel().Select(d => d()).ToList();
+
+            return drivers;
+        }
+
+
+
+
+
         #endregion
     }
 }

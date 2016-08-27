@@ -27,13 +27,16 @@ namespace TADASHBOARRD.Testcases.Test
             switch (browser)
             {
                 case Browser.SuperWebDriver:
-                    driver = new SuperWebDriver(GetDriverSuite());
+                    driver = new SuperWebDriver(GetDriverSuiteGrid());
                     break;
                 case Browser.Chrome:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.Chrome());
                     break;
                 case Browser.InternetExplorer:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
+                    break;
+                case Browser.MicrosoftEdge:
+                    driver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
                     break;
                 default:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
@@ -42,7 +45,7 @@ namespace TADASHBOARRD.Testcases.Test
             return driver;
         }
 
-        public static IList<IWebDriver> GetDriverSuite()
+        public static IList<IWebDriver> GetDriverSuiteGrid()
         {
             // Allow some degree of parallelism when creating drivers, which can be slow
             IList<IWebDriver> drivers = new List<Func<IWebDriver>>
@@ -50,6 +53,7 @@ namespace TADASHBOARRD.Testcases.Test
                 () =>  { return GetCapabilityFor(Browser.Chrome); },
                 () =>  { return GetCapabilityFor(Browser.Firefox); },
                 () => { return GetCapabilityFor(Browser.InternetExplorer); },
+                () => { return GetCapabilityFor(Browser.MicrosoftEdge); },
             }.AsParallel().Select(d => d()).ToList();
 
             return drivers;
