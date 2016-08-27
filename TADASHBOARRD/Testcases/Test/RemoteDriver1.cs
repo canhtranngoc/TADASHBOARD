@@ -12,9 +12,6 @@ namespace TADASHBOARRD.Testcases.Test
 {
     class RemoteDriver1
     {
-
-
-
         public static IWebDriver GetDriverGrid(Browser browser)
         {
             IWebDriver driver = GetCapabilityFor(browser);
