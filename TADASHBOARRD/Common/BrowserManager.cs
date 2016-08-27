@@ -126,6 +126,9 @@ namespace TADASHBOARRD.Common
             return driver;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static IList<IWebDriver> GetDriverSuite()
         {
             // Allow some degree of parallelism when creating drivers, which can be slow
@@ -138,8 +141,7 @@ namespace TADASHBOARRD.Common
 
             return drivers;
         }
-
-
+        
         /// <summary>
         /// Method to close the browser. If IE, kill process to close the browser
         /// </summary>
