@@ -99,7 +99,7 @@ namespace TADASHBOARRD.Common
         }
 
         /// <summary>
-        /// 
+        /// Method to create driver for parallel local running
         /// </summary>
         public static IWebDriver GetDriver(Browser browser)
         {
@@ -126,7 +126,7 @@ namespace TADASHBOARRD.Common
         }
 
         /// <summary>
-        /// 
+        /// Get list of drivers for superdriver local
         /// </summary>
         public static IList<IWebDriver> GetDriverSuite()
         {
@@ -166,6 +166,9 @@ namespace TADASHBOARRD.Common
             SuperWebDriver
         }
 
+        /// <summary>
+        /// Method to create driver for parallel grid running
+        /// </summary>
         public static IWebDriver GetDriverGrid(Browser browser)
         {
             IWebDriver driver = GetCapabilityFor(browser);
@@ -174,7 +177,9 @@ namespace TADASHBOARRD.Common
             return driver;
         }
 
-
+        /// <summary>
+        /// Support for GetDriverGrid method
+        /// </summary>
         public static IWebDriver GetCapabilityFor(Browser browser)
         {
             var uri = new Uri(TestData.hub);
@@ -200,6 +205,9 @@ namespace TADASHBOARRD.Common
             return driver;
         }
 
+        /// <summary>
+        /// Get list of drivers for superdriver grid
+        /// </summary>
         public static IList<IWebDriver> GetDriverSuiteGrid()
         {
             // Allow some degree of parallelism when creating drivers, which can be slow

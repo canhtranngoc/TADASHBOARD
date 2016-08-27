@@ -419,53 +419,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///<summary>
         /// Method to go to a specific page
         ///</summary>
-        //public void goToPage(string path)
-        //{
-        //    // Wait for page loads
-        //    Sleep(1);
-        //    string xpathNext = string.Empty;
-        //    if (!(path.Contains("/")))
-        //    {
-        //        string xpath = string.Format("//a[.='{0}']", path);
-        //        if (TestData.browser == "chrome" || TestData.browser == "ie")
-        //        {
-        //            ClickItemXpathByJS(xpath);
-        //        }
-        //        else
-        //        {
-        //            ClickItemXpath(xpath);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        string[] element = path.Split('/');
-        //        string xpath = string.Format("//a[.='{0}']", element[0]);
-        //        for (int i = 1; i < element.Length; i++)
-        //        {
-        //            if (TestData.browser == "chrome" || TestData.browser == "ie")
-        //            {
-        //                ClickItemXpathByJS(xpath);
-        //            }
-        //            else
-        //            {
-        //                Actions builder = new Actions(WebDriver.driver);
-        //                builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-        //            }
-        //            xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
-        //            xpath = xpath + xpathNext;
-        //        }
-        //        if (TestData.browser == "chrome" || TestData.browser == "ie")
-        //        {
-        //            ClickItemXpathByJS(xpath);
-        //        }
-        //        else
-        //        {
-        //            ClickItemXpath(xpath);
-        //        }
-        //    }
-        //}
-
-        
         public void goToPage(string way)
         {
             Sleep(1);
