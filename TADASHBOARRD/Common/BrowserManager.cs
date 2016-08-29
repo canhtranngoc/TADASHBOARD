@@ -91,7 +91,7 @@ namespace TADASHBOARRD.Common
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     default:
-                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Firefox());
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                 }
@@ -114,9 +114,6 @@ namespace TADASHBOARRD.Common
                     break;
                 case Browser.InternetExplorer:
                     driver = new InternetExplorerDriver(new InternetExplorerOptions() { IntroduceInstabilityByIgnoringProtectedModeSettings = true });
-                    break;
-                case Browser.MicrosoftEdge:
-                    driver = new EdgeDriver();
                     break;
                 default:
                     driver = new FirefoxDriver();
@@ -173,7 +170,6 @@ namespace TADASHBOARRD.Common
         {
             IWebDriver driver = GetCapabilityFor(browser);
             driver.Manage().Window.Maximize();
-            //    driver.Manage().Cookies.DeleteAllCookies();
             return driver;
         }
 
@@ -195,9 +191,6 @@ namespace TADASHBOARRD.Common
                 case Browser.InternetExplorer:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
                     break;
-                case Browser.MicrosoftEdge:
-                    driver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
-                    break;
                 default:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
                     break;
@@ -216,7 +209,6 @@ namespace TADASHBOARRD.Common
                 () =>  { return GetCapabilityFor(Browser.Chrome); },
                 () =>  { return GetCapabilityFor(Browser.Firefox); },
                 () => { return GetCapabilityFor(Browser.InternetExplorer); },
-                () => { return GetCapabilityFor(Browser.MicrosoftEdge); },
             }.AsParallel().Select(d => d()).ToList();
 
             return drivers;
