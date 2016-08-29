@@ -27,12 +27,12 @@ namespace TADASHBOARRD.Testcases
             newPageDialog = new NewPageDialog();
             string pageName2 = GetDateTime();
             newPageDialog.CreateNewPage(pageName2, pageName1, TestData.defaultNumberOfColumns, TestData.defaultDisplayAfter, TestData.statusPublic, TestData.levelOne);
-            //generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.goToPage(TestData.overviewPage + "/" + pageName1);
             generalPage.PerformDelete();
             string actualMessage = generalPage.GetTextAlert();
+            string expectedMessage = "Can't delete page " + pageName1 + " since it has children page";
             //VP: Check message "Can't delete page "page 1" since it has children page"
-            generalPage.CheckDynamicTextDisplays(pageName1, actualMessage);
+            CheckTextDisplays(expectedMessage, actualMessage);
         }
 
         [TestMethod]

@@ -554,15 +554,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             return WebDriver.driver.FindElements(By.XPath(locator)).Count;
         }
 
-        ///<summary>
-        ///Check message informs that user cannot delete page that has children.
-        ///</summary>
-        public void CheckDynamicTextDisplays(string dynamicExpectedText, string actualText)
-        {
-            string expectedMessage = string.Format("Can't delete page \"{0}\" since it has children page", dynamicExpectedText);
-            Assert.AreEqual(expectedMessage, actualText);
-        }
-
         #endregion
     }
 }
