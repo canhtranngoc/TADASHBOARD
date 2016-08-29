@@ -13,11 +13,11 @@ namespace TADASHBOARRD.Testcases
         NewPanelDialog newPanelDialog = new NewPanelDialog();
         DataProfilesPage dataProfilesPage = new DataProfilesPage();
         GeneralPage generalPage = new GeneralPage();
-        PanelConfigurationDialog panelConfigurationDialog=new PanelConfigurationDialog();
-        EditPageDialog editPageDialog=new EditPageDialog();
+        PanelConfigurationDialog panelConfigurationDialog= new PanelConfigurationDialog();
+        EditPageDialog editPageDialog= new EditPageDialog();
 
         [AssemblyInitialize]
-        public static void AssemblyInitializeMeThod(TestContext testContext)
+        public static void AssemblyInitializeMeThod(TestContext TestContext)
         {
             BrowserManager.OpenBrowser(TestData.browser);
         }
@@ -30,8 +30,7 @@ namespace TADASHBOARRD.Testcases
 
         [TestInitialize]
         public void TestInitializeMethod()
-        {
-            //generalPage.Sleep(1);
+        {          
             NavigateTADashboard();
         }
         [TestCleanup]
@@ -59,7 +58,7 @@ namespace TADASHBOARRD.Testcases
                     WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
                 default:
-                   // WebDriver.driver.Manage().Cookies.DeleteAllCookies();
+                    WebDriver.driver.Manage().Cookies.DeleteAllCookies();
                     break;
             }
         }

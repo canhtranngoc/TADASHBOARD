@@ -89,10 +89,6 @@
     <Compile Include="Testcases\LoginTestCases.cs" />
     <Compile Include="Testcases\DataProfilesTestCases.cs" />
     <Compile Include="Testcases\PanelsTestCases.cs" />
-    <Compile Include="Testcases\Test\Browser1.cs" />
-    <Compile Include="Testcases\Test\LocalDriver.cs" />
-    <Compile Include="Testcases\Test\RemoteDriver1.cs" />
-    <Compile Include="Testcases\Test\UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

@@ -280,6 +280,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenDataProfilesPage()
         {
+            WaitForControl("administer tab", 5);
             Click("administer tab");
             Click("data profiles tab");
         }
@@ -289,6 +290,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void OpenPanelsPage()
         {
+            WaitForControl("administer tab", 5);
             Click("administer tab");
             Click("panels tab");
 
@@ -348,7 +350,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void PerformDelete()
         {
-          //  WaitForControl("global setting tab",5);
+            // Sleep 1 second for stable running
             Sleep(1);
             Click("global setting tab");
             Click("delete tab");
@@ -417,58 +419,11 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///<summary>
         /// Method to go to a specific page
         ///</summary>
-        //public void goToPage(string path)
-        //{
-        //    // Wait for page loads
-        //    Sleep(1);
-        //    string xpathNext = string.Empty;
-        //    if (!(path.Contains("/")))
-        //    {
-        //        string xpath = string.Format("//a[.='{0}']", path);
-        //        if (TestData.browser == "chrome" || TestData.browser == "ie")
-        //        {
-        //            ClickItemXpathByJS(xpath);
-        //        }
-        //        else
-        //        {
-        //            ClickItemXpath(xpath);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        string[] element = path.Split('/');
-        //        string xpath = string.Format("//a[.='{0}']", element[0]);
-        //        for (int i = 1; i < element.Length; i++)
-        //        {
-        //            if (TestData.browser == "chrome" || TestData.browser == "ie")
-        //            {
-        //                ClickItemXpathByJS(xpath);
-        //            }
-        //            else
-        //            {
-        //                Actions builder = new Actions(WebDriver.driver);
-        //                builder.MoveToElement(WebDriver.driver.FindElement(By.XPath(xpath))).Build().Perform();
-        //            }
-        //            xpathNext = string.Format("/following-sibling::ul/li/a[.='{0}']", element[i]);
-        //            xpath = xpath + xpathNext;
-        //        }
-        //        if (TestData.browser == "chrome" || TestData.browser == "ie")
-        //        {
-        //            ClickItemXpathByJS(xpath);
-        //        }
-        //        else
-        //        {
-        //            ClickItemXpath(xpath);
-        //        }
-        //    }
-        //}
-
         public void goToPage(string way)
         {
             Sleep(1);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
-           // string lastpage = string.Empty;
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
 
             if (allpages.Length == 1)

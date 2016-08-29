@@ -91,7 +91,7 @@ namespace TADASHBOARRD.Common
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                     default:
-                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Chrome());
+                        WebDriver.driver = new RemoteWebDriver(new Uri(TestData.hub), DesiredCapabilities.Firefox());
                         WebDriver.driver.Manage().Window.Maximize();
                         break;
                 }
@@ -99,7 +99,7 @@ namespace TADASHBOARRD.Common
         }
 
         /// <summary>
-        /// 
+        /// Method to create driver for parallel local running
         /// </summary>
         public static IWebDriver GetDriver(Browser browser)
         {
@@ -115,19 +115,15 @@ namespace TADASHBOARRD.Common
                 case Browser.InternetExplorer:
                     driver = new InternetExplorerDriver(new InternetExplorerOptions() { IntroduceInstabilityByIgnoringProtectedModeSettings = true });
                     break;
-                case Browser.MicrosoftEdge:
-                    driver = new EdgeDriver();
-                    break;
                 default:
                     driver = new FirefoxDriver();
                     break;
             }
-
             return driver;
         }
 
         /// <summary>
-        /// 
+        /// Get list of drivers for superdriver local
         /// </summary>
         public static IList<IWebDriver> GetDriverSuite()
         {
@@ -166,15 +162,19 @@ namespace TADASHBOARRD.Common
             SuperWebDriver
         }
 
+        /// <summary>
+        /// Method to create driver for parallel grid running
+        /// </summary>
         public static IWebDriver GetDriverGrid(Browser browser)
         {
             IWebDriver driver = GetCapabilityFor(browser);
             driver.Manage().Window.Maximize();
-            //    driver.Manage().Cookies.DeleteAllCookies();
             return driver;
         }
 
-
+        /// <summary>
+        /// Support for GetDriverGrid method
+        /// </summary>
         public static IWebDriver GetCapabilityFor(Browser browser)
         {
             var uri = new Uri(TestData.hub);
@@ -190,9 +190,6 @@ namespace TADASHBOARRD.Common
                 case Browser.InternetExplorer:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.InternetExplorer());
                     break;
-                case Browser.MicrosoftEdge:
-                    driver = new RemoteWebDriver(uri, DesiredCapabilities.Edge());
-                    break;
                 default:
                     driver = new RemoteWebDriver(uri, DesiredCapabilities.Firefox());
                     break;
@@ -200,6 +197,9 @@ namespace TADASHBOARRD.Common
             return driver;
         }
 
+        /// <summary>
+        /// Get list of drivers for superdriver grid
+        /// </summary>
         public static IList<IWebDriver> GetDriverSuiteGrid()
         {
             // Allow some degree of parallelism when creating drivers, which can be slow
@@ -208,11 +208,10 @@ namespace TADASHBOARRD.Common
                 () =>  { return GetCapabilityFor(Browser.Chrome); } ,
                 () =>  { return GetCapabilityFor(Browser.Firefox); },
                 () => { return GetCapabilityFor(Browser.InternetExplorer); },
-                //() => { return GetCapabilityFor(Browser.MicrosoftEdge); },
             }.AsParallel().Select(d => d()).ToList();
-
             return drivers;
         }
+
         #endregion
     }
 }
