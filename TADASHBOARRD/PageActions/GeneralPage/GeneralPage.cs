@@ -350,7 +350,7 @@ namespace TADASHBOARRD.PageActions.GeneralPage
         ///</summary>
         public void PerformDelete()
         {
-          //  WaitForControl("global setting tab",5);
+            // Sleep 1 second for stable running
             Sleep(1);
             Click("global setting tab");
             Click("delete tab");

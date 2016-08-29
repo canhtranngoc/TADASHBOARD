@@ -9,7 +9,6 @@ using OpenQA.Selenium;
 using Fenton.Selenium.SuperDriver;
 using System.Collections.Generic;
 using System.Linq;
-using System.Configuration;
 
 namespace TADASHBOARRD.Common
 {
@@ -210,7 +209,6 @@ namespace TADASHBOARRD.Common
                 () =>  { return GetCapabilityFor(Browser.Firefox); },
                 () => { return GetCapabilityFor(Browser.InternetExplorer); },
             }.AsParallel().Select(d => d()).ToList();
-
             return drivers;
         }
 
