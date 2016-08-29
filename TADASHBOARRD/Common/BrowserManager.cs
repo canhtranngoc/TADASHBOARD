@@ -10,6 +10,7 @@ using Fenton.Selenium.SuperDriver;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace TADASHBOARRD.Common
 {
     class BrowserManager
@@ -133,7 +134,6 @@ namespace TADASHBOARRD.Common
                 () => { return GetDriver(Browser.Firefox); },
                 () => { return GetDriver(Browser.InternetExplorer); },
             }.AsParallel().Select(d => d()).ToList();
-
             return drivers;
         }
         
@@ -205,7 +205,7 @@ namespace TADASHBOARRD.Common
             // Allow some degree of parallelism when creating drivers, which can be slow
             IList<IWebDriver> drivers = new List<Func<IWebDriver>>
             {
-                () =>  { return GetCapabilityFor(Browser.Chrome); },
+                () =>  { return GetCapabilityFor(Browser.Chrome); } ,
                 () =>  { return GetCapabilityFor(Browser.Firefox); },
                 () => { return GetCapabilityFor(Browser.InternetExplorer); },
             }.AsParallel().Select(d => d()).ToList();
