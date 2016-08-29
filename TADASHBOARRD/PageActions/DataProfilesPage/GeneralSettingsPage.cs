@@ -44,7 +44,6 @@ namespace TADASHBOARRD.PageActions.DataProfilesPage
             for (int i = 1; i <= count; i++)
             {
                 string actual = GetTextDynamicElement("item type combobox child", i.ToString());
-                Console.WriteLine(actual);
                 i = Convert.ToInt32(i);
                 CheckTextDisplays(TestData.itemTypeArray[i - 1], actual);
             }

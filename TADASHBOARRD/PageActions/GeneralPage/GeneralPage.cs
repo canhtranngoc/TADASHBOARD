@@ -424,7 +424,6 @@ namespace TADASHBOARRD.PageActions.GeneralPage
             Sleep(1);
             string[] allpages = way.Split('/');
             By lastpage = By.XPath("");
-           // string lastpage = string.Empty;
             string currentpagexpath = "//ul/li/a[text()='" + allpages[0] + "']";
 
             if (allpages.Length == 1)

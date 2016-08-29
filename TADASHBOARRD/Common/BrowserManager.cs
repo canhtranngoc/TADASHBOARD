@@ -214,9 +214,9 @@ namespace TADASHBOARRD.Common
             IList<IWebDriver> drivers = new List<Func<IWebDriver>>
             {
                 () =>  { return GetCapabilityFor(Browser.Chrome); },
-                () =>  { return GetCapabilityFor(Browser.Firefox); },
-                () => { return GetCapabilityFor(Browser.InternetExplorer); },
-                () => { return GetCapabilityFor(Browser.MicrosoftEdge); },
+                //() =>  { return GetCapabilityFor(Browser.Firefox); },
+                //() => { return GetCapabilityFor(Browser.InternetExplorer); },
+               // () => { return GetCapabilityFor(Browser.MicrosoftEdge); },
             }.AsParallel().Select(d => d()).ToList();
 
             return drivers;
