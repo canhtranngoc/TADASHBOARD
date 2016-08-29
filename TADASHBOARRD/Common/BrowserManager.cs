@@ -9,7 +9,7 @@ using OpenQA.Selenium;
 using Fenton.Selenium.SuperDriver;
 using System.Collections.Generic;
 using System.Linq;
-using System.Configuration;
+
 
 namespace TADASHBOARRD.Common
 {
@@ -138,7 +138,6 @@ namespace TADASHBOARRD.Common
                 () => { return GetDriver(Browser.Firefox); },
                 () => { return GetDriver(Browser.InternetExplorer); },
             }.AsParallel().Select(d => d()).ToList();
-
             return drivers;
         }
         
@@ -206,19 +205,14 @@ namespace TADASHBOARRD.Common
             // Allow some degree of parallelism when creating drivers, which can be slow
             IList<IWebDriver> drivers = new List<Func<IWebDriver>>
             {
-                () =>  { return GetCapabilityFor(Browser.Chrome); },
+                () =>  { return GetCapabilityFor(Browser.Chrome); } ,
                 () =>  { return GetCapabilityFor(Browser.Firefox); },
-                //() => { return GetCapabilityFor(Browser.InternetExplorer); },
+                () => { return GetCapabilityFor(Browser.InternetExplorer); },
                 //() => { return GetCapabilityFor(Browser.MicrosoftEdge); },
             }.AsParallel().Select(d => d()).ToList();
 
             return drivers;
         }
-
-
-
-
-
         #endregion
     }
 }
